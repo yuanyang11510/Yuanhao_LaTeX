@@ -1,0 +1,112 @@
+\documentclass{ctexart}
+\usepackage[normalem]{ulem}%ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
+
+
+\begin{document}
+\section*{第2章 \LaTeX 环境配置}
+	\subsection*{2.6.1 尝试第一份文稿（P14）}
+		Hello, world ! 
+
+		你好，世界！ 
+
+\section*{第3章 \LaTeX 基础}
+	\subsection*{3.1.2 保留字符（P20）}
+		\# 
+		\$ 
+		\% 
+		%如果在行末添加这个命令，可以防止LaTeX在行末插入一些奇怪的空白符
+		\& 
+		\_ 
+		\{ 
+		\} 
+
+	%以下是输出反斜杠的三种方法，最后一种打印出来的形式和前两种不同
+		$\backslash$ 
+		%方法一，这一命令两边的数学环境是不可少的，否则会报错
+		\textbackslash 
+		%方法二，这一命令不需要数学环境
+		\texttt{\char92} 
+		{\ttfamily \char92} 
+		%方法三，这是使用ASCII码进行输出，需要搭配tt字体环境使用，更多符号输出方式可以参考P21
+		%\ttfamily命令会让后面的所有内容的字体改变，因此需要在该命令以及其后需要改变字体的内容的两边加上大括号限定改变字体的内容范围
+
+	%以下是输出类似扬抑符的命令
+		【\^{} \^a】
+		%该符号如果按照书上所说的命令，单独打印时会报错，需要在后面加上一对大括号，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），实际输出的就是一个扬抑符（circumflex）
+
+	%以下是输出波浪线的几种方法
+		$\sim$
+		%方法一，这实际是一个数学符号“约等于”（similar）
+		【\~{} \~a】
+		%方法二，和上文中的^符号一样，该命令如果后面跟上一个字母，实际输出的就是一个波浪号/腭化符（tilde），如果要单独输出这一符号，必须在后面添加一对大括号，在TeXstudio中输出的是一个单独的腭化符，但是在VS Code中输出的就是一个正常的波浪线
+		\textasciitilde
+		%输出效果在不同的编辑器中有不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线
+
+	\subsection*{3.2 标点与强调（P24）}
+		> < 
+		%TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境
+		
+		$>$ $<$ 
+		%数学符号中的大于号和小于号需要放在数学环境$$中
+		
+		\textgreater \textless 
+		%文本中的大于号和小于号需要使用\textgreater和\textless命令 
+	\subsection*{3.2.1 引号（P24）}
+		“你好，‘世界’！” 
+		%中文下的单引号和双引号可以用中文输入法直接输入
+		
+		``\thinspace`Max' is here.'' 
+		%英文的左单引号是重音符“`”，右单引号是常用的引号符“'”
+		%英文下的引号嵌套需要借助\thinspace命令分隔
+		%双引号括起内容中的左单引号和外部左双引号之间的间隔大小：没有任何空格 < 加了\thinspace命令 < 简单的空格
+    
+	\subsection*{3.2.2 短横、省略号与破折号（P24）}
+		daughter-in-law
+		%连字符
+
+		1--2
+		%数字起止符
+		
+		Listen---I'm serious.
+		%破折号
+		
+		——
+		%中文破折号照常输入即可
+		
+		……
+		%中文省略号照常输入即可
+		
+		\ldots
+		%英文省略号需要使用\ldots（lower dots v.s. \cdots, center dots）命令
+		%该命令效果也等同于\dots，但是\ldots在任何模式下都适用，关于dots的相关命令有待探索
+		
+		...
+		%连打三个句点无法正确打印出英文省略号
+    
+	\subsection*{3.2.3 强调（P25）}
+		This is the emphasis form of \emph{abc}.
+		%西文的强调命令就是将相应文本转换为斜体，而不是像在中文中将其加粗或者加下划线
+    
+	\subsection*{3.2.4 下划线和删除线（P25）}
+		\underline{abc} \\
+		%LaTeX原生的加下划线命令
+		%以下命令来自ulem宏包，见导言区
+		\uline{下划线} \\
+		\uuline{双下划线} \\
+		\dashuline{虚下划线} \\
+		\dotuline{点下划线} \\
+		\uwave{波浪线} \\
+		\sout{删除线} \\
+		%strike out
+		\xout{斜删除线}
+		%cross out
+
+    
+    
+    
+    
+    
+    
+    
+
+\end{document}

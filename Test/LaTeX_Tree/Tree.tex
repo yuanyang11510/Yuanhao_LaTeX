@@ -1,0 +1,201 @@
+\documentclass[11pt]{standalone}
+\usepackage{ctex}
+\usepackage[linguistics]{forest}
+\usepackage{gb4e}
+
+\begin{document}
+%\forestset{default preamble={sn edges}}%但是在该系统中默认分叉处汇聚成一点
+\newcounter{excompteur}
+\newenvironment{exx}{%
+\stepcounter{excompteur}%
+(\arabic{excompteur})}{}
+
+%1
+\begin{exx}
+	基础操作及隐去节点
+	\begin{forest}
+	[X[A][B]]
+	\end{forest}
+	
+	\begin{forest}
+	[[A][B]]%隐去节点内容但不隐去树枝，注意相关的中括号不能省去
+	\end{forest}
+\end{exx}
+
+%2
+\begin{exx}
+	隐去树枝及该树枝上的所有节点
+	\begin{forest}
+	[X[A][B[][D]]]%必须有逗号，否则会输出文字"phantom"
+	\end{forest}
+	
+	\begin{forest}
+	[X[A][B[, phantom][D]]]%必须有逗号，否则会输出文字"phantom"
+	\end{forest}
+\end{exx}
+
+%3
+\begin{exx}
+	使分叉处汇聚成一点
+	\begin{forest}
+	[[A][B][C][D]]
+	\end{forest}
+	
+	\begin{forest}
+	sn edges%该系统中此命令没有意义，因为默认分叉处汇聚成一点
+	[[A][B][C][D]]
+	\end{forest}
+\end{exx}
+
+%4
+\begin{exx}
+	调整端点的层级
+	\begin{forest}
+	[X[A, tier=1][B,tier=3[C,tier=1][D[E, tier=2][F]]]]%只看层级标记间的相对关系，层级标记可以是数字，也可以是字母
+	\end{forest}
+	
+	\begin{forest}
+	[X[A, tier=X][B,tier=A[C,tier=B][D[E, tier=X][F]]]]%只看层级标记间的相对关系，层级标记可以是数字，也可以是字母
+	\end{forest}
+	
+	\begin{forest}
+	where n children=0{tier=X}{}%待研究child和parent的意义
+	[[A][B[C][D[E][F]]]]
+	\end{forest}
+\end{exx}
+
+%5
+\begin{exx}
+	在隐去节点的情况下使被隐去节点的树枝平滑相连
+	\begin{forest}
+	[X[A][[C][D]]]
+	\end{forest}
+	
+	\begin{forest}
+	nice empty nodes%要求原B的位置没有内容（但不等于隐去）该命令才有意义
+	[X[A][[C][D]]]
+	\end{forest}
+\end{exx}
+
+%6
+\begin{exx}
+	调整树枝的角度
+	\begin{forest}
+	[[A][B[C][D]]]
+	\end{forest}
+	
+	\begin{forest}
+	[[A][B, calign=first[C][D]]]%c代表children
+	\end{forest}
+	
+	\begin{forest}
+	[[A][B, calign=last[C][D]]]
+	\end{forest}
+	
+	\begin{forest}
+	for tree={calign=first}
+	[[A][B[C][D]]]
+	\end{forest}
+	
+	\begin{forest}
+	for tree={calign=last}
+	[[A][B[C][D]]]
+	\end{forest}
+\end{exx}
+
+%7
+\begin{exx}
+	调整树的角度
+	\begin{forest}
+	[X[A][B]]%默认向下生长
+	\end{forest}
+	
+	\begin{forest}
+	for tree={grow=north}%注意grow外面还有一个大括号
+	[X[A][B]]%向上生长
+	\end{forest}
+	
+	\begin{forest}
+	for tree={grow=west}
+	[X[A][B]]%向左生长
+	\end{forest}
+	
+	\begin{forest}
+	for tree={grow=east}
+	[X[A][B]]%向右生长
+	\end{forest}
+	
+	\begin{forest}
+	for tree={grow'=south}%调换树枝的角度
+	[X[A][B[C][D]]]
+	\end{forest}
+	
+	\begin{forest}
+	for tree={grow=north}%将树的角度和树枝的角度分别设置
+	[X[A][B, grow'=west[C][D]]]
+	\end{forest}
+\end{exx}
+
+%8
+\begin{exx}
+	调整树的形状	
+	\begin{forest}
+%	forked edges%该命令报错
+	[[A][B[C][D]]]
+	\end{forest}
+\end{exx}
+
+%9
+\begin{exx}
+	调整树枝的形状
+	\begin{forest}
+	[[A][B, edge=dashed[C, edge=dotted][D]]]
+	\end{forest}
+\end{exx}
+
+%10
+\begin{exx}
+	用TikZ代码装饰树枝和节点
+	\begin{forest}
+	[[A][B, edge label={node[midway, above right]{b}}[C, draw][D, draw, circle]]]%注意node外面还有一个大括号；draw默认在节点外画方框
+	\end{forest}
+	
+	%以下三个是更高级的命令
+	\begin{forest}
+	[ [A]
+	[B, tikz={\node [draw, rounded corners,
+	dashed, inner sep=0pt, fit to=tree] {};}
+	[C] [D] ] ]
+	\end{forest}
+	
+	\begin{forest}
+	[ [A, name=A] [B [C] [D, name=D] ] ]
+	\draw[->] (D.north) -- (A.south);
+	\end{forest}
+	
+	\begin{forest}
+	[ [A, name=A] [B [C] [D, name=D] ] ]
+	\draw[->, dashed] (D) to [out=south west,
+	in=south] (A);
+	\end{forest}
+\end{exx}
+
+%11
+%\begin{exx}
+%	将forest和exe结合起来用
+%	\begin{exe}%结果会报错，可能是standalone和exe不兼容所致
+%	\ex
+%	\begin{forest}
+%	[[A][B[C][D]]]
+%	\end{forest}
+%	
+%	\ex
+%	\begin{forest}
+%	[, baseline[A][B[C][D]]]
+%	\end{forest}
+%	\end{exe}
+%\end{exx}
+
+%待研究更复杂的命令，比如谱系树，句法树，音系树等等
+
+\end{document}

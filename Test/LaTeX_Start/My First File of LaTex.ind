@@ -1,0 +1,17 @@
+\begin{theindex}
+
+  \item emphasis, \hyperpage{1}
+
+  \indexspace
+
+  \item quotation, \hyperindexformat{\see{verse}}{1}
+
+  \indexspace
+
+  \item verse, \hyperindexformat{\see{quotation}}{1}
+
+  \indexspace
+
+  \item 方言, \hyperpage{3}
+
+\end{theindex}

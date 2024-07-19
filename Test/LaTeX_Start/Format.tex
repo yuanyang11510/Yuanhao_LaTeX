@@ -1,0 +1,92 @@
+\documentclass{article}
+
+\usepackage{setspace}
+\usepackage[top=3cm, bottom=3cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{fontspec}
+\setmainfont[Mapping=tex-text, Numbers=OldStyle, Ligatures=Common]{Times New Roman}
+
+\begin{document}
+Texte \textrm{avec empattements}.
+%font by default (for maintmatter)
+
+Texte \textsf{sans empattements}.
+%for title or perhaps for some structure elements
+
+Texte \texttt{à chasse fixe}.\newline
+
+Texte \textbf{en gras}.
+
+\textbf{Texte \textmd{non-gras} dans du gras}.\newline
+
+Texte \textit{en italique}.
+
+\textit{Texte en \textup{style droit} dans de l'italique}.\newline
+
+Texte \textsc{en petites capitales}.
+
+Texte \uppercase{en capitales}
+
+Texte \lowercase{EN MINUSCULES}\newline
+
+{\tiny Texte
+\scriptsize Texte
+\footnotesize Texte
+\small Texte
+\normalsize Texte
+\large Texte
+\Large Texte
+\LARGE Texte
+\huge Texte
+\Huge Texte}
+
+\begin{center}
+Texte centré.
+\end{center}
+
+\begin{flushleft}
+Texte aligné à gauche.
+\end{flushleft}
+
+\begin{flushright}
+Texte aligné à droite.\newline
+\end{flushright}
+
+Texte texte.
+
+Texte \phantom{tex}te.\medskip%(\bigskip, \smallskip)
+
+Texte \hspace{2em} texte.\newline
+
+Unités de mesure (liste non exhaustive) :
+
+— cm, mm, in ;
+
+— pt : point, 0.3527 mm ;
+
+— em : taille de la police de base (si 11pt, 1em = 11pt) ;
+
+— ex : hauteur d’approximativement un x minuscule dans la police de \mbox{base ;}
+
+— \textbackslash baselineskip : distance normale entre deux lignes d’un paragraphe ;
+
+— \textbackslash textwidth : largeur du texte sur la page ;
+
+— \textbackslash textheight : hauteur du texte sur la page ;
+
+— \textbackslash parindent : largeur de l’alinéa.\\
+
+Texte
+
+{Texte
+\doublespacing%onehalfspacing
+
+Texte
+
+Texte}\\
+
+Texte\\texte\par Texte.
+%The code "\par" has the same effect as two successive newlines.
+
+
+
+\end{document}
