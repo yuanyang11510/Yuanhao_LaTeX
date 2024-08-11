@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=red dot] (1) at (4.5, 0) {};
+		\node [style=none] (2) at (2.5, -3) {\param{\alpha}};
+		\node [style=none] (3) at (4.5, 0) {2};
+		\node [style=green dot] (4) at (0, 0) {1};
+		\node [style=red dot] (5) at (-4.5, 0) {};
+		\node [style=none] (6) at (-2.5, -3) {\param{\alpha}};
+		\node [style=none] (7) at (-4.5, 0) {2};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1) to (2.center);
+		\draw [in=-45, out=120, looseness=1.25] (4) to (5);
+		\draw (5) to (6.center);
+		\draw [bend left=60] (6.center) to (4);
+		\draw [in=-135, out=60, looseness=1.25] (4) to (1);
+		\draw [bend right=60] (2.center) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}
