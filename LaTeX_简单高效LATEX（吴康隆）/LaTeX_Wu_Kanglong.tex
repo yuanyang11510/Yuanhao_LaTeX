@@ -1,59 +1,77 @@
-\documentclass{ctexart}
+\documentclass[twoside]{ctexart} %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
+
 \usepackage[normalem]{ulem} % ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
+
 \usepackage{hologo} % hologo宏包可以输出许多TeX家族标志
+
 \usepackage{lettrine} % 宏包lettrine能够生成首字下沉的效果
+
 % \usepackage{indentfirst}
 %rfr indentfirst宏包强制段首缩进，但是似乎段首一般都会默认缩进。参考这一篇帖子：https://blog.csdn.net/sdu_hao/article/details/103398959，可以发现似乎以前的版本中，LaTeX会默认第一段取消首行缩进，因此这一宏包现在看来已经基本没有存在的必要了
 % \usepackage{parskip}
 %rfr 强制所有段首不缩进，参考：https://tex.stackexchange.com/questions/196922/indent-first-paragraph-after-section-and-dont-indent-new-lines
 \usepackage{fontspec} % 在XelaTeX编译下，使用fontspec宏包来选择本地安装的字体。注意，该宏包可能会明显增加编译时间
+
 \usepackage[slantfont,boldfont]{xeCJK} % "slantfont"和"bolfont"选项表示允许设置中文的斜体和粗体字形
 \setCJKmainfont[boldfont = SimHei]{SimSun} % 设置"SimSun"（宋体）为主要字体，"SimHei"（黑体）为主要字体的粗体字形，即"\textbf{}"或者"{\bfseries}"命令的变换结果。也可以通过slantfont选项来设置主要字体的斜体字行
 %* 各章节的汉字字形也因此发生变化
 %! 注意，"SimSun"和"SimHei"名称中的大小写一定要写对，否则编译会报错
+
+\usepackage{xcolor} % 使用xcolor宏包来方便地调用颜色
+
+\usepackage{amsmath} % 宏包amsmath提供了"\eqref"命令，默认效果如"(3.1)"所示
+% \usepackage{nameref} % nameref宏包不满足于只引用编号，还提供了引用对象的标题内容的功能
+\usepackage{lastpage} % lastpage宏包提供的标签"LastPage"可以保证打印出整个文档最后一页的页数
+\usepackage[perpage]{footmisc} % footmisc宏包的perpage选项可以让脚注每页重新编号，默认情况下，脚注按章编号
+\usepackage{endnotes} % 用于设置尾注的宏包
 \usepackage{csquotes} %* 管理在正文中引用文本的宏包
+
 \usepackage{pifont} %* 用于输出图标（symbol fonts）的宏包
 
-\begin{document}
-\section*{第1章 \mbox{}写给读者*}
-            %? "\section{}"命令中的连续两个汉字之间在打印时缺少空格，暂时不知道什么原因，暂时用"\mbox{}"命令将这两个汉字隔开；后面的“第4章 数学排版”同理；而其他几章“第2章 LaTeX环境配置”、“第3章 LaTeX基础”以及“第5章 LaTeX进阶”中的汉字“章”和英文"LaTeX"之间在打印时存在空格，只不过此处的"LaTeX"是用专用的命令打出的，而经过测试，即使是直接打出来的英文，如果在命令中和其前面的汉字之间存在空格，打印时该空格也会被打印出来。由此看来，这是专属于汉字内部的问题。
-    \subsection*{1.1 什么是\LaTeX}
-    \subsection*{1.2 \TeX 与\LaTeX 的优缺点}
-    \subsection*{1.3 为什么需要\LaTeX}
-    \subsection*{1.4 MS Word难道不优秀吗}
-    \subsection*{1.5 \LaTeX 生成的文件格式}
+\usepackage{hyperref} % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
+\hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red} % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
 
-\section*{第2章 \LaTeX 环境配置}
-    \subsection*{2.1 \LaTeX 的使用方法}
-        \subsubsection*{2.1.1 本地使用：下载\LaTeX 发行版}
-        \subsubsection*{2.1.2 在线使用：在线\LaTeX 网站}
-    \subsection*{2.2 \TeX Live的安装}
-    \subsection*{2.3 \TeX Live本地宏包的管理*}
-    \subsection*{2.4 \TeX Studio的安装与配置}
-    \subsection*{2.5 \TeX Live的其他使用情况}
-        \subsubsection*{2.5.1 卸载\TeX Live}
-        \subsubsection*{2.5.2 更新\TeX Live}
-        \subsubsection*{2.5.3 更快的\hologo{XeLaTeX} 编译速度*}
-    \subsection*{2.6 编译文档}
-	    \subsubsection*{2.6.1 尝试第一份文稿}
+\begin{document}
+\section{写给读者*}
+            %? "\section{}"命令中的两个汉字之间的空格在打印时会丢失，暂时不知道什么原因，暂时用"\mbox{}"命令将这两个汉字隔开；后面的“第4章 数学排版”同理；而其他几章“第2章 LaTeX环境配置”、“第3章 LaTeX基础”以及“第5章 LaTeX进阶”中的汉字“章”和英文"LaTeX"之间在打印时存在空格，只不过此处的"LaTeX"是用专用的命令打出的，而经过测试，即使是直接打出来的英文，如果在命令中和其前面的汉字之间存在空格，打印时该空格也会被打印出来。由此看来，这是专属于汉字内部的问题。
+            %? 以上问题是在将章名称定为“第一章 写给读者”的情况下产生的
+    \subsection{什么是\LaTeX}
+    \subsection{\TeX 与\LaTeX 的优缺点}
+    \subsection{为什么需要\LaTeX}
+    \subsection{MS Word难道不优秀吗}
+    \subsection{\LaTeX 生成的文件格式}
+
+\section{\LaTeX 环境配置}
+    \subsection{\LaTeX 的使用方法}
+        \subsubsection{本地使用：下载\LaTeX 发行版}
+        \subsubsection{在线使用：在线\LaTeX 网站}
+    \subsection{\TeX Live的安装}
+    \subsection{\TeX Live本地宏包的管理*}
+    \subsection{\TeX Studio的安装与配置}
+    \subsection{\TeX Live的其他使用情况}
+        \subsubsection{卸载\TeX Live}
+        \subsubsection{更新\TeX Live}
+        \subsubsection{更快的\hologo{XeLaTeX} 编译速度*}
+    \subsection{编译文档}
+	    \subsubsection{尝试第一份文稿}
 		    Hello, world ! 
 
 		    你好，世界！
 
-	    \subsubsection*{2.6.2 错误的排查}
+	    \subsubsection{错误的排查}
             Errors（错误）：严重的错误
 
             Warnings（警告）：一些不影响生成文档的瑕疵
 
             Bad Boxes（坏箱）：指排版中出现的长度问题。后面的Badness表示错误的严重程度，程度越高数值越大。这类问题需要检查，排除Badness高的选项。坏箱一般不会影响文档的生成，但是文档的排版可能出现问题。
 
-        \subsubsection*{2.6.3 \TeX 帮助资源}
-        \subsubsection*{2.6.4 \TeX 实用工具}
+        \subsubsection{\TeX 帮助资源}
+        \subsubsection{\TeX 实用工具}
 
-\section*{第3章 \LaTeX 基础}
-    \subsection*{3.1 认识\LaTeX}
-        \subsubsection*{3.1.1 命令与环境}
-        \subsubsection*{3.1.2 保留字符}
+\section{\LaTeX 基础}
+    \subsection{认识\LaTeX}
+        \subsubsection{命令与环境}
+        \subsubsection{保留字符}
             \# 
             \$ 
             \% % 如果在行末添加"%"这个命令，可以防止LaTeX在行末插入一些奇怪的空白符
@@ -96,12 +114,12 @@
             \textasciitilde
             %! 上述命令在不同的编辑器中输出效果不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线
 
-        \subsubsection*{3.1.3 导言区}
+        \subsubsection{导言区}
             %todo 加表格（\documentclass[options]{style}）
 
-        \subsubsection*{3.1.4 文件输出}
+        \subsubsection{文件输出}
 
-    \subsection*{3.2 标点与强调}
+    \subsection{标点与强调}
         % 大于号和小于号
             > < 
             %! TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境
@@ -112,7 +130,7 @@
             \textgreater \textless 
             % 文本中的大于号和小于号需要使用\textgreater和\textless命令
         
-            \subsubsection*{3.2.1 引号}
+            \subsubsection{引号}
             “你好，‘世界’！” 
             % 中文下的单引号和双引号可以用中文输入法直接输入
             
@@ -121,7 +139,7 @@
             %* 英文下的引号嵌套需要借助\thinspace命令分隔
             %* 双引号括起内容中的左单引号和外部左双引号之间的间隔大小：没有任何空格 < 加了\thinspace命令 < 简单的空格
     
-        \subsubsection*{3.2.2 短横、省略号与破折号}
+        \subsubsection{短横、省略号与破折号}
         % 连字符
             daughter-in-law
 
@@ -145,11 +163,11 @@
         % 连打三个句点输出的不是真正的英文省略号
             ...
 
-	    \subsubsection*{3.2.3 强调：粗与斜}
+	    \subsubsection{强调：粗与斜}
             This is the emphasis form of \emph{abc}.
             % 西文的强调命令就是将相应文本转换为斜体，而不是像在中文中将其加粗或者加下划线
     
-	    \subsubsection*{3.2.4 下划线和删除线}
+	    \subsubsection{下划线和删除线}
 		% LaTeX原生的加下划线命令
             \underline{abc} 
 		
@@ -165,9 +183,9 @@
             %* "xout"来自"cross out"的缩写
             %rfr 上述每一条命令后面使用了"\\"命令，但是这一条命令的输出效果实际是在同一段之内强制换行，因此在每一条"\\"命令之后的内容都会换行并且顶格打印，而不会空两格，"\newline"命令也具有相同的输出效果。如果需要换行且顶格打印，可以在相应的内容前面使用"\par"命令，或者直接在需要换行处空出一行，参考：https://tex.stackexchange.com/questions/82664/when-to-use-par-and-when-newline-or-blank-lines，书中也在后续的"3.3.1 空格、换行与分段"一节提到了这一问题
 
-        \subsubsection*{3.2.5 其他}
+        \subsubsection{其他}
     
-    \subsection*{3.3 格式控制}
+    \subsection{格式控制}
             \LaTeX 的长度单位：
 
             \textbf{pt}：point，磅
@@ -188,14 +206,14 @@
 
             \textbf{ex}：当前字号下，小写字母x的高度
 
-            \textwidth % 页面上文字的总宽度，即页宽减去两侧边距
-            \linewidth % 当前行允许的行宽
+            % \textwidth % 页面上文字的总宽度，即页宽减去两侧边距
+            % \linewidth % 当前行允许的行宽
             %? 书中没有明确上述两条命令的用法，不过参照下文关于段首缩进长度、段落间距的设置，应该也是和"\setlength{cmd}{length}"命令搭配使用
 
-        \subsubsection*{3.3.1 空格、换行与分段}
+        \subsubsection{空格、换行与分段}
         % 空格
             Fig.~8
-            % "~"命令输出效果等同于一个空格，并且在此空格处不会换行，这样可以使空格前后内容始终在同一行上
+            % "~"命令输出效果等同于一个空格，并且在此空格之后不会换行，这样可以使空格前后内容始终在同一行上
 
         % 换行和分段
             This is a paragraph (空行). 
@@ -244,13 +262,13 @@
         % 宏包lettrine能够生成首字下沉的效果
             \lettrine{T}{this} is an example. Hope you like this package, and enjoy your \LaTeX\ trip !
             
-        \subsubsection*{3.3.2 分页}
+        \subsubsection{分页}
             \newpage % "\newpage"命令的功能是从当前行开始到当前页的最后不再打印内容，而直接从下一页开始打印后续内容
             \mbox{}
             \newpage
             % 将"\mbox{}"命令和前后两个"\newpage"命令搭配使用，可以达到空出一整页的效果
         
-        \subsubsection*{3.3.3 缩进、对齐与行距}
+        \subsubsection{缩进、对齐与行距}
         % 设置段首缩进长度
         % 默认段首缩进长度
             set the parindent (default)
@@ -314,8 +332,8 @@
 
         %* 关于行距的设置，参照"3.4.3 原生字体命令"一节
 
-    \subsection*{3.4 字体与颜色}
-        \subsubsection*{3.4.1 字族、字系与字形}
+    \subsection{字体与颜色}
+        \subsubsection{字族、字系与字形}
             字体（typeface $\sim$ font）
             \begin{itemize}
                 \item 字族：宋体、黑体、楷体 v.s. 罗马体、等宽体
@@ -323,8 +341,8 @@
                 \item 字号：五号、小四号
             \end{itemize}
 
-        \subsubsection*{3.4.2 中西文“斜体”}
-        \subsubsection*{3.4.3 原生字体命令}
+        \subsubsection{中西文“斜体”}
+        \subsubsection{原生字体命令}
             %* 文本系列的命令和字体系列的命令
             %* 文本系列的命令，以"text-"开头，用于临时改变字体，命令的统辖范围用大括号括起来
             %* 字族/字系/字号系列的命令，以"-family/-series/-shape"结尾，会导致其后的所有内容的字族/字系/字号改变，因此需要在命令和统辖范围的两边加上大括号；另外，这类命令放在导言区虽然不会报错，但是不会影响到正文，只有放在正文中，才会对其后的内容产生影响
@@ -367,13 +385,13 @@
             %* 关于这两类命令的区别，参见"3.4.3 原生字体命令"一节
              %rfr 更多关于CJK字体的设置，可以参考：https://blog.csdn.net/xiazdong/article/details/8892070
 
-        % 重新定义默认字族
+        % 重定义默认字族
             % \renewcommand*{\familydefault}{\rmdefault} % 默认字族为罗马字族（Roman）
             % \renewcommand*{\familydefault}{\sfdefault} % 默认字族改为无衬线字族（Sans Serif）
             % \renewcommand*{\familydefault}{\ttdefault} % 默认字族改为等宽字族（Typewriter）
             % \renewcommand*{\CJKfamilydefault}{\CJKsfdefault}
 
-        % 重新定义某个字族下的默认字体
+        % 重定义某个字族下的默认字体
             % \renewcommand*{\rmdefault}{font-name}
             % \renewcommand*{\sfdefault}{font-name}
             % \renewcommand*{\rmdefault}{ptm}
@@ -402,28 +420,28 @@
             set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (default)
 
             % 字号15pt，行距为默认值（1.2倍文字高）
-            \fontsize{15pt}{\baselineskip}{\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize
-            
+            {\fontsize{15pt}{\baselineskip}{\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize
+        
             \selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-baselineskip)
             
-            }
+            }}
             %* LaTeX将“行距”称为“基线间距”（baselineskip）
             %! "\selectfont"是"\fontsize{size}{skip}{\selectfont}"命令中预先设定好的一个命令名称，用来引出后面需要修改字号和行距的内容，不要错误地将其理解为需要替换为一个具体的字体名称
             %* 类比前文提到的段落间距的设置，该命令的控制对象是统辖范围内的每一行和其前面一行之间的距离（包括统辖范围内第一行和统辖范围外之前的最后一行之间的距离），因此，不管统辖范围内的最后一行的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一行之间的距离都会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的
             %! 和上文中的"{\setlength{cmd}{length}}"命令不同，而与上文中的"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令类似，"\fontsize{size}{skip}{\selectfont}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的行距将无法生效，而只有设置的字号生效
             %* 因此可以发现，如果要用这一命令设置行距，统辖范围内的第一行和统辖范围外之前的最后一行可以在同一段落内（通过"\\"命令或者"\newline"命令强制换行），但是统辖范围内的最后一行和统辖范围外之后的第一行一定不在同一段落内，因为统辖范围内的最后一行的末尾必须要空行或者加上"\par"命令，否则这一行和之前一行之间设置的行距将无法生效
             %rfr 参考：https://tex.stackexchange.com/questions/148508/how-does-fontsize-work、https://tex.stackexchange.com/questions/48741/temporarily-increase-line-spacing/48743#48743，从后面这篇帖子还可以发现，即使不需要主动地调整行距，当出现类似的用大括号将命令和统辖范围括起来的情况，最好也在每一段的末尾空行或者加上"\par"命令，否则行距可能会被动地发生变化
-            
+            %! 书中给出的命令结构是在"\selectfont"命令"和统辖范围的两边加上大括号，经检验，这对大括号可以省去，但是原文没有提到，还需要在整个"\fontsize{size}{skip}{\selectfont}"命令和统辖范围的两边加上大括号，否则该命令会影响其后所有的内容
+
             % 字号15pt，行距30pt
             {\fontsize{15}{30}\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-30pt)\par}
             %* 字号和行距的单位"pt"可以省略
-            %* 也可以将"\selectfont"命令和统辖范围两边的大括号省去，最后在"\fontsize"命令和统辖范围的两边加上大括号
 
             set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (default)
 
              %* 总的来说，如果出现用大括号将命令和统辖范围括起来的情况，在每一段（尤其是最后一行）的末尾空行或者加上"\par"命令是最保险的做法，可以避免很多不必要的问题
 
-        \subsubsection*{3.4.4 西文字体}
+        \subsubsection{西文字体}
             %todo 加表格（西文字体）
         % 自定义可调整字族的命令
             \newcommand*{\myfont}[2]{{\fontfamily{#1}\selectfont #2}}
@@ -438,7 +456,7 @@
 
             %rfr 更多关于字体的介绍，可以参考：https://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf、https://mirrors.ibiblio.org/CTAN/macros/latex/required/psnfss/psnfss2e.pdf
 
-        \subsubsection*{3.4.5 中文支持与CJK字体}
+        \subsubsection{中文支持与CJK字体}
         % ctex宏包支持的字体命令
             {\songti 宋体}
 
@@ -470,17 +488,168 @@
         % 临时设置一种CJK字体
             {\CJKfontspec[fakeslant = 0.2,fakebold = 3]{SimSun} 临时字体}
             %? 暂时还没有弄明白中括号中的选项的功能
+
+        \subsubsection{颜色}\label{subsubsec:3.4.6}
+        % 使用xcolor宏包定义颜色
+            \definecolor{goldenrod}{RGB}{218,165,32}
+            {\color{goldenrod}{秋麒麟色}}
+
+        % xcolor宏包预定义的颜色
+            {\color{black}{黑色}}
             
-        \subsubsection*{3.4.6 颜色}
+            {\color{darkgray}{深灰色}}
 
-\section*{第4章 \mbox{}数学排版}
+            {\color{lime}{酸橙色}}
 
-\section*{第5章 \LaTeX 进阶}
+            {\color{pink}{粉红色}}
+
+            {\color{violet}{紫罗兰色}}
+
+            {\color{blue}{蓝色}}
+
+            {\color{gray}{灰色}}
+
+            {\color{magenta}{品红色/洋红色}}
+
+            {\color{purple}{紫色}}
+
+            {\color{white}{白色}}
+
+            {\color{brown}{棕色}}
+
+            {\color{green}{绿色}}
+
+            {\color{olive}{橄榄色}}
+
+            {\color{red}{红色}}
+
+            {\color{yellow}{黄色}}
+
+            {\color{cyan}{青色}}
+
+            {\color{lightgray}{浅灰色}}
+
+            {\color{orange}{橙色}}
+
+            {\color{teal}{鸭绿色}}
+
+        % 通过“调色”做出新的效果
+            {\textcolor{red!70}{70\%红色}}
+            %! 书中在改变颜色的内容两边没有加大括号，会导致编译时只有第一个字符的颜色发生改变
+
+            {\textcolor{blue!50!black!20!white}{50\%蓝色20\%黑色\%30白色}}
+
+            {\textcolor{-yellow}{黄色的互补色}}
+
+    \subsection{引用与注释}
+        \subsubsection{标签和引用}
+        % LaTeX原生命令提供的索引形式
+            这是在\ref{subsubsec:3.4.6} 一节设置的标签，这一节的名称是\nameref{subsubsec:3.4.6}，这一标签所在的页码是\pageref{subsubsec:3.4.6}
+            %* 注意，如果不使用"\section{title}"命令而使用多一个"*"号的"\section*{title}"命令，则计时器功能将关闭，同时也会影响到"\label{}"命令和"\ref{}"命令，无法索引出相应的章节号
+            %* 书中提到"\nameref{label}"命令由nameref宏包提供，但是经检验，即使不加载nameref宏包，这一命令依然生效，说明这一命令应该已经被LaTeX吸收，或者也许本来就是LaTeX的原生命令
+            
+        % amsmath宏包提供的索引形式
+        这是在\eqref{subsubsec:3.4.6}一节设置的标签
+        
+        % hyperref宏包提供的索引形式
+            这是在\autoref{subsubsec:3.4.6}一节设置的标签，这一节的名称是\hyperref[subsubsec:3.4.6]{颜色}
+
+            这是我的\LaTeX 代码的GitHub仓库的链接：\url{https://github.com/yuanyang11510/Yuanhao_LaTeX}（可点击）|| % 打印出可以点击的链接
+            \nolinkurl{https://github.com/yuanyang11510/Yuanhao_LaTeX}（不可点击）, % 打印出的颜色为黑色，无法点击的链接 
+            它的名称是\href{https://github.com/yuanyang11510/Yuanhao_LaTeX}{Yuanhao\_LaTeX} 
+
+        % 重定义hyperref宏包中"\autoref{label}"的索引形式
+            \renewcommand*{\subsubsectionautorefname}{次次标题}
+            这是重新定义"\textbackslash autoref\{label\}"索引形式过后的\autoref{subsubsec:3.4.6}一节
+        
+        % lastpage宏包提供的"LastPage"标签
+            第\thepage 页，共\pageref{LastPage}页
+            
+        \subsubsection{脚注、边注与尾注\protect\footnote{This is a footnote in the subsubsection.}} % 大纲中的脚注需要在"\footnote{}"命令前面再加上"\protect"命令
+        % 1. 脚注
+        % 正文内的脚注
+            正文脚注示例\footnote{This is a footnote.}
+
+        % minipage环境内的脚注
+            \begin{minipage}{\linewidth}
+                minipage环境脚注示例1\footnote{This is a footnote in the minipage.} %直接在minipage环境内使用"\footnote{}"命令
+
+                minipage环境脚注示例2\footnotemark %在minipage环境内使用"\footnotemark"命令，在minipage环境外使用"\footnotetext{text}"命令
+            \end{minipage}
+            \footnotetext{This is another footnote in the minipage.}
+            %rfr 可以发现，在minipage环境中，两种脚注的设置方式都是有效的，但是两种方式打印出来的脚注的显示位置和标号都不一样，参考：https://tex.stackexchange.com/questions/274/can-i-get-a-normal-footnote-in-a-minipage-environment-in-latex-how
+
+        % 表格环境内的脚注
+            \begin{tabular}{l}
+                表格环境脚注示例1\footnotemark\\
+                表格环境脚注示例2\footnotemark
+            \end{tabular}
+            \footnotetext{你不需要更多。}
+            \footnotetext{你还需要更多。}
+            % 表格环境内的脚注可以使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置，但不能直接使用"\footnote{}"命令设置
+            %* 如果要在表格环境内使用类似"\footnote{}"的命令设置脚注，可以加载tablefootnote宏包
+            
+            %* 通过以上两种环境的例子，可以发现，使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置的脚注，会视同正文内设置的脚注，出现在正文的底部，并且参与正文脚注的数字编号；而在minipage环境中直接使用"\footnote{}"命令设置的脚注，则只会出现在minipage的底部，并且采用英文字母编号
+
+        % 在大纲或者"\caption{}"命令中使用脚注，需要加"\protect"
+            %* 大纲中的脚注见这一小节标题
+            % \caption{Title\protect\footnote{This is a footnote in the caption.}}
+            %? 以上这一条命令编译时会报错，应该是因为"\caption{}"命令必须放在一定的环境中才能够生效，比如table环境或者figure环境，但是经检验，在相关环境中，该命令最后编译虽然不会报错，但是无法在底部显示脚注，暂时还不知道原因是什么
+
+        % 脚注之间的距离
+            % \footnotesep
+            %* 可以搭配"\setlength{cmd}{length}"命令使用
+            
+        % 重定义每页脚注之上的横线的宽度和高度
+            % \renewcommand{\footnoterule}{\rule{0.4\columnwidth}{0.4pt}}
+            
+        % 调整脚注到正文的间距
+            % \setlength{\skip\footins}{0.5cm}
+
+        % 2. 边注
+            这一行有边注\marginpar[左侧]{右侧}
+            % 默认情况下，边注显示在右侧，边注内容由必选参数控制，如果设置可选参数，则边注在偶数页上会显示在左侧，内容由可选参数控制
+            %rfr 但是原文没有指出，这一设置需要文档类型是“双边的”（two-sided）的，book类型默认是双边的，而article和report类型默认是单边的（single-sided），可以在"\documentclass[options]{style}"命令中添加"twoside"选项来使后两类文档变为双边类型，参考：https://blog.csdn.net/xovee/article/details/127625198
+
+        % 改变边注的位置
+            {这一行有边注\marginpar[左侧]{右侧}
+            \reversemarginpar
+            
+            这一行有边注\marginpar[左侧]{右侧}
+            
+            }
+             % "\reversemarginpar"命令之后的所有内容的边注的位置会和原本的位置相反
+            %? 另外，有意思的一点是，如果该命令之前的内容和该命令之间没有空行（即在同一段落内），该内容也会落入该命令的统辖范围，暂时不知道原因是什么
+            %! 如果用大括号将该命令和统辖范围括起来，则每一段的末尾都需要空行或者加上"\par"命令来触发"\reversemarginpar"命令生效
+
+            这一行有边注\marginpar[左侧]{右侧}
+
+        % 有关边注的长度命令
+            % \marginparwidth % 控制边注的宽
+            % \marginparsep % 控制边注到正文的距离
+            % \marginparpush % 控制边注之间的最小距离
+            %* 可以搭配"\setlength{cmd}{length}"命令使用
+            % 前两者也可以通过geometry宏包来设置
+
+        % 3. 尾注
+            % 需要endnotes宏包，书中没有过多介绍
+            尾注示例\endnote{This is an endnote.}
+            %rfr 需要在正文最后使用"\theendnotes"命令来显示所有尾注，参考：https://tex.stackexchange.com/questions/56145/is-there-a-way-to-move-all-footnotes-to-the-end-of-the-document
+            
+        \subsubsection{援引环境}
+
+        \subsubsection{摘要}
+
+        \subsubsection{参考文献}
+
+\section{数学排版}
+
+\section{\LaTeX 进阶}
 
     
     
     
     
     
-
+\theendnotes
 \end{document}

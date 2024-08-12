@@ -1,27 +1,28 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.10) (preloaded format=xelatex 2022.11.12)  4 JAN 2023 00:02
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  12 AUG 2024 21:31
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **./Format.tex
 (Format.tex
-LaTeX2e <2022-06-01> patch level 5
-L3 programming layer <2022-10-26>
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-05-27>
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
-File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+File: size10.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count181
-\c@section=\count182
-\c@subsection=\count183
-\c@subsubsection=\count184
-\c@paragraph=\count185
-\c@subparagraph=\count186
-\c@figure=\count187
-\c@table=\count188
-\abovecaptionskip=\skip47
-\belowcaptionskip=\skip48
-\bibindent=\dimen138
+\c@part=\count190
+\c@section=\count191
+\c@subsection=\count192
+\c@subsubsection=\count193
+\c@paragraph=\count194
+\c@subparagraph=\count195
+\c@figure=\count196
+\c@table=\count197
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
@@ -31,7 +32,7 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
+\KV@toks@=\toks17
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
@@ -39,109 +40,64 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count189
-\Gm@cntv=\count190
-\c@Gm@tempcnt=\count191
-\Gm@bindingoffset=\dimen139
-\Gm@wd@mp=\dimen140
-\Gm@odd@mp=\dimen141
-\Gm@even@mp=\dimen142
-\Gm@layoutwidth=\dimen143
-\Gm@layoutheight=\dimen144
-\Gm@layouthoffset=\dimen145
-\Gm@layoutvoffset=\dimen146
-\Gm@dimlist=\toks17
+\Gm@cnth=\count198
+\Gm@cntv=\count199
+\c@Gm@tempcnt=\count266
+\Gm@bindingoffset=\dimen142
+\Gm@wd@mp=\dimen143
+\Gm@odd@mp=\dimen144
+\Gm@even@mp=\dimen145
+\Gm@layoutwidth=\dimen146
+\Gm@layoutheight=\dimen147
+\Gm@layouthoffset=\dimen148
+\Gm@layoutvoffset=\dimen149
+\Gm@dimlist=\toks18
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
 e.sty
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2022-10-26 L3 programming layer (loader) 
+Package: expl3 2024-05-27 L3 programming layer (loader) 
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xet
 ex.def
-File: l3backend-xetex.def 2022-10-26 L3 backend support: XeTeX
-\g__graphics_track_int=\count192
-\l__pdf_internal_box=\box51
-\g__pdf_backend_object_int=\count193
-\g__pdf_backend_annotation_int=\count194
-\g__pdf_backend_link_int=\count195
+File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
+\g__graphics_track_int=\count267
+\l__pdf_internal_box=\box52
+\g__pdf_backend_annotation_int=\count268
+\g__pdf_backend_link_int=\count269
 ))
-Package: xparse 2022-06-22 L3 Experimental document command parser
+Package: xparse 2024-05-08 L3 Experimental document command parser
 )
-Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xetex
 .sty
-Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count196
-\l__fontspec_language_int=\count197
-\l__fontspec_strnum_int=\count198
-\l__fontspec_tmp_int=\count199
-\l__fontspec_tmpa_int=\count266
-\l__fontspec_tmpb_int=\count267
-\l__fontspec_tmpc_int=\count268
-\l__fontspec_em_int=\count269
-\l__fontspec_emdef_int=\count270
-\l__fontspec_strong_int=\count271
-\l__fontspec_strongdef_int=\count272
-\l__fontspec_tmpa_dim=\dimen147
-\l__fontspec_tmpb_dim=\dimen148
-\l__fontspec_tmpc_dim=\dimen149
+\l__fontspec_script_int=\count270
+\l__fontspec_language_int=\count271
+\l__fontspec_strnum_int=\count272
+\l__fontspec_tmp_int=\count273
+\l__fontspec_tmpa_int=\count274
+\l__fontspec_tmpb_int=\count275
+\l__fontspec_tmpc_int=\count276
+\l__fontspec_em_int=\count277
+\l__fontspec_emdef_int=\count278
+\l__fontspec_strong_int=\count279
+\l__fontspec_strongdef_int=\count280
+\l__fontspec_tmpa_dim=\dimen150
+\l__fontspec_tmpb_dim=\dimen151
+\l__fontspec_tmpc_dim=\dimen152
  (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.cfg))
 )
 
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman/B' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman/B' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman/I' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Warning: OpenType feature 'Ligatures=Common' (liga) not
-(fontspec)                available for font 'Times New Roman/BI' with script
-(fontspec)                'CustomDefault' and language 'Default'.
-
-
-Package fontspec Info: Font family 'TimesNewRoman(0)' created for font 'Times
+Package fontspec Info: 
+(fontspec)             Font family 'TimesNewRoman(0)' created for font 'Times
 (fontspec)             New Roman' with options
 (fontspec)             [Ligatures=TeX,Mapping=tex-text,Numbers=OldStyle,Ligatur
 es=Common].
@@ -150,34 +106,34 @@ es=Common].
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Times New
-(fontspec)             Roman/OT:script=latn;language=dflt;+onum;mapping=tex-tex
-t;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Times New
-(fontspec)             Roman/OT:script=latn;language=dflt;+onum;+smcp;mapping=t
+(fontspec)             Roman/OT:script=latn;language=dflt;+onum;+liga;mapping=t
 ex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: <->"Times New
+(fontspec)             Roman/OT:script=latn;language=dflt;+onum;+liga;+smcp;map
+ping=tex-text;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Times New
-(fontspec)             Roman/B/OT:script=latn;language=dflt;+onum;mapping=tex-t
-ext;"
+(fontspec)             Roman/B/OT:script=latn;language=dflt;+onum;+liga;mapping
+=tex-text;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: <->"Times
 (fontspec)             New
-(fontspec)             Roman/B/OT:script=latn;language=dflt;+onum;+smcp;mapping
-=tex-text;"
+(fontspec)             Roman/B/OT:script=latn;language=dflt;+onum;+liga;+smcp;m
+apping=tex-text;"
 (fontspec)             - 'italic' (m/it) with NFSS spec.: <->"Times New
-(fontspec)             Roman/I/OT:script=latn;language=dflt;+onum;mapping=tex-t
-ext;"
+(fontspec)             Roman/I/OT:script=latn;language=dflt;+onum;+liga;mapping
+=tex-text;"
 (fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
 (fontspec)             <->"Times New
-(fontspec)             Roman/I/OT:script=latn;language=dflt;+onum;+smcp;mapping
-=tex-text;"
+(fontspec)             Roman/I/OT:script=latn;language=dflt;+onum;+liga;+smcp;m
+apping=tex-text;"
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Times New
-(fontspec)             Roman/BI/OT:script=latn;language=dflt;+onum;mapping=tex-
-text;"
+(fontspec)             Roman/BI/OT:script=latn;language=dflt;+onum;+liga;mappin
+g=tex-text;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
 (fontspec)             <->"Times New
-(fontspec)             Roman/BI/OT:script=latn;language=dflt;+onum;+smcp;mappin
-g=tex-text;"
+(fontspec)             Roman/BI/OT:script=latn;language=dflt;+onum;+liga;+smcp;
+mapping=tex-text;"
 
-(Format.aux)
+ (Format.aux)
 \openout1 = `Format.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
@@ -193,7 +149,7 @@ LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 8
 .
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1cmr.fd
-File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+File: ts1cmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 8.
 LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 8.
@@ -238,7 +194,8 @@ LaTeX Font Info:    ... okay on input line 8.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
+Package fontspec Info: 
+(fontspec)             Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup4
@@ -336,16 +293,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 85--86
 
  []
 
+
+
 [1
 
-] (Format.aux) ) 
+] (Format.aux)
+ ***********
+LaTeX2e <2024-06-01> patch level 2
+L3 programming layer <2024-05-27>
+ ***********
+ ) 
 Here is how much of TeX's memory you used:
- 3613 strings out of 410527
- 109189 string characters out of 2813163
- 498483 words of memory out of 3000000
- 24792 multiletter control sequences out of 15000+600000
- 469475 words of font info for 55 fonts, out of 8000000 for 9000
+ 3613 strings out of 409034
+ 109340 string characters out of 5756841
+ 1925560 words of memory out of 5000000
+ 26284 multiletter control sequences out of 15000+600000
+ 558285 words of font info for 63 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 72i,5n,100p,313b,265s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 79i,5n,110p,313b,231s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Format.pdf (1 page).
