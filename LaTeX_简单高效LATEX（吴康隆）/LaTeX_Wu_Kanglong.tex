@@ -1,37 +1,152 @@
-\documentclass[twoside]{ctexart} %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
+\documentclass[twoside]{ctexart} 
+            %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
 
-\usepackage[normalem]{ulem} % ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
+% 封面
+\title{简单高效\LaTeX（ 吴康隆）学习笔记\thanks{This is a footnote in the title.}}
+\author{殷元昊\thanks{This is a footnote in the author.}}
+\date{}
+            % "\title{title}和"\author{}"是必须定义的，"\date{text}"如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以输入"\date{}"
+            % 标题页的脚注用"\thanks{text}"命令完成
 
-\usepackage{hologo} % hologo宏包可以输出许多TeX家族标志
+% 宏包
+% \usepackage{ctex}
 
-\usepackage{lettrine} % 宏包lettrine能够生成首字下沉的效果
+\usepackage[normalem]{ulem}
+            % ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
+
+\usepackage{hologo}
+            % hologo宏包可以输出许多TeX家族标志
+
+
+\usepackage{lettrine}
+            % 宏包lettrine能够生成首字下沉的效果
 
 % \usepackage{indentfirst}
-%rfr indentfirst宏包强制段首缩进，但是似乎段首一般都会默认缩进。参考这一篇帖子：https://blog.csdn.net/sdu_hao/article/details/103398959，可以发现似乎以前的版本中，LaTeX会默认第一段取消首行缩进，因此这一宏包现在看来已经基本没有存在的必要了
+            %rfr indentfirst宏包强制段首缩进，但是似乎段首一般都会默认缩进。参考这一篇帖子：https://blog.csdn.net/sdu_hao/article/details/103398959，可以发现似乎以前的版本中，LaTeX会默认第一段取消首行缩进，因此这一宏包现在看来已经基本没有存在的必要了
+
 % \usepackage{parskip}
-%rfr 强制所有段首不缩进，参考：https://tex.stackexchange.com/questions/196922/indent-first-paragraph-after-section-and-dont-indent-new-lines
-\usepackage{fontspec} % 在XelaTeX编译下，使用fontspec宏包来选择本地安装的字体。注意，该宏包可能会明显增加编译时间
+            %rfr 强制所有段首不缩进，参考：https://tex.stackexchange.com/questions/196922/indent-first-paragraph-after-section-and-dont-indent-new-lines
 
-\usepackage[slantfont,boldfont]{xeCJK} % "slantfont"和"bolfont"选项表示允许设置中文的斜体和粗体字形
-\setCJKmainfont[boldfont = SimHei]{SimSun} % 设置"SimSun"（宋体）为主要字体，"SimHei"（黑体）为主要字体的粗体字形，即"\textbf{}"或者"{\bfseries}"命令的变换结果。也可以通过slantfont选项来设置主要字体的斜体字行
-%* 各章节的汉字字形也因此发生变化
-%! 注意，"SimSun"和"SimHei"名称中的大小写一定要写对，否则编译会报错
+\usepackage{fontspec} 
+            % 在XelaTeX编译下，使用fontspec宏包来选择本地安装的字体。注意，该宏包可能会明显增加编译时间
 
-\usepackage{xcolor} % 使用xcolor宏包来方便地调用颜色
+\usepackage[slantfont,boldfont]{xeCJK} 
+            % "slantfont"和"bolfont"选项表示允许设置中文的斜体和粗体字形
+\setCJKmainfont[boldfont = SimHei]{SimSun} 
+            % 设置"SimSun"（宋体）为主要字体，"SimHei"（黑体）为主要字体的粗体字形，即"\textbf{}"或者"{\bfseries}"命令的变换结果。也可以通过slantfont选项来设置主要字体的斜体字行
+            %* 各章节的汉字字形也因此发生变化
+            %! 注意，"SimSun"和"SimHei"名称中的大小写一定要写对，否则编译会报错
 
-\usepackage{amsmath} % 宏包amsmath提供了"\eqref"命令，默认效果如"(3.1)"所示
-% \usepackage{nameref} % nameref宏包不满足于只引用编号，还提供了引用对象的标题内容的功能
-\usepackage{lastpage} % lastpage宏包提供的标签"LastPage"可以保证打印出整个文档最后一页的页数
-\usepackage[perpage]{footmisc} % footmisc宏包的perpage选项可以让脚注每页重新编号，默认情况下，脚注按章编号
-\usepackage{endnotes} % 用于设置尾注的宏包
-\usepackage{csquotes} %* 管理在正文中引用文本的宏包
+\usepackage{xcolor} 
+            % 使用xcolor宏包来方便地调用颜色
 
-\usepackage{pifont} %* 用于输出图标（symbol fonts）的宏包
+\usepackage{amsmath} 
+            % 宏包amsmath提供了"\eqref"命令，默认效果如"(3.1)"所示
 
-\usepackage{hyperref} % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
-\hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red} % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
+% \usepackage{nameref} 
+            % nameref宏包不满足于只引用编号，还提供了引用对象的标题内容的功能
+
+\usepackage{lastpage} 
+            % lastpage宏包提供的标签"LastPage"可以保证打印出整个文档最后一页的页数
+
+\usepackage[perpage]{footmisc} 
+            % footmisc宏包的perpage选项可以让脚注每页重新编号，默认情况下，脚注按章编号
+
+\usepackage{endnotes} 
+            % 用于设置尾注的宏包
+
+\usepackage{csquotes} 
+            %* 管理在正文中引用文本的宏包
+
+\usepackage[numbers,sort&compress,super,square]{natbib} 
+            % 使用natbib宏包可以定制参考文献标号在文中的显示方式
+% \usepackage{natbib} 
+            %* 只加载natbib宏包，编译会报错
+% \usepackage[numbers]{natbib} 
+            % 数字编号
+            %* 单独设置该选项，编译成功
+% \usepackage[sort&compresss]{natbib} 
+            % 排序且压缩
+            %! 单独设置该选项，编译会报错
+% \usepackage[super]{natbib} 
+            % 上标
+            %* 单独设置该选项，编译成功
+% \usepackage[square]{natbib} 
+            % 外侧方括号
+            %! 单独设置该选项，编译会报错
+
+\usepackage[numbib,numindex]{tocbibind}
+            %* "toc"是"table of contents"的缩写  
+            %* 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号
+            %* 但是并没有专门为图目录和表目录的正常编号设置的可选参数  
+% \usepackage[nottoc]{tocbibind} 
+            % 目录本身不编入目录
+% \usepackage[notlof]{tocbibind} 
+            % 图目录不编入目录
+% \usepackage[notlot]{tocbibind} 
+            % 表目录不编入目录
+% \usepackage[notindex]{tocbibind} 
+            % 索引不编入目录
+% \usepackage[notbib]{tocbibind} 
+            % 参考文献不编入目录
+% \usepackage[numindex]{tocbibind} 
+            % 给索引章节正常编号
+% \usepackage[numbib]{tocbibind} 
+            % 给参考文献章节正常编号
+% \usepackage[none]]{tocbibind} 
+            % 禁用所有
+
+\usepackage{pifont} 
+            %* 用于输出图标（symbol fonts）的宏包
+
+\usepackage{hyperref}
+            % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
+            % 加载hyperref宏包后，目录可以实现点击跳转
+\hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
+            % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
+
+\usepackage{graphicx}
+            % 使用graphicx宏包和"\includegraphics[options]{name}"命令插入图片
+
+% 其他设置
+% \setcounter{tocdepth}{2}
+            %* 大纲在目录中编号到深度2（即"subsection"一级）为止
+% \setcounter{secnumdepth}{2}
+            %* 大纲在正文中编号到深度2（即"subsection"一级）为止
+            %rfr 书中没有说明"tocdepth"和"secnumdepth"的区别，参考：https://texdoc.org/serve/lshort-zh-cn.pdf/0，两者在book/report文档类中的默认值是2（即"subsection"一级），在article文档类中的默认值是3（即"subsubsection"一级）
+            %! 注意，如果在正文中使用以上两条命令，尤其对于"tocdepth"来说，要将其放置在"\tableofcontents"命令之前，否则无法对目录产生影响
+            %* 还可以发现，计数器名称是不带"\"符号的
+
+% 通过重定义"\the+计数器名称"命令来修改章节编号和表述形式
+\renewcommand{\thesection}{第\arabic{section}章}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+            %rfr 重定义计数器的编号和表述形式的命令可以总结成如下结构：\renewcommand{\the+计数器名称}{相关成分+\arabic{计数器名称}+相关成分}，关于"\the+<counter-name>"命令和"\arabic{counter-name}"命令这两类命令的不同，可以参见"3.7.1 计数器"一节
+            %rfr 重定义"\the+计数器名称"命令不仅可以改变章节编号的数值形式，还可以改变章节名称的表述形式，比如上述命令中将"section"的表述形式从单纯的阿拉伯数字改为了"第+阿拉伯数字+章"的形式，可以参考：https://tex.stackexchange.com/questions/279744/change-the-name-of-sections，但是"subsection"、"subsubsection"也需要进行相应的修改，因为后两者的表述形式中包含了"section"的表述形式（如果还设置了"paragraph"、"subparagraph"，则也需要进行相应的修改），可以参见"3.7.1 计数器"一节中关于“调用计数器”部分的介绍
+            %* 书中第"3.6.2 大纲与章节"一节中还提到重定义book/report文档类中的"chapter"这一大纲等级的编号和表述形式，但只涉及了"\chaptername"命令，下面简要介绍重定义"chapter"的两个命令："\chaptername"命令和"\thechapter"命令，使用"\chapter{}"命令，打印出的默认形式是："Chapter 阿拉伯数字（计数器） + 章名称"，其中，"Chapter"是由"\chaptername"控制的，"chapter"以下的"section"、"subsection"等大纲等级不包含这一部分，阿拉伯数字（计数器）是由"\thechapter"命令控制的，可以类比"section"对应的"\thesection"命令等，章名称是由"\chapter{}"命令控制的，因此，重定义"\chaptername"命令改变的是第一部分，重定义"\thechapter"命令改变的是第二部分。"chapter"之上的"part"这一大纲等级的设置也可以参照"chapter"的情况，只不过"\part{}"命令打印出的默认形式是“Part 大写罗马数字（计数器） + 卷名称”
+
+
 
 \begin{document}
+
+% 打印标题
+\maketitle
+
+% 通过重定义"\contentsname"命令来修改目录的标题
+\renewcommand{\contentsname}{这是目录}
+% 目录
+\tableofcontents
+
+% 通过重定义"\listfigurename"命令来修改图片目录的标题
+\renewcommand{\listfigurename}{这是插图目录}
+% 图片目录
+\listoffigures
+
+% 通过重定义"\listtablename"命令来修改表格目录的标题
+\renewcommand{\listtablename}{这是表格目录}
+% 表格目录
+\listoftables
+
 \section{写给读者*}
             %? "\section{}"命令中的两个汉字之间的空格在打印时会丢失，暂时不知道什么原因，暂时用"\mbox{}"命令将这两个汉字隔开；后面的“第4章 数学排版”同理；而其他几章“第2章 LaTeX环境配置”、“第3章 LaTeX基础”以及“第5章 LaTeX进阶”中的汉字“章”和英文"LaTeX"之间在打印时存在空格，只不过此处的"LaTeX"是用专用的命令打出的，而经过测试，即使是直接打出来的英文，如果在命令中和其前面的汉字之间存在空格，打印时该空格也会被打印出来。由此看来，这是专属于汉字内部的问题。
             %? 以上问题是在将章名称定为“第一章 写给读者”的情况下产生的
@@ -545,11 +660,11 @@
         \subsubsection{标签和引用}
         % LaTeX原生命令提供的索引形式
             这是在\ref{subsubsec:3.4.6} 一节设置的标签，这一节的名称是\nameref{subsubsec:3.4.6}，这一标签所在的页码是\pageref{subsubsec:3.4.6}
-            %* 注意，如果不使用"\section{title}"命令而使用多一个"*"号的"\section*{title}"命令，则计时器功能将关闭，同时也会影响到"\label{}"命令和"\ref{}"命令，无法索引出相应的章节号
+            %* 注意，如果不使用"\section{title}"命令而使用多一个"*"号的"\section*{title}"命令，则计时器功能将关闭，同时也会影响到"\label{}"命令和"\ref{}"命令，无法索引出相应的大纲编号
             %* 书中提到"\nameref{label}"命令由nameref宏包提供，但是经检验，即使不加载nameref宏包，这一命令依然生效，说明这一命令应该已经被LaTeX吸收，或者也许本来就是LaTeX的原生命令
             
         % amsmath宏包提供的索引形式
-        这是在\eqref{subsubsec:3.4.6}一节设置的标签
+            这是在\eqref{subsubsec:3.4.6}一节设置的标签
         
         % hyperref宏包提供的索引形式
             这是在\autoref{subsubsec:3.4.6}一节设置的标签，这一节的名称是\hyperref[subsubsec:3.4.6]{颜色}
@@ -559,7 +674,7 @@
             它的名称是\href{https://github.com/yuanyang11510/Yuanhao_LaTeX}{Yuanhao\_LaTeX} 
 
         % 重定义hyperref宏包中"\autoref{label}"的索引形式
-            \renewcommand*{\subsubsectionautorefname}{次次标题}
+            \renewcommand*{\subsubsectionautorefname}{小节标题}
             这是重新定义"\textbackslash autoref\{label\}"索引形式过后的\autoref{subsubsec:3.4.6}一节
         
         % lastpage宏包提供的"LastPage"标签
@@ -594,7 +709,7 @@
         % 在大纲或者"\caption{}"命令中使用脚注，需要加"\protect"
             %* 大纲中的脚注见这一小节标题
             % \caption{Title\protect\footnote{This is a footnote in the caption.}}
-            %? 以上这一条命令编译时会报错，应该是因为"\caption{}"命令必须放在一定的环境中才能够生效，比如table环境或者figure环境，但是经检验，在相关环境中，该命令最后编译虽然不会报错，但是无法在底部显示脚注，暂时还不知道原因是什么
+            %? 以上这一条命令编译时会报错，应该是因为"\caption{}"命令必须放在浮动体环境中才能够生效，比如table环境或者figure环境，但是经检验，在浮动体环境中，该命令最后编译虽然不会报错，但是无法在底部显示脚注，暂时还不知道原因是什么
 
         % 脚注之间的距离
             % \footnotesep
@@ -637,19 +752,230 @@
             %rfr 需要在正文最后使用"\theendnotes"命令来显示所有尾注，参考：https://tex.stackexchange.com/questions/56145/is-there-a-way-to-move-all-footnotes-to-the-end-of-the-document
             
         \subsubsection{援引环境}
+        % quote环境
+            鲁智深其师有偈言曰：
+            \begin{quote}
+                逢夏而擒，遇腊而执。
+
+                听潮而圆，见信而寂。
+            \end{quote}
+            % 援引内容首行不缩进
+
+        % quotation环境
+            圆寂之后，其留颂曰：
+            \begin{quotation}
+                平生不修善果，只爱杀人放火。
+                忽地顿开金绳，这里扯断玉锁。
+
+                咦！钱塘江上潮信来，今日方知我是我。
+            \end{quotation}
+            % 援引内容首行缩进
+
+        % verse环境
+            泰戈尔在他的《园丁集》中写道：
+            \begin{verse}
+                从你眼里频频掷来的刺激，使我的痛苦永远新鲜。
+
+
+                悬挂缩进（也称为第二行缩进），通过将段落的第一行置于边距，然后缩进段落的每一行来设置段落的第一行。 选择您要在其中添加悬挂缩进的文本。
+            \end{verse}
+            % 援引内容悬挂缩进，由于书中举的例子的长度太短，因此此处增加一段较长的文字，以显示悬挂缩进的效果
 
         \subsubsection{摘要}
-
+            \renewcommand{\abstractname}{这是摘要} % 重定义"\abstractname"命令来修改摘要标题
+            \begin{abstract}
+                \textbf{article}和\textbf{report}文档类支持摘要。在单栏模式下，摘要相当于一个带标题的quotation环境。双栏模式下，摘要相当于\textbackslash section*命令定义的一节。
+            \end{abstract}
+        
         \subsubsection{参考文献}
+            This is a sample text.\cite{author1.year1,author2.year2}
+
+            This is the text following the reference. 
+
+            % 在正文最后使用"thebibliography"环境来显示所有参考文献
+
+    \subsection{正式排版：封面、大纲与目录}
+        \subsubsection{封面}
+        \subsubsection{大纲与章节}
+        % LaTeX的大纲级别
+            \LaTeX 的大纲级别：
+
+            \begin{itemize}
+                \item \textbackslash part：部分，这个大纲级别不会打断chapter的编号
+                \item \textbackslash chapter：章，\textbf{article}的文档类不包含本大纲级别
+                \item \textbackslash section：节
+                \item \textbackslash subsection：次节，默认\textbf{report/book}文档类中本级别及以下的大纲级别不进行编号，也不纳入目录
+                \item \textbackslash subsubsection：小节，默认\textbf{article}文档类中本级别及以下的大纲级别不进行编号，也不纳入目录
+                %! 以上两个大纲级别中作者所谓的“默认”情况，可能是行业中的惯例，并不是命令本身的特点，在"3.5.1 标签和引用"一节已经提到，是否编号和纳入目录，以及在设置标签后是否能索引出大纲编号，是由大纲命令中的"*"号控制的。加上"*"号则不进行编号，也不纳入目录
+                \item \textbackslash paragraph：段，极少使用
+                \item \textbackslash subparagraph：次段，极少使用
+            \end{itemize}
+
+        % LaTeX的大纲深度
+            \textbf{book/report}文档类的大纲深度：
+
+            \begin{itemize}
+                \item \textbackslash part：-1（与\textbf{article}文档类不同）
+                \item \textbackslash chapter：0
+                \item \textbackslash section：1（以下与\textbf{article}文档类相同）
+                \item \textbackslash subsection：2
+                \item \textbackslash subsubsection：3
+                \item \textbackslash paragraph：4
+                \item \textbackslash subparagraph：5
+            \end{itemize}
+
+            \textbf{article}文档类的大纲深度：
+
+            \begin{itemize}
+                \item \textbackslash part：0 （与\textbf{book/report}文档类不同）
+                \item \textbackslash chapter：\textbf{article}文档类不存在这一大纲级别
+                \item \textbackslash section：1（以下与\textbf{book/report}类文档相同）
+                \item \textbackslash subsection：2
+                \item \textbackslash subsubsection：3
+                \item \textbackslash paragraph：4
+                \item \textbackslash subparagraph：5
+            \end{itemize}
+
+        % book文档类还提供以下命令
+            % \frontmatter % 前言，页码为小写罗马字母，其后的章节不编号，但生成页眉、页脚和目录项
+            % \mainmatter % 正文，页码为阿拉伯数字，其后的章节编号，页眉、页脚和目录项正常生成
+            % \backmatter % 后记，页码格式不变，继续计数，章节不编号，但生成页眉、页脚和目录项
+
+        \subsubsection{目录}
+
+    \subsection{计数器与列表}
+        \subsubsection{计数器}
+            \LaTeX 中的计数器：
+            \begin{itemize}
+                \item \textbf{章节}：part、chapter、section、subsection、subsubsection、paragraph与subparagraph
+                \item \textbf{编号列表}：enumi、enumii、enumiii与enumiv
+                \item \textbf{公式和图表}：equation、figure与table
+                \item \textbf{其他}：page、footnote与mpfootnote（mpfootnote用于实现minipage环境的脚注）
+                    %rfr 注意，"mpfootnote"应该只是minipage环境中脚注的计数器名称，而不是该环境中设置脚注的命令，minipage中有两种方法设置脚注，其中通过"\footnote{}"命令设置的脚注，计数方法是小写英文字母，对应的计数器应当就是mpfootnote，参见"3.5.2 脚注、边注与尾注"一节
+            \end{itemize}
+
+        % 通过"\the+计数器名称"命令来调用计数器
+            当前所在章节为\thesection、第\thesubsection 节、第\thesubsubsection 次节
+            %rfr "\the+计数器名称"命令默认输出的是计数器数值的阿拉伯数字形式，效果等同于"\arabic{计数器名称}"命令，但是两者的本质是不同的：前者可以通过重定义修改计数器的表述形式，比如将"section"的表述形式由单纯的阿拉伯数字修改为“第+阿拉伯数字+章”的形式，可以参见导言区，而后者输出的永远是一个数值，只不过可以通过更换外部命令来调整该数值的格式，可以参见下文的介绍。在重定义前者时，后者是表述“数值”这一部分必不可少的命令
+            %! 如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此直接写为“当前所在章节为\thesection”即可
+
+        % 指定计数器数值格式
+            第\arabic{section}节 % 阿拉伯数字
+
+            第\Alph{section}节 % 大写英文字母
+
+            第\alph{section}节 % 小写英文字母
+
+            第\Roman{section}节 % 大写罗马数字
+
+            第\roman{section}节 % 小写罗马数字
+
+            第\chinese{section}节 % 汉字（ctexart文档类特有）
+            %* 可以发现，如果在正文中直接调用计数器的数值，使用"\the+计数器名称"命令，如果要通过以上命令指定计数器数值的格式，则直接在以上命令中使用计数器名称即可，否则如果仍然使用"\the+计数器名称"的结构，编译会报错
+        
+        % 定义一个新的计数器
+            \newcounter{parentcounter} %* 先定义父级计数器，再定义子级计数器，如果顺序颠倒，编译会报错
+            \newcounter{soncounter}[parentcounter]
+            父级计数器：\arabic{parentcounter} % 默认初始值为0
+            子级计数器：\arabic{soncounter} % 默认初始值为0
+
+            \setcounter{soncounter}{1} %* 将子级计数器的初始值手动设置为1
+            父级计数器：\arabic{parentcounter} % 父级计数器为0
+            子级计数器：\arabic{soncounter} % 子级计数器为1
+
+            \addtocounter{soncounter}{1} %* 为子级计数器手动增加1
+            父级计数器：\arabic{parentcounter} % 父级计数器为0
+            子级计数器：\arabic{soncounter} % 子级计数器为2
+
+            \addtocounter{parentcounter}{1} %* 为父级计数器手动增加1，自己计数器不归零
+            父级计数器：\arabic{parentcounter} % 父级计数器为1
+            子级计数器：\arabic{soncounter} % 子级计数器为2
+            
+            \stepcounter{parentcounter} %* 父级计数器步进1，子级计数器归零
+            父级计数器：\arabic{parentcounter} % 父级计数器为2
+            子级计数器：\arabic{soncounter} % 子级计数器为0
+            %* 可以发现，如果没有设置父级计数器，则"\addtocounter{counter}{1}"命令和"\stepcounter{counter}"命令的效果是一样的
+            %! 注意，定义的新计数器只能和"\arabic{counter}"类命令搭配使用输出数值，不能像"\section{}"类命令一样具有设置章节名称的功能，也不能通过重定义"\the+计数器名称"的方式来设置计数器数值的表述形式
+
+        \subsubsection{列表}
+        % 1. itemize环境
+            无序列表：
+            \begin{itemize}
+                \item 第一项 % 项目符号默认值为圆点（\textbullet）
+                \item [-] 第二项 % 项目符号通过可选参数控制
+            \end{itemize}
+
+        % 2. enumerate环境
+            自动编号列表：
+            \begin{enumerate}
+                \item 第一项
+                \item [张三] 第二项 % 方括号的使用会打断编号，之后的编号顺次推移
+                \item 第三项
+            \end{enumerate}
+
+        % 3. description环境
+            描述列表：
+            \begin{description}
+                \item[LaTeX] 一个排版系统
+                \item[.tex] LaTeX文档扩展名  
+            \end{description}
+            % 默认的方括号中的内容会加粗显示
+
+    \subsection{浮动体与图表}
+
+        \subsubsection{浮动体}
+
+        \subsubsection{图片}
+        % 使用graphicx宏包的"\includegraphics[options]{name}"命令插入图片
+            \begin{center}
+                \includegraphics[]{doraemon1.jpg}
+            \end{center}
+            %* 原始大小
+
+            \begin{center}
+                \includegraphics[width=0.8\linewidth]{doraemon1.jpg}
+            \end{center}
+            % 可选参数指定了图片宽度为0.8倍该行文字宽
+
+        \subsubsection{表格}
+
+        \subsubsection{非浮动体图标和并列图表}
+            
 
 \section{数学排版}
 
 \section{\LaTeX 进阶}
 
+\section[这是目录中显示的标题]{这是正文中显示的标题}
+            % 可选参数用于在目录中显示另一个标题，通常是正文中标题的一部分
+
+\section*{不编号的一章}
+            %* 该命令设置的章节名称在正文中会打印出来，但是不会编号，在目录中不会打印出来
+            \addcontentsline{toc}{section}{不编号的一章}
+            %* 该命令设置的章节名称会在目录中打印出来，但是不会编号，在正文中不会打印出来，点击目录中对应的章节名称，索引到该命令在正文中对应的位置，可以发现，该命令类似于一个普通的"\section{}"命令，但是并不会在正文中打印其章节名称
+            %! 经检验，上述这一条命令也可以加在除了正文之外的的其他位置，包括导言区，以及"\end{document}"命令之后，编译都不会报错。如果加在导言区，则在目录中会打印在开头，如果加在"\end{document}"之后，则在目录中不会打印出来
+            %* 因此，"\section*{title}"命令和"\addcontentsline{file}{secunit}{entry}"命令其实是可以各自独立使用的，但是后者单独使用是没有实际意义的，因为在正文中无法打印出其设置的章节名称。后者实际上只能搭配前者使用，一般将其放置在前者所在的位置之后，这样，在目录中打印出来的章节名称实际上不是前者设置的，而是后者设置的，点击该章节名称实际上也只是索引到后者所在位置，而正文中打印出来的章节名称，则是前者设置的，而不是后者设置的
+            %* 结合"\section[short]{title}"命令中可选参数的效果，"\addcontentsline{file}{secunit}{entry}"其实就是将"\section[short]{title}"的可选参数分离出来单独作为一条命令的结果，与之对应的，"\section*{title}"命令就不再含有可选参数，当然，从另一个角度看，"\section*{title}"命令不会在目录中打印章节名，当然没有可选参数存在的必要
+
+
+
     
-    
-    
-    
-    
-\theendnotes
+        % 通过重定义"\refname"命令来修改参考文献的标题
+            \renewcommand{\tocbibname}{这是参考文献} 
+            % 如果是book类文档，把"\refname"改成"\bibname"
+            % 如果加载tocbibind宏包，则修改参考文献标题应该重定义"\tocbibname"命令
+            %* 在ctexart文档类型下，参考文献标题默认显示“参考文献”，如果加载tocbibind宏包，依然显示“参考文献”，如果加载natbib宏包，则显示“Bibliography”，如果同时加载natbib宏包和tocbibind宏包，依然显示"Bibliography"，可见，tocbibind宏包并不改变参考文献的默认标题，而natbib会将参考文献的标题从默认的“参考文献”修改为"Bibliography"，但是只要加载了tocbibind宏包，修改参考文献的标题就要通过重定义"\tocbibname"来完成
+
+        % 显示所有参考文献
+            \begin{thebibliography}{99} % “99”表示以最多两位数来编号参考文献，用于对齐
+                \addtolength{\itemsep}{-2ex} %? 用于更改行距，"-2ex"代表什么，待研究
+                \bibitem{author1.year1}{Au1. ArtName1[J]. JN1. Y:1--2} % 书中在参考文献的形式两边没有加大括号，加与不加，编译的结果相同
+                \bibitem{author2.year2}Au2. ArtName2[J]. JN2. Y:1--2
+            \end{thebibliography}
+            %* 以上都是\LaTeX的原生命令，即使不加载natbib宏包也能编译成功，natbib宏包仅仅是修改了索引的上标形式
+
+        % 显示所有尾注
+            \theendnotes
+
 \end{document}
+
