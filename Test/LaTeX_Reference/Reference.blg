@@ -1,0 +1,15 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[0] Config.pm:311> INFO - Logfile is 'Reference.blg'
+[91] biber-MSWIN64:340> INFO - === 
+[127] Biber.pm:420> INFO - Reading 'Reference.bcf'
+[212] Biber.pm:994> INFO - Found 4 citekeys in bib section 0
+[222] Biber.pm:4463> INFO - Processing section 0
+[231] Biber.pm:4654> INFO - Looking for bibtex file 'AllDoc.bib' for section 0
+[285] bibtex.pm:1713> INFO - LaTeX decoding ...
+[412] bibtex.pm:1519> INFO - Found BibTeX data source 'AllDoc.bib'
+[469] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[471] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[471] Biber.pm:4283> INFO - Sorting list 'nyt/global//global/global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[471] Biber.pm:4289> INFO - No sort tailoring available for locale 'en-US'
+[479] bbl.pm:676> INFO - Writing 'Reference.bbl' with encoding 'UTF-8'
+[481] bbl.pm:779> INFO - Output to Reference.bbl

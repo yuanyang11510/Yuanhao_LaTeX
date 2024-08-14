@@ -1,3 +1,3 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces doraemon}}{2}{}%
-\contentsline {figure}{\numberline {2}{\ignorespaces subfigure}}{2}{}%
-\contentsline {figure}{\numberline {3}{\ignorespaces picture inserted}}{2}{}%
+\contentsline {figure}{\numberline {1}{\ignorespaces doraemon\_figure}}{6}{figure.caption.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces doraemon\_subfigure}}{7}{figure.caption.2}%
+\contentsline {figure}{\numberline {3}{\ignorespaces doraemon\_wrapfigure}}{7}{figure.caption.3}%

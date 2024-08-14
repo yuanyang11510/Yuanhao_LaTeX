@@ -62,10 +62,10 @@
 \contentsline {subsection}{\numberline {3.8}浮动体与图表}{17}{subsection.3.8}%
 \contentsline {subsubsection}{\numberline {3.8.1}浮动体}{17}{subsubsection.3.8.1}%
 \contentsline {subsubsection}{\numberline {3.8.2}图片}{17}{subsubsection.3.8.2}%
-\contentsline {subsubsection}{\numberline {3.8.3}表格}{18}{subsubsection.3.8.3}%
-\contentsline {subsubsection}{\numberline {3.8.4}非浮动体图标和并列图表}{18}{subsubsection.3.8.4}%
-\contentsline {section}{\numberline {第4章}数学排版}{18}{section.4}%
-\contentsline {section}{\numberline {第5章}\LaTeX 进阶}{18}{section.5}%
-\contentsline {section}{\numberline {第6章}这是目录中显示的标题}{18}{section.6}%
-\contentsline {section}{不编号的一章}{18}{section*.4}%
-\contentsline {section}{\numberline {第7章}这是参考文献}{18}{section.7}%
+\contentsline {subsubsection}{\numberline {3.8.3}表格}{17}{subsubsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.8.4}非浮动体图标和并列图表}{17}{subsubsection.3.8.4}%
+\contentsline {section}{\numberline {第4章}数学排版}{17}{section.4}%
+\contentsline {section}{\numberline {第5章}\LaTeX 进阶}{17}{section.5}%
+\contentsline {section}{\numberline {第6章}这是目录中显示的标题}{17}{section.6}%
+\contentsline {section}{不编号的一章}{17}{section*.4}%
+\contentsline {section}{\numberline {第7章}这是参考文献}{17}{section.7}%

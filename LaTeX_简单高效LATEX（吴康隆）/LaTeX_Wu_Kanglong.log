@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  13 AUG 2024 23:09
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  14 AUG 2024 01:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1092,21 +1092,11 @@ Overfull \hbox (21.07874pt too wide) in paragraph at lines 689--696
 [15]
 \c@parentcounter=\count337
 \c@soncounter=\count338
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
 
 
-[16]
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
+[16] (LaTeX_Wu_Kanglong.ent)
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-[17] (LaTeX_Wu_Kanglong.ent)
-
-[18] 
+[17] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (LaTeX_Wu_Kanglong.aux)
  ***********
@@ -1118,16 +1108,19 @@ L3 programming layer <2022/07/14>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `LaTeX_Wu_Kanglong.out' has not changed.
 (rerunfilecheck)             Checksum: FFDFC5CE685676621A81EE7195C3037F;8102.
  ) 
 Here is how much of TeX's memory you used:
- 17957 strings out of 409034
- 394615 string characters out of 5756841
+ 17947 strings out of 409034
+ 394446 string characters out of 5756841
  1940560 words of memory out of 5000000
- 40283 multiletter control sequences out of 15000+600000
+ 40275 multiletter control sequences out of 15000+600000
  571106 words of font info for 161 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,11n,111p,555b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on LaTeX_Wu_Kanglong.pdf (18 pages).
+Output written on LaTeX_Wu_Kanglong.pdf (17 pages).

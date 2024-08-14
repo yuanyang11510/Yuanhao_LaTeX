@@ -1,0 +1,513 @@
+﻿\documentclass{article}
+\usepackage{ctex}
+\usepackage{xcolor}
+\usepackage{graphicx} %* graphicx宏包提供"\scalebox{}{}"命令，可以按比例调整表格大小
+\usepackage{multirow}
+\usepackage{array} % array宏包提供"m{}"、"b{}"、">{decl}"、"<{decl}"、"!{intercolumn sign}"、"\newcolumntype{name}{definition}"等命令
+\usepackage{makecell} % makecell宏包提供了一种方便在单元格内换行的方式，以及设置水平表线宽度的命令
+\usepackage{diagbox} % diagbox宏包提供了分割表头的命令
+
+\begin{document}
+
+\section{tabular环境}
+\subsection{tabular环境的最基本参数}
+    必须在必选参数中指明每一列的左右对齐方式\footnote{这里选择``左右对齐''（以及下文的``上下对齐''）的称呼方式，是为了避免如``水平对齐''、``垂直对齐''这种称呼方式引起的误解，但是``水平居中''和``垂直居中''却不存在这种问题，因此这两个称呼照旧不变。}：l（左对齐）、c（水平居中）、r(右对齐)。
+
+    \mbox{}
+    % 下文中的表格如果没有放在浮动体table环境中，即使和文字之间空一行，排版效果也不是很美观，所以额外再加一行"\mbox{}"命令，多空出一行
+
+    \begin{tabular}{lcr}
+        A左对齐&B水平居中&C右对齐\\
+        D&E&F\\
+    \end{tabular}
+
+    \mbox{}
+
+    以上是tabular环境中最基本的要件，可以发现，有几个【代表每一列左右对齐方式的字母】，就说明有几列，环境中的``\&''符号的数量就在这个基础上减一，在每一行的最后使用``\textbackslash\textbackslash''符号表示该行结束。
+
+\subsection{tabular环境的可选参数} 
+    %* 以下插入的表格外面都套有一层"\fbox{text}"命令，以清楚显示表格的边框界限
+    可选参数``c''表示表格中央和文本所在行对齐（默认值）。
+    \fbox{
+        \begin{tabular}[c]{lll}
+            A&B&C\\
+            D&E&F\\
+        \end{tabular}
+        }
+
+    \mbox{}
+
+    可选参数``t''表示表格上端和文本所在行对齐。
+    \fbox{
+        \begin{tabular}[c]{lll}
+            A&B&C\\
+            D&E&F\\
+        \end{tabular}
+        }
+
+    \mbox{}
+
+    可选参数``b''表示表格下端和文本所在行对齐。
+    \fbox{
+        \begin{tabular}[b]{lll}
+            A&B&C\\
+            D&E&F\\
+        \end{tabular}
+        }
+
+\subsection{tabular环境的其他参数}
+\subsubsection{竖直表线和水平表线}
+    在此基础上，可以增加其他参数来丰富表格形式：在必选参数中使用``|''符号来增加竖直表线，``|''符号可以无限叠加，使用``\textbackslash hline''命令增加水平表线，``\textbackslash hline''命令也可以无限叠加。
+
+    \mbox{}
+
+    \begin{tabular}{l||||||l|l}
+        \hline
+        A&B&C\\
+        \hline
+        \hline
+        \hline
+        \hline
+        D&E&F\\
+        \hline
+    \end{tabular}
+
+    \mbox{}
+
+    竖直表线除了可以由``|''命令来绘制，也可以使用``@\{intercolumn sign\}''命令绘制，括号中可以选择各种符号，比如``-''，打印出来的效果就是在每行相应的列与列之间输出这一符号。如果什么符号都不写，即``@\{\}''，效果就等同于完全不设置竖直表线。另外，``@\{|\}''的效果并不等同于常用的``|''，后者绘制从上到下连通的竖直表线，而前者是在每一行的相同位置输出一个``|''符号。
+
+    \mbox{}
+
+    \begin{tabular}{l@{-}l@{|}l}
+        A&B&C\\
+        D&E&F\\
+    \end{tabular}
+    
+    \mbox{}
+
+    如果将上述命令中的``@''符号替换为``!''符号，即``!\{intercolumn sign\}''命令（该命令由array宏包提供），也能达到类似的效果，只不过列与列之间的空隙会拉大，看起来更加美观。
+
+    \mbox{}
+
+    \begin{tabular}{l!{-}l!{|}l}
+        A&B&C\\
+        D&E&F\\
+    \end{tabular}
+
+    \mbox{}
+
+    可以使用``\textbackslash cline\{x-y\}''命令绘制从第x列到第y列的局部水平表线。
+
+    \mbox{}
+
+    \begin{tabular}{ll|l} % 可以发现，竖直表线可以穿过跨列的局部水平表线
+        A&B&C\\
+        \cline{2-3}
+        B&E&F\\
+    \end{tabular}
+
+    \mbox{}
+
+    可以使用makecell宏包提供的``\textbackslash Xhline\{\}''命令和``\textbackslash Xcline\{\}\{\}''命令调整水平表线的宽度。
+    
+    \mbox{}
+
+    \begin{tabular}{lll}
+        \Xhline{2pt}
+        A&B&C\\
+        \Xcline{2-3}{1pt}
+        D&E&F\\
+        \hline
+        G&H&I\\
+        \Xhline{2pt}
+    \end{tabular}
+
+    \mbox{}
+
+    可以使用multirow宏包提供的``\textbackslash multicolumn\{n\}\{cols\}\{text\}''命令设置跨列内容（类似于Excel中的合并同行的多列单元格）。
+
+    \mbox{}
+
+    \begin{tabular}{ll|l} % 可以发现，竖直表线无法穿过跨列合并后的单元格
+        A&B&C\\
+        D&\multicolumn{2}{|c}{E}\\ 
+    \end{tabular}
+    % 可以发现，和"\cline{x-y}"命令不同，后者需要指明合并的列的序数，该命令只需要指出合并的列的总数即可，合并后的位置由这个总数和剩余的"&"符号的位置来确定（"&"符号的数量会因此减少，如果此时恢复原来"&"符号的位置，或者在属于合并范围内的该命令之外输入内容，编译会报错）
+    % 该命令需要在第二个必选参数中设定合并后内容的对齐方式，因为合并后的新列不再受tabular环境的必选参数中的对齐方式的控制
+    % 在第二个必选参数中还可以设置合并后单元格两边的竖直表线
+
+    \mbox{}
+
+    结合以上两条命令绘制的表线：
+
+    例一
+
+    \mbox{}
+
+    \begin{tabular}{ll|l}
+        A&B&<-C\footnotemark\\
+        \cline{2-2}
+        D&\multicolumn{2}{|c}{<-E\footnotemark}\\
+    \end{tabular}
+    \footnotetext{C左侧的竖直表线通过tabular环境的必选参数设置。}
+    \footnotetext{E左侧的竖直表线通过``\textbackslash multicolumn\{n\}\{cols\}\{text\}''命令的第二个必选参数设置。}
+
+    \mbox{}
+
+    例二
+
+    \mbox{}
+
+    \begin{tabular}{lll|}
+        A&B&C\footnotemark ->\\
+        \cline{2-3}
+        D&\multicolumn{2}{|c}{E}\\
+    \end{tabular}
+    \footnotetext{C右侧的竖直表线通过tabular环境的必选参数设置。}
+
+    \mbox{}
+
+    可以使用multirow宏包提供的``\textbackslash multirow\{number of rows\}\{width or *\}\{text\}''命令设置跨行内容（类似于Excel中的合并同列的多行单元格）。
+
+    \mbox{}
+
+    设置合并后的列宽：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l|}
+        A&B&C\\
+        D&E&\multirow{2}{5em}{F}\\
+        G&H&\\
+        J&K&L\\
+    \end{tabular}
+
+    \mbox{}
+
+    不设置合并后的列宽，使其自适应宽度：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l|}
+        A&B&C\\
+        D&E&\multirow{2}*{F}\\
+        G&H&\\
+        J&K&L\\
+    \end{tabular}
+
+    \mbox{}
+
+    不在命令中删除合并前属于合并范围内的其他内容（红色的F1），会造成奇怪的效果：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l|}
+        A&B&C\\
+        D&E&\multirow{2}*{F}\\
+        G&H&{\color{red}{F1}}\\
+        I&J&K\\
+    \end{tabular}
+    % 和"\multicolumn{n}{cols}{text}"命令一样，该命令不需要指明合并的行的序数，只需要指出合并的行的总数即可，合并后的位置由这个总数和该命令所在的位置来确定（"&"符号和"\\"符号的数量并不会因此而减少）
+    % 合并后的内容在合并的区域内默认垂直居中。由于只是在同一列的不同行之间合并，因此合并后的内容在该列中的对齐方式仍然受tabular环境的必选参数中的对齐方式的控制，因此，和"\multicolumn{n}{cols}{text}"命令相比，该命令的第二个参数不再是设置对齐方式和竖直表线，而是设置合并后的列宽，由于这其实也不是一个必须设置的参数，所以可以直接替换为"*"号（包括该参数的大括号也一并替换），表示自适应宽度
+    % 合并后的内容由该命令的第三个参数控制，合并前属于合并范围内的其他内容应当在相应的位置被删除，如果仍然保留这部分内容，编译不会报错，而会在相当于合并前的相应位置打印出来，造成奇怪的效果
+
+    \mbox{}
+
+    如果要进行设置跨行兼跨列的操作，则需要将``\textbackslash multirow\{number of rows\}\{width or *\}\{text\}''命令放置在``\textbackslash multicolumn\{n\}\{cols\}\{text\}''命令的内部，即先进行合并行的操作，再进行合并列的操作，如果嵌套的顺序反过来，编译会报错，下面分步演示这一操作。
+
+    原表格：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l}
+        A&B&C\\
+        D&E&F\\
+    \end{tabular}
+
+    \mbox{}
+
+    先合并行：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l}
+        A&\multirow{2}*{B}&C\\
+        D&&F\\
+    \end{tabular}
+    % 删除了E
+
+    \mbox{}
+
+    再合并列（第一步）：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l}
+        A&\multicolumn{2}{l}{\multirow{2}*{B}}\\
+        C&&\\
+    \end{tabular}
+    % 删除了F
+
+    \mbox{}
+
+    可以发现，上面这一步打印出的效果很奇怪，这是因为只对第一行进行了合并列的操作，第二行内部出现的一个竖直表线正是tabular环境的必选参数绘制的，还需要对第二行进行同样的合并列的操作，但是不输入合并列之后填入的内容，这样，得到的才是最终的正确结果。
+
+    合并列（第二步）：
+
+    \mbox{}
+
+    \begin{tabular}{l|l|l}
+        A&\multicolumn{2}{l}{\multirow{2}*{B}}\\
+        D&\multicolumn{2}{l}{}\\
+    \end{tabular}
+
+    \mbox{}
+
+\subsubsection{每一列的上下对齐方式}
+    代表每一列左右对齐方式字母的``lcr''可以替换成代表每一列上下对齐方式的字母：``p\{\}''、``m\{\}''、``b\{\}''（后两者由array宏包提供），分别代表上对齐、垂直居中、下对齐（吴康隆P52--53称为``竖直居上''、``竖直居中''、``竖直居下''），在这三个字母后面的大括号中需要指定列宽，但是同时文字自动左对齐，无法再选择左右对齐方式（但是可以使用array宏包提供的``>\{decl\}''命令和``<\{decl\}''命令进行设置，见下文），效果如下所示：
+
+    \mbox{}
+
+    \begin{tabular}{p{8em}m{8em}b{8em}}
+        \hline
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte...\\
+        \hline
+    \end{tabular}
+
+    \mbox{}
+
+    但是经过检验可以发现，所谓的``上对齐''、``下对齐''，并不是直觉上的靠近表格上端和靠近表格下端，反而``上对齐''的文本靠近表格下端，``下对齐''的文本靠近表格上端，这其实反映出一个很关键的概念性问题：
+    % ``对齐''只有在多行文本（左右对齐）/多列文本（上下对齐）的对比之下才有意义。换言之，只有在文本多于一行的情况下才有左右对齐的问题，只有在文本多于一列的情况下才有上下对齐的问题。并且，
+    从``对齐''的本义出发，同一列上的文本的左右对齐方式应该相同（这也是tabular环境的必选参数中``lcr''设置的效果），同一行上的文本的上下对齐方式应该相同。上述命令的打印效果看似违反直觉，其实是由于同一行上的三列设置了不同的上下对齐方式导致的\footnote{但是上述命令的打印效果仍然可以反映出同一行上的三种不同的上下对齐方式对应的对齐基线被\LaTeX 放置在了同一条水平线上。}。在\LaTeX 中，表格的对齐方式只能按照列来统一定义，因此可以为不同的列设置不同的左右对齐方式，却不能为不同的行设置不同的上下对齐方式（或许有相应的宏包可以达到这一效果）。
+    %rfr 可以参考：https://tex.stackexchange.com/questions/35293/p-m-and-b-columns-in-tables
+
+    如果为不同列设置相同的上下对齐方式，这样就能发挥上下对齐真正的作用，不过要注意为每一列的文本设置不同的上下长度，以体现上下对齐的效果：
+
+    上对齐：
+
+    \mbox{}
+
+    \begin{tabular}{p{8em}p{8em}p{8em}}
+        \hline
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte...\\
+        \hline
+    \end{tabular}
+
+    \mbox{}
+
+    下对齐：
+
+    \mbox{}
+
+    \begin{tabular}{b{8em}b{8em}b{8em}}
+        \hline
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte...\\
+        \hline
+    \end{tabular}
+
+\subsubsection{为表格中的单词设置自动换行}
+    先提一个问题：为什么\LaTeX 的原生命令中，只为tabular环境设置了一种上下对齐方式，即``上对齐''？最主要的原因是``p\{\}''命令最初的功能可能并不是设置上下对齐方式，而是\textbf{设置列宽}，否则无法解释为什么它没有像左右对齐的三个命令一样不带有参数。以上面的这张表格为例，如果必选参数是用lcr来表达的，由于没有列宽的定义，表格不会自动换行，而会在同一行上打印出所有的内容，导致表格超出页面。而如果使用``p\{\}''命令为每一列设置列宽，就可以保证表格在固定的列宽内自动换行，不会超出页面。
+
+    现在再看单词的问题，上文所说的``自动换行''，其实需要符合三个条件：第一，表格设置了列宽；第二，文本的长度超过了所在列的列宽；第三个条件最容易被忽视，那就是这段文本应该包含两个及两个以上的单词。自动换行是从第二个单词开始的，这包含两种情况：第一，文本另起一行开始第二个单词；第二，文本按照一定的标准（通常是按照提前规定好的的语素界限）从第二个单词内部断开，第二个单词的前面一部分留在第一行，后面一部分另起一行开始，甚至单词过长，列宽过小的时候，可能需要将第二个单词分割成两行以上。因此，``自动换行''的说法，其实是不包含第一个单词在内的。而表格并不像普通的页面，后者一般不可能在一行上连一个单词都容纳不下，表格的一个单元格完全有可能无法容纳下一个比较长的完整的单词，因此，如果要表格内的文本从第一个单词开始就可以根据列宽进行自动换行，需要进行另外的设置，下面这张表格展示了一个长单词、两个长单词在一个列宽短于该单词长度的表格中的表现情况，左边一列利用``\textbackslash hspace''命令进行了另外的设置（设置的方式见下文介绍），达到了从第一个单词开始就自动换行的效果，右边一列没有进行另外的设置，因此可以看到第一个单词并没有自动换行，而是从第二个单词开始自动换行。
+    %? 为什么如此定义可以达到该效果，还需要进一步研究
+
+    \mbox{}
+
+    \begin{tabular}{|>{\hspace{0pt}}p{3em}|p{3em}|}
+        \hline
+        Superconsciousness&Superconsciousness\\
+        \hline
+        &Superconsciousness Superconsciousness\\
+        \hline
+    \end{tabular}
+
+\subsubsection{在单元格内手动设置换行}
+    上文介绍的是文本在表格内自动换行，但有的时候我们希望能够控制换行的位置，这可以使用makecell宏包的``\textbackslash makecell''命令完成。
+
+    \mbox{}
+
+    \begin{tabular}{l|lll}
+        \hline
+        \makecell[br]{A1A1A1\\A2}&B&C&\thead[tr]{D1\\D2D2D2}\\ 
+        \hline
+        \makecell{E1\\E2}&F&G&H\\
+        \hline
+    \end{tabular}
+    \begin{tabular}{l|lll}
+        \hline
+        \makecell[br]{A1A1A1\\A2}&B&C&\thead[tr]{D1\\D2D2D2}\\ 
+        \hline
+        \makecell*{E1\\E2}&F&G&H\\
+        \hline
+    \end{tabular}
+    % 可选参数控制该单元格内的多行文本以及同一行上所有文本的对齐方式：l（单元格内的多行文本左对齐）、r（单元格内的多行文本右对齐）、c（单元格内的多行文本水平居中对齐，且同一行上的所有文本垂直居中对齐）、t（同一行上的所有文本上对齐）、b（同一行上的所有文本下对齐），这些可选参数还可以叠加使用
+    % "\thead{}"命令具有和"\makecell{}"命令相同的效果和参数，唯一的一点不同是其打印出来的字体大小要更小一些，通常用于表头（"thead"来自于"table head"的缩写）
+    % 在"\makecell{}"命令后面加上"*"符号，会使得换行后的单元格的竖直距离更大一些，可以比对上面两个表格的高度，右边的高度更大一些，但是"\thead{}"命令没有这一区别
+
+\subsubsection{为每一列设置统一的格式}
+    可以使用array宏包提供的``>\{decl\}''命令和``<\{decl\}''命令（``decl''是``declaration''的缩写）为每一列的内容设置统一的格式，前者放在每一列对应的lcrpmb参数之前，后者放在lcrpmb参数之后，一般情况下设置前者就足够了，后者是在设置环境格式时需要的。这两条命令使得同一列上不仅可以设置对齐方式，而且可以设置除了对齐方式以外的其他格式。
+
+    \mbox{}
+
+    \begin{tabular}{|>{\sffamily\bfseries}l|l|>{$}l<{$}|} % 为第一列设置了Sans Serif字族、粗体字系，为第三列设置了数学环境
+        A&B&C\\
+        D&E&F\\
+    \end{tabular}
+
+    \mbox{}
+
+    也可以使用array宏包提供的``\textbackslash newcolumntype\{name\}\{definition\}''命令为同一列新定义一个格式命令，不过要求命令形式是和lcrpmb一样的单字母形式。
+
+    \mbox{}
+
+    \newcolumntype{N}{>{\sffamily\bfseries}l} % 将上一张表格中的">{\sffamily\bfseries}l"定义为一个新的列格式命令
+    \begin{tabular}{|N|l|l|}
+        A&B&C\\
+        D&E&F\\
+    \end{tabular}
+
+    \mbox{}
+
+    前文提到，如果在tabular环境的必选参数中设置了同一列的上下对齐方式，就无法再在必选参数中设置该列的左右对齐方式，但是可以通过array宏包提供的``>\{decl\}''命令和``<\{decl\}''命令进行设置。
+    %! 注意，如果要为最右边的一列在上下对齐方式的基础上设置左右对齐方式，需要在">{decl}"命令的参数的最后加上"\arraybackslash"，或者将原来每行末尾的"\\"符号替换成"\tabularnewline"命令，否则编译会报错，理由可以参考：https://texdoc.org/serve/lshort-zh-cn.pdf/0
+
+    第一种设置方式：
+
+    \mbox{}
+
+    \begin{tabular}{b{8em}|
+        >{\centering}b{8em}|
+        >{\raggedleft\arraybackslash}b{8em}|}
+        \hline
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte...\\
+        \hline
+    \end{tabular}
+
+    \mbox{}
+
+    第二种设置方式：
+
+    \mbox{}
+
+    \begin{tabular}{b{8em}|
+        >{\centering}b{8em}|
+        >{\raggedleft}b{8em}|}
+        \hline
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte...&
+        Texte texte texte texte texte texte texte
+        texte texte texte texte texte texte
+        texte texte texte texte texte texte...\tabularnewline
+        \hline
+    \end{tabular}
+
+\subsubsection{分割表头}
+    可以使用diagbox宏包的``\textbackslash diagbox{}{}{}''命令分割表头。
+    % "diagbox"中的"diag"来自"diagonal"的缩写
+    % 虽然"\diagbox{}{}{}"命令如果继续增加参数，编译不会报错，但是打印出来的表格不再会增加分割线
+
+    分割成两部分：
+
+    \mbox{}
+
+    \begin{tabular}{l|ll}
+        \hline
+        \diagbox{左边}{右边}&A&B\\
+        \hline
+        C&D&E\\
+        \hline
+        F&G&H\\
+        \hline
+    \end{tabular}
+
+    \mbox{}
+
+    分割成三部分：
+
+    \mbox{}
+
+    \begin{tabular}{l|ll}
+        \hline
+        \diagbox{左边}{中间}{右边}&A&B\\
+        \hline
+        C&D&E\\
+        \hline
+        F&G&H\\
+        \hline
+    \end{tabular}
+
+
+    
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \begin{tabular}[t]{l|c||p{3cm}r@{-}}
+%     \hline\hline
+%     A&B&C&d\\
+%     D&E&F&g\\
+%     \cline{1-2}
+%     \multicolumn{2}{|c|}{G}&H&i\\
+%     \hline
+% \end{tabular}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
