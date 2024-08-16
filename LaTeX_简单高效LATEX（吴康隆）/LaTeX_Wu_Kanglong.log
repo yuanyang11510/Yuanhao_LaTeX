@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  14 AUG 2024 01:29
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  16 AUG 2024 22:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -343,6 +343,20 @@ eSlant={0.167}].
 (fontspec)             <->"SimSun/OT:script=hani;language=dflt;embolden=4;slant
 =0.167;"
 
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifont.sty
+Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
+LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
 
@@ -509,20 +523,233 @@ Package tocbibind Info: The document has section divisions on input line 50.
 
 Package tocbibind Note: Using section or other style headings.
 
-) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\pifont.sty
-Package: pifont 2020/03/25 PSNFSS-v9.3 Pi font support (SPQR) 
-LaTeX Font Info:    Trying to load font information for U+pzd on input line 63.
+) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
 
-
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upzd.fd
-File: upzd.fd 2001/06/04 font definitions for U/pzd.
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
 )
-LaTeX Font Info:    Trying to load font information for U+psy on input line 64.
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 106.
+)
+\Gin@req@height=\dimen266
+\Gin@req@width=\dimen267
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\upsy.fd
-File: upsy.fd 2001/06/04 font definitions for U/psy.
-))
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
+\caption@tempdima=\dimen268
+\captionmargin=\dimen269
+\caption@leftmargin=\dimen270
+\caption@rightmargin=\dimen271
+\caption@width=\dimen272
+\caption@indent=\dimen273
+\caption@parindent=\dimen274
+\caption@hangindent=\dimen275
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count324
+\c@continuedfloat=\count325
+)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count326
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count327
+) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/wrapfig\wrapfig.sty
+\wrapoverhang=\dimen276
+\WF@size=\dimen277
+\c@WF@wrappedlines=\count328
+\WF@box=\box64
+\WF@everypar=\toks27
+Package: wrapfig 2003/01/31  v 3.6
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip66
+\multirow@cntb=\count329
+\multirow@dima=\skip67
+\bigstrutjot=\dimen278
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
+\col@sep=\dimen279
+\ar@mcellbox=\box65
+\extrarowheight=\dimen280
+\NC@list=\toks28
+\extratabsurround=\skip68
+\backup@length=\skip69
+\ar@cellbox=\box66
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tabularray\tabularray.s
+ty
+Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
+\l__tblr_a_int=\count330
+\l__tblr_c_int=\count331
+\l__tblr_r_int=\count332
+\l__tblr_d_dim=\dimen281
+\l__tblr_h_dim=\dimen282
+\l__tblr_o_dim=\dimen283
+\l__tblr_p_dim=\dimen284
+\l__tblr_q_dim=\dimen285
+\l__tblr_r_dim=\dimen286
+\l__tblr_s_dim=\dimen287
+\l__tblr_t_dim=\dimen288
+\l__tblr_v_dim=\dimen289
+\l__tblr_w_dim=\dimen290
+\l__tblr_a_box=\box67
+\l__tblr_b_box=\box68
+\l__tblr_c_box=\box69
+\l__tblr_d_box=\box70
+\g__tblr_table_count_int=\count333
+\c@rownum=\count334
+\c@colnum=\count335
+\c@rowcount=\count336
+\c@colcount=\count337
+\abovesep=\dimen291
+\belowsep=\dimen292
+\leftsep=\dimen293
+\rightsep=\dimen294
+\g_tblr_level_int=\count338
+\g__tblr_data_row_key_count_int=\count339
+\g__tblr_data_column_key_count_int=\count340
+\g__tblr_data_cell_key_count_int=\count341
+\g__tblr_array_int=\count342
+\l__tblr_key_count_int=\count343
+\l__tblr_key_quotient_int=\count344
+\l__tblr_key_quotient_two_int=\count345
+\l__tblr_key_remainder_int=\count346
+\g__tblr_data_str_value_count_int=\count347
+\rulewidth=\dimen295
+\l__tblr_strut_dp_dim=\dimen296
+\l__tblr_strut_ht_dim=\dimen297
+\g__tblr_cell_wd_dim=\dimen298
+\g__tblr_cell_ht_dim=\dimen299
+\g__tblr_cell_head_dim=\dimen300
+\g__tblr_cell_foot_dim=\dimen301
+\l__column_target_dim=\dimen302
+\l__tblr_caption_box=\box71
+\l__tblr_caption_left_box=\box72
+\l__tblr_row_head_box=\box73
+\l__tblr_row_foot_box=\box74
+\l__tblr_row_head_foot_dim=\dimen303
+\tablewidth=\dimen304
+\l__tblr_table_firsthead_box=\box75
+\l__tblr_table_middlehead_box=\box76
+\l__tblr_table_lasthead_box=\box77
+\l__tblr_table_firstfoot_box=\box78
+\l__tblr_table_middlefoot_box=\box79
+\l__tblr_table_lastfoot_box=\box80
+\l__tblr_remain_height_dim=\dimen305
+\l__tblr_long_from_int=\count348
+\l__tblr_long_to_int=\count349
+\l__tblr_curr_i_int=\count350
+\l__tblr_prev_i_int=\count351
+\l__tblr_table_page_int=\count352
+\l__tblr_table_head_box=\box81
+\l__tblr_table_foot_box=\box82
+\l__tblr_table_head_foot_dim=\dimen306
+\l__tblr_table_head_body_foot_dim=\dimen307
+\l__tblr_table_box=\box83
+\l__tblr_table_hlines_box=\box84
+\l__tblr_hline_box=\box85
+\l__tblr_row_box=\box86
+\l__tblr_col_o_wd_dim=\dimen308
+\l__tblr_col_b_wd_dim=\dimen309
+\l__tblr_hline_leftskip_dim=\dimen310
+\l__tblr_hline_rightskip_dim=\dimen311
+\l__tblr_row_ht_dim=\dimen312
+\l__tblr_row_dp_dim=\dimen313
+\l__tblr_row_abovesep_dim=\dimen314
+\l__tblr_row_belowsep_dim=\dimen315
+\l__tblr_row_vlines_box=\box87
+\l__tblr_vline_box=\box88
+\l__tblr_cell_box=\box89
+\l__row_upper_dim=\dimen316
+\l__row_lower_dim=\dimen317
+\l__row_vpace_dim=\dimen318
+\l__tblr_vline_aboveskip_dim=\dimen319
+\l__tblr_vline_belowskip_dim=\dimen320
+\l__tblr_cell_wd_dim=\dimen321
+\l__tblr_cell_ht_dim=\dimen322
+\l__tblr_diag_box=\box90
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen323
+\c@nlinenum=\count353
+\TeXr@lab=\toks29
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/diagbox\diagbox.sty
+Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: xetex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-xetex.def on input line 114.
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\p2e-xetex.def
+File: p2e-xetex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks30
+\@arclen=\dimen324
+\@arcrad=\dimen325
+\pIIe@tempdima=\dimen326
+\pIIe@tempdimb=\dimen327
+\pIIe@tempdimc=\dimen328
+\pIIe@tempdimd=\dimen329
+\pIIe@tempdime=\dimen330
+\pIIe@tempdimf=\dimen331
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count354
+\calc@Bcount=\count355
+\calc@Adimen=\dimen332
+\calc@Bdimen=\dimen333
+\calc@Askip=\skip70
+\calc@Bskip=\skip71
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count356
+\calc@Cskip=\skip72
+)
+\diagbox@boxa=\box91
+\diagbox@boxb=\box92
+\diagbox@boxm=\box93
+\diagbox@wd=\dimen334
+\diagbox@ht=\dimen335
+\diagbox@insepl=\dimen336
+\diagbox@insepr=\dimen337
+\diagbox@outsepl=\dimen338
+\diagbox@outsepr=\dimen339
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
+Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+\TX@col@width=\dimen340
+\TX@old@table=\dimen341
+\TX@old@col=\dimen342
+\TX@target=\dimen343
+\TX@delta=\dimen344
+\TX@cols=\count357
+\TX@ftn=\toks31
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
+Package: dcolumn 2023/07/08 v1.06 decimal alignment package (DPC)
+)
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2024-07-10 v7.01j Hypertext links for LaTeX
 
@@ -541,22 +768,22 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count324
+\c@section@level=\count358
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen266
-\Hy@linkcounter=\count325
-\Hy@pagecounter=\count326
+\@linkdim=\dimen345
+\Hy@linkcounter=\count359
+\Hy@pagecounter=\count360
  (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
 ) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count327
+\Hy@SavedSpaceFactor=\count361
  (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
 )
@@ -568,14 +795,14 @@ Package hyperref Info: Plain pages OFF on input line 4172.
 Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count328
+\c@Hy@tempcnt=\count362
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
-\XeTeXLinkMargin=\dimen267
+\XeTeXLinkMargin=\dimen346
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -585,9 +812,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count329
-\Field@Width=\dimen268
-\Fld@charsize=\dimen269
+\Fld@menulength=\count363
+\Field@Width=\dimen347
+\Fld@charsize=\dimen348
 Package hyperref Info: Hyper figures OFF on input line 6042.
 Package hyperref Info: Link nesting OFF on input line 6047.
 Package hyperref Info: Hyper index ON on input line 6050.
@@ -600,18 +827,18 @@ Package hyperref Info: PDF/A mode OFF on input line 6072.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count330
-\c@Item=\count331
-\c@Hfootnote=\count332
+\Hy@abspage=\count364
+\c@Item=\count365
+\c@Hfootnote=\count366
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
 File: hxetex.def 2024-07-10 v7.01j Hyperref driver for XeTeX
-\pdfm@box=\box64
-\c@Hy@AnnotLevel=\count333
-\HyField@AnnotCount=\count334
-\Fld@listcount=\count335
-\c@bookmark@seq@number=\count336
+\pdfm@box=\box94
+\c@Hy@AnnotLevel=\count367
+\HyField@AnnotCount=\count368
+\Fld@listcount=\count369
+\c@bookmark@seq@number=\count370
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -629,53 +856,34 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
-\Hy@SectionHShift=\skip66
+\Hy@SectionHShift=\skip73
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 105.
-
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
-Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
-
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
-fg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: xetex.def on input line 106.
-)
-\Gin@req@height=\dimen270
-\Gin@req@width=\dimen271
-)
+Package hyperref Info: Option `colorlinks' set `true' on input line 144.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
  (LaTeX_Wu_Kanglong.aux)
 \openout1 = `LaTeX_Wu_Kanglong.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 130.
-LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 167.
+LaTeX Font Info:    ... okay on input line 167.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -683,58 +891,67 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 130.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 130.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 130.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 130.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 130.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 130.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 130.
-LaTeX Font Info:    Redeclaring math accent \check on input line 130.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 130.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 130.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 130.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 130.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 130.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 167.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 167.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 167.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 167.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 167.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 167.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 167.
+LaTeX Font Info:    Redeclaring math accent \check on input line 167.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 167.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 167.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 167.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 167.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 167.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 130.
+(Font)              `operators' in the math version `normal' on input line 167.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 130.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 167.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 130.
+(Font)              `operators' in the math version `bold' on input line 167.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 130.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 167.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 130.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 130.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 130.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 130.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 130.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 167.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 130.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 130.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 130.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 167.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 130.
-Package hyperref Info: Link coloring ON on input line 130.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 167.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: wrapfig package is loaded.
+Package caption Info: End \AtBeginDocument code.
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/ninecolors\ninecolors.s
+ty
+Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+)
+Package hyperref Info: Link coloring ON on input line 167.
  (LaTeX_Wu_Kanglong.out) (LaTeX_Wu_Kanglong.out)
 \@outlinefile=\write4
 \openout4 = `LaTeX_Wu_Kanglong.out'.
@@ -742,11 +959,11 @@ Package hyperref Info: Link coloring ON on input line 130.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.06749> not available
-(Font)              size <17.28> substituted on input line 134.
+(Font)              size <17.28> substituted on input line 171.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <15.05624> not available
-(Font)              size <14.4> substituted on input line 134.
+(Font)              size <14.4> substituted on input line 171.
 
 (LaTeX_Wu_Kanglong.toc
 
@@ -814,7 +1031,7 @@ Package fontspec Info:
 Package lettrine.sty Info: Targeted height = 21.85869pt
 (lettrine.sty)             (for loversize=0, accent excluded),
 (lettrine.sty)             Lettrine height = 21.76263pt (T);
-(lettrine.sty)             reported on input line 378.
+(lettrine.sty)             reported on input line 415.
 
 
 [7]
@@ -1063,7 +1280,7 @@ Package fontspec Info:
 
 
 [11]
-Overfull \hbox (38.99426pt too wide) in paragraph at lines 672--675
+Overfull \hbox (38.99426pt too wide) in paragraph at lines 709--712
 [][][][][][][][][][][][][] [] [][][][][][][] [] [][][][][]$[][] |\TU/SimSun(4)/
 m/n/10.53937 （可 点 击）| \TU/lmr/m/n/10.53937 || $[][][][][] [] [] [] [][][][][][]
  [] [][][] [] [][][][][][][][][][][][][] []
@@ -1074,11 +1291,11 @@ m/n/10.53937 （可 点 击）| \TU/lmr/m/n/10.53937 || $[][][][][] [] [] [] [][
 [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 683.
+(hyperref)                removing `\@ifnextchar' on input line 720.
 
 
-Overfull \hbox (21.07874pt too wide) in paragraph at lines 689--696
-[]$[]$
+Overfull \hbox (34.89795pt too wide) in paragraph at lines 732--735
+[][]
  []
 
 \openout3 = `LaTeX_Wu_Kanglong.ent'.
@@ -1090,8 +1307,8 @@ Overfull \hbox (21.07874pt too wide) in paragraph at lines 689--696
 [14]
 
 [15]
-\c@parentcounter=\count337
-\c@soncounter=\count338
+\c@parentcounter=\count371
+\c@soncounter=\count372
 
 
 [16] (LaTeX_Wu_Kanglong.ent)
@@ -1108,19 +1325,16 @@ L3 programming layer <2022/07/14>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `LaTeX_Wu_Kanglong.out' has not changed.
 (rerunfilecheck)             Checksum: FFDFC5CE685676621A81EE7195C3037F;8102.
  ) 
 Here is how much of TeX's memory you used:
- 17947 strings out of 409034
- 394446 string characters out of 5756841
- 1940560 words of memory out of 5000000
- 40275 multiletter control sequences out of 15000+600000
+ 22283 strings out of 409034
+ 486803 string characters out of 5756841
+ 1941560 words of memory out of 5000000
+ 44568 multiletter control sequences out of 15000+600000
  571106 words of font info for 161 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,11n,111p,555b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,11n,111p,555b,526s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on LaTeX_Wu_Kanglong.pdf (17 pages).

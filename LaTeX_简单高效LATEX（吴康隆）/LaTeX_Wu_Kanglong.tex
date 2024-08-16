@@ -105,6 +105,11 @@
 
 \usepackage{subcaption}
             %* 使用subcaption宏包来创建subfigure环境，在figure环境中嵌套多图
+            %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错
+
+% \usepackage{subfig}
+            % 使用subfig宏包提供的"\subfloat[sub-caption]{body}"命令，在figure环境中嵌套多图
+            %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错 
             
 \usepackage{wrapfig}
             % 使用wrapfig宏包进行图文混排
