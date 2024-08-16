@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}图片原始大小}{2}{section.1}%
+\contentsline {section}{\numberline {2}scale表示图片缩放倍数（0.3倍/0.5倍/0.7倍）}{2}{section.2}%
+\contentsline {section}{\numberline {3}width表示图片宽度（3cm/0.3倍页宽）}{2}{section.3}%
+\contentsline {section}{\numberline {4}height表示图片高度（1cm/0.1倍页高）}{2}{section.4}%
+\contentsline {section}{\numberline {5}angle表示图片逆时针旋转角度，origin表示图片旋转中心，默认值为l（左），可以设置为r（右）、c（中）、t（顶）、b（底）、B（基线）}{3}{section.5}%
+\contentsline {subsection}{\numberline {5.1}绕左侧中心逆时针旋转90度}{3}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}绕左侧中心顺时针旋转90度}{3}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}绕右侧中心逆时针旋转90度}{4}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}绕中央中心逆时针旋转90度}{4}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}绕中心顶端中心逆时针旋转90度}{5}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}绕底部中心逆时针旋转90度}{5}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}绕基线中心逆时针旋转90度}{6}{subsection.5.7}%
+\contentsline {section}{\numberline {6}设置图片到边框的距离(原始尺寸/0.5cm)}{6}{section.6}%
+\contentsline {section}{\numberline {7}在文本中插入图片}{7}{section.7}%
+\contentsline {subsection}{\numberline {7.1}不使用浮动体环境}{7}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}使用浮动体环境}{7}{subsection.7.2}%
+\contentsline {section}{\numberline {8}图文混排}{7}{section.8}%

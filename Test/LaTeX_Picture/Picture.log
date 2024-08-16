@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  14 AUG 2024 16:12
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  16 AUG 2024 02:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -534,31 +534,34 @@ Package hyperref Info: Link coloring ON on input line 10.
 \@outlinefile=\write3
 \openout3 = `Picture.out'.
 
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
+ (Picture.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.53937> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 6.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 6.
+)
+\tf@toc=\write4
+\openout4 = `Picture.toc'.
+
 
 
 [1
 
 ]
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 File: doraemon1.jpg Graphic file (type bmp)
@@ -598,6 +601,8 @@ File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
 
 
 [5]
@@ -607,26 +612,28 @@ File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
+
+
+[6]
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
 
 
-[6] (Picture.lof
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.53937> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 1.
-)
-\tf@lof=\write4
-\openout4 = `Picture.lof'.
+[7] (Picture.lof)
+\tf@lof=\write5
+\openout5 = `Picture.lof'.
 
 
 
-[7] (Picture.aux)
+[8] (Picture.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2022/07/14>
@@ -635,12 +642,12 @@ Package rerunfilecheck Info: File `Picture.out' has not changed.
 (rerunfilecheck)             Checksum: 245C41446B491AB89C7D81C96B3B0AFB;2991.
  ) 
 Here is how much of TeX's memory you used:
- 14968 strings out of 409034
- 324768 string characters out of 5756841
- 1927560 words of memory out of 5000000
- 37486 multiletter control sequences out of 15000+600000
- 561171 words of font info for 65 fonts, out of 8000000 for 9000
+ 15046 strings out of 409034
+ 329496 string characters out of 5756841
+ 1936560 words of memory out of 5000000
+ 37559 multiletter control sequences out of 15000+600000
+ 561187 words of font info for 67 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,9n,111p,595b,569s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Picture.pdf (7 pages).
+Output written on Picture.pdf (8 pages).

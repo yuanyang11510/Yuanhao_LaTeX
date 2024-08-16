@@ -32,6 +32,7 @@
 
 \usepackage[slantfont,boldfont]{xeCJK} 
             % "slantfont"和"bolfont"选项表示允许设置中文的斜体和粗体字形
+
 \setCJKmainfont[boldfont = SimHei]{SimSun} 
             % 设置"SimSun"（宋体）为主要字体，"SimHei"（黑体）为主要字体的粗体字形，即"\textbf{}"或者"{\bfseries}"命令的变换结果。也可以通过slantfont选项来设置主要字体的斜体字行
             %* 各章节的汉字字形也因此发生变化
@@ -99,13 +100,6 @@
 % \usepackage[none]]{tocbibind} 
             % 禁用所有
 
-\usepackage{hyperref}
-            % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
-            % 加载hyperref宏包后，目录可以实现点击跳转
-\hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
-            % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
-            %* 如果以上命令作为hyperref宏包的可选参数，应该将其置于必选参数"{hyperref}"的前面，否则设置的可选参数无法生效
-
 \usepackage{graphicx}
             % 使用graphicx宏包和"\includegraphics[options]{name}"命令插入图片
 
@@ -121,11 +115,31 @@
 \usepackage{array} 
             % array宏包提供"m{}"、"b{}"、">{decl}"、"<{decl}"、"!{intercolumn sign}"、"\newcolumntype{name}{definition}"等命令
 
+\usepackage{tabularray} 
+            %* tabularray宏包提供使文本靠近表格上端或者下端的命令
+
 \usepackage{makecell} 
             % makecell宏包提供了一种方便在单元格内换行的方式，以及设置水平表线宽度的命令
 
 \usepackage{diagbox} 
             % diagbox宏包提供了分割表头的命令
+
+\usepackage{tabularx} 
+            % tabularx宏包的tabularx环境使得表格可以通过在每列上均匀增加列宽的方式设置整表宽度
+
+\usepackage{dcolumn} 
+            % dcolumn宏包提供了小数点对齐的对齐方式
+
+
+
+
+
+\usepackage{hyperref}
+            % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
+            % 加载hyperref宏包后，目录可以实现点击跳转
+\hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
+            % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
+            %* 如果以上命令作为hyperref宏包的可选参数，应该将其置于必选参数"{hyperref}"的前面，否则设置的可选参数无法生效
 
 % 其他设置
 % \setcounter{tocdepth}{2}
