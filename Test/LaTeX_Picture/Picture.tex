@@ -520,6 +520,7 @@
         \label{18}
     \end{figure}
 
+\subsection{结论}
     通过以上各命令的效果，可以发现，排版效果两种方式是：
 
     \begin{itemize}
@@ -528,8 +529,7 @@
     \end{itemize}
     
     使用minipage环境（\ref{13}, \ref{15}）即使设置了相等的边框宽度，也会由于边框的下端没有对齐而导致排版效果不如以上两种方式美观（或许minipage环境有相关参数可以调整这一效果），而使用subfig宏包的``\textbackslash subfloat[sub-caption]\{body\}''命令（\ref{14}），则会由于无法设置图片的宽度，从而和使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令，但是却没有为其设置边框宽度（\ref{17}）一样，导致最后的边框宽度不相等，排版效果最差。
-
-\subsection{结论}
+    
     看来，如果要并排插入图片，最好选择使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令或者subfigure环境。
     
 % \clearpage

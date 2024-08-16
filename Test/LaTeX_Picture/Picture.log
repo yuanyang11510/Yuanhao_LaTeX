@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  17 AUG 2024 02:03
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  17 AUG 2024 02:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -866,7 +866,7 @@ File: doraemon1.jpg Graphic file (type bmp)
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 
-LaTeX Warning: Reference `14' on page 15 undefined on input line 530.
+LaTeX Warning: Reference `14' on page 15 undefined on input line 531.
 
 
 
