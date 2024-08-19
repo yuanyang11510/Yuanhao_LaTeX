@@ -100,6 +100,9 @@
 % \usepackage[none]]{tocbibind} 
             % 禁用所有
 
+\usepackage[section]{placeins}
+            % 重新定义了"\section{}"命令，在此之前加上了"\Float-Barrrier"命令，阻止浮动体跨过该位置
+
 \usepackage{graphicx}
             % 使用graphicx宏包和"\includegraphics[options]{name}"命令插入图片
 
@@ -391,7 +394,8 @@
         % 设置段落间距
             \setlength{\parskip}{0pt plus 1pt} % 默认段落间距
             %rfr 关于默认段落间距，可以参考：https://latexref.xyz/_005cparindent-_0026-_005cparskip.html
-            %rfr "0pt plus 1pt"是弹性距离，意即普通情况下是0pt（为什么是0而不是一个大于0的数，暂时还不明白），在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus），参考：https://github.com/shifujun/UESTCthesis/issues/2
+            %rfr "0pt plus 1pt"是弹性距离，意即普通情况下是0pt，在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus），参考：https://github.com/shifujun/UESTCthesis/issues/2
+            %* “段落间距”其实就是前一段的最后一行箱子的底部和后一段的第一行箱子之间的顶部之间的距离，关于“箱子”的介绍，可以参见下文关于“基线间距”（行距）的讨论
 
             set the parskip (default)
 
@@ -578,7 +582,7 @@
             \selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-baselineskip)
             
             }}
-            %* LaTeX将“行距”称为“基线间距”（baselineskip）
+            %* 所谓的“行距”在LaTeX中称为“基线间距”（baselineskip），这一称呼建立在LaTeX的另一个重要概念“箱子”（box）的基础之上，基线位于箱子的内部，箱子顶部到基线的距离称为“高度”（height），箱子底部到基线的距离称为“深度”（depth），“行距”这一称呼容易被误认为是【相邻两行文字之间的空白区域的距离】，但其实仔细思考一下就会发现这种说法站不住脚，因为这个“空白区域”并不是一个矩形区域，而是一个由于上下字符的不同而形成的一个不规则的区域，根本无所谓“距离”的概念：这一区域内的上下两端之间的垂直距离是在不断变化的！因此，即使要称呼“行距”，也要意识到其真正所指是相邻两条基线之间的距离。基线间距的默认值是12倍的文字高度（在article文档类中显示为12pt）。另外，要注意“基线间距”的概念是在同一个段落内进行定义的：一个段落箱子其实就是由一层又一层的行箱子堆叠而成，通过"\baselineskip"命令调整基线间距时，上一行箱子的底部和下一行箱子的顶部之间的距离会随之发生变化，而箱子本身的上下边距则不会变化。还有一个值得思考的地方，那就是前文提到的段落间距的默认值一般情况下是0pt（有1pt的拉伸距离），而唯一可能存在0pt的位置就是上一个段落的最后一行的箱子的底部和下一个段落的第一行箱子的顶部之间的距离，又因为上一个段落的最后一行和下一个段落的第一行之间应该相隔同样的基线间距（暂时缺少官方文献的出处，但这似乎是一个在排版中不言自明的常识），可以推得在同一段落内，上一行的箱子的底部和下一行的箱子的顶部也应该是重合的，在这一推论下，还可以发现，基线间距其实就是上一行箱子的“深度”加上下一行箱子的“高度”，所以，默认情况下的基线间距等于箱子的上下边距，也即箱子的上下边距为12pt
             %! "\selectfont"是"\fontsize{size}{skip}{\selectfont}"命令中预先设定好的一个命令名称，用来引出后面需要修改字号和行距的内容，不要错误地将其理解为需要替换为一个具体的字体名称
             %* 类比前文提到的段落间距的设置，该命令的控制对象是统辖范围内的每一行和其前面一行之间的距离（包括统辖范围内第一行和统辖范围外之前的最后一行之间的距离），因此，不管统辖范围内的最后一行的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一行之间的距离都会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的
             %! 和上文中的"{\setlength{cmd}{length}}"命令不同，而与上文中的"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令类似，"\fontsize{size}{skip}{\selectfont}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的行距将无法生效，而只有设置的字号生效
@@ -703,7 +707,7 @@
             
         % amsmath宏包提供的索引形式
             这是在\eqref{subsubsec:3.4.6}一节设置的标签
-        
+
         % hyperref宏包提供的索引形式
             这是在\autoref{subsubsec:3.4.6}一节设置的标签，这一节的名称是\hyperref[subsubsec:3.4.6]{颜色}
 
@@ -755,9 +759,11 @@
             
         % 重定义每页脚注之上的横线的宽度和高度
             % \renewcommand{\footnoterule}{\rule{0.4\columnwidth}{0.4pt}}
+            %rfr "\rule{width}{height}"命令的两个参数分别代表需要设置的宽度和高度，可以参考：https://liam.page/2018/01/11/floats-in-LaTeX-multiple-elements-in-a-single-float/
             
         % 调整脚注到正文的间距
             % \setlength{\skip\footins}{0.5cm}
+            %? 暂时不知道"footins"中的"ins"是什么含义
 
         % 2. 边注
             这一行有边注\marginpar[左侧]{右侧}
@@ -925,6 +931,7 @@
             父级计数器：\arabic{parentcounter} % 父级计数器为0
             子级计数器：\arabic{soncounter} % 子级计数器为2
 
+
             \addtocounter{parentcounter}{1} %* 为父级计数器手动增加1，自己计数器不归零
             父级计数器：\arabic{parentcounter} % 父级计数器为1
             子级计数器：\arabic{soncounter} % 子级计数器为2
@@ -962,6 +969,7 @@
     \subsection{浮动体与图表}
 
         \subsubsection{浮动体}
+            %rfr 关于浮动体的相关命令,可以参考文件"Picture.tex"
 
         \subsubsection{图片}
             %rfr 关于图片的相关命令，可以参考文件"Picture.tex"
@@ -970,7 +978,29 @@
             %rfr 关于表格的相关命令，可以参考文件"Table.tex"
 
         \subsubsection{非浮动体图标和并列图表}
-            
+            %rfr 关于并列图表的相关命令，可以参考文件"Picture.tex"
+
+    \subsection{页面设置}
+        \subsection{纸张、方向和边距}
+            %rfr 关于geometry宏包的相关命令，可以参考文件"Geometry.tex"
+
+        \subsection{页眉和页脚}
+
+
+    \subsection{抄录与代码环境}
+
+    \subsection{分栏}
+
+    \subsection{文档拆分}
+
+    \subsection{西文排版及其他}
+        \subsubsection{连写}
+
+        \subsubsection{断词}
+
+        \subsubsection{硬空格与句末标点}
+
+        \subsubsection{特殊符号}
 
 \section{数学排版}
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  16 AUG 2024 22:05
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  19 AUG 2024 21:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -523,6 +523,8 @@ Package tocbibind Info: The document has section divisions on input line 50.
 
 Package tocbibind Note: Using section or other style headings.
 
+) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
+Package: placeins 2005/04/18  v 2.2
 ) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
@@ -858,32 +860,32 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip73
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 144.
+Package hyperref Info: Option `colorlinks' set `true' on input line 148.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
  (LaTeX_Wu_Kanglong.aux)
 \openout1 = `LaTeX_Wu_Kanglong.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 171.
+LaTeX Font Info:    ... okay on input line 171.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -891,57 +893,57 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 167.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 167.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 167.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 167.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 167.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 167.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 167.
-LaTeX Font Info:    Redeclaring math accent \check on input line 167.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 167.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 167.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 167.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 167.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 167.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 171.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 171.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 171.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 171.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 171.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 171.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 171.
+LaTeX Font Info:    Redeclaring math accent \check on input line 171.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 171.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 171.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 171.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 171.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 171.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 167.
+(Font)              `operators' in the math version `normal' on input line 171.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 167.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 171.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 167.
+(Font)              `operators' in the math version `bold' on input line 171.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 167.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 171.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 167.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 167.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 167.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 167.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 167.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 171.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 167.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 167.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 167.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 171.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 167.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 171.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: wrapfig package is loaded.
@@ -951,7 +953,7 @@ Package caption Info: End \AtBeginDocument code.
 ty
 Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 )
-Package hyperref Info: Link coloring ON on input line 167.
+Package hyperref Info: Link coloring ON on input line 171.
  (LaTeX_Wu_Kanglong.out) (LaTeX_Wu_Kanglong.out)
 \@outlinefile=\write4
 \openout4 = `LaTeX_Wu_Kanglong.out'.
@@ -959,11 +961,11 @@ Package hyperref Info: Link coloring ON on input line 167.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.06749> not available
-(Font)              size <17.28> substituted on input line 171.
+(Font)              size <17.28> substituted on input line 175.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <15.05624> not available
-(Font)              size <14.4> substituted on input line 171.
+(Font)              size <14.4> substituted on input line 175.
 
 (LaTeX_Wu_Kanglong.toc
 
@@ -980,7 +982,9 @@ LaTeX Font Info:    Font shape `TU/SimSun(1)/m/sl' in size <10.53937> not avail
 able
 (Font)              Font shape `TU/SimSun(1)/m/it' tried instead on input line 
 52.
-[2])
+[2]
+
+[3])
 \tf@toc=\write5
 \openout5 = `LaTeX_Wu_Kanglong.toc'.
 
@@ -993,10 +997,13 @@ able
 \openout7 = `LaTeX_Wu_Kanglong.lot'.
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[3]
+
 
 [4]
+
+[5]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "FangSong/BI" (it probably
@@ -1025,20 +1032,20 @@ Package fontspec Info:
 
 
 
-[5]
-
 [6]
+
+[7]
 Package lettrine.sty Info: Targeted height = 21.85869pt
 (lettrine.sty)             (for loversize=0, accent excluded),
 (lettrine.sty)             Lettrine height = 21.76263pt (T);
-(lettrine.sty)             reported on input line 415.
+(lettrine.sty)             reported on input line 419.
 
-
-[7]
 
 [8]
 
 [9]
+
+[10]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "Microsoft YaHei Bold/I" (it
@@ -1067,7 +1074,7 @@ Package fontspec Info:
 
 
 
-[10]
+[11]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "Lucida Calligraphy/BI" (it
@@ -1279,8 +1286,8 @@ Package fontspec Info:
 
 
 
-[11]
-Overfull \hbox (38.99426pt too wide) in paragraph at lines 709--712
+[12]
+Overfull \hbox (38.99426pt too wide) in paragraph at lines 713--716
 [][][][][][][][][][][][][] [] [][][][][][][] [] [][][][][]$[][] |\TU/SimSun(4)/
 m/n/10.53937 （可 点 击）| \TU/lmr/m/n/10.53937 || $[][][][][] [] [] [] [][][][][][]
  [] [][][] [] [][][][][][][][][][][][][] []
@@ -1288,32 +1295,42 @@ m/n/10.53937 （可 点 击）| \TU/lmr/m/n/10.53937 || $[][][][][] [] [] [] [][
 
 
 
-[12]
+[13]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 720.
+(hyperref)                removing `\@ifnextchar' on input line 724.
 
 
-Overfull \hbox (34.89795pt too wide) in paragraph at lines 732--735
-[][]
+Overfull \hbox (21.07874pt too wide) in paragraph at lines 730--737
+[]$[]$
  []
 
 \openout3 = `LaTeX_Wu_Kanglong.ent'.
 
 
 
-[13]
-
 [14]
 
 [15]
+
+[16]
 \c@parentcounter=\count371
 \c@soncounter=\count372
 
 
-[16] (LaTeX_Wu_Kanglong.ent)
+[17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[17] 
+
+
+[18]
+Overfull \vbox (18.20094pt too high) has occurred while \output is active []
+
+
+
+[19] (LaTeX_Wu_Kanglong.ent)
+
+[20] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (LaTeX_Wu_Kanglong.aux)
  ***********
@@ -1326,15 +1343,15 @@ LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
 Package rerunfilecheck Info: File `LaTeX_Wu_Kanglong.out' has not changed.
-(rerunfilecheck)             Checksum: FFDFC5CE685676621A81EE7195C3037F;8102.
+(rerunfilecheck)             Checksum: 205304778BA5D3DA174D4D52AE0B8A38;9218.
  ) 
 Here is how much of TeX's memory you used:
- 22283 strings out of 409034
- 486803 string characters out of 5756841
+ 22335 strings out of 409034
+ 489057 string characters out of 5756841
  1941560 words of memory out of 5000000
- 44568 multiletter control sequences out of 15000+600000
+ 44617 multiletter control sequences out of 15000+600000
  571106 words of font info for 161 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,11n,111p,555b,526s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on LaTeX_Wu_Kanglong.pdf (17 pages).
+Output written on LaTeX_Wu_Kanglong.pdf (20 pages).

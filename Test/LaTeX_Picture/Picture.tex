@@ -5,6 +5,7 @@
 % \usepackage{subfig} % 使用subfig宏包提供的"\subfloat[sub-caption]{body}"命令，在figure环境中嵌套多图
 %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错
 \usepackage{wrapfig} % 使用wrapfig宏包进行图文混排
+\usepackage[section]{placeins} % 重新定义了"\section{}"命令，在此之前加上了"\Float-Barrrier"命令，阻止浮动体跨过该位置
 \usepackage[colorlinks = true,linkcolor=blue]{hyperref}
 
 %* 以下插入的图片外面都套有一层"\fbox{text}"命令，以清楚显示图片的边框界限
@@ -22,14 +23,15 @@
     \fbox{\includegraphics{doraemon1.jpg}}
     % XeLaTeX支持pdf、eps、png与jpg图片扩展名，所以可以写带扩展名的图片名称，也可以写不带扩展名的名称，如果不给出扩展名，将按上述4个扩展名的顺序依次搜索文件（吴康隆P50）
 
-    % 绝对路径
+% 通过图片的绝对路径引用图片
     % \includegraphics{D:/OneDrive/（▲）Yuanhao_github/Yuanhao_LaTeX_github/Test/LaTeX_Picture/doraemon1.jpg} 
     %! 使用相对路径始终无法成功编译，不知道原因是什么
 
-    %reserved file for pictures
+% 通过一个专门存放图片的文件夹的路径引用图片
+    % reserved file for pictures
     % \graphicspath{{D:/OneDrive/（▲）Yuanhao_github/Yuanhao_LaTeX_github/Test/LaTeX_Picture/Reserved file for pictures}}
     % \includegraphics{doraemon2.jpg}
-    %* 注意，使用"\graphicspath{dir-list}"命令时，路径两边应该套用两层大括号，否则无法成功编译
+    %!注意，使用"\graphicspath{dir-list}"命令时，路径两边应该套用两层大括号，否则无法成功编译
 
 \subsection{scale表示图片缩放倍数（0.3倍/0.5倍/0.7倍）}
     \fbox{\includegraphics[scale=.3]{doraemon1.jpg}}
@@ -131,6 +133,7 @@
 %rfr 可以参考：https://liam.page/2018/01/11/floats-in-LaTeX-multiple-elements-in-a-single-float/、https://blog.csdn.net/yzy_1996/article/details/117574086、https://blog.csdn.net/Infinity_07/article/details/122796312
 \subsection{并排插入共享标题的图片}
     使用\LaTeX 原生命令中的figure环境和graphicx宏包提供的``\textbackslash includegraphics[options]\{name\}''就可以完成简单的并排图片的插入，一般会在可选参数中设置width为文本宽度的倍数，如果不设置可选参数，则会将图片按照原始大小排列在一起，但是这很可能导致因为图片总宽度超过文本宽度而无法在一行上并排放置，下面展示不设置可选参数（\ref{1}）和在可选参数中设置width为0.25倍文本宽度（\ref{2}）两种情况的打印效果。
+    %* 在可选参数中设置width而非其他特征，比如height、scale等，原因也很好理解，因为width可以通过设置为当前文本宽度的倍数来进行调整，而当前文本宽度的值是确定的，这样，可以最方便地调整图片在文本中的大小比例，而其他图片的特征都缺少这样一个确定的基准值，因此通常不怎么用到
 
     \begin{figure}[htbp]
         \centering
@@ -278,7 +281,7 @@
     \label{8}
     \end{figure}
 
-    第二种方式是通过``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令来完成，其原理类似minipage环境，第一个必选参数用来输入小图标题（而在``\textbackslash subfloat[subcaption]\{body\}''命令种这是一个可选参数），第二个可选参数用来输入边框的宽度，第三个必选参数用来输入``\textbackslash includegraphics[options]\{name\}''命令。注意，和在minipage环境中不同，``\textbackslash includegraphics[options]\{name\}''命令中表示图片宽度的可选参数在``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令中仍然是以文本宽度作为基准的，因此不需要改变其大小。另外，根据subcaption宏包的官方资料显示，``\textbackslash subcaptionbox\{heading\}[width]\{content\}''的第二个可选参数表示的是边框的宽度，默认值就是其中图片的宽度，但是经检验，将其设置为图片宽度（\ref{9}）和不设置这一可选参数（\ref{10}）两种情况下，前者得到的效果是有略微差异的，前者和使用``\textbackslash subcaption\{\}''命令（\ref{8}）的效果相同，后者和使用``\textbackslash subfloat[subcaption]\{body\}''命令（\ref{7}）的效果相同。
+    第二种方式是通过``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令来完成，其原理类似minipage环境，第一个必选参数用来输入小图标题（而在``\textbackslash subfloat[subcaption]\{body\}''命令种这是一个可选参数），第二个可选参数用来输入边框的宽度，第三个必选参数用来输入``\textbackslash includegraphics[options]\{name\}''命令。注意，和在minipage环境中不同，``\textbackslash includegraphics[options]\{name\}''命令中表示图片宽度的可选参数在``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令中仍然是以文本宽度作为基准的，因此不需要改变其大小。另外，根据subcaption宏包的官方手册显示，``\textbackslash subcaptionbox\{heading\}[width]\{content\}''的第二个可选参数表示的是边框的宽度，默认值就是其中图片的宽度，但是经检验，将其设置为图片宽度（\ref{9}）和不设置这一可选参数（\ref{10}）两种情况下，前者得到的效果是有略微差异的，前者和使用``\textbackslash subcaption\{\}''命令（\ref{8}）的效果相同，后者和使用``\textbackslash subfloat[subcaption]\{body\}''命令（\ref{7}）的效果相同。
 
 %todo subcaption宏包命令，和subfig宏包不兼容
     \begin{figure}[htbp]
@@ -521,7 +524,7 @@
     \end{figure}
 
 \subsection{结论}
-    通过以上各命令的效果，可以发现，排版效果两种方式是：
+    通过以上各命令的效果，可以发现，排版效果最好的两种方式是：
 
     \begin{itemize}
         \item 使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令，并且为其设置了相等的边框宽度（\ref{16}）
@@ -532,7 +535,7 @@
     
     看来，如果要并排插入图片，最好选择使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令或者subfigure环境。
     
-% \clearpage
+\clearpage
 %rfr 使用"\clearpage"命令来清空浮动队列，并且新开一页，如果此处不使用这一项命令，则"doraemon_subfigure"一图会作为浮动体被插入到下面的文本当中，关于"\newpage"命令和"\clearpage"命令的区别，可以参考：https://blog.csdn.net/weixin_45008608/article/details/115835064、https://www.latexstudio.net/archives/8005.html
 
 \listoffigures
