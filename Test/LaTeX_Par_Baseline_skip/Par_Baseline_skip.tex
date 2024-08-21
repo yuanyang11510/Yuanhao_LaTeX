@@ -1,17 +1,23 @@
-﻿\documentclass{article}
+\documentclass{article}
 \usepackage{blindtext}
-    % blindtext宏包提供"\blindtext"命令和"\Blindtext"命令用于生成一段用于测试的文本
+    % blindtext宏包提供"\blindtext"命令和"\Blindtext"命令用于生成一段用于测试的文本，提供"\blinddocument"命令和"\Blinddocument"命令用于生成一篇用于测试的带有章节名、列表等内容的文档
 \usepackage{indentfirst} 
     %* 纯外文环境下，即使使用"\indent"命令，首行也不缩进，可以加载indentfirst宏包解决该问题
 % \usepackage{ctex} 
     %* 加载ctex宏包也会导致首行缩进
 \usepackage[showframe]{geometry}
 
+\usepackage{fancyhdr}
+
+% \pagestyle{fancy}
+
 \title{12345}
 
 \begin{document}
 % \maketitle
-\section{\fbox{12345}}
+% \part{一}
+\section{\fbox{A}}
+% \subsection{a}
 %? 暂时还没有找到控制章节名和章节第一行之间距离的命令
 \fbox{parskip = \the\parskip} %* 段落间距默认值为0pt（可拉伸1pt）
 
@@ -23,8 +29,10 @@
 
 \fbox{which specifies the minimum space between the botton of two successive lines in a paragraph. Its value may be automatically reset by LaTeX, for example, by font changes in the text. The value used for an entire paragraph is the value in effect at the blank line or command which ends the paragraph unit.}
 
+% \subsection{b}
 \fbox{\blindtext}
 
+% \subsection{c}
 \fbox{\blindtext}
 
 \setlength{\parskip}{12pt} %* 设置段落间距为12pt，相当于在原来的段落与段落之间插入一个空行，再加上下面通过设置基线间距增加的一个空行，总共相当于插入两个空行
@@ -34,7 +42,9 @@
 
 % \newpage
 
-\section{\fbox{12345}}
+% \part{二}
+\section{\fbox{B}}
+% \subsection{a}
 
 \fbox{parskip = \the\parskip}
 
@@ -43,11 +53,20 @@
 \fbox{baselineskip = \the\baselineskip}
 
 \fbox{\blindtext}
-
 \fbox{\blindtext}
 
+% \subsection{b}
 \blindtext
 
+% \subsection{c}
 \blindtext
+
+\subsubsection{(1)}
+\blindtext
+
+\subsubsection{(2)}
+\blindtext
+
+a\textasciitilde a\~{}
 
 \end{document}

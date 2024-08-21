@@ -1,0 +1,118 @@
+﻿\documentclass{article}
+\usepackage{ctex}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{blindtext}
+\usepackage{cuted} % cuted宏包提供strip环境，用于解决figure*环境中的图片在双栏模式下无法在首页被插入的问题
+%! 注意，在strip环境中需要使用caption宏包提供的"\captionof{float type}{heading}"命令来设置标题
+% \usepackage{dblfloatfix} % dblfloatfix宏包用于解决figure*环境中的图片在双栏模式下无法在底部被插入的问题，但是仍然无法解决图片无法在首页被插入的问题
+%! 注意，dblfloatfix宏包和stfloats宏包不兼容，只能加载其中一个
+%* 但是dblfloatfix宏包可以和nidanfloat宏包兼容
+\usepackage{stfloats} % stfloats宏包可以同时解决上述两个问题
+% \usepackage{nidanfloat} % nidanfloat宏包也可以同时解决上述两个问题
+%! 注意，加载nidanfloat宏包会导致通过cuted宏包提供的strip环境中的图片消失，但编译不会报错
+
+\setlength{\columnseprule}{.4pt}
+
+\begin{document}
+% 上接文件"LaTeX_Wu_Kanglong.tex"中"3.11 分栏"一节的内容
+%rfr （一）首先是关于figure*环境中的图片在双栏模式下只能在下一页被插入的问题，可以使用cuted宏包提供的strip环境来解决，可以参考：https://latex.org/forum/viewtopic.php?f=45&t=10661
+\twocolumn
+    % 以下strip环境由cuted宏包提供
+    \begin{strip}
+        \centering
+        \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+        \captionof{figure}{这是用strip环境在双栏模式下插入的图片} %! 在strip环境中需要使用caption宏包提供的"\captionof{float type}{heading}"命令来设置标题
+    \end{strip}
+
+    \textbf{第三部分：strip环境}
+
+    \blindtext[2]
+
+%rfr （二）关于figure*环境中的图片在双栏模式下只能在双栏顶部被插入的问题，可以使用dblfloatfix宏包来解决（"dbl"来自"double (column)"的缩写），但是仍然无法解决图片无法在首页被插入的问题，可以参考：https://tex.stackexchange.com/questions/167186/figure-environment-skips-page-while-using-two-column-document
+%! 由于dblfloatfix宏包和stfloats宏包不兼容，因此在此文档中没有加载dblfloatsfix宏包，打印出的实际上是stfloats/nidanfloat宏包的效果，如果想要查看dblflatsfix宏包的效果，可以选择加载该宏包而不加载另外两个宏包
+\twocolumn
+    \begin{figure*}[b] % 强制设置插入位置为底部
+        \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+        \caption{这是加载了dblfloatfix宏包后，用figure*环境在双栏模式下插入的图片}
+    \end{figure*}
+
+    \textbf{第四部分：dblfloatfix宏包}
+
+    \blindtext[4]
+
+% rfr （三）有两个宏包可以一次性解决上述两个问题：stfloats宏包（"st"似乎是来自"standard"的缩写）和nidanfloat宏包（这是一个日本人开发的宏包，"nidan"来自日语“二段”的罗马字，“二段”即指“双栏”），可以分别参考：https://blog.csdn.net/zhuang19951231/article/details/79176298、https://tex.stackexchange.com/questions/167186/figure-environment-skips-page-while-using-two-column-document
+\twocolumn
+    \begin{figure*}[bp]
+        % 当设置为h时，图片会插入到第二页的顶部，说明h是无效设置，事实上，从figure*环境的功能出发也很容易理解这一点，h设置完全可以由figure环境来承担
+        % 当设置为t(b)(p)时，图片会插入首页的顶部，这相当于cuted宏包提供的strip环境的效果
+        % 当设置为b(p)时，图片会插入首页的底部，这是dblfloatfix宏包无法达到的效果
+        \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+        \caption{这是加载了stfloats/nidanfloat宏包后，用figure*环境在双栏模式下插入的图片（一）}
+    \end{figure*}
+
+    \textbf{第五部分：stfloats宏包}
+
+    \blindtext[3]
+
+    \begin{figure*}[tbp]
+        \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+        \caption{这是加载了stfloats/nidanfloat宏包后，用figure*环境在双栏模式下插入的图片（二）}
+    \end{figure*}
+    
+    \blindtext[3]
+
+\onecolumn
+
+%* 下面讨论在multicol宏包提供的multicols环境中插入图片的问题
+%! 在multicols环境中，上述的很多命令都会失效：
+%! （1）使用figure环境插入图片，虽然编译不会报错，但是图片实际不会被插入进多栏中，使用cuted宏包提供的strip环境插入图片，也会产生类似的效果，在multocols环境中，只能使用figure*环境插入图片
+%! （2）加载nidanfloat宏包会导致multicols环境中使用figure*环境插入的图片消失，但编译不会报错，类似于其对strip环境中的图片产生的影响
+% （3）加载stfloats宏包，能够顺利使用figure*环境在多栏中插入图片，但是图片无法插入到首页当中，而只能从第二页开始插入
+% （4）加载dblfloatfix宏包，产生的也是和（3）中一样的效果，这倒是和dblfloatfix宏包本身提供的功能相符合
+%* （5）事实上，就算不加载stfloats宏包和dbfloatfix宏包，（3）和（4）中的效果仍然存在，说明这是multicols环境自带的效果，具体情况请看下文注释
+
+        \begin{figure}[t]
+            \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+            \caption{这是在multicols环境外插入的图片（首页顶部）}
+        \end{figure}
+
+        \begin{figure}[b]
+            \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+            \caption{这是在multicols环境外插入的图片（首页底部）}
+        \end{figure}
+        %rfr 如果要达到在多栏的首页插入图片的效果，只能在multicols环境外之前的位置插入图片（此时选择figure环境还是figure*环境都可以），如果设置t(b)(p)，则插入首页的顶部，如果设置b(p)，则插入首页的底部，可以参考：https://latex.org/forum/viewtopic.php?f=45&t=10661
+\begin{multicols}{3}[\centering 这是分成三栏的前言] 
+        % 和"\twocolumn[text]"命令的可选参数一样，相应内容会打印在多栏顶部预留出的单栏区域
+
+        \begin{figure*}[t]
+            %* 当设置为t(b)(p)时，图片会从第二页开始插入合适页面的顶部，这也是默认情况下的效果
+            \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+            \caption{这是在multicols环境中用figure*环境插入的图片（首页以后的顶部）}
+        \end{figure*}
+
+        \textbf{第六部分：multicols环境}
+
+        \blindtext[2]
+
+        \begin{figure*}[b]
+            %* 当设置为b(p)时，图片会从第二页开始插入合适页面的底部，这相当于dblfloatfix宏包提供的效果
+            \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+            \caption{这是在multicols环境中用figure*环境插入的图片（首页以后的底部）}
+        \end{figure*}
+
+        \columnbreak
+
+        \mbox{}
+
+        \columnbreak
+
+        \blindtext[2]
+
+\end{multicols}
+
+
+\blindtext
+
+\end{document}

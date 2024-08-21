@@ -59,24 +59,24 @@
 \contentsline {subsection}{\numberline {3.7}计数器与列表}{16}{subsection.3.7}%
 \contentsline {subsubsection}{\numberline {3.7.1}计数器}{16}{subsubsection.3.7.1}%
 \contentsline {subsubsection}{\numberline {3.7.2}列表}{17}{subsubsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.8}浮动体与图表}{19}{subsection.3.8}%
-\contentsline {subsubsection}{\numberline {3.8.1}浮动体}{19}{subsubsection.3.8.1}%
-\contentsline {subsubsection}{\numberline {3.8.2}图片}{19}{subsubsection.3.8.2}%
-\contentsline {subsubsection}{\numberline {3.8.3}表格}{19}{subsubsection.3.8.3}%
-\contentsline {subsubsection}{\numberline {3.8.4}非浮动体图标和并列图表}{19}{subsubsection.3.8.4}%
-\contentsline {subsection}{\numberline {3.9}页面设置}{19}{subsection.3.9}%
-\contentsline {subsection}{\numberline {3.10}纸张、方向和边距}{19}{subsection.3.10}%
-\contentsline {subsection}{\numberline {3.11}页眉和页脚}{19}{subsection.3.11}%
-\contentsline {subsection}{\numberline {3.12}抄录与代码环境}{19}{subsection.3.12}%
-\contentsline {subsection}{\numberline {3.13}分栏}{19}{subsection.3.13}%
-\contentsline {subsection}{\numberline {3.14}文档拆分}{19}{subsection.3.14}%
-\contentsline {subsection}{\numberline {3.15}西文排版及其他}{19}{subsection.3.15}%
-\contentsline {subsubsection}{\numberline {3.15.1}连写}{19}{subsubsection.3.15.1}%
-\contentsline {subsubsection}{\numberline {3.15.2}断词}{19}{subsubsection.3.15.2}%
-\contentsline {subsubsection}{\numberline {3.15.3}硬空格与句末标点}{19}{subsubsection.3.15.3}%
-\contentsline {subsubsection}{\numberline {3.15.4}特殊符号}{19}{subsubsection.3.15.4}%
-\contentsline {section}{\numberline {第4章}数学排版}{19}{section.4}%
-\contentsline {section}{\numberline {第5章}\LaTeX 进阶}{19}{section.5}%
-\contentsline {section}{\numberline {第6章}这是目录中显示的标题}{19}{section.6}%
-\contentsline {section}{不编号的一章}{19}{section*.4}%
-\contentsline {section}{\numberline {第7章}这是参考文献}{19}{section.7}%
+\contentsline {subsection}{\numberline {3.8}浮动体与图表}{18}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}浮动体}{18}{subsubsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.2}图片}{18}{subsubsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.3}表格}{18}{subsubsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.8.4}非浮动体图标和并列图表}{18}{subsubsection.3.8.4}%
+\contentsline {subsection}{\numberline {3.9}页面设置}{18}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.9.1}纸张、方向和边距}{18}{subsubsection.3.9.1}%
+\contentsline {subsubsection}{\numberline {3.9.2}页眉和页脚}{18}{subsubsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.10}抄录与代码环境}{18}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}分栏}{19}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.12}文档拆分}{26}{subsection.3.12}%
+\contentsline {subsection}{\numberline {3.13}西文排版及其他}{26}{subsection.3.13}%
+\contentsline {subsubsection}{\numberline {3.13.1}连写}{26}{subsubsection.3.13.1}%
+\contentsline {subsubsection}{\numberline {3.13.2}断词}{26}{subsubsection.3.13.2}%
+\contentsline {subsubsection}{\numberline {3.13.3}硬空格与句末标点}{26}{subsubsection.3.13.3}%
+\contentsline {subsubsection}{\numberline {3.13.4}特殊符号}{26}{subsubsection.3.13.4}%
+\contentsline {section}{\numberline {第4章}数学排版}{26}{section.4}%
+\contentsline {section}{\numberline {第5章}\LaTeX 进阶}{26}{section.5}%
+\contentsline {section}{\numberline {第6章}这是目录中显示的标题}{26}{section.6}%
+\contentsline {section}{不编号的一章}{26}{section*.10}%
+\contentsline {section}{\numberline {第7章}这是参考文献}{26}{section.7}%

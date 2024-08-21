@@ -1,5 +1,4 @@
-\documentclass[twoside]{ctexart} 
-            %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
+\documentclass{ctexart} 
 
 % 封面
 \title{简单高效\LaTeX（ 吴康隆）学习笔记\thanks{This is a footnote in the title.}}
@@ -8,8 +7,12 @@
             % "\title{title}和"\author{}"是必须定义的，"\date{text}"如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以输入"\date{}"
             % 标题页的脚注用"\thanks{text}"命令完成
 
-% 宏包
+% 宏包-----------------------------------------------------------------------------------------------------------------------------------
+\usepackage{indentfirst} 
+            %* 纯外文环境下，即使使用"\indent"命令，首行也不缩进，可以加载indentfirst宏包解决该问题
+
 % \usepackage{ctex}
+            %* 加载ctex宏包也会导致首行缩进
 
 \usepackage[normalem]{ulem}
             % ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
@@ -138,8 +141,73 @@
 \usepackage{dcolumn} 
             % dcolumn宏包提供了小数点对齐的对齐方式
 
+\usepackage[twoside]{geometry}
+            % 借助geometry宏包进行页面设置
+            %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
 
+\usepackage{fancyhdr}
+            % 借助fancyhdr宏包控制页眉和页脚
+            %? "hdr"可能是来自"header"的缩写
+\pagenumbering{arabic}
+            % 设置页码的格式，默认值为arabic，还可以设置为Roman、roman、Alpha、alpha
+\pagestyle{fancy}
+            % 设置页眉和页脚的格式，还可以设置其他值，包括：empty（无页眉、页脚）、plain（无页眉，页脚只包含一个居中的页码）、headings（无页脚，页眉包含章节编码、章节名称与页码）、myheadings（无页脚，页眉包含页码和用户定义的信息，经检验，默认情况下只包含页眉中的页码）
+            %* 在单边模式下，如果不使用"\pagestyle{fancy}"命令，每一页都会显示不带下边线的页眉，不显示页脚，正文部分的第一页和第二页只在页眉的右侧显示页码，从第三页开始，在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示页码；如果使用"\pagestyle{fancy}"命令，每一页都会显示包含下边线的页眉以及不带基线的页脚，正文部分的第一页和第二页只在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码，从第三页开始，在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码
+            %* 在双边模式下，如果不使用"\pagestyle{fancy}"命令，奇数页显示不带下边线的页眉，偶数页显示页脚，正文部分的第一页只在页眉的右侧显示页码，正文部分的第二页只在页脚处显示页码，从第三页开始，奇数页在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示页码，偶数页在页脚处显示页码；如果使用"\pagestyle{fancy}"命令，每一页都显示带下边线的页眉和不带基线的页脚，正文部分的第一页只在页眉的左侧显示节（section）编号和节名称，在页脚处显示页码，正文部分的第二页只在页眉的右侧显示节（section）编号和节名称，从第三页开始，奇数页在页眉的左侧显示节（section）编号和节名称，在页眉的右侧显示次节（subsection）编号和次节名称，在页脚处显示页码，偶数页在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码
+            %rfr 事实上，上述提到的【节（section）编号和节名称】在页眉和页脚的设置中被属于“较高级别”（higher-level）的信息，【次节（subsection）编号和次节名称】属于“较低级别”（lower-level）的信息，这是在article文档类中的情况，在book文档类中，“较高级别”则是章（chapter），“较低级别”则是节（section），关于页眉和页脚的设置原理的详细介绍，可以参考：https://www.overleaf.com/learn/latex/Articles/How_does_LaTeX_typeset_headers_and_footers%3F#Commands_for_the_output_routine
+%* 注意，如果同时设置empty/plain/headings/myheadings参数和以下命令，优先适用前者，以下命令都不会生效，只有将"\pagestyle{}"命令设置为"fancy"参数，以下命令才会生效
+% \lhead{} 
+%             % 设置页眉左侧的内容，没有内容表示清空默认情况下的内容
+% \chead{} 
+%             % 设置页眉中间的内容
+% \rhead{} 
+%             % 设置页眉右侧的内容，没有内容表示清空默认情况下的内容
+% \lfoot{} 
+%             % 设置页脚左侧的内容
+% \cfoot{} 
+%             % 设置页脚中间的内容，没有内容表示清空默认情况下的页码
+% \rfoot{} 
+%             % 设置页脚右侧的内容
+\renewcommand{\headrulewidth}{.4pt} 
+            % 设置页眉下边线的高度（不是宽度），默认值为0.4pt
+\renewcommand{\footrulewidth}{.4pt} 
+            % 设置页脚基线的高度（不是宽度），默认值为0pt
+% \fancyhf[HOR]{元昊} 
+            % 可选参数中可以通过三个字母（大小写均可，前后顺序可以变化）来设置内容位置：H/F代表“页眉/页脚”，E/O代表“偶数页/奇数页”，L/C/R代表“左侧/中间/右侧”
+            %* 这一命令相比之前几条设置页眉/页脚的命令，优势在于可以同时设置多个位置的页眉/页脚，并且可以分奇偶页进行设置，也可以单独设置"\fancyhead[places]{header}"或者"\fancyfoot[places]{footer}"
+% 也可以通过"\fancypagestyle{style name}{definitions}"命令自定义页眉和页脚格式
+% \fancypagestyle{newstyle}{
+%     \fancyhf{} % 清空页眉和页脚
+%     \fancyhead[c]{\thesection} % 在页眉中间显示节（section）的计数器内容
+%     \fancyfoot{\thepage} % 由于没有指定位置，因此在页脚的左中右三个位置处均显示页码
+%     }
+% \pagestyle{newstyle}
 
+\usepackage{shortvrb}
+            % shortvrb宏包支持以一对符号代替"\verb"命令
+
+\usepackage{blindtext}
+            %* blindtext宏包提供"\blindtext"命令和"\Blindtext"命令用于生成一段用于测试的文本，提供"\blinddocument"命令和"\Blinddocument"命令用于生成一篇用于测试的带有章节名、列表等内容的文档
+
+% \usepackage{cuted}
+            %* cuted宏包提供strip环境，用于解决figure*环境中的图片在双栏模式下无法在首页被插入的问题
+            %! 注意，在strip环境中需要使用caption宏包提供的"\captionof{float type}{heading}"命令来设置标题
+
+% \usepackage{dblfloatfix}
+            %* dblfloatfix宏包用于解决figure*环境中的图片在双栏模式下无法在底部被插入的问题，但是仍然无法解决图片无法在首页被插入的问题
+            %! 注意，dblfloatfix宏包和stfloats宏包不兼容，只能加载其中一个
+            %* 但是dblfloatfix宏包可以和nidanfloat宏包兼容
+
+% \usepackage{stfloats} 
+            %* stfloats宏包可以同时解决上述两个问题
+
+% \usepackage{nidanfloat} 
+            %* nidanfloat宏包也可以同时解决上述两个问题
+            %! 注意，加载nidanfloat宏包会导致通过cuted宏包提供的strip环境中的图片消失，但编译不会报错
+
+\usepackage{multicol}
+            % multicol宏包提供multicols环境，可以使同一页内分栏与单栏并存，或者分成多栏，但是此时将无法使用不带星号的浮动体和边注
+            %! 注意不要将multicols环境和表格中用于合并列的"\multicolumn{n}{cols}{text}"混淆
 
 
 \usepackage{hyperref}
@@ -149,7 +217,8 @@
             % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
             %* 如果以上命令作为hyperref宏包的可选参数，应该将其置于必选参数"{hyperref}"的前面，否则设置的可选参数无法生效
 
-% 其他设置
+% 其他设置------------------------------------------------------------------------------------------------------------------------------------
+% 设置大纲深度
 % \setcounter{tocdepth}{2}
             %* 大纲在目录中编号到深度2（即"subsection"一级）为止
 % \setcounter{secnumdepth}{2}
@@ -166,8 +235,7 @@
             %rfr 重定义"\the+计数器名称"命令不仅可以改变章节编号的数值形式，还可以改变章节名称的表述形式，比如上述命令中将"section"的表述形式从单纯的阿拉伯数字改为了"第+阿拉伯数字+章"的形式，可以参考：https://tex.stackexchange.com/questions/279744/change-the-name-of-sections，但是"subsection"、"subsubsection"也需要进行相应的修改，因为后两者的表述形式中包含了"section"的表述形式（如果还设置了"paragraph"、"subparagraph"，则也需要进行相应的修改），可以参见"3.7.1 计数器"一节中关于“调用计数器”部分的介绍
             %* 书中第"3.6.2 大纲与章节"一节中还提到重定义book/report文档类中的"chapter"这一大纲等级的编号和表述形式，但只涉及了"\chaptername"命令，下面简要介绍重定义"chapter"的两个命令："\chaptername"命令和"\thechapter"命令，使用"\chapter{}"命令，打印出的默认形式是："Chapter 阿拉伯数字（计数器） + 章名称"，其中，"Chapter"是由"\chaptername"控制的，"chapter"以下的"section"、"subsection"等大纲等级不包含这一部分，阿拉伯数字（计数器）是由"\thechapter"命令控制的，可以类比"section"对应的"\thesection"命令等，章名称是由"\chapter{}"命令控制的，因此，重定义"\chaptername"命令改变的是第一部分，重定义"\thechapter"命令改变的是第二部分。"chapter"之上的"part"这一大纲等级的设置也可以参照"chapter"的情况，只不过"\part{}"命令打印出的默认形式是“Part 大写罗马数字（计数器） + 卷名称”
 
-
-
+% --------------------------------------------------------------------------------------------------------------------------------------
 \begin{document}
 
 % 打印标题
@@ -236,24 +304,25 @@
             \{ 
             \} 
 
-        % 以下是输出反斜杠的三种方法，最后一种打印出来的形式和前两种不同
-        % 方法一，这一命令两边的数学环境是不可少的，否则会报错
+        % 以下是输出反斜杠的三种方法
+        % 方法一，这一命令两边的数学环境是不可少的，否则会报错        
             $\backslash$
 
         % 方法二，这一命令不需要数学环境
             \textbackslash
 
         % 方法三，使用ASCII码进行输出，需要搭配tt字体环境使用，更多符号输出方式可以参考P21
-            %* 实际上除了tt字体之外，也可以选择其他字体命令
-            \texttt{\char92}
+            %* 实际上除了tt字体之外，也可以选择其他字体命令，比如默认的rm字体
+            \textrm{\char92}
 
-            {\ttfamily \char92}
+            {\rmfamily \char92}
+            %! 第一种方法、第三种方法输出的反斜杠和第二种方法输出的反斜杠不完全相同：如果将这几种方法输出的反斜杠排列在一行上，会发现第二种方式输出的反斜杠和后面反斜杠符号的间距更小，但是有意思的是，如果将反斜杠后面的符号替换成其他符号，这些反斜杠后的这一间距又会恢复相同，因此在实际情况中，只需要在需要连续使用两个反斜杠符号时，注意选择命令即可，比如，如果要输出"\\"符号，应该选用两个连续的"\textbackslash"命令
             %* 顺便在此可以讨论"\texttt{}"和"{\ttfamily}"这两类不同的命令，这两类命令的大括号的位置和功能是不同的：前一种命令的大括号置于命令之后，是强制性的，用来放置相应的参数，只有大括号内的内容才会受到该命令的影响，其特点有点类似于环境
             %! 如果将这对大括号放置在命令和统辖范围的两边，则该命令只会影响到气候的第一个字符，之后的其它字符则不受影响
             %* 而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要限制该命令影响的范围，则可以在该命令和需要统辖的范围两边加上大括号
             %! 如果只在命令之后的统辖内容的两边加上大括号，则该大括号不会发挥作用，即其后的大括号以外的内容仍然会受到该命令的影响
             %* 下文中会反复出现这两类命令，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论
-            
+
         % 以下是输出类似扬抑符的命令
             \^{} \^a
             %* 该符号如果按照书上所说的命令，单独打印时会报错，需要在后面加上一对大括号，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），实际输出的就是一个扬抑符（circumflex）
@@ -277,14 +346,15 @@
 
     \subsection{标点与强调}
         % 大于号和小于号
+        %* 以下两种方法输出的都是数学符号中的大于号和小于号
             > < 
             %! TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境
             
             $>$ $<$ 
             % 数学符号中的大于号和小于号需要放在数学环境$$中
             
+        %* 文本中的大于号和小于号需要使用\textgreater和\textless命令
             \textgreater \textless 
-            % 文本中的大于号和小于号需要使用\textgreater和\textless命令
         
             \subsubsection{引号}
             “你好，‘世界’！” 
@@ -583,6 +653,7 @@
             
             }}
             %* 所谓的“行距”在LaTeX中称为“基线间距”（baselineskip），这一称呼建立在LaTeX的另一个重要概念“箱子”（box）的基础之上，基线位于箱子的内部，箱子顶部到基线的距离称为“高度”（height），箱子底部到基线的距离称为“深度”（depth），“行距”这一称呼容易被误认为是【相邻两行文字之间的空白区域的距离】，但其实仔细思考一下就会发现这种说法站不住脚，因为这个“空白区域”并不是一个矩形区域，而是一个由于上下字符的不同而形成的一个不规则的区域，根本无所谓“距离”的概念：这一区域内的上下两端之间的垂直距离是在不断变化的！因此，即使要称呼“行距”，也要意识到其真正所指是相邻两条基线之间的距离。基线间距的默认值是12倍的文字高度（在article文档类中显示为12pt）。另外，要注意“基线间距”的概念是在同一个段落内进行定义的：一个段落箱子其实就是由一层又一层的行箱子堆叠而成，通过"\baselineskip"命令调整基线间距时，上一行箱子的底部和下一行箱子的顶部之间的距离会随之发生变化，而箱子本身的上下边距则不会变化。还有一个值得思考的地方，那就是前文提到的段落间距的默认值一般情况下是0pt（有1pt的拉伸距离），而唯一可能存在0pt的位置就是上一个段落的最后一行的箱子的底部和下一个段落的第一行箱子的顶部之间的距离，又因为上一个段落的最后一行和下一个段落的第一行之间应该相隔同样的基线间距（暂时缺少官方文献的出处，但这似乎是一个在排版中不言自明的常识），可以推得在同一段落内，上一行的箱子的底部和下一行的箱子的顶部也应该是重合的，在这一推论下，还可以发现，基线间距其实就是上一行箱子的“深度”加上下一行箱子的“高度”，所以，默认情况下的基线间距等于箱子的上下边距，也即箱子的上下边距为12pt
+            %rfr 关于"\parskip"和"\baselineskip"命令的测试，可以参考文件"Par_Baseline_skip.tex"
             %! "\selectfont"是"\fontsize{size}{skip}{\selectfont}"命令中预先设定好的一个命令名称，用来引出后面需要修改字号和行距的内容，不要错误地将其理解为需要替换为一个具体的字体名称
             %* 类比前文提到的段落间距的设置，该命令的控制对象是统辖范围内的每一行和其前面一行之间的距离（包括统辖范围内第一行和统辖范围外之前的最后一行之间的距离），因此，不管统辖范围内的最后一行的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一行之间的距离都会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的
             %! 和上文中的"{\setlength{cmd}{length}}"命令不同，而与上文中的"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令类似，"\fontsize{size}{skip}{\selectfont}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的行距将无法生效，而只有设置的字号生效
@@ -704,6 +775,7 @@
             这是在\ref{subsubsec:3.4.6} 一节设置的标签，这一节的名称是\nameref{subsubsec:3.4.6}，这一标签所在的页码是\pageref{subsubsec:3.4.6}
             %* 注意，如果不使用"\section{title}"命令而使用多一个"*"号的"\section*{title}"命令，则计时器功能将关闭，同时也会影响到"\label{}"命令和"\ref{}"命令，无法索引出相应的大纲编号
             %* 书中提到"\nameref{label}"命令由nameref宏包提供，但是经检验，即使不加载nameref宏包，这一命令依然生效，说明这一命令应该已经被LaTeX吸收，或者也许本来就是LaTeX的原生命令
+            %rfr 但是这种索引方式仍然需要依靠在相应位置设置标签来完成，如果想要直接索引出相应章节的名称，可以参考：https://tex.stackexchange.com/questions/75168/get-current-section-name-without-label
             
         % amsmath宏包提供的索引形式
             这是在\eqref{subsubsec:3.4.6}一节设置的标签
@@ -964,7 +1036,7 @@
                 \item[LaTeX] 一个排版系统
                 \item[.tex] LaTeX文档扩展名  
             \end{description}
-            % 默认的方括号中的内容会加粗显示
+            % 方括号中的内容会加粗显示
 
     \subsection{浮动体与图表}
 
@@ -981,15 +1053,137 @@
             %rfr 关于并列图表的相关命令，可以参考文件"Picture.tex"
 
     \subsection{页面设置}
-        \subsection{纸张、方向和边距}
+        \subsubsection{纸张、方向和边距}
             %rfr 关于geometry宏包的相关命令，可以参考文件"Geometry.tex"
 
-        \subsection{页眉和页脚}
-
+        \subsubsection{页眉和页脚}
+            %rfr 参看导言区关于fancyhdr宏包及相关命令的介绍
 
     \subsection{抄录与代码环境}
+        %* 下面先引用``3.1.2 保留字符''一节以及``3.2 标点与强调''一节中提到的\LaTeX 无法直接通过文本输入打印的字符（只引用文本中使用的符号，而不包括数学环境中的符号；汉语、英语、法语中的名称用"/"符号隔开）：
+            \begin{itemize}
+                \item \#（井号/number sign, hash, hashtag, pound sign/croisillon）
+                \item \$（美元符号，金钱符号，比索符号/dollar sign, peso sign/symbole dollar）
+                \item \%（百分号/percent signr/pour cent, pour(-)cent）
+                \item \&（和号/ampersand, and sign/esperluette）
+                \item \_（下横线，独立下划线，底线/free(-)standingunderscore, underline, low line, low dash）
+                \item \{\}（大括号，花括号/braces, curly brackets/accolades）
+                \item \textbackslash \textrm{\char92} {\rmfamily \char92}（反斜杠，反斜线/backslash,reverse slash, hack, whack, slosh, bash, backslant, etc./contre-oblique, barre oblique inversé, backslash, antislash
+                \item \^{}（扬抑符/circumflex/accent circonflexe）
+                \item \~{} \textasciitilde（波浪号/tilde/tilde）
+                \item \textgreater \textless（大于号、小于号）
+            \end{itemize}
+        
+        % 使用"\verb(*)"命令或者verbatim(*)直接输出这些符号，在相应的命令或者环境中，这些符号在原来编程语言中的功能都会失效，打印出的字体默认为tt字族
+            % \verb|# $ % & _ { } \ ^ ~ < >|
+            %! 书中提到可以用花括号（即大括号）将抄录内容括起来，但是经检验，这样编译会报错，可以用"{}"、"*"符号以外的符号将抄录内括起来，但是最好不要选用这些抄录内容中的符号，否则会导致末尾的符号的字体发生变化，比如此处选用"|"符号将抄录内容括起来
+            %* VS Code中使用这一命令时，虽然编译不会报错，但是会被当成错误（error）而划上红线，因此此处将其注释掉
 
+            \begin{verbatim}
+                # $ % & _ { } \ ^ ~ < >
+            \end{verbatim}
+            %? 使用verbatim环境将抄录内容包起来，但是打印的时候抄录内容的前面和下面一行各自会出现一段空格，前面的空格似乎和verbatim环境在页面中的缩进有关系，下面一行上的空格暂时不知道原因是什么
+        
+        % 带"*"号的"verb*"命令或者verbatim*环境表示将抄录内容中的空格用"\textvisiblespace"命令表示出来（显示为"␣"符号）
+            % \verb*|# $ % & _ { } \ ^ ~ < >|
+
+            \begin{verbatim*}
+                # $ % & _ { } \ ^ ~ < >
+            \end{verbatim*}
+
+        % shortvrb宏包支持以一对符号代替"\verb"命令
+            % \MakeShortVerb |
+            % |# $ % & _ { } \ ^ ~ < >|
+            %! 即使在上述的命令和相关内容两边加上大括号，选取的符号在之后的内容中将无法再被输出，经检验，如果选择"|"符号，则之后编译不会报错，但是不再会打印出"|"符号，如果选择"?"符号，则之后编译会报错
+
+% 分栏开始-----------------------------------------------------------------------------------------------------------------------------------
+        \setlength{\columnsep}{30pt}
+            % 设置“栏边距”（双栏的左右边线到中间分隔线之间的距离），默认值是10pt
+            %! 注意，这一命令只有放置在"\twocolumn[text]"命令之前才能对栏边距产生影响，这和对"\columnseprule"的设置不一样
+    \twocolumn[\blindtext]
+            % 可以使用"\twocolumn[text]"命令进行临时分栏，分栏的同时会自动在前一行命令的最后加上"\clearpage"命令，因此分栏一定是另起一页进行
+            % 可选参数用于输出双栏上方预留出的单栏区域的内容
+        \setlength{\columnseprule}{.4pt}
+            % 双栏之间的分隔线宽\度默认值为0pt，一般可以设置为0.4pt
+            %! 这一命令即使放置在"\twocolumn[text]"命令之后，也可以对分隔线宽度产生影响
     \subsection{分栏}
+            %* 可以发现，如果要在双栏模式下设置章节名，相应的命令需要放置在"\twocolumn[text]"命令之后
+            \textbf{第一部分：figure环境}
+
+            这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……
+
+            \newpage 
+            % 在双栏模式下，"\newpage"命令的效果是换栏，"\clearpage"命令的效果才是换页
+            \begin{figure}[htbp]
+                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+                \caption{这是用figure环境在双栏模式下插入的图片（一）}
+            \end{figure}
+            这是一段测试文字……这是一段测试文字……这是一段测试文字……
+            
+            \begin{figure}[htbp]
+                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+                \caption{这是用figure环境在双栏模式下插入的图片（二）}
+            \end{figure}
+            这是一段测试文字……这是一段测试文字……
+            \begin{figure}[htbp]
+                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+                \caption{这是用figure环境在双栏模式下插入的图片（三）}
+            \end{figure}
+            这是一段测试文字……这是一段测试文字……这是一段测试文字……
+
+            %* 可以发现，在双栏模式下使用figure环境插入图片和在单栏模式下没有什么区别，只不过插入的区域从单栏变成了双栏，插入的图片可以在双栏内部浮动
+
+    \twocolumn
+            %* 继续使用一次"\twocolumn[text]"命令，效果是另起一页继续双栏模式
+            \textbf{第二部分：figure*环境}
+
+            \begin{figure*}[htbp]
+                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+                \caption{这是用figure*环境在双栏模式下插入的图片（一）}
+            \end{figure*}
+            这是一段测试文字……这是一段测试文字……这是一段测试文字……
+            
+            \begin{figure*}[htbp]
+                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+                \caption{这是用figure*环境在双栏模式下插入的图片（二）}
+            \end{figure*}
+            这是一段测试文字……这是一段测试文字……
+            \begin{figure*}[htbp]
+                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
+                \caption{这是用figure*环境在双栏模式下插入的图片（三）}
+            \end{figure*}
+            这是一段测试文字……这是一段测试文字……这是一段测试文字……
+
+            \blindtext[7]
+
+            %* 以上做了两步操作：（一）将上一部分的双栏模式中的命令当中的figure环境全部替换为figure*环境，其他命令不变；（二）在原来的命令的末尾加上多行"\blindtext"命令，将双栏中的文本内容填充到三页的篇幅。经过这两步操作后，就会发现很有意思的打印效果：首先，所有的三张图片都被打印到了第二页或者第三页上，尽管这些图片其实很早就被插入进来，尤其是第一张图片，甚至在双栏模式开始之后的第一行就被插入进来，但是其仍然在第二页才被打印出来；其次，这三张图片都被插入进了第二页或者第三页的顶部，因此，可以发现figure*环境在双栏模式下其实并不遵循htbp中的hb规则，而只遵循tp规则（在第一页上似乎只遵循p规则，否则无法解释图片为什么没有被插入第一页的顶部）；最后，这些图片被插入的位置并不处于双栏模式下，而是处于单栏模式下，类似于"\twocolumn[text]"命令可选参数的设置效果。结合以上三点，可以发现figure*环境的作用就是在双栏模式下插入【不在双栏内部浮动，而是在每一页的双栏顶部预留出的单栏区域浮动】的图片。这一环境有其存在的合理性：和在双栏模式下的figure环境相比，其可以保证大图在双栏模式下依然拥有足够的插入空间，与双栏模式之外的figure环境相比，其可以保证图片仍然可以插入到双栏文本的内部，而不是只能出现在双栏文本的前面或者后面，table*环境和table环境的区别也可以参照理解。
+            %! figure*环境和table*环境中的"*"号和章节命令后面的"*"号代表了完全不同的功能，前者的功能上文已经详述，后者则会导致计数器停止计数，因此，需要意识到，LaTeX中的"*"号并不是一个带有专一功能的记号，而是一个代表在原有命令/环境的基础上改变某些功能的记号
+            %rfr 关于上述figure*环境的一些不足之处，多个宏包提出了解决的办法，可以参考文件"Twocolumn.tex"
+    \onecolumn
+            % 同样可以使用"\onecolumn"命令将双栏模式恢复为单栏模式，与此同时会自动在双栏模式内容的最后加上"\clearpage"命令，因此恢复单栏模式之后的内容会另起一页继续
+
+% 可以使用multicol宏包提供的multicols环境，将页面分成任意多栏
+    \begin{multicols}{3}[\centering 这是分成三栏的前言] 
+            % 和"\twocolumn[text]"命令的可选参数一样，相应内容会打印在多栏顶部预留出的单栏区域
+            \blindtext[2]
+
+            \columnbreak
+
+            \blindtext[2]
+
+            \newpage
+            %! 书中提到在该环境下使用"\columnbreak"命令来强制切换到新的一栏，但是经检验，"\newpage"命令依然可以达到相同的效果
+
+            \blindtext[2]
+    \end{multicols}
+
+    \blindtext
+    \clearpage 
+            %* 如果不在multicols环境的后面加上"\clearpage"命令，环境外之后的内容有可能会和多栏处于同一页面上
+            %? 这其实会引出一个问题：多栏环境下，系统如何决定多栏的高度？待研究
+            %rfr 关于在multicols环境中插入图片，参考文件"Twocolumn.tex"
+
+% 分栏结束------------------------------------------------------------------------------------------------------------------------------------
 
     \subsection{文档拆分}
 
