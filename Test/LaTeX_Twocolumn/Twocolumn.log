@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  22 AUG 2024 04:26
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  22 AUG 2024 14:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -475,6 +475,151 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 18.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 23--24
+[]\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 23--24
+\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段 测 试
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 23--24
+\TU/SimSun(0)/m/n/10.53937 文 字… …|  这 是 一 段 测 试 文 字… …|  这 是
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 23--24
+\TU/SimSun(0)/m/n/10.53937 一 段 测 试 文 字… …|  这 是 一 段 测 试 文 字
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 23--24
+\TU/SimSun(0)/m/n/10.53937 … …|  这 是 一 段 测 试 文 字… …|  这 是 一 段
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 23--24
+\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段 测 试
+ []
+
+
+
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 31--32
+[]\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段
+ []
+
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 37--43
+[]\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 37--43
+\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段 测 试
+ []
+
+
+
+[1
+
+
+]
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 56--57
+[]\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段
+ []
+
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 62--68
+[]\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段
+ []
+
+
+Overfull \hbox (1.12988pt too wide) in paragraph at lines 62--68
+\TU/SimSun(0)/m/n/10.53937 这 是 一 段 测 试 文 字… …|  这 是 一 段 测 试
+ []
+
+
+Overfull \hbox (2.25977pt too wide) in paragraph at lines 69--70
+[]\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
+ []
+
+
+Overfull \hbox (3.70152pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
+ []
+
+
+Overfull \hbox (0.52917pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 69--70
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+
+
+
+[2
+
+]
+
+
+
+[3]
+
+
+
+[4]
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 CUTED [- LAST -]
@@ -490,27 +635,27 @@ CUTED [output]: 0.0pt
 CUTED [leftcolumn badness]: 0
 CUTED [rightcolumn badness]: 0
 
-Overfull \hbox (2.25977pt too wide) in paragraph at lines 31--32
+Overfull \hbox (2.25977pt too wide) in paragraph at lines 86--87
 []\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
  []
 
 
-Overfull \hbox (3.70152pt too wide) in paragraph at lines 31--32
+Overfull \hbox (3.70152pt too wide) in paragraph at lines 86--87
 \TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
  []
 
 
-Overfull \hbox (0.52917pt too wide) in paragraph at lines 31--32
+Overfull \hbox (0.52917pt too wide) in paragraph at lines 86--87
 \TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
  []
 
 
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 31--32
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 86--87
 \TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
  []
 
 
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 31--32
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 86--87
 \TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
  []
 
@@ -518,172 +663,171 @@ Overfull \hbox (4.51518pt too wide) in paragraph at lines 31--32
 
 
 
-[1
-
+[5
 
 ]
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 
-Overfull \hbox (2.25977pt too wide) in paragraph at lines 43--44
+Overfull \hbox (2.25977pt too wide) in paragraph at lines 98--99
 []\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
  []
 
 
-Overfull \hbox (3.70152pt too wide) in paragraph at lines 43--44
+Overfull \hbox (3.70152pt too wide) in paragraph at lines 98--99
 \TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
  []
 
 
-Overfull \hbox (0.52917pt too wide) in paragraph at lines 43--44
+Overfull \hbox (0.52917pt too wide) in paragraph at lines 98--99
 \TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
  []
 
 
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 43--44
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 98--99
 \TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
  []
 
 
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 43--44
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 98--99
 \TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
  []
 
 
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 43--44
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 98--99
 \TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
  []
 
 
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 43--44
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 98--99
 \TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
  []
 
 
-
-
-
-[2
-
-]
-
-
-
-[3
-
-]
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-
-Overfull \hbox (2.25977pt too wide) in paragraph at lines 57--58
-[]\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
- []
-
-
-Overfull \hbox (3.70152pt too wide) in paragraph at lines 57--58
-\TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
- []
-
-
-Overfull \hbox (0.52917pt too wide) in paragraph at lines 57--58
-\TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
- []
-
-
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 57--58
-\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
- []
-
-
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 57--58
-\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
- []
-
-
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 57--58
-\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
- []
-
-
-
-
-
-[4
-
-]
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-
-Overfull \hbox (2.25977pt too wide) in paragraph at lines 64--65
-[]\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
- []
-
-
-Overfull \hbox (3.70152pt too wide) in paragraph at lines 64--65
-\TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
- []
-
-
-Overfull \hbox (0.52917pt too wide) in paragraph at lines 64--65
-\TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
- []
-
-
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 64--65
-\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
- []
-
-
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 64--65
-\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
- []
-
-
-Overfull \hbox (4.51518pt too wide) in paragraph at lines 64--65
-\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
- []
-
-
-
-
-
-[5]
 
 
 
 [6
 
 ]
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
- [7
+
+
+
+[7
 
 ]
 File: doraemon1.jpg Graphic file (type bmp)
 <doraemon1.jpg>
 
-Overfull \vbox (765.94553pt too high) has occurred while \output is active []
+Overfull \hbox (2.25977pt too wide) in paragraph at lines 113--114
+[]\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
+ []
 
 
-[8]
+Overfull \hbox (3.70152pt too wide) in paragraph at lines 113--114
+\TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
+ []
 
-[9] (Twocolumn.aux)
+
+Overfull \hbox (0.52917pt too wide) in paragraph at lines 113--114
+\TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 113--114
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 113--114
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 113--114
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+
+
+
+[8
+
+]
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+
+Overfull \hbox (2.25977pt too wide) in paragraph at lines 120--121
+[]\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, con-
+ []
+
+
+Overfull \hbox (3.70152pt too wide) in paragraph at lines 120--121
+\TU/lmr/m/n/10.53937 sectetuer adipiscing elit. Etiam lobor-
+ []
+
+
+Overfull \hbox (0.52917pt too wide) in paragraph at lines 120--121
+\TU/lmr/m/n/10.53937 neque pharetra sollicitudin. Praesent
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 120--121
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 120--121
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+Overfull \hbox (4.51518pt too wide) in paragraph at lines 120--121
+\TU/lmr/m/n/10.53937 egestas a, turpis. Mauris lacinia lorem
+ []
+
+
+
+
+
+[9]
+
+
+
+[10
+
+]
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+ [11
+
+]
+File: doraemon1.jpg Graphic file (type bmp)
+<doraemon1.jpg>
+
+Overfull \vbox (782.38698pt too high) has occurred while \output is active []
+
+
+[12]
+
+[13] (Twocolumn.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2022/07/14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 8096 strings out of 409034
- 219777 string characters out of 5756841
- 1938560 words of memory out of 5000000
- 30711 multiletter control sequences out of 15000+600000
+ 8117 strings out of 409034
+ 221194 string characters out of 5756841
+ 1944560 words of memory out of 5000000
+ 30732 multiletter control sequences out of 15000+600000
  559839 words of font info for 54 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,5n,111p,371b,440s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,6n,111p,638b,442s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Twocolumn.pdf (9 pages).
+Output written on Twocolumn.pdf (13 pages).

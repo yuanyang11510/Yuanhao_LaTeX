@@ -23,14 +23,16 @@
     \fbox{\includegraphics{doraemon1.jpg}}
     % XeLaTeX支持pdf、eps、png与jpg图片扩展名，所以可以写带扩展名的图片名称，也可以写不带扩展名的名称，如果不给出扩展名，将按上述4个扩展名的顺序依次搜索文件（吴康隆P50）
 
-% 通过图片的绝对路径引用图片
-    % \includegraphics{D:/OneDrive/（▲）Yuanhao_github/Yuanhao_LaTeX_github/Test/LaTeX_Picture/doraemon1.jpg} 
-    %! 使用相对路径始终无法成功编译，不知道原因是什么
+%* 通过图片的相对路径引用图片
+    \includegraphics{../LaTeX_Picture/doraemon1.jpg} 
+    %! 注意，使用相对路径的几个要点：
+    %! （1）以"../"符号表示省略的上级路径，在Windows系统中也使用正斜杠
+    %! （2）相对路径开始的第一级是".tex"后缀文件所在的文件名，不能比这一级高，当然也不能比这一级低
 
-% 通过一个专门存放图片的文件夹的路径引用图片
+%* 通过一个专门存放图片的文件夹的路径引用图片
     % reserved file for pictures
-    % \graphicspath{{D:/OneDrive/（▲）Yuanhao_github/Yuanhao_LaTeX_github/Test/LaTeX_Picture/Reserved file for pictures}}
-    % \includegraphics{doraemon2.jpg}
+    \graphicspath{{../LaTeX_Picture/Reserved file for pictures}}
+    \includegraphics{doraemon2.jpg}
     %!注意，使用"\graphicspath{dir-list}"命令时，路径两边应该套用两层大括号，否则无法成功编译
 
 \subsection{scale表示图片缩放倍数（0.3倍/0.5倍/0.7倍）}

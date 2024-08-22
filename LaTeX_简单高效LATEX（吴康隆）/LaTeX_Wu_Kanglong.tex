@@ -141,7 +141,7 @@
 \usepackage{dcolumn} 
             % dcolumn宏包提供了小数点对齐的对齐方式
 
-\usepackage[twoside]{geometry}
+% \usepackage[twoside]{geometry}
             % 借助geometry宏包进行页面设置
             %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
 
@@ -208,6 +208,10 @@
 \usepackage{multicol}
             % multicol宏包提供multicols环境，可以使同一页内分栏与单栏并存，或者分成多栏，但是此时将无法使用不带星号的浮动体和边注
             %! 注意不要将multicols环境和表格中用于合并列的"\multicolumn{n}{cols}{text}"混淆
+
+\usepackage{import} 
+            %* import宏包提供了"\import{full path}{file}"命令和"\subimport{relative path}{file}"命令，前者类似"\input{}"命令，后者可以嵌套使用：在文件一中使用"\import{full path}{file}"命令引用文件二，在文件二中使用"\subimport{relative path}{file}"命令引用文件三，这样就可以直接在文件一中使用"\import{full path}{file}"命令引用文件三
+            %rfr 可以参考import宏包的官方手册：https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/import/import.pdf，其中关于相对路径的说明："The 〈full-path〉 argument for \import can be a full absolute path or a relative path starting from the main working directory for the document."
 
 
 \usepackage{hyperref}
@@ -1097,102 +1101,120 @@
             %! 即使在上述的命令和相关内容两边加上大括号，选取的符号在之后的内容中将无法再被输出，经检验，如果选择"|"符号，则之后编译不会报错，但是不再会打印出"|"符号，如果选择"?"符号，则之后编译会报错
 
 % 分栏开始-----------------------------------------------------------------------------------------------------------------------------------
-        \setlength{\columnsep}{30pt}
-            % 设置“栏边距”（双栏的左右边线到中间分隔线之间的距离），默认值是10pt
-            %! 注意，这一命令只有放置在"\twocolumn[text]"命令之前才能对栏边距产生影响，这和对"\columnseprule"的设置不一样
-    \twocolumn[\blindtext]
+        \setlength{\columnsep}{10pt}
+            % 设置“栏间距”（左栏右边线和右栏的左边线之间的距离），默认值是10pt
+            %* 和表格中的"\tabcolsep"命令代表的“单元格边距”不同（参考文件"Table.tex"），此处的“栏间距”和中间的分隔线没有关系，关键的证据是双栏模式下文本宽度、栏宽和栏间距之间的长度关系：\textwidth = \columnwidth * 2 + \columnsep
+            %! 注意，这一命令只有放置在"\twocolumn[text]"命令之前才能对栏间距产生影响
+            %? 原因还不是很清楚
+    \twocolumn[\centering 这是分成双栏的前言]
             % 可以使用"\twocolumn[text]"命令进行临时分栏，分栏的同时会自动在前一行命令的最后加上"\clearpage"命令，因此分栏一定是另起一页进行
             % 可选参数用于输出双栏上方预留出的单栏区域的内容
         \setlength{\columnseprule}{.4pt}
             % 双栏之间的分隔线宽\度默认值为0pt，一般可以设置为0.4pt
-            %! 这一命令即使放置在"\twocolumn[text]"命令之后，也可以对分隔线宽度产生影响
+            %! 注意，这一命令放置在"\twocolumn[text]"命令之前或者之后，都可以对分隔线宽度产生影响
+        % \setlength{\columnwidth}{167.5pt}
+            %* 上文已经提到双栏模式下文本宽度、栏宽和栏间距之间的长度关系：\textwidth = \columnwidth * 2 + \columnsep，因此一般设置了栏间距，就不必再设置栏宽，因为栏宽可以通过该长度关系自动计算出来，如果同时设置了不满足这一长度关系的栏间距和栏宽，会导致奇怪的打印效果
+            %* 而在单栏模式下，文本宽度的默认值就等于栏宽：\textwidth = \columnwidth，注意，此时虽然可以将栏宽设置为其他值，但是由于单栏模式下文本的宽度是由【文本宽度】而非【栏宽】决定，因此并不会对打印效果造成任何影响，因此可以认为"\columnwidth"命令和"\columnsep"命令一样，只有在双栏模式下才能发挥作用
+            %! 注意，这一命令只有放置在"\twocolumn[text]"命令之后才能对栏宽产生影响，这个原因很好理解，因为"\columnwidth"只有在双栏模式下才能真正发挥作用
     \subsection{分栏}
             %* 可以发现，如果要在双栏模式下设置章节名，相应的命令需要放置在"\twocolumn[text]"命令之后
-            \textbf{第一部分：figure环境}
 
-            这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……这是一段测试文字……
-
-            \newpage 
+            \blindtext
+            \the\columnwidth
+            %* 在两栏的末尾打印栏宽，可以尝试调整上文的"\columnsep"，会发现栏宽会随着栏间距的变化而变化
+            
+            \newpage
             % 在双栏模式下，"\newpage"命令的效果是换栏，"\clearpage"命令的效果才是换页
-            \begin{figure}[htbp]
-                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
-                \caption{这是用figure环境在双栏模式下插入的图片（一）}
-            \end{figure}
-            这是一段测试文字……这是一段测试文字……这是一段测试文字……
+
+            \blindtext
+            \the\columnwidth
             
-            \begin{figure}[htbp]
-                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
-                \caption{这是用figure环境在双栏模式下插入的图片（二）}
-            \end{figure}
-            这是一段测试文字……这是一段测试文字……
-            \begin{figure}[htbp]
-                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
-                \caption{这是用figure环境在双栏模式下插入的图片（三）}
-            \end{figure}
-            这是一段测试文字……这是一段测试文字……这是一段测试文字……
-
-            %* 可以发现，在双栏模式下使用figure环境插入图片和在单栏模式下没有什么区别，只不过插入的区域从单栏变成了双栏，插入的图片可以在双栏内部浮动
-
-    \twocolumn
-            %* 继续使用一次"\twocolumn[text]"命令，效果是另起一页继续双栏模式
-            \textbf{第二部分：figure*环境}
-
-            \begin{figure*}[htbp]
-                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
-                \caption{这是用figure*环境在双栏模式下插入的图片（一）}
-            \end{figure*}
-            这是一段测试文字……这是一段测试文字……这是一段测试文字……
-            
-            \begin{figure*}[htbp]
-                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
-                \caption{这是用figure*环境在双栏模式下插入的图片（二）}
-            \end{figure*}
-            这是一段测试文字……这是一段测试文字……
-            \begin{figure*}[htbp]
-                \includegraphics[width = .1\textwidth]{doraemon1.jpg}
-                \caption{这是用figure*环境在双栏模式下插入的图片（三）}
-            \end{figure*}
-            这是一段测试文字……这是一段测试文字……这是一段测试文字……
-
-            \blindtext[7]
-
-            %* 以上做了两步操作：（一）将上一部分的双栏模式中的命令当中的figure环境全部替换为figure*环境，其他命令不变；（二）在原来的命令的末尾加上多行"\blindtext"命令，将双栏中的文本内容填充到三页的篇幅。经过这两步操作后，就会发现很有意思的打印效果：首先，所有的三张图片都被打印到了第二页或者第三页上，尽管这些图片其实很早就被插入进来，尤其是第一张图片，甚至在双栏模式开始之后的第一行就被插入进来，但是其仍然在第二页才被打印出来；其次，这三张图片都被插入进了第二页或者第三页的顶部，因此，可以发现figure*环境在双栏模式下其实并不遵循htbp中的hb规则，而只遵循tp规则（在第一页上似乎只遵循p规则，否则无法解释图片为什么没有被插入第一页的顶部）；最后，这些图片被插入的位置并不处于双栏模式下，而是处于单栏模式下，类似于"\twocolumn[text]"命令可选参数的设置效果。结合以上三点，可以发现figure*环境的作用就是在双栏模式下插入【不在双栏内部浮动，而是在每一页的双栏顶部预留出的单栏区域浮动】的图片。这一环境有其存在的合理性：和在双栏模式下的figure环境相比，其可以保证大图在双栏模式下依然拥有足够的插入空间，与双栏模式之外的figure环境相比，其可以保证图片仍然可以插入到双栏文本的内部，而不是只能出现在双栏文本的前面或者后面，table*环境和table环境的区别也可以参照理解。
-            %! figure*环境和table*环境中的"*"号和章节命令后面的"*"号代表了完全不同的功能，前者的功能上文已经详述，后者则会导致计数器停止计数，因此，需要意识到，LaTeX中的"*"号并不是一个带有专一功能的记号，而是一个代表在原有命令/环境的基础上改变某些功能的记号
-            %rfr 关于上述figure*环境的一些不足之处，多个宏包提出了解决的办法，可以参考文件"Twocolumn.tex"
     \onecolumn
             % 同样可以使用"\onecolumn"命令将双栏模式恢复为单栏模式，与此同时会自动在双栏模式内容的最后加上"\clearpage"命令，因此恢复单栏模式之后的内容会另起一页继续
+            %rfr 关于在双栏模式下插入图片，参考文件"Twocolumn.tex"
 
 % 可以使用multicol宏包提供的multicols环境，将页面分成任意多栏
+            %* 如果不在multicols环境的前面加上"\clearpage"命令，或者使用类似"\onecolumn"的命令，环境外之前的内容有可能会和多栏处于同一页面上
     \begin{multicols}{3}[\centering 这是分成三栏的前言] 
             % 和"\twocolumn[text]"命令的可选参数一样，相应内容会打印在多栏顶部预留出的单栏区域
-            \blindtext[2]
+            \blindtext
+            \the\columnwidth
+            %* 在多栏的末尾打印栏宽，会发现和在双栏模式下一样，栏宽会随着栏间距的变化而变化
 
             \columnbreak
+            % 在multicols环境下应该使用"\columnbreak"命令来换栏
 
-            \blindtext[2]
+            \blindtext
+            \the\columnwidth
 
             \newpage
-            %! 书中提到在该环境下使用"\columnbreak"命令来强制切换到新的一栏，但是经检验，"\newpage"命令依然可以达到相同的效果
+            %* 此时使用"\newpage"命令会和"clearpage"命令一样导致换页
 
-            \blindtext[2]
+            \blindtext
+            \the\columnwidth
     \end{multicols}
 
     \blindtext
+
     \clearpage 
             %* 如果不在multicols环境的后面加上"\clearpage"命令，环境外之后的内容有可能会和多栏处于同一页面上
-            %? 这其实会引出一个问题：多栏环境下，系统如何决定多栏的高度？待研究
+            %? 这其实会引出一个问题：多栏环境中，系统如何决定多栏的高度？待研究
             %rfr 关于在multicols环境中插入图片，参考文件"Twocolumn.tex"
 
 % 分栏结束------------------------------------------------------------------------------------------------------------------------------------
 
     \subsection{文档拆分}
+            %rfr 关于"\input{}"命令的相关内容，可以参考文件"Include.tex"
 
     \subsection{西文排版及其他}
         \subsubsection{连写}
+            ff fi fl % 会连写
+
+            f\mbox{}f f\mbox{}i f\mbox{}l % 插入空白箱子防止连写
 
         \subsubsection{断词}
+        % 使用"\hyphenation{space separated words}"命令规定单词的断词方式或者禁止单词断词
+            ABCDEFGHI ABCDEFGHI ABCDEFGHI //// ABCDEFGHI ABCDEFGHI ABCDEFGHI // ABCDEFGHI /// ABCDEFGHI ABCDEFGHI //// ABCDEFGHI /// ABCDEFGHI /// ABCDEFGHI ///// ABCDEFGHI ABCDEFGHI ABCDEFGHI
+            %* 没有规定断词方式前，"ABCDEFGHI"虽然不是一个真实存在的单词，但是系统似乎也为其设定了某种断词方式
+
+            \hyphenation{ABC-DEF-GH-I JKLMN forget}
+            ABCDEFGHI ABCDEFGHI ABCDEFGHI //// ABCDEFGHI ABCDEFGHI ABCDEFGHI // ABCDEFGHI /// ABCDEFGHI ABCDEFGHI //// ABCDEFGHI /// ABCDEFGHI /// ABCDEFGHI ///// ABCDEFGHI ABCDEFGHI ABCDEFGHI
+            % 规定了"ABCDEFGHI"的断词方式之后，"ABCDEFGHI"会按照设置好的界限断词，英文单词则会按照预先定义好的音节界限断词
+            %* 有意思的是，规定"ABCDEFGHI"的断词方式前，可能是判定出其不是真实存在的英语单词，所以命令下面会加上蓝线（暂时还不知道蓝线的意义是什么），但是在规定其断词方式后，蓝线消失
+
+            JKLMN JKLMN JKLMN // JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN //// JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN //// JKLMN JKLMN JKLMN ////// JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN
+            % 禁止"KJLMN"断词
+            %* 与规定了断词方式的"ABCDEFGHI"不同，如果禁止一个并不存在的单词断词，命令下方的蓝线不会消失
+
+        % 使用"\-"符号临时规定单词的断词方式
+            OP\-QRS\-T OP\-QRS\-T /// OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T //// OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T // OP\-QRS\-T OP\-QRS\-T // OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T 
+         
+        % 使用"\mbox{text}"命令临时禁止单词断词
+            012 3456 7890 / 012 3456 7890 / 012 3456 7890 / 012 3456 7890 / 012 3456 7890 / 012 3456 7890
+
+            \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890}
 
         \subsubsection{硬空格与句末标点}
+        % 空格
+            这是\TeX Live % 不带空格
+
+            这是\TeX{} Live % 在不带参数的命令后面加上一对花括号可以确保其后可以打印出空格
+
+            这是\TeX\ Live % 在不带参数的命令后面加上"\ "也可以在其后打印出空格（书中表示为"\␣"是为了表明此处有一个空格）
+
+            这是\TeX\space Live % 在不带参数的命令后面加上"\space"也可以达到相同的目的，书中将前一种"\ "称为“硬空格”，将这里的"\space"称为“软空格”
+
+        % 句末标点
+            OK. That's fine. %* 句末以大写字母"K"，LaTeX会认为句末的"."符号是人名的一部分，因而后面的空格的长度会短于将"."符号识别为句号时的长度
+
+            OK\@. That's fine. % 可以通过在大写字母和句号之间添加"\@"来增加空格长度
+
+            Prof. Smith is a nice man. %* 句末以小写字母结尾，LaTeX又会认为句末的"."符号是句号，因而后面的空格的长度会长于将"."符号识别为人名部分时的长度
+
+            Prof.\ Smith is a nice man. % 可以通过将空格替换为"\ "或者"~"符号来缩短空格长度
+
+            Prof.~Smith is a nice man.
+            %* 可以发现，上述调整空格长度的两种情况中，添加符号的位置不同：前一种添加在前一句的最后一个字母和句号之间，句号后的空格保持不变，后一种添加在句号和后一句的第一个字母之间，原来的空格需要删去
 
         \subsubsection{特殊符号}
 
