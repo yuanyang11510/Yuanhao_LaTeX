@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  17 AUG 2024 16:07
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  23 AUG 2024 23:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1031,13 +1031,13 @@ Overfull \hbox (21.07874pt too wide) in paragraph at lines 495--499
 
 
 [11]
+
+[12]
 Overfull \hbox (21.07874pt too wide) in paragraph at lines 533--535
 [][] 
  []
 
 
-
-[12]
 
 [13]
 
@@ -1164,10 +1164,10 @@ Package rerunfilecheck Info: File `Table.out' has not changed.
 (rerunfilecheck)             Checksum: 0A714672960F0B9AB131CB4AD602B357;3404.
  ) 
 Here is how much of TeX's memory you used:
- 17150 strings out of 409034
- 384228 string characters out of 5756841
- 1943560 words of memory out of 5000000
- 39615 multiletter control sequences out of 15000+600000
+ 17159 strings out of 409034
+ 384836 string characters out of 5756841
+ 1942560 words of memory out of 5000000
+ 39624 multiletter control sequences out of 15000+600000
  567792 words of font info for 98 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,14n,111p,939b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s

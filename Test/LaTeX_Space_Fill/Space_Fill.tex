@@ -1,0 +1,238 @@
+﻿\documentclass{ctexart}
+\usepackage{blindtext}
+
+\begin{document}
+
+% 自定义水平距离
+    a\hspace{2ex}b
+
+    \hspace{5em}test test test test test test test test test test test test test test test test test test
+    %* 在文本开头，"\hspace{l}"命令可以正常使用
+    %% 注意，在开头使用"\hspace{l}"命令时，不要忘记系统同时会使用"\indent"命令，因此已经预先有一个向左缩进2em的距离，需要将"\hspace{l}"命令设置的距离在此基础上通过计算才能得到实际距离
+
+    {\setlength{\fboxsep}{0pt}
+    \fbox{
+        \begin{minipage}{.4\textwidth}
+            test test test test test test test test test test test test test test
+        \end{minipage}
+        }
+    \fbox{
+        \begin{minipage}{.4\textwidth}
+            test test test test test test test\hspace{5em} test test test test test test test
+        \end{minipage}
+        }
+    }
+    %* 可以发现，在minipage环境中，在断行处，"\hspace{l}"命令不起作用
+    %% 注意，“断行”指的是打印出来的位于同一段落的内部的自然断行，如果是在段落的最后一行的末尾，不是此处所谓的“断行”，在同一段落内的自然断行之外的地方通过"\\"符号强制换行，也不是此处所谓的“断行”，在上述两处或者在每一行的自然断行处之外的地方使用该命令的效果是相同的，都是在该处插入一段指定距离的空格
+    %! 实际上，经过检验，下面这段文本的打印效果是在倒数第三个词处断行，此时如果在倒数第四个词后面插入一段长距离的空格，此时再看插入距离的长短，如果比较短，则会在相应位置插入对应长度的空格，如果比较长，则只会让排版效果发生轻微的变化，并不会插入实际长度的空格（至于长和短的界限在哪里，待研究），而如果在倒数第五个词后面使用相同的命令，则会使得这段空格被插入，倒数第四个词由于这段空格的插入而超出文本区域（甚至整个纸张区域）。也就是说，如果在自然断行之前的一个空格处使用"\hspace{l}"命令，其效果和前面提到的两种效果都不相同，根据插入距离的长短会有不同的效果
+
+    test test test test test test test test test test test test test test test test test test
+
+    test test test test test test test test test test test test test test test test\hspace{5em} test test
+    %* 在普通页面中，在断行处，"\hspace{l}"命令同样不起作用
+
+    test test test test test test test test test test test test test test test test\hspace*{5em} test test
+    % 如果替换成"\hspace*{l}"命令，打印时就会插入对应距离的空格
+    %! 书中所说的“在断行处也正常输出空格”容易让人误以为是在原来的打印效果的基础上，在断行处打印出空格，但实际情况是，使用"\hspace*{l}"命令之后，排版的效果发生了变化，仔细思考一下，会发现这是可以理解的做法，因为只有这样才能体现出这一命令的价值：插入一段距离的【可以被观察到的】空格。如果在断行处使用"\quad"、"\qquad"、"\enskip"、"\ "等命令，其效果也和使用"\hspace{l}"命令一样，不会造成任何排版上的影响
+
+% 自定义竖直距离
+    {\setlength{\fboxsep}{0pt}
+    \fbox{
+        \parbox{2em}{
+            \fbox{a}
+            \par\vspace{2em}\par % 可以省略其中的一个"\par"命令
+            \fbox{b}
+        }
+        }
+    \fbox{\parbox{2em}{\rule{2pt}{2em}}}
+    }
+    % 可以在两段之间使用
+
+    test test test test test test test test test test test test test test test test\vspace{2em} test test
+    % 也可以在同一段内的两行之间使用
+    %* 在两段之间使用"\vspace{l}"命令，其实既可以表达成"\par\vspace{l}"，也可以表达成"\vspace{l}\par"，也可以表达成"\par\vspace{l}\vspace{l}"，第一种表达的意思是先分段，再增加竖直距离，第二种表达的意思是先在上一段内增加竖直距离，再分段，第三种表达的意思是先分段，再增加竖直距离，而由于除此之外并没有加入文本，因此最后再加上一个"\par"命令并不会导致再增加一段，这一命令不会生效，而是在刚才开始的新段内打印后续文本
+    %? 至于为什么连续多个"\par"命令其实就相当于一个"\par"命令，应该和LaTeX的底层逻辑有关系，待研究
+    %rfr 注意，这一段竖直距离是在基线间距（其实是段落间距）的基础上加上去的，并不意味着用这段竖直距离去替换基线间距，可以参考：https://tex.stackexchange.com/questions/463039/spacing-difference-when-using-boxes，根据这篇帖子的介绍，在基线间距的基础上加上这段距离并不会导致基线间距的突变
+    %* 从这一点上来说，这一命令有点类似于"\rule[lift]{width}{thickness}"命令的“支柱”作用，只不过"\vspace{l}"命令只能粗略地增加基线间距，而"\rule[lift]{width}{thickness}"命令可以更加详细地调节当前行大箱子的高度和深度，"\vspace{l}"一定会导致基线间距超过默认值，"\rule[lift]{width}{thickness}"命令则不一定，即使该命令追求的目的通常也是将当前行大箱子的高度和深度增加到超过默认值，最后使得基线间距也超过默认值
+
+% 同理，存在与其对应的"\vspace*{l}"命令
+    {\setlength{\fboxsep}{0pt}
+    \fbox{
+        \begin{minipage}{.3\textwidth}
+            a
+        \end{minipage}
+        }
+    }
+    {\setlength{\fboxsep}{0pt}
+    \fbox{
+        \begin{minipage}{.3\textwidth}
+            \vspace{\baselineskip}\par
+            a
+            \vspace{\baselineskip}\par
+        \end{minipage}
+        }
+    }
+    {\setlength{\fboxsep}{0pt}
+    \fbox{
+        \begin{minipage}{.3\textwidth}
+            \vspace*{\baselineskip}\par
+            a
+            \vspace*{\baselineskip}\par
+        \end{minipage}
+        }
+    }
+    %* 可以发现，在minipage环境中，这两个命令是相同的，都可以在第一段的前面和最后一段的后面加上一段竖直距离
+\newpage
+    \vspace{\baselineskip}\par
+    a
+\newpage
+    \vspace{3\baselineskip}\par
+    a
+\newpage
+    \vspace*{3\baselineskip}\par
+    a
+    %* 可以发现，在普通页面中，位于第一段前面的"\vspace{l}"命令不起作用，但是"\vspace*{l}"可以在第一段的前面加上一段竖直距离
+\newpage
+    \blindtext
+
+    \blindtext
+
+    \blindtext
+
+    a
+    %* 这一步是为了检验三段"\blindtext"命令刚好占满一页上的所有行，因此新段的文本只能另起一页
+\newpage
+    \blindtext
+
+    \blindtext
+
+    \blindtext
+
+    \vspace{3\baselineskip}\par
+    a
+\newpage
+    \blindtext
+
+    \blindtext
+
+    \blindtext
+
+    \vspace*{3\baselineskip}\par
+    a
+    %* 可以发现，在普通页面中，位于最后一段后面的"\vspace{l}"命令也不起作用，而"\vspace*{l}"命令可以在最后一段的后面加上一段竖直距离，同时也会导致排版效果的变化
+\newpage
+
+% "\fill"命令经常用作"\hspace{l}"命令或者"\vspace{l}"命令的参数，用来在相应的文本之间填充一段自动计算后得到的距离，使得文本间距在水平或者竖直方向上均匀分布
+%* 下面分别展示"\hspace{\fill}"命令、"\hspace*{\fill}"命令、"\hfill"命令以及"\hfil"命令在文本的不同位置对应的打印效果
+%* （一）在文本开头
+    \hspace{\fill}b
+
+    \hspace*{\fill}b
+
+    \hfill b
+
+    \hfil b
+    %* 前三条命令的效果是一样的，都是在文本的前面填充一段距离，使得"b"位于当前行的最后；"\hfil"命令也在文本的前面填充一段距离，但似乎只有"\hfill"命令填充距离的一半，使得"b"位于当前行的中间
+
+\hrulefill
+
+%* （二）在文本中间
+    a\hspace{\fill}b
+
+    a\hspace*{\fill}b
+
+    a\hfill b
+
+    a\hfil b
+    %* 第二种情况只是在第一种情况的基础上，在相应的命令前面加上一段文本而已，本质上是相同的
+
+\hrulefill
+
+%* （三）同时在文本中间和最后
+    a\hspace{\fill}b\hspace{\fill}
+
+    a\hspace*{\fill}b\hspace*{\fill}
+
+    a\hfill b\hfill
+
+    a\hfil b\hfil
+    %* 第三种情况其实是在第二种情况的基础上，在后一段文本的后面再加上一条相应的命令
+    %% 表面上看，前两条命令和最后一条命令的效果是相同的，但是通过比较第二种情况和第三种情况下的这几条命令，可以发现，和第二种情况相比，前两条命令都在原来文本的后面填充一段距离，使得"b"位于当前行的中间；而最后一条命令看起来似乎和前两条命令是一样的效果，但是和第二种情况的对应命令相比，它和第三条命令一样，都没有造成打印效果的变化。因此，后两条命令的效果体现出在文本最后使用的"\hfill"或者"\hfil"命令并不会起作用
+    %! 上文提到，"\hspace{l}"命令和"\hspace*{l}"命令唯一的不同点在于在同一段落内的断行处是否插入对应距离的空格，但是此处涉及使用这两条命令的情况，其实都是在段落的末尾（确切点说，是在文本和"\par"命令之间，这是由于"\fill"命令的存在而导致的），而不是在段落内部，因此这两条命令在这里没有什么分别
+
+\hrulefill
+
+%* （四）在文本最后
+    ab\hspace{\fill}
+
+    ab\hspace*{\fill}
+
+    ab\hfill
+
+    ab\hfil
+    %* 四条命令的效果看起来是一样的，但是经过第三种情况的讨论，我们知道，其实只有前两条命令真正发挥了作用，在文本的后面填充一段距离
+    %% 总结一下，"\hspace{\fill}"命令、"\hspace*{\fill}"命令、"\hfill"命令、"\hfil"命令这四条命令当中，前两条命令都可以在文本的前面、中间、后面填充一段距离，后两条命令则只能在文本的前面和中间填充一段距离，并且"\hfil"命令的填充效果和其他三条命令的填充效果有所不同
+    %rfr 至于这些命令产生不同效果的底层原因，可以参考：https://tex.stackexchange.com/questions/21022/what-is-the-difference-between-fil-and-fill、https://tex.stackexchange.com/questions/528920/difference-between-hfil-and-hfill这两篇帖子的讨论，不过暂时还没有完全弄清楚
+
+\hrulefill
+
+% "\vspace{\fill}"、"\vspace*{\fill}"、"\vfill"、"\vfil"四条命令也有一些类似的不同效果
+%* （一）在文本开头
+\newpage
+\hrulefill
+
+    \vspace{\fill}\par b
+\newpage
+    \vspace*{\fill}\par b
+\newpage
+    \vfill\par b
+\newpage
+    \vfil\par b
+    %* 第一条和最后两条的命令一样，都不起作用，第二条命令在文本前面填充一段距离，使得"b"位于当前页面的底部，上文提到：位于第一段前面的"\vspace{l}"命令不起作用，但是"\vspace*{l}"可以在第一段的前面加上一段竖直距离，很好地解释了此处不同命令的不同效果
+    %% 和水平距离的情况不同，"\hspace{l}"、"\hspace*{l}"等命令在一行文本的开头都可以正常使用，因此"\hspace{\fill}"、"\hspace*{\fill}"、"\hfill"、"\hfil"等命令在一行文本的开头也都能使用，只不过"\hfil"命令和其他三条命令的效果不同；此处竖直距离的情况下，"\vfill"和"\vfil"由于受"\vspace{l}"命令的影响，和"\vspace{\fill}"命令一样，在页面第一段的开头都不起作用，只有"\vspace*{\fill}"命令起作用
+
+%* （二）在文本中间
+\newpage
+\hrulefill
+
+    a\vspace{\fill}\par b
+\newpage
+    a\vspace*{\fill}\par b
+\newpage
+    a\vfill\par b
+\newpage
+    a\vfil\par b
+    %* 由于此时四条命令不再处于第一段的开头，因此都可以生效，前三条命令的效果相同，都是在"a"和"b"之间填充一段距离，使得"a"和"b"各自位于同一页面的顶部和底部；第四条命令虽然也在"a"和"b"之间填充一段距离，但是似乎只有其他三条命令填充距离的一半，使得"b"位于当前页面的中间
+
+%* （三）同时在文本中间和最后（"\newpage"命令之前）
+\newpage
+\hrulefill
+
+    a\vspace{\fill}\par b\vspace{\fill}\par
+\newpage
+    a\vspace*{\fill}\par b\vspace*{\fill}\par
+\newpage
+    a\vfill\par b\vfill\par
+\newpage
+    a\vfil\par b\vfil\par
+    %* 第三种情况其实是在第二种情况的基础上，在后一段文本的后面再加上一条相应的命令
+    %% 前三条命令的效果相同，都是在"a"和b"之间填充一段距离，"b"之后填充一段距离，使得"a"位于当前页面的顶部，"b"位于当前页面的中间；第四条命令的效果初看比较奇怪，它也在"a"和b"之间填充一段距离，"b"之后填充一段距离，但是最后"a"位于当前页面的顶部，"b"却位于当前页面的中间偏上的位置，在和第二种情况中相应命令的效果比较后，我们可以发现，这并不是因为"\vfil"在"b"之后填充的距离超过其他三条命令，相反，这段填充的距离实际上小于其他三条命令，因为在第二种情况中，由于"\vfil"命令在"a"和"b"之间填充的距离小于其他三条命令，使得"b"只能位于当前页面的中间，此时再在这个"b"之后填充一段距离，使得"b"稍微向上挪动了一点，最后位于当前页面中间偏上的位置，因此，"\vfil"命令填充的距离甚至不足当前页面高度的一半
+    %! 上文提到："\vspace{l}"命令在最后一段的后面无法生效，此处观察到"\vspace{\fill}"、"\vspace*{\fill}"、"\vfill"、"\vfil"等命令在最后一段的后面都生效，只不过"\vfil"的填充效果和其他三条命令不同，但此处的的情况和上文不同，因为每一个命令的最后其实都还跟有一个"\newpage"命令，而前文介绍"\vspace{l}"命令时，该命令虽然也处于最后一段的最后，但是其后并没有"\newpage"命令，而是一个"\par"命令，之后直接跟上另一段文本，也就是说，此时的"\vspace{l}"命令是处于当前页面自然分页的位置上，此时的"\vspace{l}"不会发挥作用。这可以类比"\hspace{l}"命令在同一段内自然断行处同样不生效的情况，但是"\hspace{l}"命令在"\par"命令之前却可以发挥作用，同理，"\vspace{l}"命令在当前页面的自然分页处不会生效，但是在"\newpage"命令之前则仍然生效
+    %? 至于"\vfil"填充的距离为什么总是小于其他三条命令，具体的原因待研究
+
+%* （四）在文本最后（"\newpage"命令之前）
+\newpage
+\hrulefill
+
+    a\par b\vspace{\fill}\par
+\newpage
+    a\par b\vspace*{\fill}\par
+\newpage
+    a\par b\vfill\par
+\newpage
+    a\par b\vfil\par
+\newpage
+    %* 四条命令的效果表面上看都相同，但是经过第二种情况的讨论，我们有理由怀疑"\vfil"命令在文本后面填充的距离应该只有其他三条命令的一半
+    %! 书中称"\hspace\fill"命令和"\hfill"命令（以及"\vspace{\fill}"命令和"\vfill"命令）的作用相同，由此看来，其实并不完全如此
+
+\end{document}
