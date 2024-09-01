@@ -1,5 +1,6 @@
 ﻿\documentclass{ctexart}
 \usepackage{blindtext}
+\usepackage[showframe]{geometry}
 
 \begin{document}
 
@@ -125,25 +126,21 @@
 % "\fill"命令经常用作"\hspace{l}"命令或者"\vspace{l}"命令的参数，用来在相应的文本之间填充一段自动计算后得到的距离，使得文本间距在水平或者竖直方向上均匀分布
 %* 下面分别展示"\hspace{\fill}"命令、"\hspace*{\fill}"命令、"\hfill"命令以及"\hfil"命令在文本的不同位置对应的打印效果
 %* （一）在文本开头
-    \hspace{\fill}b
-
-    \hspace*{\fill}b
-
-    \hfill b
-
-    \hfil b
-    %* 前三条命令的效果是一样的，都是在文本的前面填充一段距离，使得"b"位于当前行的最后；"\hfil"命令也在文本的前面填充一段距离，但似乎只有"\hfill"命令填充距离的一半，使得"b"位于当前行的中间
+    \hspace{\fill}b\par
+    \hspace*{\fill}b\par
+    \hfill b\par
+    \hfil b\par
+    %* 前三条命令的效果是一样的，都是在文本的前面填充一段距离，使得"b"位于当前行的最后；"\hfil"命令也在文本的前面填充一段距离，但只有"\hfill"命令填充距离的一半，使得"b"位于当前行的中间
+    %rfr "\hfil"命令之所以只填充了"\hfill"命令的一半，是因为"\par"命令中暗含了"\parfillskip"这一命令，其长度为0pt plus 1fil，可以简单地理解为存在一个隐藏的"\hfil"命令在"\par"命令之前，因此第四条命令中，其实在"b"的前后各存在一个"\hfil"命令，这使得"b"位于当前行的中间，可以参考：https://tex.stackexchange.com/questions/183577/implicit-hfil-at-the-end-of-each-paragraph
+    %? 关于"\parfillskip"命令的原理，还有待研究
 
 \hrulefill
 
 %* （二）在文本中间
-    a\hspace{\fill}b
-
-    a\hspace*{\fill}b
-
-    a\hfill b
-
-    a\hfil b
+    a\hspace{\fill}b\par
+    a\hspace*{\fill}b\par
+    a\hfill b\par
+    a\hfil b\par
     %* 第二种情况只是在第一种情况的基础上，在相应的命令前面加上一段文本而已，本质上是相同的
 
 \hrulefill
@@ -151,27 +148,27 @@
 %* （三）同时在文本中间和最后
     a\hspace{\fill}b\hspace{\fill}
 
-    a\hspace*{\fill}b\hspace*{\fill}
-
-    a\hfill b\hfill
-
-    a\hfil b\hfil
+    a\hspace{\fill}b\hspace{\fill}\par
+    a\hspace*{\fill}b\hspace*{\fill}\par
+    a\hfill b\hfill\par
+    a\hfil b\hfil\par
     %* 第三种情况其实是在第二种情况的基础上，在后一段文本的后面再加上一条相应的命令
-    %% 表面上看，前两条命令和最后一条命令的效果是相同的，但是通过比较第二种情况和第三种情况下的这几条命令，可以发现，和第二种情况相比，前两条命令都在原来文本的后面填充一段距离，使得"b"位于当前行的中间；而最后一条命令看起来似乎和前两条命令是一样的效果，但是和第二种情况的对应命令相比，它和第三条命令一样，都没有造成打印效果的变化。因此，后两条命令的效果体现出在文本最后使用的"\hfill"或者"\hfil"命令并不会起作用
-    %! 上文提到，"\hspace{l}"命令和"\hspace*{l}"命令唯一的不同点在于在同一段落内的断行处是否插入对应距离的空格，但是此处涉及使用这两条命令的情况，其实都是在段落的末尾（确切点说，是在文本和"\par"命令之间，这是由于"\fill"命令的存在而导致的），而不是在段落内部，因此这两条命令在这里没有什么分别
+    %! 但是经过检验，我们发现，此时在"\hspace{\fill}"命令的后面空一行或者加上"\par"命令，导致的结果是不同的，而其他命令则没有这个分别，因此下面需要讨论五条命令，将有分别的这两条命令分别称为一（1）和一（2）
+    %% 表面上看，第一（1）条命令、第二条命令和最后一条命令的效果是相同的，但是通过比较第二种情况和第三种情况下的这几条命令，可以发现，第一（1）条命令的效果和第二条命令相同，都在原来文本的后面填充一段距离，使得"b"位于当前行的中间；而第一（2）条命令、第三条命令和最后一条命令一样，都没有造成打印效果的变化。因此，这三条命令的效果体现出在文本最后使用的"\hfill"或者"\hfil"命令并不会起作用，在"\hspace{\fill}"后面加上"\par"命令也不会起作用
+    %! 上文提到，"\hspace{l}"命令和"\hspace*{l}"命令唯一的不同点在于在同一段落内的自然断行处是否插入对应距离的空格，但是此处涉及使用这两条命令的情况，其实都是在段落的末尾（确切点说，是在文本和"\par"命令之间，这是由于"\fill"命令的存在而导致的），而不是在段落内部，因此这两条命令在此处照理说不应该有什么分别
+    %? 但是通过上述讨论，我们可以发现，这两条命令在明确写出的"\par"命令前仍然有分别，深层的原因还有待研究
 
 \hrulefill
 
 %* （四）在文本最后
     ab\hspace{\fill}
 
-    ab\hspace*{\fill}
-
-    ab\hfill
-
-    ab\hfil
-    %* 四条命令的效果看起来是一样的，但是经过第三种情况的讨论，我们知道，其实只有前两条命令真正发挥了作用，在文本的后面填充一段距离
-    %% 总结一下，"\hspace{\fill}"命令、"\hspace*{\fill}"命令、"\hfill"命令、"\hfil"命令这四条命令当中，前两条命令都可以在文本的前面、中间、后面填充一段距离，后两条命令则只能在文本的前面和中间填充一段距离，并且"\hfil"命令的填充效果和其他三条命令的填充效果有所不同
+    ab\hspace{\fill}\par
+    ab\hspace*{\fill}\par
+    ab\hfill\par
+    ab\hfil\par
+    %* 四条命令的效果看起来是一样的，但是经过第三种情况的讨论，我们知道，其实只有第一（2）条命令和第二条命令真正发挥了作用，在文本的后面填充一段距离
+    %% 总结一下，"\hspace{\fill}"命令、"\hspace*{\fill}"命令、"\hfill"命令、"\hfil"命令这四条命令当中，前两条命令都可以在文本的前面、中间、后面（其中，"\hspace{\fill}"只有在后面空一行时才生效，加上"\par"命令时不生效）填充一段距离，后两条命令则只能在文本的前面和中间填充一段距离，并且"\hfil"命令的填充效果和其他三条命令的填充效果有所不同
     %rfr 至于这些命令产生不同效果的底层原因，可以参考：https://tex.stackexchange.com/questions/21022/what-is-the-difference-between-fil-and-fill、https://tex.stackexchange.com/questions/528920/difference-between-hfil-and-hfill这两篇帖子的讨论，不过暂时还没有完全弄清楚
 
 \hrulefill
@@ -179,60 +176,54 @@
 % "\vspace{\fill}"、"\vspace*{\fill}"、"\vfill"、"\vfil"四条命令也有一些类似的不同效果
 %* （一）在文本开头
 \newpage
-\hrulefill
-
-    \vspace{\fill}\par b
+    \vspace{\fill}\par b1
 \newpage
-    \vspace*{\fill}\par b
+    \vspace*{\fill}\par b1
 \newpage
-    \vfill\par b
+    \vfill\par b1
 \newpage
-    \vfil\par b
-    %* 第一条和最后两条的命令一样，都不起作用，第二条命令在文本前面填充一段距离，使得"b"位于当前页面的底部，上文提到：位于第一段前面的"\vspace{l}"命令不起作用，但是"\vspace*{l}"可以在第一段的前面加上一段竖直距离，很好地解释了此处不同命令的不同效果
+    \vfil\par b1
+    %* 第一条和最后两条的命令一样，都不起作用，第二条命令在文本前面填充一段距离，使得"b1"位于当前页面的底部，上文提到：位于第一段前面的"\vspace{l}"命令不起作用，但是"\vspace*{l}"可以在第一段的前面加上一段竖直距离，很好地解释了此处不同命令的不同效果
     %% 和水平距离的情况不同，"\hspace{l}"、"\hspace*{l}"等命令在一行文本的开头都可以正常使用，因此"\hspace{\fill}"、"\hspace*{\fill}"、"\hfill"、"\hfil"等命令在一行文本的开头也都能使用，只不过"\hfil"命令和其他三条命令的效果不同；此处竖直距离的情况下，"\vfill"和"\vfil"由于受"\vspace{l}"命令的影响，和"\vspace{\fill}"命令一样，在页面第一段的开头都不起作用，只有"\vspace*{\fill}"命令起作用
 
 %* （二）在文本中间
 \newpage
-\hrulefill
-
-    a\vspace{\fill}\par b
+    a2\vspace{\fill}\par b2
 \newpage
-    a\vspace*{\fill}\par b
+    a2\vspace*{\fill}\par b2
 \newpage
-    a\vfill\par b
+    a2\vfill\par b2
 \newpage
-    a\vfil\par b
-    %* 由于此时四条命令不再处于第一段的开头，因此都可以生效，前三条命令的效果相同，都是在"a"和"b"之间填充一段距离，使得"a"和"b"各自位于同一页面的顶部和底部；第四条命令虽然也在"a"和"b"之间填充一段距离，但是似乎只有其他三条命令填充距离的一半，使得"b"位于当前页面的中间
+    a2\vfil\par b2
+    %* 由于此时四条命令不再处于第一段的开头，因此都可以生效，前三条命令的效果相同，都是在"a2"和"b2"之间填充一段距离，使得"a2"和"b2"各自位于同一页面的顶部和底部；第四条命令虽然也在"a2"和"b2"之间填充一段距离，但是只有其他三条命令填充距离的一半，使得"b2"位于当前页面的中间
+    %% 受上文"\parfillskip"命令的启发，我们也可以对此处【"\vfil"只填充了"\vfill"命令的一半】做出解释，在"\newpage"的命令之前，实际上暗含了一个"\vfil"命令，因此第四条命令中，其实在"b2"的前后各存在一个"\vfil"命令，这使得"b2"位于当前页面的中间
+    %rfr 实际上，上文提到的"\parfillskip"命令和此处的解释一开始都是受这一篇帖子的启发：https://www.zhihu.com/question/462017394
 
 %* （三）同时在文本中间和最后（"\newpage"命令之前）
 \newpage
-\hrulefill
-
-    a\vspace{\fill}\par b\vspace{\fill}\par
+    a3\vspace{\fill}\par b3\vspace{\fill}
 \newpage
-    a\vspace*{\fill}\par b\vspace*{\fill}\par
+    a3\vspace*{\fill}\par b3\vspace*{\fill}
 \newpage
-    a\vfill\par b\vfill\par
+    a3\vfill\par b3\vfill\
 \newpage
-    a\vfil\par b\vfil\par
+    a3\vfil\par b3\vfil
     %* 第三种情况其实是在第二种情况的基础上，在后一段文本的后面再加上一条相应的命令
-    %% 前三条命令的效果相同，都是在"a"和b"之间填充一段距离，"b"之后填充一段距离，使得"a"位于当前页面的顶部，"b"位于当前页面的中间；第四条命令的效果初看比较奇怪，它也在"a"和b"之间填充一段距离，"b"之后填充一段距离，但是最后"a"位于当前页面的顶部，"b"却位于当前页面的中间偏上的位置，在和第二种情况中相应命令的效果比较后，我们可以发现，这并不是因为"\vfil"在"b"之后填充的距离超过其他三条命令，相反，这段填充的距离实际上小于其他三条命令，因为在第二种情况中，由于"\vfil"命令在"a"和"b"之间填充的距离小于其他三条命令，使得"b"只能位于当前页面的中间，此时再在这个"b"之后填充一段距离，使得"b"稍微向上挪动了一点，最后位于当前页面中间偏上的位置，因此，"\vfil"命令填充的距离甚至不足当前页面高度的一半
-    %! 上文提到："\vspace{l}"命令在最后一段的后面无法生效，此处观察到"\vspace{\fill}"、"\vspace*{\fill}"、"\vfill"、"\vfil"等命令在最后一段的后面都生效，只不过"\vfil"的填充效果和其他三条命令不同，但此处的的情况和上文不同，因为每一个命令的最后其实都还跟有一个"\newpage"命令，而前文介绍"\vspace{l}"命令时，该命令虽然也处于最后一段的最后，但是其后并没有"\newpage"命令，而是一个"\par"命令，之后直接跟上另一段文本，也就是说，此时的"\vspace{l}"命令是处于当前页面自然分页的位置上，此时的"\vspace{l}"不会发挥作用。这可以类比"\hspace{l}"命令在同一段内自然断行处同样不生效的情况，但是"\hspace{l}"命令在"\par"命令之前却可以发挥作用，同理，"\vspace{l}"命令在当前页面的自然分页处不会生效，但是在"\newpage"命令之前则仍然生效
-    %? 至于"\vfil"填充的距离为什么总是小于其他三条命令，具体的原因待研究
+    %% 前三条命令的效果相同，都是在"a3"和b3"之间填充一段距离，"b3"之后填充一段距离，使得"a3"位于当前页面的顶部，"b3"位于当前页面的中间；第四条命令的效果初看比较奇怪，它也在"a3"和b3"之间填充一段距离，"b"之后填充一段距离，但是最后"a3"位于当前页面的顶部，"b3"却位于当前页面的中间偏上的位置，经过第二种情况的讨论，我们知道，这是由于"a3"和"b3"之间存在一个"\vfil"命令，而"b3"后面实际上存在两个"\vfil"命令，因此页面高度按照1:2的比例进行分割，"b3"实际位于距离页面顶部1/3的位置
+    %! 上文提到："\vspace{l}"命令在最后一段的后面无法生效，此处观察到"\vspace{\fill}"、"\vspace*{\fill}"、"\vfill"、"\vfil"等命令在最后一段的后面都生效，只不过"\vfil"的填充效果和其他三条命令不同，但此处的的情况和上文不同，因为每一个命令的最后其实都还跟有一个"\newpage"命令，而前文介绍"\vspace{l}"命令时，该命令虽然也处于最后一段的最后，但是其后并没有"\newpage"命令，而是一个"\par"命令，之后直接跟上另一段文本，也就是说，"\vspace{l}"命令是处于当前页面自然分页的位置上，此时"\vspace{l}"命令不会发挥作用。这可以类比"\hspace{l}"命令在同一段内自然断行处同样不生效的情况，同理，"\vspace{l}"命令在当前页面的自然分页处不会生效，但是在"\newpage"命令之前则仍然生效。
+    %? 但是上文也已经提到，"\hspace{\fill}"命令在后面空一行时和后面明确跟上"\par"命令时的效果不同，只有前一种情况下"\hspace{\fill}"才会发挥命令，这还需要进一步研究
 
 %* （四）在文本最后（"\newpage"命令之前）
 \newpage
-\hrulefill
+    a4\par b4\vspace{\fill}
+\newpage
+    a4\par b4\vspace*{\fill}
+\newpage
+    a4\par b4\vfill
+\newpage
+    a4\par b4\vfil
+\newpage
+    %* 经过第二种情况的讨论，我们认为这四条命令在"b4"之后填充的竖直距离应该是相同的，都是当前页面的剩余高度
 
-    a\par b\vspace{\fill}\par
-\newpage
-    a\par b\vspace*{\fill}\par
-\newpage
-    a\par b\vfill\par
-\newpage
-    a\par b\vfil\par
-\newpage
-    %* 四条命令的效果表面上看都相同，但是经过第二种情况的讨论，我们有理由怀疑"\vfil"命令在文本后面填充的距离应该只有其他三条命令的一半
-    %! 书中称"\hspace\fill"命令和"\hfill"命令（以及"\vspace{\fill}"命令和"\vfill"命令）的作用相同，由此看来，其实并不完全如此
-
+%! 书中称"\hspace{\fill}"命令和"\hfill"命令（以及"\vspace{\fill}"命令和"\vfill"命令）的作用相同，经过以上讨论，这一论断大体没错，只是还需要弄明白"\hspace{\fill}"命令在"\par"命令前和在空一行前的效果为什么不同，只有后一种情况下，"\hspace{\fill}"命令的效果才和"\hfill"命令相同：都不生效
 \end{document}

@@ -91,7 +91,7 @@
         %* 设置页眉边距
     % foot = 2cm,
         % 也可以设置名称为"footskip"
-        %* 设置页脚深度
+        %* 设置页脚边距
     % marginparwidth = 4cm,
         %* 设置侧页边宽度
     % marginparsep = 1cm,
@@ -162,7 +162,7 @@ geometry宏包的官方手册中提供的示意图并没有包括\textbf{``crop 
     \item paperheight = (total)height + top + bottom
 \end{itemize}
 
-现在再将范围缩小到页面。在页面内部，可能存在的部分有：\textbf{``body''（文本）}\footnote{这也就是放置\LaTeX 的document环境当中除去页眉、页脚和边注以外的其他所有内容的区域，由于这部分包含了文本最重要的主体部分，一般不允许这部分内容超出该区域，因此该区域有时候也被称为``safe zone''（安全区）。}、\textbf{``header''（页眉）}、\textbf{``footer''（页脚）}、\textbf{``marginal note''（侧页边）}，之所以说是``可能''，是因为在geometry宏包的默认设置中，页面只包含了文本区域，可以通过设置``inclue/ignore + 其他页面部分''参数来包括或者排除相关的部分。其中，页眉的高度称为\textbf{``head(height)''（页眉高度）}，页眉下边线和文本上边线之间有一段距离，称为\textbf{``headsep''（页眉边距）}；文本区域的下边线到页脚基线的高度称为\textbf{``foot(skip)''（页脚深度）}\footnote{页脚不像页眉那样存在上边线和下边线的分别，因此只需要定义文本区域的下边线和一段垂直距离，就足以确定页脚基线的位置。}，顺带一提，geometry宏包还重定义了脚注到正文的间距，称为\textbf{``footnotesep''（脚注边距）}\footnote{在\LaTeX 原生命令中，这一段距离通过``\textbackslash skip\textbackslash footins''命令控制。另外，注意不要混淆``脚注''和``页脚''这两个概念，前者属于文本区域，后者则不属于文本区域。}；页边的宽度称为\textbf{``marginpar(width)''（侧页边宽度）}，页边左边线（twoside模式下是内侧边线）和文本右边线（twoside模式下是外侧边线）之间的距离称为\textbf{``marginparsep''（侧页边边距）}。文本区域的边线称为``caution line''（文本边线），文本区域也有宽度参数和高度参数，文本的宽度称为\textbf{``textwidth''（文本宽度）}，文本的高度称为\textbf{``textheight''（文本高度）}。在默认情况下，即页面只包括文本区域，我们就可以得到下面两个关系：
+现在再将范围缩小到页面。在页面内部，可能存在的部分有：\textbf{``body''（文本）}\footnote{这也就是放置\LaTeX 的document环境当中除去页眉、页脚和边注以外的其他所有内容的区域，由于这部分包含了文本最重要的主体部分，一般不允许这部分内容超出该区域，因此该区域有时候也被称为``safe zone''（安全区）。}、\textbf{``header''（页眉）}、\textbf{``footer''（页脚）}、\textbf{``marginal note''（侧页边）}，之所以说是``可能''，是因为在geometry宏包的默认设置中，页面只包含了文本区域，可以通过设置``inclue/ignore + 其他页面部分''参数来包括或者排除相关的部分。其中，页眉的高度称为\textbf{``head(height)''（页眉高度）}，页眉下边线和文本上边线之间有一段距离，称为\textbf{``headsep''（页眉边距）}；文本区域的下边线到页脚基线的高度称为\textbf{``foot(skip)''（页脚边距）}\footnote{页脚不像页眉那样存在上边线和下边线的分别，因此只需要定义文本区域的下边线和一段垂直距离，就足以确定页脚基线的位置。}，顺带一提，geometry宏包还重定义了脚注到正文的间距，称为\textbf{``footnotesep''（脚注边距）}\footnote{在\LaTeX 原生命令中，这一段距离通过``\textbackslash skip\textbackslash footins''命令控制。另外，注意不要混淆``脚注''和``页脚''这两个概念，前者属于文本区域，后者则不属于文本区域。}；页边的宽度称为\textbf{``marginpar(width)''（侧页边宽度）}，页边左边线（twoside模式下是内侧边线）和文本右边线（twoside模式下是外侧边线）之间的距离称为\textbf{``marginparsep''（侧页边边距）}。文本区域的边线称为``caution line''（文本边线），文本区域也有宽度参数和高度参数，文本的宽度称为\textbf{``textwidth''（文本宽度）}，文本的高度称为\textbf{``textheight''（文本高度）}。在默认情况下，即页面只包括文本区域，我们就可以得到下面两个关系：
 \begin{itemize}
     \item (total)width = textwidth
     \item (total)height = textheight
