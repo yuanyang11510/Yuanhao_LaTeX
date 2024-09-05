@@ -1,0 +1,1097 @@
+﻿\documentclass{article}
+\usepackage{ctex}
+\usepackage{enumitem}
+\usepackage{blindtext}
+\usepackage[showframe]{geometry}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\newcommand{\printvalues}{
+        labelindent = \the\labelindent,
+        labelwidth = \the\labelwidth,
+        labelsep = \the\labelsep,
+        leftmargin = \the\leftmargin,
+        itemindent = \the\itemindent
+    }
+%rfr 可以参考enumitem宏包的官方手册，尽管这一手册非常难读：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf
+
+\begin{document}
+% 下面先展示三种类型的列表在嵌套时各级列表的标签（符号/编号/项）样式
+% 各级itemize列表的符号样式
+    \begin{itemize}
+        \item A
+        \begin{itemize}
+            \item B
+            \begin{itemize}
+                \item C
+                \begin{itemize}
+                    \item D
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    %* 最多嵌套四级，否则编译会报错，这是因为LaTeX只为itemize列表的前四级定义了符号样式
+
+% 各级enumerate列表的编号样式
+    \begin{enumerate}
+        \item \theenumi
+        \begin{enumerate}
+            \item \theenumii
+            \begin{enumerate}
+                \item \theenumiii
+                \begin{enumerate}
+                    \item \theenumiv
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    %* 最多嵌套四级，否则编译会报错，这是因为LaTeX只为enumerate列表的前四级定义了编号样式
+
+% description列表的项样式
+    \begin{description}
+        \item[A]a
+        \begin{description}
+            \item[B]b 
+            \begin{description}
+                \item[C]c
+                \begin{description}
+                    \item[D]d
+                    \begin{description}
+                        \item[E]e 
+                    \end{description}
+                \end{description} 
+            \end{description}
+        \end{description} 
+    \end{description}
+    %* description列表可以无限嵌套下去，每一级列表的项样式都相同
+
+\hrulefill
+
+% LaTeX当中关于列表的原生参数
+% 标签（符号/编号/项）样式参数
+    \begin{itemize}
+        \item itemize列表：\textbackslash{}labelitemi、\textbackslash{}labelitemii、\textbackslash{}labelitemiii、\textbackslash{}labelitemiv
+    % itemize列表四级的符号样式分别是"\textbullet"、"\textendash"、"\textasteriskcentered"、"\textperiodcentered"
+        \item enumerate列表：
+        \begin{itemize}
+            \item 计数器：enumi、enumii、enumiii、enumiv
+            \item 标签：\textbackslash{}labelenumi、\textbackslash{}labelenumii、\textbackslash{}labelenumiii、\textbackslash{}labelenumiv
+    % 和itemize列表以及description列表相比，enumerate列表还多了一个计数器，标签样式会调用这一计数器，这四级的标签样式分别是"\theenumi"、"(\theenumii)"、"\theenumiii"、"\theenumiv"，这四级计数器默认的调用形式分别是"\arabic{enumi}"、"\alph{enumii}"、"\roman{enumiii}"、"\Alph{enumiv}"
+    %! 注意，如果只看形式，enumerate列表的第一、三、四级标签样式和其对应的计数器的调用形式是相同的，而第二级的标签样式在对应的计数器的调用形式之外还套了一层小括号（书中认为"\theenumii"就代表了编号样式，这是错误的），这很好地反映出各级enumerate列表当中条目的标签命令和计数器命令其实是包含与被包含的关系，在重定义enumerate列表的编号样式时，如果想要重定义计数器以外的编号样式，则需要重定义标签命令当中除去【调用计数器】（"\the+计数器名称"）以外的部分；如果要重定义计数器的调用形式，则重定义计数器命令即可，标签命令会相应调整，虽然此时直接重定义标签命令当中的计数器部分也可以让编号样式达到想要的效果，但这可能会在需要单独调用计数器时导致麻烦
+        \end{itemize}
+        \item description列表：只有\textbackslash{}descriptionlabel\{\}命令
+    % description列表的项样式由"\descriptionlabel"命令控制，其默认定义为">\hspace \labelsep \normalfont \bfseries #1"
+    %* 该默认定义可以通过"\meaning\descriptionlabel"命令获得
+    %todo 暂时还难以理解这一定义和实际打印效果之间的关系，我在StackExchange上提了这个问题：https://tex.stackexchange.com/questions/725661/definition-of-descriptionlabel/725690#725690，已经有人回答。要想完全理解这一问题，需要熟悉LaTeX关于定义列表的相关命令
+    \end{itemize}
+
+\hrulefill
+
+    %* 如果不借助enumitem宏包，自定义列表的编号样式需要重定义列表的上述各项参数，下面展示重定义列表的标签（符号/编号/项）样式的三个例子，enumitem宏包提供的相关设置方法，见下文
+    % 重定义itemize列表的的第二级的符号样式
+    {\renewcommand{\labelitemii}{\textemdash}
+    \begin{itemize}
+        \item A
+        \begin{itemize}
+            \item B
+            \begin{itemize}
+                \item C
+                \begin{itemize}
+                    \item D
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    }
+
+    % 重定义enumerate列表的第四级的编号样式
+    {\renewcommand{\theenumiv}{\alph{enumiv}}
+    %* 前文已经提到，重定义enumerate列表的编号样式时，需要根据重定义的是计数器还是计数器以外的部分来选择重定义的命令，此处想要重定义的只是计数器部分，因此选择重定义计数器命令即可
+    \begin{enumerate}
+        \item \theenumi
+        \begin{enumerate}
+            \item \theenumii
+            \begin{enumerate}
+                \item \theenumiii
+                \begin{enumerate}
+                    \item \theenumiv
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    }
+
+    % 重定义description列表的项样式
+    {\renewcommand{\descriptionlabel}[1]{\hspace\labelsep\normalfont\itshape{#1}}
+    %rfr 上文已经提到，description列表的项样式的定义命令本身比较难理解，但是重定义项形式是不难完成的，可以参考：https://stackoverflow.com/questions/2740437/changing-style-of-latex-description-lists、https://latexref.xyz/description.html
+    \begin{description}
+        \item[A]a
+        \begin{description}
+            \item[B]b 
+            \begin{description}
+                \item[C]c
+                \begin{description}
+                    \item[D]d
+                    \begin{description}
+                        \item[E]e 
+                    \end{description}
+                \end{description} 
+            \end{description}
+        \end{description} 
+    \end{description}
+    }
+
+\hrulefill
+
+% 距离参数（在括号中尝试给出临时拟定的翻译）
+    %rfr 关于这些距离参数的详细的定义，可以参考：https://latexref.xyz/list.html、https://tex.stackexchange.com/questions/300340/topsep-itemsep-partopsep-parsep-what-do-they-each-mean-and-what-about，后一篇帖子当中的一个答案还展示了"\partopsep"和"\topsep"的不同之处
+    %* 在理解列表的距离参数时，我们往往会将范围局限于当前页面以及列表的第一层，但实际上，以下的每一个距离参数都对应了四段（对应于itemize列表和enumerate列表）甚至无数段（对应于description列表）距离，这是因为列表可以进行嵌套，当列表在一个条目当中嵌套了一个新的列表的时候，LaTeX会将上一层的距离参数应用到新的一层的列表当中来。为了方便理解这一种参数的对应模式，我们只需要明确列表距离参数的设置范围当中两个发生了变更的边线即可：在列表第一层，列表距离参数的设置范围的左边线就是页面左边线，上边线就是列表上一行文本所属箱子的下边线，右边线就是页面右边线，不存在下边线，现在假设我们在当前列表的一个条目中嵌套了一个新的列表，那么下一级列表关于距离参数的设置范围的左边线和上边线发生了变化：左边线变成了上一级列表条目换行部分的左边线（就是下文将要介绍的上一级列表leftmargin参数对应距离的右边线），上边线变成了下一级列表上一行文本所属箱子的下边线，右边线则没有发生变化。定位了这两条距离参数设置范围发生变化的这两条边线后，此后各级列表的距离参数对应的距离就可以类比第一级列表进行理解，以下讨论列表的各项距离参数时，都以第一级列表的情况为例，不再另外讨论列表嵌套的情况
+    \begin{itemize}
+        \item \textbackslash{}labelwidth（标签宽度）
+        %* 在description列表中，其默认值为0pt
+        \item \textbackslash{}labelsep（标签右边距）
+        %! 注意不要将上述两条命令当中的"label"和用于设置计数器位置便于之后引用时使用的"\label{}"命令混淆，后者从功能上似乎翻译成“书签”更为恰当
+        %* 指标签右边线到条目首行左边线之间的距离
+        \item \textbackslash{}itemindent（条目首行缩进距离）
+        %* 在itemize列表和enumerate列表中，其默认值为0pt
+        \item \textbackslash{}listparindent（条目其他段落首行缩进距离）
+        %* 默认值为0pt
+        %! 注意不要将以上两条命令和控制正文当中段落首行缩进的"\parindent"命令混淆
+        \item \textbackslash{}parsep（列表内段落间距）
+        %! 注意不要将这一命令和控制正文当中段落间距的"\parskip"命令混淆
+        \item \textbackslash{}itemsep（条目间增距）
+        %* 之所以翻译成"增距"，是因为上一个条目的下边线和下一个条目的上边线之间的距离实际上是"\parsep"加上这一段距离，因此千万不要望文生义误以为"\itemsep"指的就是上一个条目的下边线和下一个条目的上边线之间的距离
+        \item \textbackslash{}topsep（段内列表上边增距）
+        %* 如果一个列表仍然在上一段内，对应到源代码当中就是上一段和列表之间没有空一行或者没有在上一段的末尾使用"\par"命令，上一行的下边线和列表的上边线之间的距离就是"\parskip"加上这一段距离，因此将这段距离翻译成"段内列表上边增距"
+        \item \textbackslash{}partopsep（段外列表上边再增距）
+        %* 如果一个列表另起一段，对应到源代码当中就是上一段和列表之间空一行或者在上一段的末尾使用了"\par"命令，上一行的下边线和列表的上边线之间的距离就是"\parskip"加上"\parsep"再加上这段距离，因此将这段距离翻译成"段外列表上边再增距"
+        %% 注意，列表的距离参数中不存在专门控制列表下边线到列表下一行上边线之间距离（列表下边距）的参数，这是因为这段距离始终等于列表上边线到列表上一行下边线之间的距离（列表上边距）。通过以上两个距离参数，我们可以发现，列表的上下边距只受【列表本身是否另起一段】这一因素的影响，至于列表后面的内容是否另起一段开始，则不会影响这两段距离
+        \item \textbackslash{}leftmargin（列表左边距）
+        %* 指条目换行部分左边线到页面左边线之间的距离，该距离是非负值
+        %% 第一层列表当中，这一距离可以用"\leftmargin"命令来表示，也可以用"\leftmargini"命令来表示，此后每嵌套更深的一层列表的时候，会另外产生一个新的对应的距离参数，分别是"\leftmarginii"、"\leftmarginiii"、"\leftmarginiv"（但是在相应的列表内部，仍然可以使用"leftmargin"来表示所在列表的列表左边距），其他距离参数不像"\leftmargin"参数一样存在每一级对应的参数名称
+        %! 注意不要将这一命令和geometry宏包中控制页面左边距的"\left"命令（或者"\lmargin"命令）混淆
+        \item \textbackslash{}rightmargin（列表右边距）
+        %* 指列表文本部分右边线到页面右边线之间的距离，默认值为0pt
+        %% 每一层列表当中，距离参数设置范围的右边线都是页面右边线，对应到打印效果就是不同层次的列表的右边线是重合的，右边距都是相等的（默认情况下都紧贴页面右边线）
+        %! 注意不要将这一命令和geometry宏包中控制页面右边距的"\right"命令（或者"\rmargin"命令）混淆
+        \item \textbf{\textbackslash{}labelindent}（标签左边距）
+        % 这一参数是enumitem宏包新设的参数
+        %* 指标签左边线到页面左边线之间的距离， 其默认值为0pt
+        \item \textbf{\textbackslash{}labelsep*}（标签右边距*）
+        % 这一参数是enumitem宏包新设的参数
+        %* 指标签右边线到条目换行部分左边线的距离，在itemize列表和enumerate列表中，由于"\itemindent"的默认值为0pt，也就是说，条目首行的左边线和换行部分的左边线是重合的，因此在这两类列表中，"\labelsep*"等于"\labelsep"
+    \end{itemize}
+%! 对于列表的距离参数，甚至无法通过"\setlength{cmd}{length}"或者"\renewcommand{cmd}{def}"命令进行重定义（前者没有效果，后者则直接导致编译报错），解决方法是通过enumitem宏包来方便地设置以上参数，见下文
+
+\hrulefill
+
+% 水平方向上的五个距离参数
+    %* 上文介绍的距离参数中，有五个水平方向上的距离参数："\labelindent"、"\labelwidth"、"\labelsep"、"\leftmargin"、"\itemindent"，它们对应的五条距离满足以下关系：labelindent + labelwith + labelsep = leftmargin + itemindent，这一关系始终成立。前文已经提到，由于labelindent默认值为0pt，因此这一距离关系就简化为：labelwidth + labelsep = leftmargin + itemindent；前文还提到，在itemize列表和enumerate列表中，itemindent的默认值为0pt，因此在这两类列表中，这一距离关系还可以简化为：labelwidth + labelsep = leftmargin；前文又提到，在description列表中，labelwidth的默认值为0pt，因此在description列表中，这一距离关系可以简化为：labelsep = leftmargin + itemindent
+    %! 这五个距离参数之间的关系以及表现在itemize列表以及enumerate列表当中与在description列表当中不同，这是在学习过程中经过无数次的测试发现的现象（甚至在其它一些方面的表现，比如标签内容在标签箱子当中的对齐方式，也是itemize列表和enumerate列表为一类，description列表为另一类），下面凡是讨论关于这五个距离参数的问题，一般都需要分为两类情况讨论，一类是在itemize列表和enumerate列表当中（视情形选择两者之一举例），另一类是在enumerate列表当中
+    %rfr 这篇帖子（https://syvshc.github.io/2021-12-05-length-in-enumitem/）提到在enumitem宏包的官方手册中提供了一个非常有用的"\DrawEnumitemLabel"命令，将其放置在列表的条目之前或者之后，就可以在条目的上方或者下方的位置打印出四条线段，自上而下分别对应"\labelindent"、"\labelwidth"、"\labelsep"、"\itemindent"（如果是这些距离是正数，则线段显示为细线，反之显示为粗线），另外还会打印两条竖直线段，两条线段之间的距离对应"\leftmargin"
+    %rfr 受上述这篇帖子以及前文提到的这篇帖子（https://tex.stackexchange.com/questions/300340/topsep-itemsep-partopsep-parsep-what-do-they-each-mean-and-what-about）的启发，在特定的列表环境当中通过"\the+距离参数命令"可以打印出当前列表的各项距离参数的值
+    %* 下面就在三类列表的嵌套环境中，同时使用以上两条命令，输出在相应的列表当中的这五个距离参数的值，并将这五条距离可视化
+    % itemize列表
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{itemize}
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{itemize}
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{itemize}
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+    
+    % enumerate列表
+    % \begin{enumerate}
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    %     \begin{enumerate}
+    %         \DrawEnumitemLabel
+    %         \item \printvalues
+    %         \begin{enumerate}
+    %             \DrawEnumitemLabel
+    %             \item \printvalues
+    %             \begin{enumerate}
+    %                 \DrawEnumitemLabel
+    %                 \item \printvalues
+    %             \end{enumerate}
+    %         \end{enumerate}
+    %     \end{enumerate}
+    % \end{enumerate}
+    %* 可以发现，itemize列表和enumerate列表在嵌套时，这五个距离参数的变化情况完全相同，并且通过距离图示可以发现，每一级列表在默认情况下都只存在三段距离，前文已经提到，这三段距离分别是：labelwidth、labelsep和leftmargin，它们满足关系：labelwidth + labelsep = leftmargin
+
+    % description列表
+    \begin{description}
+        \DrawEnumitemLabel
+        \item[A] \printvalues
+        \begin{description}
+            \DrawEnumitemLabel
+            \item[B] \printvalues
+            \begin{description}
+                \DrawEnumitemLabel
+                \item[C] \printvalues
+                \begin{description}
+                    \DrawEnumitemLabel
+                    \item[D] \printvalues
+                \end{description}
+            \end{description}
+        \end{description}
+    \end{description}
+    %* 可以发现，description列表在嵌套时，这五个距离参数的变化情况和另外两类列表不同，但是通过距离图示可以发现，每一集列表在默认情况下也都只存在三短距离，前文已经提到，这三段距离分别是：labelsep、leftmargin和itemindent，它们满足关系：labelsep = leftmargin + itemindent。距离图示还显示出有一段距离是负值（所以显示为粗线），这段距离是itemindent，这说明description列表当中的条目的首行相比之后的换行部分会向左侧伸出一段距离，这段距离也就是itemindent的绝对值
+
+    %* 通过以上命令，为我们得到了三类列表在嵌套时，各级列表当中的五个距离参数的默认值，现在通过表格呈现如下：
+    \begin{tabular}{l|ccc|cc}
+        \toprule
+        &labelindent&labelwidth&labelsep&leftmargin&itemindent\\
+        \midrule
+        itemizeI&0pt&20pt&5pt&25pt&0pt\\
+        itemizeII&0pt&16.99997pt&5pt&21.99997pt&0pt\\
+        itemizeIII&0pt&13.69995pt&5pt&18.69995pt&0pt\\
+        itemizeIV&0pt&11.99997pt&5pt&16.99997pt&0pt\\
+        \midrule
+        % enumerateI&0pt&20pt&5pt&25pt&0pt\\
+        % enumerateII&0pt&16.99997pt&5pt&21.99997pt&0pt\\
+        % enumerateIII&0pt&13.69995pt&5pt&18.69995pt&0pt\\
+        % enumerateIV&0pt&11.99997pt&5pt&16.99997pt&0pt\\
+        % \midrule
+        descriptionI&0pt&0pt&5pt&25pt&-20pt\\
+        descriptionII&0pt&0pt&5pt&21.99997pt&-16.99997pt\\
+        descriptionIII&0pt&0pt&5pt&18.69995pt&-13.69995pt\\
+        descriptionIV&0pt&0pt&5pt&16.99997pt&-11.99997pt\\
+        \bottomrule
+    \end{tabular}
+    %* 从中我们可以很清楚地看到，itemize列表和enumerate列表各级的条目关于这五个距离参数是完全相同的，其中，labelindent和itemindent的默认值始终为0pt，labelsep的默认值始终为5pt，而随着级别越来越深，labelwidth和leftmargin的值会变得越来越小，但是labelwidth + labelsep = leftmargin这一距离关系始终成立；在description列表中，情况则有所不同：labelindent和labelsep的默认值和itemize列表以及enumerate列表当中相同，分别保持0pt和5pt不变，但是labelwidth的默认值变成了0pt且保持不变，而itemindent的默认值不再是保持不变的0pt，而是一个负值，并且随着级别越来越深，leftmargin和itemindent的（绝对）值会变得越来越小，但是labelsep = leftmargin + itemindent这一距离关系始终成立
+
+\hrulefill
+
+% enumitem宏包提供的可选参数
+    %* 借助enumitem宏包，可以在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制同一级列表的相关参数，下面展示各个可选参数
+% label参数
+    % 设置同一级列表的标签样式，不适用于description列表，否则编译会报错，description的标签样式由下文将会介绍的font/format参数控制
+    %! 这一参数只影响条目的标签样式，不会影响条目文本的样式
+    \begin{itemize}[label=\ttfamily\textasciitilde]
+        \item A
+        \begin{itemize}
+            \item B
+            \begin{itemize}[label=\Huge\textasteriskcentered]
+                \item C
+                \begin{itemize}
+                    \item D
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+    \begin{enumerate}[label=\bfseries\theenumi]
+        %* 前文提到，重定义enumerate列表的编号样式时，需要根据重定义的是计数器部分还是计数器以外的部分来选择重定义对象，此处也可以做出这种选择：如果需要重定义计数器以外的部分，则直接调用计数器，将其与字体命令搭配使用即可，比如此处只需要为编号添加粗体效果，则直接调用计数器，再搭配"\bfseries"命令即可
+        \item \theenumi
+        \begin{enumerate}[label=(\Alph*)]
+            %* 如果需要重定义计数器部分，则需要使用新的数值命令，在这种情况下，enumitem宏包提供了一种简化的命令形式：可以将相应的数值命令后的计数器参数省去，替换成一个"*"符号即可，这是因为重定义某一级enumerate列表的编号样式的计数器部分时，一般一定是重定义这一级的计数器的调用形式，比如此处将计数器的调用形式从原本的"\alph{enumii}"重定义为"\Alph{enumii}"，可以简写成"\Alph*"
+            %% 可以发现，使用label参数重定义enumerate列表的编号样式时，计数器的调用形式和编号样式会被重定义为同一形式，比如此处我们实际上期待的是编号样式变成"(A)"，调用计数器时打印"A"，但是实际调用计数器打印出的也是"(A)"，解决的办法是使用ref参数重定义计数器的调用形式，见下文介绍
+            \item \theenumii
+            \begin{enumerate}
+                \item \theenumiii
+                \begin{enumerate}
+                    \item \theenumiv
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+\hrulefill
+
+% label*参数
+    %* 重定义的方式同label参数，区别在于使用这一参数之后，最后打印出的标签样式会由两部分组成：前一部分是上一级列表的标签样式（因此这一参数从第二级列表开始设置才有意义），后一部分是本级列表的标签样式
+    \begin{itemize}
+        \item A
+        \begin{itemize}[label*=\ttfamily\textasciitilde]
+            %* 在itemize列表的情况下，上下两级列表的符号样式会直接前后接在一起
+            \item B
+            \begin{itemize}
+                \item C
+                \begin{itemize}
+                    \item D
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+    \begin{enumerate}
+        \item \theenumi
+        \begin{enumerate}[label*=(\Alph*)]
+            %* 在enumerate列表的情况下，上下两级列表的编号样式会通过"."符号前后相接
+            \item \theenumii
+            \begin{enumerate}
+                \item \theenumiii
+                \begin{enumerate}
+                    \item \theenumiv
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+\hrulefill
+
+% ref参数
+    %* 这一参数是为了解决上述【enumerate列表当中使用label参数会导致计数器的调用形式会被重定义为和编号样式相同的形式】的问题，ref参数可以重定义计数器的调用形式
+    %% 之所以将这一参数命名为和"\ref{}"命令名称相同的"ref"，并不是巧合，因为"\ref{}"命令"的效果正是调用相应位置的计数器（等同于"\the+计数器名称"命令），而计数器的这一“位置”则是由"\label{}"命令来确定（前文讨论"\labelwidth"、"\labelsep"参数时也提到，"\label{}"命令中的"label"和列表参数中的"label"则没有太大关系，前者翻译成“书签”更为恰当）
+    %! 书中和官方手册当中关于这一参数功能的解释非常难懂
+    \begin{enumerate}
+        \item \theenumi
+        \begin{enumerate}[label=(\Alph*),ref={\Alph*}]
+            \item \theenumii\label{2}
+            \begin{enumerate}
+                \item \theenumiii
+                \begin{enumerate}
+                    \item \theenumiv
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    \ref{2}
+    
+\hrulefill
+
+% font/format参数
+    % 设置同一级列表标签的字体样式
+    %* 在itemize列表和enumerate列表当中，这参数的功能也可以通过设置label参数来实现，但是两者仍有不同：在itemize列表当中，这一参数免去了写出条目符号命令的必要；在enumerate列表当中，这一参数免去了调用计数器的必要，并且并不会导致计数器的调用形式被改变
+    %* 经检验还可以发现，这一参数的值当中不仅可以放置字体命令，也可以放置文本，这些文本会被加到相应的符号/编号/项的前面
+    \begin{itemize}
+        \item A
+        \begin{itemize}
+            \item B
+            \begin{itemize}[font=大\Huge ]
+                \item C
+                \begin{itemize}
+                    \item D
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+    \begin{enumerate}
+        \item \theenumi
+        \begin{enumerate}[format=大\itshape]
+            \item \theenumii
+            \begin{enumerate}
+                \item \theenumiii
+                \begin{enumerate}
+                    \item \theenumiv
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    \begin{description}[format=\huge 大]
+        \item[A]a
+        \begin{description}
+            \item[B]b 
+        \end{description} 
+    \end{description}
+
+\hrulefill
+
+% align参数
+    % 设置标签内容（符号/编号/项）在标签箱子当中的对齐方式
+    %* 下面使用"\DrawEnumitemLabel"命令便于观察对齐效果
+    %rfr itemize列表和enumerate列表中，标签中文本右对齐，description列表中，标签中文本左对齐，可以参考：https://latexref.xyz/description.html
+    % itemize列表
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item A
+    \end{itemize} % 默认情况右对齐
+
+    \begin{itemize}[align=left]
+        \DrawEnumitemLabel
+        \item A
+    \end{itemize} % 设置左对齐
+
+    % enumerate列表
+    \begin{enumerate}
+        \DrawEnumitemLabel
+        \item \theenumi
+    \end{enumerate} % 默认情况右对齐
+
+    \begin{enumerate}[align=left]
+        \DrawEnumitemLabel
+        \item \theenumi
+    \end{enumerate} % 设置左对齐
+
+    % description列表
+    \begin{description}
+        \DrawEnumitemLabel
+        \item[A]a
+    \end{description} % 默认情况左对齐
+
+    \begin{description}[align=right]
+        \DrawEnumitemLabel
+        \item[A]a
+    \end{description} % 设置右对齐
+    %* 可以发现，当默认情况左对齐时，项在标签箱子左边线（也是页面左边线）的右边，而设置右对齐时，项却跑到了标签箱子左边线的左边，这种特别的对齐效果正是宽度为0pt的箱子的特征
+
+    \hrulefill
+    
+    % 除了"left"和"right"，这一参数的值还可以设置为"parleft"，表示将标签内容放进一个段落箱子，并且在段落箱子中左对齐
+    %* 列表中的标签箱子在默认情况下不允许其中的文本进行换行，而"parleft"这一对齐方式则使得内容可以在标签箱子中进行换行。itemize列表和enumerate列表当中的标签内容都是提前定义好的，虽然可以通过条目后面的可选参数进行临时的改写，但是这一功能并不常用，因此，"parleft"往往在description列表中使用，因为description列表标签中的项内容是由使用者设置的，有时可能会比较长，将其放入一个段落箱子进行换行，可以使得打印效果更加美观
+    %! 当列表的标签在标签箱子中的对齐方式为左对齐时，如果该标签的长度超过了标签箱子的长度，在打印时，标签的内容会向右超出标签箱子的右边线（即overfull现象），标签箱子的宽度不变，这在LaTeX中还算是在正常范围内，但是与此同时，标签后面的条目的首行文本会相应地往后缩进，这会导致表面上看起来，itemindent的值发生变化，但是此时如果使用"\the\itemindent"命令，会发现这一距离参数的值并没有发生变化，下面使用itemize列表和description列表各举一个例子
+    % itemize列表
+    \begin{itemize}[label=AAAAAA,align=left]
+        \DrawEnumitemLabel
+        \item \blindtext
+        \item \printvalues % itemindent默认值仍然为0pt
+    \end{itemize}
+
+    % description列表
+    \begin{description}
+        \DrawEnumitemLabel
+        \item[AAAAAA] \blindtext
+        \item[AAAAAA] \printvalues % itemindent默认值仍然为-20pt
+    \end{description}
+
+\hrulefill
+
+    %* 而在parleft的对齐方式下，这一特殊的现象不再会出现，比如下面的description列表当中，如果只设置了parleft的对齐方式，标签后面的文本并不会因为标签内容超出标签箱子而相应缩进
+    \begin{description}[align=parleft]
+        \DrawEnumitemLabel
+        \item[AAAAAA\\BBBB] \blindtext
+        \item[AAAAAA\\BBBB] \printvalues
+    \end{description}
+    %* 解决办法是需要重新设置几个距离参数的值，根据前文的讨论，第一层的description列表当中水平位置上的五个距离参数之间的关系为（括号中列出此时各个参数的默认值）：labelindent (0pt) + labelwidth (0pt) + labelsep (5pt) = leftmargin (25pt) + itemindent (-20pt)。在上述情况中，leftmargin的值必须设置为一个更大的值，此处选择设置为40pt，这样还剩下labelindent、labelwidth、labelsep和itemident四个参数，下面分别测试设置其中一个参数之后的打印效果
+    % 设置labelindent为60pt
+    \begin{description}[align=parleft,leftmargin=40pt,labelindent=60pt]
+        \DrawEnumitemLabel
+        \item[AAAAAA\\BBBB] \blindtext
+        \item[] \printvalues
+    \end{description}
+
+    % 设置labelwidth为60pt
+    \begin{description}[align=parleft,leftmargin=40pt,labelwidth=60pt]
+        \DrawEnumitemLabel
+        \item[AAAAAA\\BBBB] \blindtext
+        \item[] \printvalues
+    \end{description}
+    
+    % 设置labelsep为60pt
+    \begin{description}[align=parleft,leftmargin=40pt,labelsep=60pt]
+        \DrawEnumitemLabel
+        \item[AAAAAA\\BBBB] \blindtext
+        \item[] \printvalues
+    \end{description}
+
+    % 设置itemindent为60pt
+    \begin{description}[align=parleft,leftmargin=40pt,itemindent=60pt]
+        \DrawEnumitemLabel
+        \item[AAAAAA\\BBBB] \blindtext
+        \item[] \printvalues
+    \end{description}
+    %* 经过上述测试，可以发现，只有增加labelwidth和labelsep的值，才能得到美观的打印效果，因为此时labelindent的值保持0pt不变，而itemindent的值被动增加，因此【条目首行缩进，但是标签不缩进】，而在增加labelindent或者itemindent的值的时候，由于labelwidth保持默认值0pt不变，labelsep保持默认值5pt不变，这就导致标签箱子（宽度为0pt，因此就是一条竖直线段）和条目首行左边线之间始终保持5pt（labelsep）的距离，因此【条目首行和标签同时缩进】，看起来就像是标签“粘”在了条目文本上一样
+
+\hrulefill
+
+    %% 这反映出一个超越此处讨论范围的问题：如果改变了列表当中这五个距离参数中的一个或者几个，LaTeX将会如何选择调整剩余的参数的值，以满足这五个距离之间的关系？经检验，这个问题需要分为（1）itemize列表/enumerate列表和（2）description列表两类列表环境分别讨论
+    %* 先看itemize列表和enumerate列表，下面我们每次设置五个距离参数当中的一个，然后观察剩余参数的变化情况，在此之前，我们再次写出这两类列表当中五个距离参数的关系（括号中列出各个参数的默认值）：labelindent (0pt) + labelwidth (20pt) + labelsep (5pt) = leftmargin (25pt) + itemindent (0pt)
+    % itemize列表
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % 默认情况
+
+    \begin{itemize}[labelindent=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} %! labelindent没有因为设置而变为60pt，所有参数值保持不变
+
+    \begin{itemize}[labelwidth=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % labelwidth的值发生改变，labelindent的值随之变化，其他参数值保持不变
+
+    \begin{itemize}[labelsep=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % labelsep的值发生改变，labelindent的值随之变化，其他参数值保持不变
+
+    \begin{itemize}[leftmargin=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % leftmargin的值发生改变，labelindent的值随之变化，其他参数值保持不变
+
+    \begin{itemize}[itemindent=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % itemindent的值发生改变，labelindent的值随之变化，其他参数值保持不变
+
+\hrulefill
+
+    % enumerate列表，各参数的表现和itemize列表完全相同
+    % \begin{enumerate}
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[labelindent=60pt]
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[labelwidth=60pt]
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[labelsep=60pt]
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[leftmargin=60pt]
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[itemindent=60pt]
+    %     \item \printvalues
+    % \end{enumerate}
+    %* 可以发现，在itemize列表和enumerate列表当中，如果只设置五个距离参数当中的一个，在设置labelindent时，labelindent的值并不会发生变化，所有参数保持默认值不变；在设置其他四个参数时，只会导致labelindent的值被动改变，其他参数保持默认值不变，以维持五个参数之间的距离关系
+    
+\hrulefill
+    
+    %* 再看description列表，同样的，我们再次写出description列表当中五个距离参数之间的关系（括号中列出各个参数的默认值）：labelindent (0pt) + labelwidth (0pt) + labelsep (5pt) = leftmargin (25pt) + itemindent (-20pt)
+    \begin{description}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{description} % 默认情况
+
+    \begin{description}[labelindent=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{description} %! labelindent的值发生改变，itemindent的值随之变化，其他参数值保持不变
+
+    \begin{description}[labelwidth=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{description} % labelwidth的值发生改变，itemindent的值随之变化，其他参数值保持不变
+
+    \begin{description}[labelsep=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{description} % labelsep的值发生改变，itemindent的值随之变化，其他参数值保持不变
+
+    \begin{description}[leftmargin=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{description} % leftmargin的值发生改变，itemindent的值随之变化，其他参数值保持不变
+
+    \begin{description}[itemindent=60pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{description} %! itemindent的值发生改变，labelindent的值随之变化，其他参数值保持不变
+    %* 可以发现，在description列表当中，如果只设置五个距离参数当中的一个，在设置除了itemindent以外的参数时，只会导致itemindent的值被动改变，其他参数保持默认值不变，以维持五个参数之间的距离关系；在设置itemindent时，只会导致labelindent的值被动改变，其他参数保持默认值不变，以维持五个参数之间的距离关系
+    %% 综合来看这两类情况，可以发现，labelwidth、labelsep和leftmargin这三个参数除非主动进行设置，否则不会因为其他参数值的变化而被动改变，而labelindent和itemindent这两个参数会因为其他参数的变化而被动改变，在itemize列表和enumerate列表中，被动改变的参数是labelindent（其自身的值无法通过主动设置来改变），在description列表中，被动改变的参数主要是itemindent（除非其自身被主动设置为一个值，此时被动改变的参数是labelindent）
+       
+\hrulefill
+
+    %* 上面parleft的例子当中，则向我们展示了在description列表当中，设置了两个参数（leftmargin+labelindent/labelwidth/labelsep/itemindent）的值时，情况和设置一个参数的时候一样，labelwidth、labelsep这两个参数除非进行主动设置，否则不会因为其他参数的变化而被动改变，itemindent是主要的会因为其他参数的值变化而被动改变的参数（除非其自身被主动设置为一个值，此时被动改变的参数是labelindent）
+    
+    %* 下面我们测试itemize/enumerate列表当中的对应情况
+    % 设置labelindent为60pt
+    \begin{itemize}[align=parleft,leftmargin=40pt,labelindent=60pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{itemize} % labelindent没有因为设置而变为60pt，只有leftmargin被设置为60pt，labelwidth、labelsep和itemindent保持默认值不变，labelindent则被动发生改变
+
+    % 设置labelwidth为60pt
+    \begin{itemize}[align=parleft,leftmargin=40pt,labelwidth=60pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{itemize} % leftmargin和labelwidth的值发生改变，labelindent的值随之变化，其他参数值保持不变
+    
+    % 设置labelsep为60pt
+    \begin{itemize}[align=parleft,leftmargin=40pt,labelsep=60pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{itemize} % leftmargin和labelsep的值发生改变，labelindent的值随之变化，其他参数值保持不变
+
+    % 设置itemindent为60pt
+    \begin{itemize}[align=parleft,leftmargin=40pt,itemindent=60pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{itemize} % leftmargin和itemindent的值发生改变，labelindent的值随之变化，其他参数值保持不变
+    %* 可以发现，在itemize/enumerate列表当中，设置了两个参数（leftmargin+labelindent/labelwidth/labelsep/itemindent）的值时，情况和设置一个参数的时候一样，如果设置的参数当中包括labelindent，则labelindent会被自动忽略，并且labelindent是唯一会根据其他参数的变化而被动改变的参数，其他参数如果没有主动设置，就保持默认值不变
+    %% 综合以上两种情况，可以发现，在设置五个距离参数当中的两个参数（在description列表当中同时设置labelindent和itemindent的情况需要另外讨论）时，情况和在设置一个参数时完全相同
+
+\hrulefill
+
+    %! 由于在description列表当中，labelindent和itemindent都可以各自单独设置，那么如果我们在description列表当中同时设置了labelindent和itemindent这两个参数的值，结果会怎样呢？
+    % itemize列表
+    % \begin{itemize}[labelindent=20pt,itemindent=40pt]
+    %     \item[] \printvalues
+    % \end{itemize}
+
+    % enumerate列表
+    % \begin{enumerate}[labelindent=20pt,itemindent=40pt]
+    %     \item[] \printvalues
+    % \end{enumerate}
+
+    % description列表
+    \begin{description}[labelindent=20pt,itemindent=40pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+    %% 我们会发现，在description列表当中，如果同时设置了labelindent和itemindent这两个参数的值，只有itemindent的值会变成设置的那个值，labelwidth、labelsep、leftmargin都保持默认值不变，而labelindent则会根据距离关系被动改变
+
+\hrulefill
+
+    %!如果我们同时设置了labelwidth、labelsep、leftmargin三个参数的值，结果又会怎样呢？
+    \begin{itemize}[labelwidth=20pt,labelsep=20pt,leftmargin=20pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{itemize}
+
+    % enumerate列表
+    % \begin{enumerate}[labelwidth=20pt,labelsep=20pt,leftmargin=20pt]
+    %     \item[] \printvalues
+    % \end{enumerate}
+
+    % description列表
+    \begin{description}[labelwidth=20pt,labelsep=20pt,leftmargin=20pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+    %% 我们会发现，在itemize列表和enumerate列表当中，itemindent会保持默认值0pt不变，labelindent会根据距离关系被动改变；而在description列表当中，labelindent会保持默认值0pt不变，itemindent会根据距离关系被动改变
+
+    %% 通过以上各种情况的测试，我们可以归纳出水平方向上五个距离参数在一个或几个参数发生变化时，剩余参数的变化情况：（1）在itemize列表和enumerate列表当中，labelindent的值是无法通过主动设置来改变的，即使设置了也会被自动忽略，剩下的四个参数不管有几个进行了主动设置，都只会引起labelindent的被动改变，没有主动设置的参数则保持默认值不变；（2-1）在description列表当中，如果主动设置的参数中包括itemindent，则此时无法再主动设置labelindent的值，即使设置了也会被自动忽略，剩余的三个参数不管有几个进行了主动设置，都只会引起labelindent的被动改变，没有主动设置的参数则保持默认值不变；（2-2）如果主动设置的参数中不包括itemindent，则可以对labelindent进行主动设置，此时除itemindent之外的四个参数当中不管有几个进行了主动设置，都只会引起itemindent的被动改变，没有主动设置的参数则保持默认值不变。综合来看，依旧是labelwidth、labelsep、leftmargin这三个参数最为稳定，只有主动设置才能改变它们的值，而labelindent和itemindent则会因为其他参数的变化而被动改变，在itemize列表和enumerate列表中，被动改变的参数是labelindent（其自身的值无法通过主动设置来改变），在description列表中，被动改变的参数主要是itemindent（除非其自身被主动设置为一个值，此时被动改变的参数是labelindent）
+    %! 注意，以上描述的五个距离参数的表现是指在同一级列表内部进行主动设置的情况下，如果是像前文提到的列表进行嵌套，则这五个参数会发生另外的变化，具体可以参看上文的相关讨论，下文还会讨论"!"符号和"*"符号对于【在itemize列表和enumerate列表当中无法主动设置labelindent的值】这一现象的解释
+    
+\hrulefill
+
+% "!"符号
+    %* 如果将五个距离参数当中的一个参数设置为等于"!"，表示这个参数的值只能根据其他参数的变化而被动改变，无法通过主动设置来改变，结合上文的讨论，我们知道，在itemize列表和enumerate列表当中，labelindent被默认设置为了labelindent=!，因此它的值无法通过主动设置来改变，而只能根据其他参数的变化而被动改变
+    % 下面展示将itemize列表当中的labelwidth、labelsep、leftmargin、itemindent分别设置为!之后，再设置labelindent的效果
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % 默认情况
+
+    \begin{itemize}[labelwidth=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+    %! 注意此处的特殊打印效果，下文还会经常出现，它们有共同的特点：（1）labelwidth是负值，因此标签箱子的右边线位于左边线的左边；（2）leftmargin的左边线不再是页面左边线，而是页面左边线往右移动相当于labelwidth绝对值距离的位置；（3）itemindent的值为0pt
+    %rfr 关于这一特殊效果的解释，参见下文关于"*"参数的介绍
+
+    \begin{itemize}[labelsep=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[leftmargin=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[itemindent=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+    %* 会发现，如果设置了某一个参数为!之后，再设置labelindent，剩下的三个参数会保持默认值不变，设置为!的参数会根据距离关系被动改变
+
+\hrulefill
+
+    %! 如果有多个参数被设置为了!，以排列在最后一位的参数为准，之前所有被设置为!的参数自动忽略，可以观察下面几对命令的区别
+    % 设置了两个参数为!
+    \begin{itemize}[labelsep=!,labelwidth=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % labelwidth在最后一位，因此labelwidth被动改变，labelsep保持默认值
+    %! 注意此处特殊的打印效果，和上一次出现的类似效果的代码原理完全相同
+
+    \begin{itemize}[labelwidth=!,labelsep=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % labelsep在最后一位，因此labelsep被动改变，labelwidth保持默认值
+
+    % 设置了三个参数为!
+    \begin{itemize}[labelsep=!,labelwidth=!,leftmargin=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % leftmargin在最后一位，因此leftmargin被动改变，labelsep和labelwidth保持默认值
+
+    \begin{itemize}[leftmargin=!,labelsep=!,labelwidth=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % labelwidth在最后一位，因此labelwidth被动改变，leftmargin和labelsep保持默认值
+    %! 注意此处特殊的打印效果，和上一次出现的类似效果的代码原理完全相同
+
+    \begin{itemize}[labelwidth=!,leftmargin=!,labelsep=!,labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % labelsep在最后一位，因此leftsep被动改变，labelwidth和leftmargin保持默认值
+
+\hrulefill
+
+    %% 最后，再稍微讨论一下description列表的情况，结合前文的讨论，我们怀疑description的底层定义当中，并没有简单地将哪一个距离参数设置为!，因为我们发现以下复杂现象：（1）在description列表当中，如果我们改变labelindent的值，itemindent的值就会随之变化；（2）反过来，如果我们改变itemindent的值，labelindent的值就会随之变化；（3）如果我们改变labelwidth、labelsep、leftmargin的值，则是itemindent的值随之变化；（4）如果我们同时改变labelindent和itemindent的值，则labelindent的设置被自动忽略，itemindent变为设置的值，labelindent的值会随之变化。（1）和（3）似乎反映出默认设置itemindent=!，（2）和（4）似乎又指向默认设置labelindent=!。虽然我们暂时无法解释清楚为什么description列表的距离参数会有这些复杂表邪，但是这不影响我们将某个参数设置为!，使其成为不同于默认情况下的被动改变的参数，比如，（3）中指出的在description列表当中改变labelwidth、labelsep、leftmargin的值会导致itemindent的值被动改变，此时我们如果想要让这个被动改变的参数变成和itemize/enumerate列表当中一样地labelindent，就可以设置labelindent=!
+    \begin{description}[labelindent=!,labelwidth=40pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[labelindent=!,labelsep=40pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[labelindent=!,leftmargin=40pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+\hrulefill
+ 
+% "*"符号
+    %* 如果将五个距离参数当中的一个参数设置为等于"*"，功能和将其设置为等于"!"完全一样，只不过此时还会同时将labelwidth的值从原来的默认值（itemize/enumerate列表中为20pt，description列表中为0pt）设置为另一个值，这个值和当前所在列表的标签内容有关
+    %rfr enumerate宏包的官方手册首先是在enumerate列表的背景下解释这一个为labelwidth设置的新值的，具体而言，如果当前列表的标签计数器的数值形式（不管是其默认形式还是经过重定义的形式）是\arabic*，则labelwidth的新值以"0"这一字符为基础，设置为"0"在加上重定义的标签字体样式以及其他字符（如果进行了重定义的话）之后的宽度；如果计数器的数值形式为\roman*，则以"viii"这一字符串为基础进行相同的操作；如果计数器的数值形式为"\alph*"，则以"m"这一字符为基础进行相同的操作；如果计数器的数值形式为"\Alph*"，则以"M"这一字符为基础进行相同的操作。在提供的例子中，官方手册也提到了在itemize列表的背景下，也可以使用这一设置方式，但是没有做出更多的说明，参照enumerate列表的情况，此时labelwidth的新值应该是在itemize列表的标签符号的基础上进行相同的操作。至于在description列表的背景下，官方手册没有做任何的说明，但是经检验，在description列表当中进行这一设置，labelwidth的新值只受两个因素影响：（1）设置为*的是哪一个参数；（2）列表嵌套的级别，项的内容并不会影响labelwidth的新值
+    %% 如果将labelwidth本身设置为*，其效果和将labelwidth设置为!完全一样，因为此时labelwidth会根据其他参数的变化而被动改变，不再会被设置为上述新值
+    %! 但是enumitem宏包的官方手册中随后指出，要谨慎将labelwidth设置为!/*，因为这有可能会将labelwidth变成一个负值，是没有意义的："labelwidth=* and labelwidth=! are synonymous. Use them with care, because they may take negative values, which does not make sense (a warning is shown)"，这也解释了上文中在一些itemize列表当中设置"labelwidth=!"参数后出现的特殊的打印效果，下文中在"left"参数部分也将会遇到在description列表当中出现类似的奇怪打印效果的情况，究其原因也是由labelwidth变成负值导致的
+    %rfr 根据这篇帖子（https://syvshc.github.io/2021-12-05-length-in-enumitem/）的解释，这一设置方式的目的是为了缩短列表标签原本过长的宽度，这一解释是有道理的，但这也反映出这一设置方式最初其实只是为enumerate列表和itemize列表设计的，因为只有在这两类列表当中才存在标签的默认宽度过长的问题
+    % 下面比对在三类列表当中将参数设置为!和*的不同效果
+    % itemize列表	
+    \begin{itemize}[labelsep=*,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{itemize}[labelsep=*,leftmargin=30pt]
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{itemize}[labelsep=*,leftmargin=30pt]
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{itemize}[labelsep=*,leftmargin=30pt]
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+    \begin{itemize}[labelsep=!,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{itemize}[labelsep=!,leftmargin=30pt]
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{itemize}[labelsep=!,leftmargin=30pt]
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{itemize}[labelsep=!,leftmargin=30pt]
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{itemize}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+
+    % enumerate列表
+    \begin{enumerate}[labelsep=*,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{enumerate}[labelsep=*,leftmargin=30pt]
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{enumerate}[labelsep=*,leftmargin=30pt]
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{enumerate}[labelsep=*,leftmargin=30pt]
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+
+    \begin{enumerate}[labelsep=!,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{enumerate}[labelsep=!,leftmargin=30pt]
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{enumerate}[labelsep=!,leftmargin=30pt]
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{enumerate}[labelsep=!,leftmargin=30pt]
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{enumerate}
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    
+    % description列表
+    \begin{description}[labelsep=*,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{description}[labelsep=*,leftmargin=30pt]
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{description}[labelsep=*,leftmargin=30pt]
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{description}[labelsep=*,leftmargin=30pt]
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{description}
+            \end{description}
+        \end{description}
+    \end{description}
+
+    \begin{description}[labelsep=!,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+        \begin{description}[labelsep=!,leftmargin=30pt]
+            \DrawEnumitemLabel
+            \item \printvalues
+            \begin{description}[labelsep=!,leftmargin=30pt]
+                \DrawEnumitemLabel
+                \item \printvalues
+                \begin{description}[labelsep=!,leftmargin=30pt]
+                    \DrawEnumitemLabel
+                    \item \printvalues
+                \end{description}
+            \end{description}
+        \end{description}
+    \end{description}
+
+    %* 下面将这三类列表当中两种不同的设置方式对应的labelwidth的长度通过表格呈现如下：
+    \begin{tabular}{lcc}
+        \toprule
+        &*&!\\
+        \midrule
+        \rowcolor{gray!50}
+        itemizeI&8.19963pt&20pt\\
+        \rowcolor{gray!50}
+        itemizeII&6.06013pt&11.99997pt\\
+        itemizeIII&5.26968pt&0.69992pt\\
+        itemizeIV&8.19963pt&-12.30011pt\\
+        \midrule
+        \rowcolor{gray!50}
+        enumerateI&8.19963pt&20pt\\
+        enumerateII&16.97893pt&11.99997pt\\
+        enumerateIII&17.28346pt&0.69992pt\\
+        enumerateIV&12.59454pt&-12.30011pt\\
+        \midrule
+        descriptionI&-5pt&0pt\\
+        descriptionII&-35pt&0pt\\
+        descriptionIII&-65pt&0pt\\
+        descriptionIV&-95pt&0pt\\
+        \bottomrule
+    \end{tabular}
+    %% 可以发现，实际上只有itemize列表的前两级和enumerate列表的第一级，设置*的情况下的labelwidth比设置!的情况下的labelwidth的宽度小，不知是不是由于设置参数的具体细节导致的，不过一般itemize列表和enumerate列表也只会用前面两级，因此似乎也能够满足上面所说的缩短labelwidth默认值的目的。另外可以发现，设置了*之后，description列表中的labelwidth全部变成了负值，说明这一设置方式确实不适合在description列表当中使用
+    %rfr 官方手册中提到的这一设置方式的两种常见用法是"\labelsep=*"和"\leftmargin=*"，前者可以保证所有条目的leftmargin的值相等，因此所有条目换行部分的左边线都在一条直线上；后者则保证所有条目的labelsep相等，因此所有条目的文本内容都会在标签部分后面相等的距离处开始
+
+\hrulefill
+    
+% left参数
+    %* 这一参数实际上是两类设置距离参数的命令的简略形式，见下文介绍
+    %* left参数只带一个值时，表示设置labelindent参数，同时设置leftmargin=*
+    % 下面分别列举三类列表当中【默认情况】、【使用left参数设置labelindent】和【直接设置labelindent参数】的情况
+    % itemize列表
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[left=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[labelindent=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % 对labelindent的设置会被自动忽略
+
+    % enumerate列表
+    % \begin{enumerate}
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[left=30pt]
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[labelindent=30pt]
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    % \end{enumerate}
+    %* 如前文所述，在itemize列表和enumerate列表当中，是不可以直接设置labelindent参数的，即使设置了也会被自动忽略
+
+    % description列表
+    \begin{description}
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[left=30pt]
+        \DrawEnumitemLabel
+        \item[A] \printvalues
+    \end{description}
+    %! 注意此处特别的打印效果，相比上一次出现的类似效果，此处的效果除了三个共同特征外，还有一个难以解释现象：由于description列表当中的标签文本在标签箱子中默认左对齐，因此标签内容照理说应该出现在标签箱子左边线的右边，但是实际效果是标签内容跑到了箱子左边线的左边
+
+    \begin{description}[labelindent=30pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+    %* 可以发现，在description列表当中使用left参数设置labelindent和直接设置labelindent参数的效果不同，并且使用left参数设置时会导致labelwidth变成负值，因此最好不要在description列表当中使用这种设置方式
+
+\hrulefill
+
+    %* left参数带两个值时，前一个参数设置labelindent，后一个参数设置leftmargin，同时设置labelsep=*
+    % 下面分别列举三类列表当中【默认情况】、【使用left参数设置labelindent以及leftmargin】和【直接设置labelindent参数以及leftmargin参数】的情况
+    % itemize列表
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[left=30pt..30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[labelindent=30pt,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize} % 对labelindent的设置会被自动忽略
+
+    % enumerate列表
+    % \begin{enumerate}
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[left=30pt..30pt]
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    % \end{enumerate}
+
+    % \begin{enumerate}[labelindent=30pt,leftmargin=30pt]
+    %     \DrawEnumitemLabel
+    %     \item \printvalues
+    % \end{enumerate}
+    %* 如前文所述，在itemize列表和enumerate列表当中，是不可以直接设置labelindent参数的，即使设置了也会被自动忽略
+
+    % description列表
+    \begin{description}
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[left=30pt..30pt]
+        \DrawEnumitemLabel
+        \item[A] \printvalues
+    \end{description}
+    %! 注意此时出现了和使用left参数设置labelindent的情况下相同的奇怪打印效果
+
+    \begin{description}[labelindent=30pt,leftmargin=30pt]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+    
+    %% 以上在description列表当中使用left参数出现的种种问题似乎表明，这一参数通常只在itemize列表或者enumerate列表当中使用，毕竟，在这两类列表当中无法直接设置labelindent参数（而left参数会同时设置leftmargin=*或者labelsep=*），而在description列表当中可以（只不过不能和itemindent参数同时设置）
+
+\hrulefill
+
+% widest参数
+    %* widest参数用于设置列表标签的最大宽度（即labelwidth的值），但是为其设置的值并不是一段距离，而是与相应列表的标签内容“相适应”的文本形式
+    %rfr 这一参数在官方手册当中一开始也是在enumerate列表的背景下设计出来的，因此也像上文提到的在设置某个参数为*时，为labelwidth设置新值一样，需要首先明确相应的列表标签当中计数器的数值形式，比如，第一级enumerate列表的计数器默认的数值形式为"\arabic*"，那么为其设置widest参数就可以选择在标签中所有可能出现的阿拉伯数字，比如10、100等。官方手册随后也指出这一设置方式也适用于itemize列表和description列表，但是对于description列表需要谨慎对距离参数进行设置，类似问题在上文讨论中已经多有涉及，此处不再展开
+    %rfr 根据这篇帖子（https://syvshc.github.io/2021-12-05-length-in-enumitem/）的说法，为widest参数设置的值也像上文介绍的设置*的情况一样，只是设置的基础，为labelwidth实际设置的新值还需要算上标签的字体样式和其他字符
+    %% 官方手册还提及，这一参数可以和设置为*的参数搭配使用（设置widest参数获得的宽度会替换设置*的情况下labelwidth获得的宽度），实际上，这甚至是必须的，否则labelwidth会保持默认值不变
+    %! 经检验，发现即使为widest参数设置一个和当前列表标签内容不相适应的文本形式，比如为第一级enumerate列表的widest参数设置"m"这个值，编译也不会报错，只不过这就失去了设置这一参数的意义，因为设置这一参数最初的目的就是为了让同一级列表的标签最大宽度参照所有标签内容当中宽度最大的那个内容进行调整
+    % 下面比对三类列表当中【默认情况】、【仅设置*参数】和【设置*参数和widest参数】三种情况下latebwidth的值的情况
+    % itemize列表
+    \begin{itemize}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[leftmargin=*]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[widest=\textbullet\textbullet,leftmargin=*]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    \begin{itemize}[widest=\textbullet\textbullet\textbullet,leftmargin=*]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{itemize}
+
+    % enumerate列表
+    \begin{enumerate}
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{enumerate}
+
+    \begin{enumerate}[leftmargin=*]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{enumerate}
+
+    \begin{enumerate}[widest=10,leftmargin=*]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{enumerate}
+
+    \begin{enumerate}[widest=1000,leftmargin=*]
+        \DrawEnumitemLabel
+        \item \printvalues
+    \end{enumerate}
+
+    % description列表
+    \begin{description}
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[leftmargin=*]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[widest=A,leftmargin=*]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+
+    \begin{description}[widest=AAA,leftmargin=*]
+        \DrawEnumitemLabel
+        \item[] \printvalues
+    \end{description}
+    %% 可以发现，对于itemize列表和enumerate列表来说，默认情况下labelwidth的值最大，仅设置*参数时得到的labelwidth的值最小，设置*参数和widest参数时得到的labelwidth的值可能介于两者之间，但也可能超过labelwidth的默认值；而对于description列表来说，前文已经提及，设置*参数由于容易使labelwidth变成负值，因此不是常见的做法，而设置*参数和widest参数则一定会导致labelwidth的值增大，大于其默认值0pt，因此可以在description列表当中使用这一设置方式
+
+    %rfr 这篇帖子（https://syvshc.github.io/2021-12-05-length-in-enumitem/）在最后给出了一系列使用这些可选参数来设置enumerate列表格式的实例，通过这些实例，可以发现，在距离参数当中，经常设置的是leftmargin参数和labelindent参数，前者控制条目文本左侧离页面左侧的距离，后者（要搭配设置*参数）控制列表标签离页面左侧的距离
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

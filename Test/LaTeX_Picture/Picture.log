@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  23 AUG 2024 21:27
+This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  2 SEP 2024 01:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -909,10 +909,10 @@ Package rerunfilecheck Info: File `Picture.out' has not changed.
 (rerunfilecheck)             Checksum: 49E5BAD82118648BB16453109A180453;4241.
  ) 
 Here is how much of TeX's memory you used:
- 15208 strings out of 409034
- 336588 string characters out of 5756841
+ 15241 strings out of 409034
+ 338799 string characters out of 5756841
  1944560 words of memory out of 5000000
- 37714 multiletter control sequences out of 15000+600000
+ 37747 multiletter control sequences out of 15000+600000
  562111 words of font info for 71 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  93i,10n,111p,819b,570s stack positions out of 10000i,1000n,20000p,200000b,200000s

@@ -226,7 +226,7 @@
     subfig宏包的的前身是subfigure宏包，后者现已不再使用。subfig宏包提供了``\textbackslash subfloat[subcaption]\{body\}''命令，其原理类似minipage环境，可选参数用来输入小图标题，必选参数用来输入``\textbackslash includegraphics[options]\{name\}''命令，``\textbackslash subfloat[subcaption]\{body\}''命令没有用来控制图片宽度的参数，图片的宽度通过嵌套在其中的``\textbackslash includegraphics[options]\{name\}''命令来控制（\ref{7}）。
 
 %todo subfig宏包命令，和subcaption宏包不兼容
-%* 可以到文件"Picture_subfig.tex"中查看相应的效果
+%rfr 可以到文件"Picture_subfig.tex"中查看相应的效果
     % \begin{figure}[htbp]
     %     \centering
     %     \fbox{
@@ -283,7 +283,7 @@
     \label{8}
     \end{figure}
 
-    第二种方式是通过``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令来完成，其原理类似minipage环境，第一个必选参数用来输入小图标题（而在``\textbackslash subfloat[subcaption]\{body\}''命令种这是一个可选参数），第二个可选参数用来输入边框的宽度，第三个必选参数用来输入``\textbackslash includegraphics[options]\{name\}''命令。注意，和在minipage环境中不同，``\textbackslash includegraphics[options]\{name\}''命令中表示图片宽度的可选参数在``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令中仍然是以文本宽度作为基准的，因此不需要改变其大小。另外，根据subcaption宏包的官方手册显示，``\textbackslash subcaptionbox\{heading\}[width]\{content\}''的第二个可选参数表示的是边框的宽度，默认值就是其中图片的宽度，但是经检验，将其设置为图片宽度（\ref{9}）和不设置这一可选参数（\ref{10}）两种情况下，前者得到的效果是有略微差异的，前者和使用``\textbackslash subcaption\{\}''命令（\ref{8}）的效果相同，后者和使用``\textbackslash subfloat[subcaption]\{body\}''命令（\ref{7}）的效果相同。
+    第二种方式是通过``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令来完成，其原理类似minipage环境，第一个必选参数用来输入小图标题（而在``\textbackslash subfloat[subcaption]\{body\}''命令中这是一个可选参数），第二个可选参数用来输入边框的宽度，第三个必选参数用来输入``\textbackslash includegraphics[options]\{name\}''命令。注意，和在minipage环境中不同，``\textbackslash includegraphics[options]\{name\}''命令中表示图片宽度的可选参数在``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令中仍然是以文本宽度作为基准的，因此不需要改变其大小。另外，根据subcaption宏包的官方手册显示，``\textbackslash subcaptionbox\{heading\}[width]\{content\}''的第二个可选参数表示的是边框的宽度，默认值就是其中图片的宽度，但是经检验，将其设置为图片宽度（\ref{9}）和不设置这一可选参数（\ref{10}）两种情况下，前者得到的效果是有略微差异的，前者和使用``\textbackslash subcaption\{\}''命令（\ref{8}）的效果相同，后者和使用``\textbackslash subfloat[subcaption]\{body\}''命令（\ref{7}）的效果相同。
 
 %todo subcaption宏包命令，和subfig宏包不兼容
     \begin{figure}[htbp]
@@ -355,7 +355,7 @@
     \end{figure}
 
 \subsection{并排插入不同比例的图片}
-    最后还可以讨论一下并排插入不同比例的图片的情况。首先有一个值得注意的现象，那就是如果在上述的命令中，如果在所有图片的``\textbackslash includegraphics[options]\{name\}''命令的可选参数中同时输入width和scale参数，最后会以width参数作为排版的依据，而会忽视设置的scale参数。下面展示通过上面的各种方法设置不同比例图片的排版效果。
+    最后还可以讨论一下并排插入不同比例的图片的情况。首先有一个值得注意的现象，那就是在上述命令中，如果在所有图片的``\textbackslash includegraphics[options]\{name\}''命令的可选参数中同时输入width和scale参数，最后会以width参数作为排版的依据，而会忽视设置的scale参数。下面展示通过上面的各种方法设置不同比例图片的排版效果。
 
     直接通过figure环境和``\textbackslash includegraphics[options]\{name\}''命令（\ref{12}）
 
@@ -401,7 +401,7 @@
     使用subfig宏包的``\textbackslash subfloat[sub-caption]\{body\}''命令（\ref{14}）
 
 %todo subfig宏包命令，和subcaption宏包不兼容 
-%* 可以到文件"Picture_subfig.tex"中查看相应的效果
+%rfr 可以到文件"Picture_subfig.tex"中查看相应的效果
     % \begin{figure}[htbp]
     %     \centering
     %     \fbox{
@@ -533,7 +533,7 @@
         \item 使用subcaption宏包的subfigure环境（\ref{18}）
     \end{itemize}
     
-    使用minipage环境（\ref{13}, \ref{15}）即使设置了相等的边框宽度，也会由于边框的下端没有对齐而导致排版效果不如以上两种方式美观（或许minipage环境有相关参数可以调整这一效果），而使用subfig宏包的``\textbackslash subfloat[sub-caption]\{body\}''命令（\ref{14}），则会由于无法设置图片的宽度，从而和使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令，但是却没有为其设置边框宽度（\ref{17}）一样，导致最后的边框宽度不相等，排版效果最差。
+    使用minipage环境（\ref{13}, \ref{15}）即使设置了相等的边框宽度，也会由于边框的下端没有对齐而导致排版效果不如以上两种方式美观（或许minipage环境有相关参数可以调整这一效果），而使用subfig宏包的``\textbackslash subfloat[sub-caption]\{body\}''命令（\ref{14}），则会由于无法设置图片的宽度，从而和【使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令，但是却没有为其设置边框宽度（\ref{17}）】一样，导致最后的边框宽度不相等，排版效果最差。
     
     看来，如果要并排插入图片，最好选择使用subcaption宏包的``\textbackslash subcaptionbox\{heading\}[width]\{content\}''命令或者subfigure环境。
     

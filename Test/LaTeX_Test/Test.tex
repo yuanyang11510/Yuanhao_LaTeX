@@ -1,13 +1,26 @@
-\documentclass{article}
-\usepackage{longtable}
-\usepackage{ctex}
+\documentclass[10pt]{article}
 \usepackage[showframe]{geometry}
-\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
+\usepackage[shortlabels,inline]{enumitem}
+\usepackage{blindtext}
 
+\newcommand{\printvalues}{
+        labelindent = \the\labelindent,
+        labelwidth = \the\labelwidth,
+        labelsep = \the\labelsep,
+        leftmargin = \the\leftmargin,
+        itemindent = \the\itemindent
+    }
 \begin{document}
-a\hspace{\fill}b\hspace{\fill}
+En un lugar de la Mancha, de cuyo nombre no quiero acordarme,
+no ha mucho tiempo que viv\'{\i}a un hidalgo de los de
+\begin{enumerate}[leftmargin=0pt, widest=0, itemindent=0pt,  labelindent=*, align=left]
+    \DrawEnumitemLabel
+    \item lanza en astillero,
+    \item adarna antigua,
+    \item Lorem ipsum dolor sit amet, consectetuer adipisc\\ing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing itae, felis.
+    \item Lorem ipsum
+\end{enumerate}
+Una olla de algo m\'{a}s vaca que carnero, salpic\'{o}n las m\'{a}snoches, duelos y quebrantos los s\'{a}bados...
 
-a\hspace{\fill}b\hspace{\fill}\par
 
-a
 \end{document}

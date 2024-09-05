@@ -15,8 +15,8 @@
         %! 注意，在设置这一参数时，页眉/页脚和侧页边根据是否被包括进页面区域的不同条件，会有各自不同的显示效果：（1）不管页眉和页脚是否被包括进页面区域，设置该参数都会显示整个页眉部分和页脚部分；（2）即使侧页边没有被包括在页面区域内，设置该参数依然会显示侧页边的左边线，一旦侧页边被包括进页面区域内，则还会显示其右边线，这一点和页脚不同
     showcrop,
         %* 显示裁剪标志
-% paper
-% 这一部分也可以在"\documentclass[options]{style}"命令的可选参数中设置（包括twoside和twocolumn）
+%% paper
+%% 这一部分也可以在"\documentclass[options]{style}"命令的可选参数中设置（包括twoside和twocolumn）
     paper = a4paper,  
         % 也可以设置名称为"papername"
         %* 设置提前定义好的纸张尺寸，可以选择的值包括：[a0--a6、b0--b6、c0--c6]paper、b0j--b6j、ansi[a--e]paper、letterpaper、executivepaper、legalpaper、screen等
@@ -27,8 +27,8 @@
     % landscape,  
         % 也可以加上布尔逻辑值：landscape = true，其效果等于portrait = false（下面涉及类似的参数时，同样遵循这个规则）
         %* 设置横向纸张，默认值为"portrait"，即纵向纸张
-% layout
-% "layout"的效果实际是在原来的纸张区域和页面区域之间多加一层矩形区域，在默认情况下，该区域的左上角紧贴原来纸张区域的左上角，在大多数情况下，并不需要设置这一参数
+%% layout
+%% "layout"的效果实际是在原来的纸张区域和页面区域之间多加一层矩形区域，在默认情况下，该区域的左上角紧贴原来纸张区域的左上角，在大多数情况下，并不需要设置这一参数
     % layout = a5paper,
         %* 根据上面提到的"layout"的定义，这一区域的尺寸一般小于原来纸张的尺寸
     % layoutsize = {20cm,20cm},
@@ -36,8 +36,8 @@
         %! 同样地，如果同时设置layout和layoutsize，以layoutsize参数为准
     % layoutoffset = {5cm,5cm},
         %* 设置该区域的左边线和原来纸张的左边线之间的距离以及该区域的上边线和原来纸张的上边线之间的距离，也可以单独设置layouthoffset或者layoutvoffset
-% (total)body
-% geometry将这一部分的参数称为"body size"，但随后又说明其实包含了整个"total body"（页面）的相关参数
+%% (total)body
+%% geometry将这一部分的参数称为"body size"，但随后又说明其实包含了整个"total body"（页面）的相关参数
     % scale=.5, 
         % 效果等同于(total)width = .5\paperwidth、(total)height = {{0.5,0.5}\paperheight
         %* 同时设置页面宽度和纸张宽度的比值以及页面高度和纸张高度的比值，两者默认值都为0.7，也可以单独设置hscale或者vscale
@@ -52,11 +52,11 @@
     includeall,
         %* 是否包含页眉（head）、页脚（foot）、侧页边（marginalpar，来自"marginal paragraph"的缩写），其他可以选择的值有"includefoot"、"includeheadfoot"、"includemp"、"includeall"，以及将各个值中的"include"改为"ignore"之后的值
         %! 吴康隆P60称“默认的选项为includehead，表示总文本区包含页眉”，这句话其实是有问题的，geometry的宏包中在"includehead"参数后面明确提到，这一项默认设置为false，因此默认情况下其实页眉、页脚和侧页边都没有被包含在页面内
-% totalbody&margin
-% 下面这一参数可以同时设置页面和页边距，但是geometry将"total body"误作了"body"
+%% totalbody&margin
+%% 下面这一参数可以同时设置页面和页边距，但是geometry将"total body"误作了"body"
     % divide = {3cm,15cm,}
         %* 同时设置水平方向上的页面左边距、页面宽度、页面右边距，以及竖直方向上的页面上边距、页面高度、页面下边距，一般只需要设置其中两项，另外剩下的一项系统会通过纸张宽度/高度和这两项的差值自动计算出来，也可以单独设置hdivide或者vdivide
-% margin
+%% margin
     % left = 3cm,
         % 也可以设置名称为"lmargin"，在双边模式下也可以设置名称为"inner"
         %* 设置页面左边距
@@ -82,8 +82,8 @@
         %* 和"twoside"参数的效果相反，这一参数使侧页边始终出现在页面右侧，由于article文档类默认单边模式，因此这一参数通常用于book/report文档类
     % bindingoffset = 1cm,
         %* 在单边模式下，从纸张的左边线分出相应宽度的矩形范围作为装订区域，页面左边距相应减少；在双边模式下，从纸张的内侧边线分出相应宽度的矩形范围作为装订区域，页面内侧边距相应减少。geometry宏包在前后两处关于分出的宽度是否属于页面左边距/页面内侧边距存在矛盾，但实际效果是相同的，这里取其中一种说法
-% native dimentions
-% 下面这部分内容存在于LaTeX的原生命令中，geometry宏包也包括了这些参数
+%% native dimentions
+%% 下面这部分内容存在于LaTeX的原生命令中，geometry宏包也包括了这些参数
     % head = 2cm,
         % 也可以设置名称为"headheight"
         %* 设置页眉高度
@@ -162,7 +162,7 @@ geometry宏包的官方手册中提供的示意图并没有包括\textbf{``crop 
     \item paperheight = (total)height + top + bottom
 \end{itemize}
 
-现在再将范围缩小到页面。在页面内部，可能存在的部分有：\textbf{``body''（文本）}\footnote{这也就是放置\LaTeX 的document环境当中除去页眉、页脚和边注以外的其他所有内容的区域，由于这部分包含了文本最重要的主体部分，一般不允许这部分内容超出该区域，因此该区域有时候也被称为``safe zone''（安全区）。}、\textbf{``header''（页眉）}、\textbf{``footer''（页脚）}、\textbf{``marginal note''（侧页边）}，之所以说是``可能''，是因为在geometry宏包的默认设置中，页面只包含了文本区域，可以通过设置``inclue/ignore + 其他页面部分''参数来包括或者排除相关的部分。其中，页眉的高度称为\textbf{``head(height)''（页眉高度）}，页眉下边线和文本上边线之间有一段距离，称为\textbf{``headsep''（页眉边距）}；文本区域的下边线到页脚基线的高度称为\textbf{``foot(skip)''（页脚边距）}\footnote{页脚不像页眉那样存在上边线和下边线的分别，因此只需要定义文本区域的下边线和一段垂直距离，就足以确定页脚基线的位置。}，顺带一提，geometry宏包还重定义了脚注到正文的间距，称为\textbf{``footnotesep''（脚注边距）}\footnote{在\LaTeX 原生命令中，这一段距离通过``\textbackslash skip\textbackslash footins''命令控制。另外，注意不要混淆``脚注''和``页脚''这两个概念，前者属于文本区域，后者则不属于文本区域。}；页边的宽度称为\textbf{``marginpar(width)''（侧页边宽度）}，页边左边线（twoside模式下是内侧边线）和文本右边线（twoside模式下是外侧边线）之间的距离称为\textbf{``marginparsep''（侧页边边距）}。文本区域的边线称为``caution line''（文本边线），文本区域也有宽度参数和高度参数，文本的宽度称为\textbf{``textwidth''（文本宽度）}，文本的高度称为\textbf{``textheight''（文本高度）}。在默认情况下，即页面只包括文本区域，我们就可以得到下面两个关系：
+现在再将范围缩小到页面。在页面内部，可能存在的部分有：\textbf{``body''（文本）}\footnote{这也就是放置\LaTeX 的document环境当中除去页眉、页脚和边注以外的其他所有内容的区域，由于这部分包含了文本最重要的主体部分，一般不允许这部分内容超出该区域，因此该区域有时候也被称为``safe zone''（安全区）。}、\textbf{``header''（页眉）}、\textbf{``footer''（页脚）}、\textbf{``marginal note''（侧页边）}，之所以说是``可能''，是因为在geometry宏包的默认设置中，页面只包含了文本区域，可以通过设置``inclue/ignore + 其他页面部分''参数来包括或者排除相关的部分。其中，页眉的高度称为\textbf{``head(height)''（页眉高度）}，页眉下边线和文本上边线之间有一段距离，称为\textbf{``headsep''（页眉边距）}；文本区域的下边线到页脚基线的高度称为\textbf{``foot(skip)''（页脚边距）}\footnote{页脚不像页眉那样存在上边线和下边线的分别，因此只需要定义文本区域的下边线和一段垂直距离，就足以确定页脚基线的位置。}，顺带一提，geometry宏包还重定义了脚注到正文的间距，称为\textbf{``footnotesep''（脚注边距）}\footnote{在\LaTeX 原生命令中，这一段距离通过``\textbackslash skip\textbackslash footins''命令控制。另外，注意不要混淆``脚注''和``页脚''这两个概念，前者属于文本区域，后者则不属于文本区域。}；页边的宽度称为\textbf{``marginpar(width)''（侧页边宽度）}，页面左边线（twoside模式下是内侧边线）和文本右边线（twoside模式下是外侧边线）之间的距离称为\textbf{``marginparsep''（侧页边边距）}。文本区域的边线称为``caution line''（文本边线），文本区域也有宽度参数和高度参数，文本的宽度称为\textbf{``textwidth''（文本宽度）}，文本的高度称为\textbf{``textheight''（文本高度）}。在默认情况下，即页面只包括文本区域，我们就可以得到下面两个关系：
 \begin{itemize}
     \item (total)width = textwidth
     \item (total)height = textheight

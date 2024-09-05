@@ -1,3 +1,6 @@
+\listfiles
+%rfr 在tex文件顶部使用"\listfiles"命令，编译后生成的log文件将包含使用的宏包列表（及其版本号），可以参考：https://mp.weixin.qq.com/s/Xkfaxo_EPTGxam5DL_veOQ
+
 \documentclass{ctexart} 
 
 % 封面
@@ -117,8 +120,12 @@
             % 使用graphicx宏包和"\includegraphics[options]{name}"命令插入图片
             % 提供"\scalebox{h-scale}[v-scale]{text}"和"\rotatebox[keyvals]{angle}{text}"命令
 
+\usepackage{caption}
+            % caption宏包用来设置浮动体的标题格式
+
 \usepackage{subcaption}
-            %* 使用subcaption宏包来创建subfigure环境，在figure环境中嵌套多图
+            %* 使用subcaption宏包提供的subfigure环境，在figure环境中嵌套多图
+            % 使用subcaption宏包提供的subtable环境，在table环境中嵌套多张表格
             %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错
 
 % \usepackage{subfig}
@@ -156,7 +163,7 @@
 
 \usepackage{fancyhdr}
             % 借助fancyhdr宏包控制页眉和页脚
-            %? "hdr"可能是来自"header"的缩写
+            %* "hdr"应该是来自"header"的缩写
     \pagenumbering{arabic}
             % 设置页码的格式，默认值为arabic，还可以设置为Roman、roman、Alpha、alpha
     \pagestyle{fancy}
@@ -236,8 +243,8 @@
             %* 如果第二个必选参数{format}不设置任何值，编译不会报错，但是会消除相应等级章节的字体样式，使其还原为正文字体，下同
     \titleformat{\subsubsection}[display]{\itshape}{\bfseries 第\thesubsubsection 小节}{2em}{小节前$\leftarrow$\sffamily}[\rmfamily 小节后$\swarrow$]
             % 更加详细地设置章节的各项参数
-            %* 关于参数设置，有一些细节值得指出：（1）{command}参数默认为设置有编号的大纲样式，可以在后面添加",numberless"，此时转为设置无编号的大纲样式；（2）{format}参数和{label}参数的情况和上一条命令一样，可以留空，但会导致相应的内容还原回正文字体；（3）设置{label}参数可以代替下文【通过重定义"\the+计数器名称"命令来修改章节标签】的方式，并且还有一个优势：这不会影响到此后所有级别更低的章节的标签，以上述命令为例，如果上述重定义了section的标签样式，这并不会影响到subsection的标签样式，但是如果像下文那样通过"\renewcommand{cmd}{def}"命令将section的标签重定义为了“第X章”的形式，这就不得不同时重定义subsection的标签形式，将其恢复为本来的形式（不过，只需要重定义比其低一级的subsection的标签形式即可，具体原因见下文）；（4）{sep}参数无法使用"\quad"等空格命令，但是可以使用"\baselineskip"命令
-            %! 有时候，我们只是想要改变标签或者标题文字的一部分字体样式，保留另一部分的字体样式，但是这一命令只能重新为其设置字体样式，因此如果要达到上述目的，就要求我们了解相应文档类当中的各级章节大纲的默认字体样式，下面设置目录中的章节样式的相关命令也是相同的情况
+            %* 关于参数设置，有一些细节值得指出：（1）{command}参数默认为设置有编号的大纲样式，可以在后面添加",numberless"，此时转为设置无编号的大纲样式；（2）{format}参数和{label}参数的情况和上一条命令一样，可以留空，但会导致相应的内容还原回正文字体；（3）设置{label}参数可以代替下文【通过重定义章节计数器的调用形式】的方式，并且还有一个优势：这不会影响到此后所有级别更低的章节的标签，以上述命令为例，重定义了section的标签样式并不会影响到subsection的标签样式，但是如果像下文那样通过将计数器section的调用形式重定义为了“第X章”的形式，这就不得不同时重定义其下级计数器subsection的调用形式，将其恢复为本来的形式（不过，只需要重定义比其低一级的计数器subsection的调用形式即可，具体原因见下文）；（4）{sep}参数无法使用"\quad"等空格命令，但是可以使用"\baselineskip"命令
+            %% 有时候，我们只是想要改变标签或者标题文字的一部分字体样式，保留另一部分的字体样式，但是这一命令只能重新为其设置字体样式，因此如果要达到上述目的，就要求我们了解相应文档类当中的各级章节大纲的默认字体样式，下面设置目录中的章节样式的相关命令也是相同的情况。
             %* 下面这一点单独介绍：（5）不同参数当中的字体命令之间的相互关系可以总结为：{format{{label}{before-code1}{before-code2{after-code}}}}，具体而言：{format}参数中的字体命令影响整个章节部分；{label}参数中的字体命令只会影响标签；{before-code}参数作用于章节的标题文字，如果输入文本，该文本会被添加到标题文字的前面，如果设置了字体命令，字体命令前面的文本不会被该命令影响到，只会受{format}参数中的字体命令的影响，字体命令后的文本会同时受{format}参数和该参数中的字体命令的双重影响；{after-code}参数中设置的文本则会受{format}参数、{before-code}参数以及该参数中的字体命令的三重影响。在下文将要介绍的titletoc宏包提供的"\titlecontents"命令中，不同参数中的字体命令之间的关系和此处也有类似的地方，详见下文
             %! 注意，打印效果表面上似乎显示{before-code}参数中位于字体命令之后的文本只受到{format}参数中的字体命令"\bfseries"和该参数中的字体命令"\sffamily"的影响，而没有受到{format}参数中的另一个字体命令"\itshape"的影响，这其实是因为对于汉字来说，不存在sf字族下的斜体字形，可以通过观察{after-code}参数中文本的打印效果，验证其确实受到{format}、{before-code}、{after-code}三个参数当中的字体命令的叠加影响
             %rfr 根据吴康隆（105），可以将{label}参数留空，{sep}设置为0pt，这样就可以在{before-code}参数中分别设计章节标签的字体样式和标题文字的字体样式；另外，[after-code]参数中的文本会另起一行打印，吴康隆（105）很好地利用了这一点，在其中使用"\startcontents"命令和"\printcontents"命令（均由titletoc宏包提供），在每一章的开头打印该章的子目录  
@@ -276,6 +283,16 @@
 \usepackage{longtable}
             % longtable宏包用来排版长表格
 
+\usepackage{booktabs}
+            % booktabs宏包提供"\toprule"、"\midrule"与"\bottomrule"命令来绘制三线表
+
+\usepackage{colortbl}
+            % 彩色表格依靠colortbl宏包，它会调用array宏包和color宏包，可以在加载xcolor宏包时添加table选项来调用colortbl宏包
+
+\usepackage{enumitem}
+            % enumitem宏包允许在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制列表的相关参数，也可以通过"\setlist[]{}"命令来为各级列表设置统一的参数
+            %* 可供设置的<key>中有一部分（主要是距离参数）是LaTeX当中关于列表的原生参数
+            %rfr 可以参考enumitem宏包的官方手册，尽管这一手册非常难读：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf
 
 \usepackage{hyperref}
             % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
@@ -296,13 +313,13 @@
 
 % 通过重定义"\the+计数器名称"命令来修改章节标签
 \renewcommand{\thesection}{第\arabic{section}章}
-            %rfr 重定义"\the+计数器名称"命令不仅可以改变章节标签的数值形式，还可以改变章节标签的表述形式，比如上述命令中将"section"的表述形式从单纯的阿拉伯数字改为了"第+阿拉伯数字+章"的形式，可以参考：https://tex.stackexchange.com/questions/279744/change-the-name-of-sections
+            %rfr 重定义"\the+计数器名称"命令其实就是重定义计数器的调用形式，这一形式由两部分组成：一部分是计数器的数值形式，这一部分是强制性的，另一部分是其他字符，比如字母、括号等，这一部分不是强制性的，有的计数器只包含了数值形式，而没有设置其他字符，比如章节计数器"section"默认的调用形式"\thesection"就只设置了数值形式"\arabic{section}"。上述命令中将"section"的调用形式从单纯的阿拉伯数字（"\arabic{section}"）改为了"第+阿拉伯数字+章"的形式，也就是添加了其他字符，可以参考：https://tex.stackexchange.com/questions/279744/change-the-name-of-sections
+            %! 在重定义计数器的调用形式时需要慎重添加字母或者汉字，因为这会影响到其下属的各级计数器，当然，这是可以通过重定义下一级计数器的调用形式解决的，见下一条命令的解释，但这仍然会在很多方面造成不便，可以参看"3.7.1 计数器"一节的解释
 \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-            %* "\thesubsection"命令本来的定义是"\thesection.\arabic{subsection}"，但是由于"\thesection"命令被重定义成了"第\arabic{section}章"的形式，因此为了让"\thesubsection"命令的打印形式保持不变，需要将其中的"\theseciton"替换成"\arbic{section}"
+            %* 计数器"subsection"本来的调用形式是"\thesection.\arabic{subsection}"，但是由于"\thesection"命令被重定义成了"第\arabic{section}章"的形式，因此为了让计数器subsection的调用形式保持不变，需要将其中的"\theseciton"替换成"\arabic{section}"
 %// \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
-            %! "\thesubsubsection"命令不需要进行上述重定义，因为其本来的定义是"\thesubsection.\arabic{subsubsection}"，而上述重定义中的"\arabic{section}.\arabic{subsection}"部分其实就是重定义过后的"\thesubsection"命令
-            %rfr 重定义计数器标签的命令可以总结成如下结构：\renewcommand{\the+计数器名称}{相关成分+\arabic{计数器名称}+相关成分}，关于"\the+<counter-name>"命令和"\arabic{counter-name}"命令这两类命令的不同，可以参见"3.7.1 计数器"一节     
-            %* 书中第"3.6.2 大纲与章节"一节中还提到重定义book/report文档类中的"chapter"这一大纲等级的标签，但只涉及了"\chaptername"命令，下面简要介绍重定义"chapter"的两个命令："\chaptername"命令和"\thechapter"命令，使用"\chapter{}"命令，打印出的默认形式是："Chapter + 阿拉伯数字（计数器） + 章名称"，其中，"Chapter"是由"\chaptername"控制的，"chapter"以下的"section"、"subsection"等大纲等级不包含这一部分，阿拉伯数字（计数器）是由"\thechapter"命令控制的，可以类比"section"对应的"\thesection"命令等，章名称是由"\chapter{}"命令控制的，因此，重定义"\chaptername"命令改变的是第一部分，重定义"\thechapter"命令改变的是第二部分。"chapter"之上的"part"这一大纲等级的设置也可以参照"chapter"的情况，只不过"\part{}"命令打印出的默认形式是“Part + 大写罗马数字（计数器） + 卷名称”
+            %* 计数器subsubsection的调用形式不需要进行上述重定义，因为其本来的调用形式是"\thesubsection.\arabic{subsubsection}"，因此其只受两部分内容的影响：上级计数器subsection的调用形式和其自身的数值形式，上级计数器的调用形式已经通过上一条命令进行了重定义，因此，更上一级的计数器section的调用形式并不会影响到subsubsection的调用形式
+            %% 书中第"3.6.2 大纲与章节"一节中还提到重定义book/report文档类中的"chapter"这一大纲等级的标签，但只涉及了"\chaptername"命令，下面简要介绍重定义"chapter"的两个命令："\chaptername"命令和"\thechapter"命令，使用"\chapter{}"命令，打印出的默认形式是："Chapter + 阿拉伯数字（计数器） + 章名称"，其中，"Chapter"是由"\chaptername"控制的，"chapter"以下的"section"、"subsection"等大纲等级不包含这一部分，阿拉伯数字（计数器）是由"\thechapter"命令控制的，可以类比"section"对应的"\thesection"命令等，章名称是由"\chapter{}"命令控制的，因此，重定义"\chaptername"命令改变的是第一部分，重定义"\thechapter"命令改变的是第二部分。"chapter"之上的"part"这一大纲等级的设置也可以参照"chapter"的情况，只不过"\part{}"命令打印出的默认形式是“Part + 大写罗马数字（计数器） + 卷名称”
             %rfr 可以通过titlesec宏包来更加方便地修改章节标签，可以参看上文对titlesec宏包中相关命令的介绍
 
 % 自定义一个深度从2开始的新的章节大纲，比如此处的subsubsubsection
@@ -344,7 +361,7 @@
 
 \section{写给读者*}
             %? "\section{}"命令中的两个汉字之间的空格在打印时会丢失，暂时不知道什么原因，暂时用"\mbox{}"命令将这两个汉字隔开；后面的“第4章 数学排版”同理；而其他几章“第2章 LaTeX环境配置”、“第3章 LaTeX基础”以及“第5章 LaTeX进阶”中的汉字“章”和英文"LaTeX"之间在打印时存在空格，只不过此处的"LaTeX"是用专用的命令打出的，而经过测试，即使是直接打出来的英文，如果在命令中和其前面的汉字之间存在空格，打印时该空格也会被打印出来。由此看来，这是专属于汉字内部的问题。
-            %? 以上问题是在将章名称定为“第一章 写给读者”的情况下产生的
+            %* 以上问题是在将章名称定为“第一章 写给读者”的情况下产生的
     \subsection{什么是\LaTeX}
     \subsection{\TeX 与\LaTeX 的优缺点}
     \subsection{为什么需要\LaTeX}
@@ -427,7 +444,7 @@
             %! 上述命令在不同的编辑器中输出效果不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线
 
         \subsubsection{导言区}
-            %todo 加表格（\documentclass[options]{style}）
+            %todo 加表格
 
         \subsubsection{文件输出}
 
@@ -471,7 +488,7 @@
         % 英文省略号需要使用\ldots命令
             \ldots
             %* 意即lower dots, v.s. \cdots, 意即center dots
-            %? 该命令效果也等同于\dots，但是\ldots在任何模式下都适用，关于dots的相关命令有待探索
+            %todo 该命令效果也等同于\dots，但是\ldots在任何模式下都适用，关于dots的相关命令有待探索
             
         % 连打三个句点输出的不是真正的英文省略号
             ...
@@ -521,7 +538,7 @@
 
             % \textwidth % 页面上文字的总宽度，即页宽减去两侧边距
             % \linewidth % 当前行允许的行宽
-            %? 书中没有明确上述两条命令的用法，不过参照下文关于段首缩进长度、段落间距的设置，应该也是和"\setlength{cmd}{length}"命令搭配使用
+            %* 书中没有明确上述两条命令的用法，不过参照下文关于段首缩进长度、段落间距的设置，应该也是和"\setlength{cmd}{length}"命令搭配使用
 
         \subsubsection{空格、换行与分段}
         % 空格
@@ -600,7 +617,7 @@
         %* 段首缩进长度恢复默认值
             set the parindent (default)
             %rfr 关于默认段首缩进长度，可以参考：https://tex.stackexchange.com/questions/247441/what-is-the-width-of-the-standard-paragraph-indent-in-latexs-article-class、https://latexref.xyz/_005cparindent-_0026-_005cparskip.html，其中提到，10pt的article（最常见的LaTeX类型）中默认的段首缩进长度为15pt
-            %? 但是经过检验，15pt并不是此处的LaTeX类型（ctexart）的默认段首缩进长度，此处的默认段首缩进长度似乎是2em
+            %* ctexart文档类的默认段首缩进长度为20pt（2em），可以通过"\the\parindent"命令获得
 
         % 设置对齐方式
         % 设置方法一
@@ -657,9 +674,11 @@
 
         \subsubsection{中西文“斜体”}
         \subsubsection{原生字体命令}
-            %* 文本系列的命令和字体系列的命令
+        %* 文本系列的命令和字体系列的命令
             %* 文本系列的命令，以"text-"开头，用于临时改变字体，命令的统辖范围用大括号括起来
+            %% 有些教程会将这种命令称为"argument style"（参数型）
             %* 字族/字系/字号系列的命令，以"-family/-series/-shape"结尾，会导致其后的所有内容的字族/字系/字号改变，因此需要在命令和统辖范围的两边加上大括号；另外，这类命令放在导言区虽然不会报错，但是不会影响到正文，只有放在正文中，才会对其后的内容产生影响
+            %% 有些教程会将这种命令称为"declarative style"（声明型）
             %* 以下均使用文本系列的命令
         
         % 设置字族
@@ -680,13 +699,14 @@
             \end{itemize}
 
         % 设置字形
-            默认字形：\shapedefault %? 暂时不知道"n"代表什么
+            默认字形：\shapedefault 
+            %todo 暂时还不知道打印出来的"n"代表什么
             \begin{itemize}
                 \item Upright v.s. \textup{Upright} % 竖直字形
                 %* 区别不明显
                 \item Slant v.s. \textsl{Slant} % 斜体字形
                 \item Italic v.s. \textit{Italic} % 强调体字形
-                %? 书中在"3.4.2 中西文‘斜体’"一节中提到加斜是指某种字族的Italy字系（根据此处的命令，实际应当是字形），而斜体是指Slant字族，可是根据此处的命令，Slant也被看成是字形的一种。不过不管怎么说，西文中表示强调，都是对字体应用Italic字形。
+                %! 书中在"3.4.2 中西文‘斜体’"一节中提到“加斜是指某种字族的Italy字系”（根据命令"\itshape"，实际应当是字形），而“斜体是指Slant字族”，可是根据命令"\slshape"，Slant也应当是字形的一种。不过不管怎么说，西文中表示强调，都是对字体应用Italic字形。
                 \item scap v.s. \textsc{scap} % 小号大写体字形
                 %* 适用于小写字母
                 %* "sc"来自"small cap(ital)s"
@@ -711,22 +731,33 @@
             % \renewcommand*{\rmdefault}{ptm}
             %rfr "ptm is the name under which the font family “Times” is installed in your LATEX system"，参考：https://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf
            
-        % 相对字号命令
-            % 字号的默认值取决于documentclass，比如article的默认值是10pt
-            %* 相对字号命令似乎没有对应的文本系列命令
-            相对字号命令
+        % 相对字号命令  
+            相对字号命令：
             \begin{itemize}
-                \item \tiny tiny 
-                %? "tiny"虽然是该组命令中最小的字号，可是其在"itemize"环境中打印出来的前面的点却和"large"一样大，暂时不知道原因是什么
-                \item \scriptsize scriptsize
-                \item \footnotesize footnotesize
-                \item \small small
-                \item \normalsize normalsize % 相应的字号默认值
-                \item \large large
-                \item \LARGE LARGE
-                \item \huge huge
-                \item \Huge Huge
+                \item {\tiny tiny} 
+                \item {\scriptsize scriptsize}
+                \item {\footnotesize footnotesize}
+                \item {\small small}
+                \item {\normalsize normalsize} 
+                % 字号默认值取决于documentclass，比如article的默认值是10pt
+                \item {\large large}
+                \item {\LARGE LARGE}
+                \item {\huge huge}
+                \item {\Huge Huge}
             \end{itemize}
+                %* 相对字号命令似乎没有对应的文本系列命令，因此在上述列表中，要注意在相对字号命令和统辖范围的两边加上大括号，否则相对字号命令会影响到后面的内容
+                %% 又由于这些相对字号命令都处于环境之中，并且每一个条目的开头会换一个相对字号命令，因此如果不将每一条相对字号命令及其统辖范围用大括号括起来，实际打印出的效果是后一个条目的标签和前一个条目的文本拥有相同的字号，但是列表环境之后的文本不会受环境内相对字号命令的影响
+        
+        %% 默认字体命令
+            ABC ABC
+
+            {\sffamily\large\bfseries\itshape ABC \normalfont ABC}
+            
+            {\sffamily\large\bfseries\itshape ABC \normalsize ABC}
+            
+            {\sffamily\large\bfseries\itshape ABC \normalsize\normalfont ABC}
+            %* LaTeX的原生命令当中提供了两个命令："\normalsize"命令和"\normalfont"命令（与之搭配的是"\textnormal{}"命令），前者用来将字体还原回默认字体大小，但不能修改其他的字族、字形、字系等特征，后者用来将字体还原回除了字体大小以外的默认字体特征，因此这两条命令是互补的，可以通过以上命令进行验证
+            %rfr 以上命令是受这篇帖子的启发：https://tex.stackexchange.com/questions/618394/the-fonts-large-and-normalfont-not-normalsize-are-strikingly-similar-is-th
 
         % 设置字号和行距
             %rfr "\fontsize{size}{skip}"这一命令要求同时设置字号和行距，如果要单独设置行距，可以使用"\linespread{}"命令，参考：https://tex.stackexchange.com/questions/48741/temporarily-increase-line-spacing/48743#48743、https://mirrors.ibiblio.org/CTAN/macros/latex/required/psnfss/psnfss2e.pdf
@@ -794,13 +825,14 @@
         % 自定义新的CJK字族命令
             %* 可以和上文中定义新的西文字族命令的"\newfontfamily{}{}"比对
             \newCJKfontfamily{\songtii}{SimSun}
-            %? 书中给出的定义结构是"\newCJKfontfamily[song]\songti{SimSun}"，"\songti"两边没有加大括号，编译时会报错，另外，不太明白中括号中的"song"的功能是什么，将其删除，不影响该字族命令的定义
+            %! 书中给出的定义结构是"\newCJKfontfamily[song]\songti{SimSun}"，"\songti"两边没有加大括号，编译时会报错
+            %todo 另外，不太明白中括号中的"song"的功能是什么，将其删除，不影响该字族命令的定义
 
             {\songtii 宋体}
 
         % 临时设置一种CJK字体
             {\CJKfontspec[fakeslant = 0.2,fakebold = 3]{SimSun} 临时字体}
-            %? 暂时还没有弄明白中括号中的选项的功能
+            %todo 暂时还没有弄明白中括号中的选项的功能
 
         \subsubsection{颜色}\label{subsubsec:3.4.6}
         % 使用xcolor宏包定义颜色
@@ -934,7 +966,7 @@
             
         % 调整脚注到正文的间距
             % \setlength{\skip\footins}{0.5cm}
-            %? 暂时不知道"footins"中的"ins"是什么含义
+            %todo 暂时还不知道"footins"中的"ins"是什么含义
 
         % 2. 边注
             这一行有边注\marginpar[左侧]{右侧}
@@ -949,7 +981,7 @@
             
             }
              % "\reversemarginpar"命令之后的所有内容的边注的位置会和原本的位置相反
-            %? 另外，有意思的一点是，如果该命令之前的内容和该命令之间没有空行（即在同一段落内），该内容也会落入该命令的统辖范围，暂时不知道原因是什么
+            %todo 另外，有意思的一点是，如果该命令之前的内容和该命令之间没有空行（即在同一段落内），该命令之前的内容也会落入该命令的统辖范围，暂时还不知道原因是什么
             %! 如果用大括号将该命令和统辖范围括起来，则每一段的末尾都需要空行或者加上"\par"命令来触发"\reversemarginpar"命令生效
 
             这一行有边注\marginpar[左侧]{右侧}
@@ -1072,8 +1104,7 @@
 
         % 通过"\the+计数器名称"命令来调用计数器
             当前所在章节为\thesection、第\thesubsection 节、第\thesubsubsection 次节
-            %rfr "\the+计数器名称"命令默认输出的是计数器数值的阿拉伯数字形式，效果等同于"\arabic{计数器名称}"命令，但是两者的本质是不同的：前者可以通过重定义修改计数器的表述形式，比如将"section"的表述形式由单纯的阿拉伯数字修改为“第+阿拉伯数字+章”的形式，可以参见导言区，而后者输出的永远是一个数值，只不过可以通过更换外部命令来调整该数值的格式，可以参见下文的介绍。在重定义前者时，后者是表述“数值”这一部分必不可少的命令
-            %! 如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此直接写为“当前所在章节为\thesection”即可
+            %! 如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此需要改写为“当前所在章节为\thesection”，这也说明尽量不要在重定义计数器的调用形式时增加文本内容，因为计数器的调用形式最初的目的只是为了呈现其数值形式以及几个数值的组合形式，如果想要修改章节的标签形式，可以通过titlesec宏包提供的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令进行修改
 
         % 指定计数器数值格式
             第\arabic{section}节 % 阿拉伯数字
@@ -1119,17 +1150,24 @@
         % 1. itemize环境
             无序列表：
             \begin{itemize}
-                \item 第一项 % 项目符号默认值为圆点（\textbullet）
-                \item [-] 第二项 % 项目符号通过可选参数控制
+                \item 第一项 
+                % 项目符号默认值为圆点（\textbullet）
+                %* 更确切地说，这是itemize列表当中第一级的条目符号样式
+                \item [-] 第二项 
+                % 在itemize列表环境当中的每个条目后面的可选参数会改写该条目的默认符号样式
             \end{itemize}
+            %rfr 关于itemize列表的嵌套以及各级列表的条目符号样式，参见文件"Enumitem.tex"
 
         % 2. enumerate环境
             自动编号列表：
             \begin{enumerate}
                 \item 第一项
-                \item [张三] 第二项 % 方括号的使用会打断编号，之后的编号顺次推移
+                \item [张三] 第二项 
+                % 方括号的使用会打断编号，之后的编号顺次推移
+                %* 在enumerate列表环境当中的每个条目后面的可选参数会改写该条目默认的编号样式，而条目默认的编号样式会调用相应级别的计数器，因此此处如果可选参数设置为文本，则计数器不会递进1，而会到下一次调用的时候递进1
                 \item 第三项
             \end{enumerate}
+            %rfr 关于enumerate列表的嵌套以及各级列表的条目编号样式，参见文件"Enumitem.tex"
 
         % 3. description环境
             描述列表：
@@ -1138,6 +1176,7 @@
                 \item[.tex] LaTeX文档扩展名  
             \end{description}
             % 方括号中的内容会加粗显示
+            %rfr 关于description列表的嵌套以及项样式，参见文件"Enumitem.tex"
 
     \subsection{浮动体与图表}
 
@@ -1183,7 +1222,7 @@
             \begin{verbatim}
                 # $ % & _ { } \ ^ ~ < >
             \end{verbatim}
-            %? 使用verbatim环境将抄录内容包起来，但是打印的时候抄录内容的前面和下面一行各自会出现一段空格，前面的空格似乎和verbatim环境在页面中的缩进有关系，下面一行上的空格暂时不知道原因是什么
+            %todo 使用verbatim环境将抄录内容包起来，但是打印的时候抄录内容的前面和下面一行各自会出现一段空格，前面的空格似乎和verbatim环境在页面中的缩进有关系，下面一行上的空格还暂时不知道原因是什么
         
         % 带"*"号的"verb*"命令或者verbatim*环境表示将抄录内容中的空格用"\textvisiblespace"命令表示出来（显示为"␣"符号）
             % \verb*|# $ % & _ { } \ ^ ~ < >|
@@ -1202,7 +1241,7 @@
             % 设置“栏间距”（左栏右边线和右栏的左边线之间的距离），默认值是10pt
             %* 和表格中的"\tabcolsep"命令代表的“单元格边距”不同（参考文件"Table.tex"），此处的“栏间距”和中间的分隔线没有关系，关键的证据是双栏模式下文本宽度、栏宽和栏间距之间的长度关系：\textwidth = \columnwidth * 2 + \columnsep
             %! 注意，这一命令只有放置在"\twocolumn[text]"命令之前才能对栏间距产生影响
-            %? 原因还不是很清楚
+            %todo 原因还不是很清楚
     \twocolumn[\centering 这是分成双栏的前言]
             % 可以使用"\twocolumn[text]"命令进行临时分栏，分栏的同时会自动在前一行命令的最后加上"\clearpage"命令，因此分栏一定是另起一页进行
             % 可选参数用于输出双栏上方预留出的单栏区域的内容
@@ -1255,7 +1294,7 @@
 
     \clearpage 
             %* 如果不在multicols环境的后面加上"\clearpage"命令，环境外之后的内容有可能会和多栏处于同一页面上
-            %? 这其实会引出一个问题：多栏环境中，系统如何决定多栏的高度？待研究
+            %todo 这其实会引出一个问题：多栏环境中，系统如何决定多栏的高度？待研究
             %rfr 关于在multicols环境中插入图片，参考文件"Twocolumn.tex"
         } 
         %! 注意，如果要用大括号把设置了特定参数的双栏内容括起来，要注意将"\onecolumn"命令也包括在内，否则这些设置的特定参数不会生效，原因暂时还不清楚
@@ -1413,7 +1452,8 @@
                 无框箱子
             \end{minipage}
             %* 小页（minipage）环境强制要求设置宽度，除此之外还有三个可选参数：和周围文字的对齐方式、高度、环境内部的文字的对齐方式，如果只设置一个对齐方式的参数，则默认是和周围文字的对齐方式，不管是哪一种对齐方式的参数，都只能选择上对齐（t）、垂直居中对齐（m）和下对齐（r）三种有效的对齐方式，虽然也可以设置slcr，但在和周围文字的对齐方式的参数中，这三者的效果都等同于m（这个可以理解，因为和周围文字的对齐方式只能是竖直方向上的），在环境内部的对齐方式的参数中，sl等同于t，c等同于m，r等同于b
-            %! 也就是说，在minipage环境中，即使可以换行，水平方向上却无法设置居中对齐、右对齐、两端对齐等对齐方式，只能左对齐，下文的boxedminipage环境、"\parbox[position][height][inner-pos]{width}{text}"命令中也是一样的情况
+            %! 也就是说，在minipage环境中，即使可以换行，水平方向上却无法设置居中对齐、右对齐、两端对齐等对齐方式，只能左对齐，下文的boxedminipage环境、"\parbox[position][height][inner-pos]{width}{text}"命令中也是一样的情况。
+            %% 可以通过将内容放置在flushleft/flushright/center环境中解决
 
         \subsubsection{加框箱子}
             \fbox{加框箱子}
@@ -1681,7 +1721,7 @@
                 \item a\qquad b，长度为2em
                 \item a\enskip b，长度为0.5em
                 % 对应长度相等的"\enspace"命令
-                %? 暂时还不知道"\enspace"命令和"\enskip"命令中的"en"指代的是什么
+                %* "\enspace"命令和"\enskip"命令中的"en"应该是来自"equal to n"的缩写，表示这段距离和一个大写字母N的宽度相等（参照"em"表示相当于当前字体下大写字母M的宽度）
                 \item a\ b，长度为一个空格距离
             \end{itemize}
 
@@ -1782,7 +1822,7 @@
             \noindent\hangindent 10em
             \blindtext\par
 
-        %todo 第二种设置方式：使用enumitem宏包
+        %rfr 第二种设置方式：使用enumitem宏包，参见"5.7 自定义编号列表"一节
 
         %rfr 第三种设置方式：使用verse环境，参见"3.5.3 援引环境"一节
 
@@ -1825,6 +1865,8 @@
                 \caption[An optional table caption (used in the list of tables)]{A long table}\\
                 %! longtable环境当中的"\caption{}"命令最后需要添加"\\"命令，否则编译会报错
                 \hline\hline
+                %* 在longtable环境中，连续两个"\hline"命令会绘制更粗的水平表线，而不是像tabular环境中绘制两条平行的水平表线
+                %% 有的时候，如果表头/表尾当中设置的水平表线碰巧和表体当中设置的水平表线重叠，也会导致叠加后的水平表线变粗
                 \multicolumn{2}{@{*}c@{*}}{This part appears at the top of the table}\\
                 FIRST&SECOND\\
                 \hline\hline
@@ -1918,6 +1960,7 @@
                 \hline
                 Lots of lines\footnote{This is a footnote.}&like this.\\
                 Lots of lines&like this\footnotemark\footnotetext{\textsf{longtable} takes special precautions, so that footnotes may also be used in `p' columns.}.\\
+                % \hline
                 %* 在longtable环境使用脚注的两种方式和在普通的table环境中不同：（1）在longtable环境的表体中可以直接使用"\footnote{}"命令，而在table环境中虽然可以使用，但是不会打印出脚注；（2）在longtable环境的表体中可以搭配使用"\footnotemark"命令和"\footnotetext{text}"命令，由于后者决定了脚注打印的位置，因此需要放置在和脚注位置打印在同一页面的表体的任何位置（一般紧跟在"\footnotemark"命令之后），如果放在表头或者表尾中，脚注不会打印出来，而在table环境中虽然也可以搭配使用这两条命令，但是"\footnotetext{text}"命令必须放在环境结束之后，否则不会打印出脚注（由于table环境打印出的表格不会跨页，因此不存在longtable环境当中【选择"\footnotetext{text}"命令的插入位置】的问题）。这里还涉及"\footnotetext{text}"命令的编号问题：在longtbale环境中，"\footnotetext{text}"命令的编号会根据排列的先后次序自动编号，也可以通过可选参数指定，而在table环境中，由于所有的"\footnotetext{text}"命令都必须放置在环境结束后，因此当存在多个该命令时，就必须通过可选参数为这些命令指定编号，否则这些脚注的编号都会等于最后一条"\footnotemark"命令对应的编号；（3）在longtable环境的表头、表尾和"\caption{}"命令中，不能直接使用"\footnote{}"命令，否则不会打印出脚注，搭配使用"\footnotemark"命令和"\footnotetext{text}"命令时，需要将其放置在和脚注位置打印在同一页面的表体的任何位置，可以发现，在longtable环境中，在"\caption{}"命令中使用"\footnotemark"命令不再需要在前面加上"\protect"命令，而在table环境中，这是必须的，否则编译会报错
                 \hline
                 Lots of lines&like this.\\
@@ -1931,12 +1974,184 @@
             %* 我们没有必要去完全弄明白提前分页产生的原因（回看本文档前面的内容会发现还存在其他的提前分页的情况），如果想要让页脚始终处于默认页面区域的底部，只需要加载footnotemis宏包并且设置bottom的可选参数即可，但这不会使得导致提前分页的"\pagebreak"消失，另一种临时的解决办法是插入"\newpage"命令，但是这样设置就无法让后续内容在当前页面继续打印，而必须要另起一页打印
 
         \subsubsection{三线表}
-            AAA
+        % 通过调用booktabs宏包来绘制三线表
+            \begin{tabular}{cccc}
+                \toprule
+                &\multicolumn{3}{c}{序数}\\
+                \cmidrule(l{.25em}r){1-2}\cmidrule[.25ex](lr){3-4}
+                &1&2&3\\
+                \midrule
+                英文字母&A&B&C\\
+                罗马数字&I&II&III\\
+                \bottomrule
+            \end{tabular}
+            %* LaTeX关于表格的原生命令中，"\cline{x-y}"命令用于绘制横跨第y列到第y列的水平表线，但是如果将两个"\cline{x-y}"命令连用，并且前一个命令当中的右边的参数值和后一个命令当中的左边的参数值相同，则绘制出的两条表现会接在一起。而booktabs宏包提供的"\cmidrule{a-b}"命令可以通过设置可选参数来让跨列水平表线的左右两端删去指定长度，让这种情况下的两条表线的不会接在一起，具体的设置方式是："\cmidrule(l){a-b}"命令表示表线左端删去一定的长度，"\cmidrule(r){a-b}"命令表示表线右端删去一定的长度，"\cmidrule(lr){a-b}"命令表示表线的左右两端各删去一定的长度，删去的长度由"\cmidrulekern"命令控制，其默认值为0.5em，如果想要设定指定的删去长度，可以放置在"l"、"r"后面的大括号内，比如"l{.25em}"、"l{.25em}r{.25em}"，当然，也可以重定义"\cmidrulekern"命令的默认值，"\cmidrule{a-b}"命令还有一个放置在中括号中的可选参数，用来设置水平表线的厚度，比如上文当中的"\cmidrule[.25ex](lr){3-4}"将水平表线的厚度设置为0.25ex
+            %rfr 以上命令的参数设置细节以及更多的命令介绍，可以参考booktabs宏包的官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/booktabs/booktabs.pdf，关于这一命令的一个应用的例子，可以参考这篇帖子当中绘制的表格：https://tex.stackexchange.com/questions/156219/proper-centering-with-cmidrule-and-multi-row-and-column
 
         \subsubsection{彩色表格}
+        % 设置某一列的背景颜色
+            \begin{tabular}
+                {>{\color{-red}\columncolor{red}[.25\tabcolsep]}c|
+                >{\color{-yellow}\columncolor{yellow}[.5\tabcolsep]}c|
+                >{\color{-blue}\columncolor{blue}[.75\tabcolsep]}c}
+                \hline
+                A&B&C\\
+                D&E&F\\
+                \hline
+            \end{tabular}
+            %* 将xcolor宏包提供的"\color[model]{color}"命令和colortbl宏包提供的"\columncolor[color model]{color}[left overhang][right overhang]"命令和array宏包提供的">{decl}"命令搭配使用，为同一列设置字体颜色和背景颜色
+            %% "\columncolor[color model]{color}[left overhang][right overhang]"命令中的最后两个可选参数分别控制背景颜色从单元格的左右边线到列的左右边线的延伸距离，如果只设置一个参数值，则默认为左右两边的延伸距离相同，如果不设置参数值，则默认为为"\tabcolsep"（array环境中为"\arraycolsep"），即将整个单元格都填充满
+            %rfr 关于colortbl宏包提供的各项命令的参数设置，可以参考该宏包的官方手册：https://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/colortbl/colortbl.pdf
+        
+        % 设置某一行的背景颜色
+            \begin{tabular}{c|c|c}
+                \hline
+                \rowcolor{red}[.25\tabcolsep]
+                A&B&C\\
+                \rowcolor{yellow}[.5\tabcolsep]
+                D&E&F\\
+                \rowcolor{blue}[.75\tabcolsep]
+                G&H&I\\
+                \hline
+            \end{tabular}
+            %* 使用colortbl宏包提供的"\rowcolor[color model]{color}[left overhang][right overhang]"为同一行设置背景颜色，参数设置和"\columncolor[color model]{color}[left overhang][right overhang]"相同，放置在相应行的前面即可
+            %% 当"\rowcolor"命令和"\columncolor"命令冲突时，执行"\rowcolor"命令
+            %! 书中称该命令是用来设置表头行的颜色的，这显然是错误的
+
+        % 批量设置奇数行和偶数行的背景颜色
+        %* 这一命令的一个很有用的应用场景是绘制白底和灰底交替填充的表格
+            {\rowcolors[\hline]{3}{green}{cyan}
+            \begin{tabular}{c|c|c}
+                A&B&C\\
+                D&E&F\\
+                G&H&I\\
+                J&K&L\\
+                M&N&O\\
+                \hiderowcolors
+                P&Q&R\\
+                S&T&U\\
+                \showrowcolors
+                V&W&X\\
+                \rowcolor{red}
+                % \hiderowcolors
+                Y&Z&\therownum\\
+            \end{tabular}
+            }
+            %* "\rowcolors[commands]{row}{color}{color}"的各项参数分别是：[commands]参数应用于每一行（包括表格的上边线和下边线），通常填写"\hline"命令；{row}参数设置从哪一行开始填充颜色；最后两个必选参数分别控制奇数行的背景颜色和偶数行的背景颜色。可以在指定行的前面使用"\rowcolor"命令来覆盖该行原本的背景颜色。如果在指定行的前面使用"\hiderowcolors"命令，表示从该行开始停止填充背景颜色，直到在之后的指定行的前面使用"\showrowcolors"命令，表示从该行开始恢复填充背景颜色。"rownum"是LaTeX中关于表格行数的计数器，可以通过"\therownum"命令来获取当前所在行的行数
+            %% 注意，"\rowcolors[commands]{row}{color}{color}"命令（以及其对应的加"*"符号版本）会影响到此后所有的表格，因此需要在该命令和其统辖的表格两边加上大括号，限制其统辖范围
+
+            {\rowcolors*[\hline]{3}{green}{cyan}
+            \begin{tabular}{c|c|c}
+                \showrowcolors
+                A&B&C\\
+                D&E&F\\
+                G&H&I\\
+                J&K&L\\
+                M&N&O\\
+                \hiderowcolors
+                P&Q&R\\
+                S&T&U\\
+                \showrowcolors
+                V&W&X\\
+                \showrowcolors
+                \rowcolor{red}
+                % \hiderowcolors
+                Y&Z&\therownum\\
+            \end{tabular}
+            }
+            %* 带"*"符号的"\rowcolors*{row}{color}{color}"命令和不带"*"符号的命令相比，唯一的区别是[command]参数不会应用于开始填充背景颜色的行数之前的行以及"\hiderowcolors"命令和"\showrowcolors"命令之间的行
+            %% 可以发现，哪些行填充背景颜色，哪些行不填充背景颜色，这些行比较容易定位，而【"\hline"应用于哪些行】则是一个模糊的说法，经过检验，这一问题的判断标准如下：（1）"\rowcolors*"命令设置了从指定行开始填充背景颜色，此前的所有行当中相邻行的共同边线以及表格的上边线都不会适用"\hline"命令，即使在某一行的前面使用"\showrowcolors"命令，也不会导致此后的行填充背景颜色，或者绘制任何新的水平表线，比如上述命令当中“A、B、C”所在行的上下两侧都不存在水平表线；（2）从开始填充背景颜色的行开始，如果在某一行的前面使用"\hiderowcolors"命令，则会导致此后直到"\showrowcolors"命令之前的行停止填充背景颜色，并且这些行当中相邻行（这要求至少存在两行不填充背景颜色）的共同水平边线都不会适用"\hline"命令，比如“P、Q、R”所在行和“S、T、U”所在行之间不存在水平表线；（3）如果在此前没有使用过"\hiderowcolors"的情况下，在某一行的前面使用"\showrowcolors"命令，或者在已经使用过一次"\showrowcolors"命令之后，在此后某一行的前面在此使用"\showrowcolors"命令，会导致这一行的上边线出现一条加粗的水平表线，比如上述命令当中“Y、Z、9”所在行的上侧存在一条加粗的水平表线（但是如果连用两条"\hiderowcolors"命令却不会导致特别的效果）
+            %todo 在上述两张表格当中，如果在最后一行的前面使用"\hiderowcolors"命令，会导致左边单元格的背景颜色变成黑色，暂时还不知道具体原因
+
+        % 为单个单元格设置背景颜色
+            \begin{tabular}{c|c|c}
+                \hline
+                \color{-red}\cellcolor{red}A&B&\color{-blue}\cellcolor{blue}C\\
+                \hline
+                D&\color{-yellow}\cellcolor{yellow}E&F\\
+                \hline
+            \end{tabular}
+            %! "\cellcolor[color model]{color}"命令无法像"\columncolor[color model]{color}[left overhang][right overhang]"命令和"\rowcolor[color model]{color}[left overhang][right overhang]"命令那样设置背景颜色从单元格的左右边线到列的左右边线的延伸距离，这似乎是一个bug
+
+            %rfr 参考这一篇帖子的做法：https://tex.stackexchange.com/questions/267917/can-overhang-be-set-for-a-single-cell-in-a-table-in-colortbl，需要将"\multicolumn{n}{cols}{text}"命令、">{decl}"命令和"\columncolor[color model]{color}[left overhang][right overhang]"命令搭配使用，以解决这一问题，尽管在colortbl宏包的官方手册中关于"\cellcolor[color model]{color}"命令的一节里声称定义该命令就是为了取代这种做法
+            \begin{tabular}{c|c|c}
+                \hline
+                \multicolumn{1}{>{\color{-red}\columncolor{red}[.25\tabcolsep]}c|}{A}&B&\multicolumn{1}{>{\color{-blue}\columncolor{blue}[.75\tabcolsep]}c}{C}\\
+                \hline
+                D&\multicolumn{1}{>{\color{-yellow}\columncolor{yellow}[.5\tabcolsep]}c|}{E}&F\\
+                \hline
+            \end{tabular}
+
+        % 在彩色表格中合并行
+            {\rowcolors{2}{green}{cyan}
+            \begin{tabular}{ll}
+                \hline
+                Col 1&Col 2\\
+                \hline
+                \multirow{2}{*}{Hey}&A\\
+                &B\\
+                \hline
+                C&D\\
+                \hline
+            \end{tabular}
+            }
+            % 如果按照平常的做法，会导致合并后的文本被背景颜色覆盖
+
+            {\rowcolors{2}{green}{cyan}
+            \begin{tabular}{ll}
+                \hline
+                Col 1&Col 2\\
+                \hline
+                &A\\
+                \multirow{-2}{*}{Hey}&B\\
+                \hline
+                C&D\\
+                \hline
+            \end{tabular}
+            }
+            % 正确的做法是先将"\multirow{number of rows}{width or *}{text}"命令放置到合并范围的最后一行，然后将合并的行数设置为对应的相反数
+
         \subsubsection{子图表}
+        %rfr 关于插入子图的详细讨论，参见文件"Picture.tex"
+        % 下面展示使用subcaption宏包提供的subtable环境插入子表格
+            \begin{table}
+                \renewcommand{\thesubtable}{(\alph{subtable})}
+                %* 重定义subtable计数器的调用形式（可以通过"\thesubtable"命令获得），默认形式不带小括号，使用"\ref{}"命令和"\autoref{label}"命令得到的索引编号形式也会调用计数器，现在在原来的形式两边加上小括号
+                \captionsetup[sub]{labelformat=simple}
+                %* caption宏包提供的命令，用于设置subtable环境中标题的编号样式，可选参数设置了[sub]，表示修改的是"subfigure"、"subtable"一类环境中标题的编号样式，其默认值是带小括号的，而上一条命令会导致subtable环境当中的编号（会调用计数器）多套上一对小括号，因此需要通过这一步设置将编号样式默认设置中的一对小括号去掉（因此留下的那对小括号实际上属于重定义后的计数器），参数可以选择original或者simple
+                %rfr 根据caption宏包的官方手册，original是labelformat的默认值，效果类似"simple"，但这是指"figure"、"table"这类一般情况，此处由于加上了可选参数[sub]，因此labelformat的默认值在这种情况下是"parens"，表示带小括号，可以参考：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/caption/caption.pdf
+                \renewcommand{\subtablename}{子表}
+                %* 重定义subtable环境中标题中的计数器名称（默认值没有设置任何名称）
+                \renewcommand{\subtableautorefname}{子表}
+                %! 经检验，无法直接重定义subtable环境中"\autoref{label}"命令中计数器名称，即"\subtableautorefname"，编译不会报错，但是没有效果
+                % 重定义计数器的调用形式，
+                \caption{Parents}
+                \begin{subtable}[b]{.5\linewidth}
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        A&B\\
+                    \end{tabular}
+                    \caption{First}\label{subtbl1}
+                \end{subtable} 
+                %! 注意，此处不能空行，否则会导致两张表格纵向排列
+                \begin{subtable}[b]{.5\linewidth}
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        A&B\\
+                        C&D\\
+                    \end{tabular}
+                    \caption{Second}\label{subtbl2}
+                \end{subtable}
+            \end{table}
+
+            \thesubtable\par
+            \ref{subtbl1}\par
+            \autoref{subtbl1}
+            
         \subsubsection{GIF动态图}
     \subsection{自定义编号列表}
+        % rfr 关于enumitem宏包的相关介绍，参见文件"Enumitem.tex"
+            
     \subsection{\hologo{BibTeX}参考文献}
     \subsection{索引}
     \subsection{公式与图表编号样式}
@@ -1963,7 +2178,7 @@
             %* "\titlerule*{text}"命令以填充内容的自然宽度进行填充
     \titlerule[.8pt]
             %* 在"\titleformat*{command}{format}"命令或者"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令的{format}参数中也可以使用"\titleline[align]{horizontal material}"命令和"\titlerule*[width]{text}"命令，可以在指定一级章节的上方填充直线或者填充内容，但是无法在其下方进行相同操作
-            %? 是否可以通过某种方式在指定一级章节的下方填充直线或者填充内容，待研究
+            %todo 是否可以通过某种方式在指定一级章节的下方填充直线或者填充内容，待研究
         \subsubsection{这是一个小节}
             \subsubsubsection{这是一个新定义的小小节}
                 这不是段一级，而是新定义的小小节一级。
@@ -1975,17 +2190,14 @@
             %! 经检验，上述这一条命令也可以加在除了正文之外的的其他位置，包括导言区，以及"\end{document}"命令之后，编译都不会报错。如果加在导言区，则在目录中会打印在开头，如果加在"\end{document}"之后，则在目录中不会打印出来
             %* 因此，"\section*{title}"命令和"\addcontentsline{file}{secunit}{entry}"命令其实是可以各自独立使用的，但是后者单独使用是没有实际意义的，因为在正文中无法打印出其设置的章节名称。后者实际上只能搭配前者使用，一般将其放置在前者所在的位置之后，这样，在目录中打印出来的章节名称实际上不是前者设置的，而是后者设置的，点击该章节名称实际上也只是索引到后者所在位置，而正文中打印出来的章节名称，则是前者设置的，而不是后者设置的
             %* 结合"\section[short]{title}"命令中可选参数的效果，"\addcontentsline{file}{secunit}{entry}"其实就是将"\section[short]{title}"的可选参数分离出来单独作为一条命令的结果，与之对应的，"\section*{title}"命令就不再含有可选参数，当然，从另一个角度看，"\section*{title}"命令不会在目录中打印章节名，当然没有可选参数存在的必要
-
-
-
-    
-        % 通过重定义"\refname"命令来修改参考文献的标题
+ 
+% 通过重定义"\refname"命令来修改参考文献的标题
             \renewcommand{\tocbibname}{这是参考文献} 
             % 如果是book类文档，把"\refname"改成"\bibname"
             % 如果加载tocbibind宏包，则修改参考文献标题应该重定义"\tocbibname"命令
             %* 在ctexart文档类型下，参考文献标题默认显示“参考文献”，如果加载tocbibind宏包，依然显示“参考文献”，如果加载natbib宏包，则显示“Bibliography”，如果同时加载natbib宏包和tocbibind宏包，依然显示"Bibliography"，可见，tocbibind宏包并不改变参考文献的默认标题，而natbib会将参考文献的标题从默认的“参考文献”修改为"Bibliography"，但是只要加载了tocbibind宏包，修改参考文献的标题就要通过重定义"\tocbibname"来完成
 
-        % 显示所有参考文献
+% 显示所有参考文献
             \begin{thebibliography}{99} % “99”表示以最多两位数来编号参考文献，用于对齐
                 \addtolength{\itemsep}{-2ex} % 将参考文献中条目之间的距离减少2ex，注意单个条目内部的行距不会发生变化
                 \bibitem{author1.year1}{Au1. ArtName1[J]. JN1. Y:1--2} % 书中在参考文献的形式两边没有加大括号，加与不加，编译的结果相同
@@ -1993,7 +2205,7 @@
             \end{thebibliography}
             %* 以上都是\LaTeX的原生命令，即使不加载natbib宏包也能编译成功，natbib宏包仅仅是修改了索引的上标形式
 
-        % 显示所有尾注
+% 显示所有尾注
             \theendnotes
 
 \end{document}
