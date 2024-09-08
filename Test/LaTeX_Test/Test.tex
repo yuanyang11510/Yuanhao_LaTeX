@@ -1,26 +1,47 @@
 \documentclass[10pt]{article}
+\usepackage{ctex}
 \usepackage[showframe]{geometry}
 \usepackage[shortlabels,inline]{enumitem}
 \usepackage{blindtext}
+\usepackage{calc}
 
 \newcommand{\printvalues}{
         labelindent = \the\labelindent,
         labelwidth = \the\labelwidth,
-        labelsep = \the\labelsep,
+        itemindent = \the\itemindent,
         leftmargin = \the\leftmargin,
         itemindent = \the\itemindent
     }
+\newcommand{\printverticalvalues}{
+        topsep=\the\topsep, 
+        partopsep=\the\partopsep, 
+        itemsep=\the\itemsep, 
+        parsep=\the\parsep
+    
+    
+    }
 \begin{document}
-En un lugar de la Mancha, de cuyo nombre no quiero acordarme,
-no ha mucho tiempo que viv\'{\i}a un hidalgo de los de
-\begin{enumerate}[leftmargin=0pt, widest=0, itemindent=0pt,  labelindent=*, align=left]
-    \DrawEnumitemLabel
-    \item lanza en astillero,
-    \item adarna antigua,
-    \item Lorem ipsum dolor sit amet, consectetuer adipisc\\ing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing itae, felis.
-    \item Lorem ipsum
+
+\begin{enumerate}
+    \item AA
+    \begin{enumerate}
+        \item AA
+        \begin{enumerate}
+            \item AA
+        \end{enumerate}
+    \end{enumerate}
 \end{enumerate}
-Una olla de algo m\'{a}s vaca que carnero, salpic\'{o}n las m\'{a}snoches, duelos y quebrantos los s\'{a}bados...
+
+\setlist[enumerate,1]{nosep}
+\begin{enumerate}
+    \item \printverticalvalues
+    \begin{enumerate}
+        \item \printverticalvalues
+        \begin{enumerate}
+            \item \printverticalvalues
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
 
 
 \end{document}

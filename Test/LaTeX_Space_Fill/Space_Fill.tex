@@ -37,6 +37,7 @@
     %! 书中所说的“在断行处也正常输出空格”容易让人误以为是在原来的打印效果的基础上，在断行处打印出空格，但实际情况是，使用"\hspace*{l}"命令之后，排版的效果发生了变化，仔细思考一下，会发现这是可以理解的做法，因为只有这样才能体现出这一命令的价值：插入一段距离的【可以被观察到的】空格。如果在断行处使用"\quad"、"\qquad"、"\enskip"、"\ "等命令，其效果也和使用"\hspace{l}"命令一样，不会造成任何排版上的影响
 
 % 自定义竖直距离
+    % 可以在两段之间使用
     {\setlength{\fboxsep}{0pt}
     \fbox{
         \parbox{2em}{
@@ -47,12 +48,16 @@
         }
     \fbox{\parbox{2em}{\rule{2pt}{2em}}}
     }
-    % 可以在两段之间使用
-
-    test test test test test test test test test test test test test test test test\vspace{2em} test test
+    
     % 也可以在同一段内的两行之间使用
+    test test test test test test test test test test test test test test test test test test test test test test test 
+
+    \vspace{2em}test test test test test test test test test test test test test test test test test test test test test test test
+    
+    test\vspace{2em} test test test test test test test test test test test test test test test test test test test test test test 
     %* 在两段之间使用"\vspace{l}"命令，其实既可以表达成"\par\vspace{l}"，也可以表达成"\vspace{l}\par"，也可以表达成"\par\vspace{l}\vspace{l}"，第一种表达的意思是先分段，再增加竖直距离，第二种表达的意思是先在上一段内增加竖直距离，再分段，第三种表达的意思是先分段，再增加竖直距离，而由于除此之外并没有加入文本，因此最后再加上一个"\par"命令并不会导致再增加一段，这一命令不会生效，而是在刚才开始的新段内打印后续文本
     %? 至于为什么连续多个"\par"命令其实就相当于一个"\par"命令，应该和LaTeX的底层逻辑有关系，待研究
+    %* 注意比对上面使用"\vspace{l}"命令的两个例子，可以发现，第一个"\vspace{l}"命令放置在段落的开头，其效果其实等同于加在上一个段落的结尾（都相当于"\par\vspace{l}"），效果是增加当前行和上一段最后一行之间的竖直距离；而第二个"\vspace{l}"命令放置在段落当中，效果是增加当前行和下一行之间的竖直距离。这两者的性质是不同的，前者其实是前文提到的增加段落间距的情况，后者才是真正的增加基线间距的情况
     %rfr 注意，这一段竖直距离是在基线间距（其实是段落间距）的基础上加上去的，并不意味着用这段竖直距离去替换基线间距，可以参考：https://tex.stackexchange.com/questions/463039/spacing-difference-when-using-boxes，根据这篇帖子的介绍，在基线间距的基础上加上这段距离并不会导致基线间距的突变
     %* 从这一点上来说，这一命令有点类似于"\rule[lift]{width}{thickness}"命令的“支柱”作用，只不过"\vspace{l}"命令只能粗略地增加基线间距，而"\rule[lift]{width}{thickness}"命令可以更加详细地调节当前行大箱子的高度和深度，"\vspace{l}"一定会导致基线间距超过默认值，"\rule[lift]{width}{thickness}"命令则不一定，即使该命令追求的目的通常也是将当前行大箱子的高度和深度增加到超过默认值，最后使得基线间距也超过默认值
 

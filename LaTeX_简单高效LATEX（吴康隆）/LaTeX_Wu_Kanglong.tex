@@ -289,9 +289,11 @@
 \usepackage{colortbl}
             % 彩色表格依靠colortbl宏包，它会调用array宏包和color宏包，可以在加载xcolor宏包时添加table选项来调用colortbl宏包
 
-\usepackage{enumitem}
+\usepackage[shortlabel,inline]{enumitem}
             % enumitem宏包允许在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制列表的相关参数，也可以通过"\setlist[]{}"命令来为各级列表设置统一的参数
             %* 可供设置的<key>中有一部分（主要是距离参数）是LaTeX当中关于列表的原生参数
+            %* shortlabel这一可选参数主要是为enumerate列表设置的，可以在可选参数的开头通过"A/a/I/i/1"分别代表计数器的数值格式"\Alph*"、"\alph*"、"\Roman*"、"\roman*"、"\arabic*"，并通过将其和字体命令以及其它字符组合，更加方便地设置label参数和ref参数
+            % 通过enumitem宏包的可选参数inline提供的itemize*、enumerate*、description*环境设置行内列表
             %rfr 可以参考enumitem宏包的官方手册，尽管这一手册非常难读：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf
 
 \usepackage{hyperref}
@@ -1430,7 +1432,7 @@
             \newcd 
 
             \newcd[1]
-            % 和自定义环境一样，如果设置了首个参数的默认值，如果使用该参数，则需要用中括号括起来
+            % 和自定义环境一样，如果设置了首个参数的默认值，则在之后使用该参数时，需要用中括号括起来
 
             % 如果误用大括号括起来，则再看起初定义了几个参数，如果定义了不止一个参数，系统会将输入的值识别为第二个参数的值，如果起初只定义了一个参数，则系统会将该值识别为文本的一部分
             \newcd{1}
