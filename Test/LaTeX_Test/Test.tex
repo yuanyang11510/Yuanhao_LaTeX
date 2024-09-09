@@ -4,44 +4,44 @@
 \usepackage[shortlabels,inline]{enumitem}
 \usepackage{blindtext}
 \usepackage{calc}
+\usepackage{lua-visual-debug}
 
-\newcommand{\printvalues}{
-        labelindent = \the\labelindent,
-        labelwidth = \the\labelwidth,
-        itemindent = \the\itemindent,
-        leftmargin = \the\leftmargin,
-        itemindent = \the\itemindent
-    }
-\newcommand{\printverticalvalues}{
-        topsep=\the\topsep, 
-        partopsep=\the\partopsep, 
-        itemsep=\the\itemsep, 
-        parsep=\the\parsep
-    
-    
-    }
+
+
 \begin{document}
 
-\begin{enumerate}
-    \item AA
-    \begin{enumerate}
-        \item AA
-        \begin{enumerate}
-            \item AA
-        \end{enumerate}
-    \end{enumerate}
-\end{enumerate}
+\hfill middle \hfill tail \hfill\par
+% 第一行的代码比第二行的代码末尾缩进一部分   1
+%% 这是因为tail和\hfill中间有一个空格，删去空格即可
+\hfill middle \hfill tail \par
+% 第一行和第二行 末尾缩进有点不同 hfill起到的作用不是那么的大   2
+%% 上文已经解释这个问题
+\hfill middle \hfill tail \hfill \mbox{}\par
+% 第三行右边加上一个零宽度盒子，就有了填充的效果   3
+%! 我也需要解决这个问题
+%% 应该是和末尾的\parfillskip（其和\par的关系应该就类似于\parindent和\indent的关系）
+\mbox{} \hfill middle \hfill \mbox{}\par % 两边加上mbox居中                          4
+%! 实际上 去掉第一个盒子 middle还会往前移动一点 这个是第7行的效果 这个不太能理解
+%% 比较4和7 确实是前一个\mbox{}导致的不同（准确的说 4的根源在于\mbox{}后面的空格） 但比较5和6 会发现前一个\mbox{}不起作用 造成这两对的不同情况 看来是由于后一个\mbox{}
+\hfill middle \hfill  \par % 第四行代码和第五行代码显示结果一样                        5
+%! 应该是第五行和第六行
+\mbox{} \hfill middle \hfill \par                                                %      6                        
+\hfill middle \hfill \mbox{} \par % 右边加上mbox居中                                    7
+%! 上面已经提到 和第4行比对
+\noindent{} \hfill middle \hfill \mbox{}\\ % 去掉首行缩进还是居中
+% 第8行 去掉段落首行缩进还是居中，和第7行类似   8
+%! 可以发现noindent是将indent设置的空箱子移除，相比第7行又往前移了一点，这是真正的居中
+\hfill middle \hfill tail \\  % 当不是段落首行的时候左边的hfill没有用了                9
+middle
+%! 
 
-\setlist[enumerate,1]{nosep}
-\begin{enumerate}
-    \item \printverticalvalues
-    \begin{enumerate}
-        \item \printverticalvalues
-        \begin{enumerate}
-            \item \printverticalvalues
-        \end{enumerate}
-    \end{enumerate}
-\end{enumerate}
+
+% 有效行数在右边
+% 当不是段落首行的时候hfill作用没了 对比第1行和第9行
+% 所以我想问问每个段落首行开始是有个什么东西（是一个零宽度盒子吗） 还有末尾 为啥让hfill没有正常的作用，只是缩进了一点
+
+
+
 
 
 \end{document}

@@ -21,12 +21,14 @@
 \usepackage{blindtext}
             %rfr blindtext宏包提供"\blindtext"命令，生成一段无意义的测试文本，可以通过可选参数来指定重复次数（重复后的多段文本在一个段落内首尾相接）；"\Blindtext"命令用于生成五段相同的上述文本，可以通过可选参数来控制重复的段落数，默认值为5，可以通过第二个可选参数来控制每个段落内文本的重复次数（相当于"\blindtext"命令的可选参数）；"\blinddocument"命令用于生成一篇带有章节名（section、subsection……）、列表（itemize、enumerate、description）等内容的文档；"\Blinddocument"命令用于生成一篇更长的类似文档，可以参考其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/blindtext/blindtext.pdf
 
+% \usepackage{lua-visual-debug}
+            % 使用LuaLaTeX编译，可以将所有盒子和基线可视化
+
 \usepackage[normalem]{ulem}
             % ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
 
 \usepackage{hologo}
             % hologo宏包可以输出许多TeX家族标志
-
 
 \usepackage{lettrine}
             % 宏包lettrine能够生成首字下沉的效果
@@ -289,7 +291,7 @@
 \usepackage{colortbl}
             % 彩色表格依靠colortbl宏包，它会调用array宏包和color宏包，可以在加载xcolor宏包时添加table选项来调用colortbl宏包
 
-\usepackage[shortlabel,inline]{enumitem}
+\usepackage[shortlabels,inline]{enumitem}
             % enumitem宏包允许在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制列表的相关参数，也可以通过"\setlist[]{}"命令来为各级列表设置统一的参数
             %* 可供设置的<key>中有一部分（主要是距离参数）是LaTeX当中关于列表的原生参数
             %* shortlabel这一可选参数主要是为enumerate列表设置的，可以在可选参数的开头通过"A/a/I/i/1"分别代表计数器的数值格式"\Alph*"、"\alph*"、"\Roman*"、"\roman*"、"\arabic*"，并通过将其和字体命令以及其它字符组合，更加方便地设置label参数和ref参数
@@ -1727,6 +1729,16 @@
                 \item a\ b，长度为一个空格距离
             \end{itemize}
 
+            %* 所谓“禁止换行”，是指通过上述四个符号连接的前后两段文本在自然断行时不会在此处断开换行，而是始终保持一个整体移动，这一性质通过"\nobreakspace"这一命令的名字可以很容易地看出来；所谓“允许换行”，对比之前的“禁止换行”，自然就是指上述四个符号连接的前后两段文本在自然断行时会在此处断开换行，可以比较下面几条命令的不同效果
+            test test test test test test test test test test test test test test test test test test test test test test
+            % 在倒数第二个词前面自然断行
+
+            test test test test test test test test test test test test test test test test test test test test\enspace test test 
+            % 在原自然断行处插入"\enspace"命令，导致前后两段文本连为一个整体，文本排版自动调整
+
+            test test test test test test test test test test test test test test test test test test test test\enskip test test 
+            % 在原自然断行处插入"\enskip"命令，允许文本在此处断行，因此文本排版没有变化
+
             LaTeX定义的三个竖直距离：
 
             \parbox[t]{.2\textwidth}{\LaTeX\par \LaTeX}
@@ -2155,6 +2167,7 @@
         % rfr 关于enumitem宏包的相关介绍，参见文件"Enumitem.tex"
             
     \subsection{\hologo{BibTeX}参考文献}
+    
     \subsection{索引}
     \subsection{公式与图表编号样式}
     \subsection{附录}
