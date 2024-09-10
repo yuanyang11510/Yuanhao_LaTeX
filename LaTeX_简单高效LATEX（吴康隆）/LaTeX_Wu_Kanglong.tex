@@ -79,41 +79,9 @@
 
 \usepackage[numbers,sort&compress,super,square]{natbib} 
             % 使用natbib宏包可以定制参考文献标号在文中的显示方式
-% \usepackage{natbib} 
-            %* 只加载natbib宏包，编译会报错
-% \usepackage[numbers]{natbib} 
-            % 数字编号
-            %* 单独设置该选项，编译成功
-% \usepackage[sort&compresss]{natbib} 
-            % 排序且压缩
-            %! 单独设置该选项，编译会报错
-% \usepackage[super]{natbib} 
-            % 上标
-            %* 单独设置该选项，编译成功
-% \usepackage[square]{natbib} 
-            % 外侧方括号
-            %! 单独设置该选项，编译会报错
 
 \usepackage[numbib,numindex]{tocbibind}
-            %* "toc"是"table of contents"的缩写  
-            %* 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号
-            %* 但是并没有专门为图目录和表目录的正常编号设置的可选参数  
-% \usepackage[nottoc]{tocbibind} 
-            % 目录本身不编入目录
-% \usepackage[notlof]{tocbibind} 
-            % 图目录不编入目录
-% \usepackage[notlot]{tocbibind} 
-            % 表目录不编入目录
-% \usepackage[notindex]{tocbibind} 
-            % 索引不编入目录
-% \usepackage[notbib]{tocbibind} 
-            % 参考文献不编入目录
-% \usepackage[numindex]{tocbibind} 
-            % 给索引章节正常编号
-% \usepackage[numbib]{tocbibind} 
-            % 给参考文献章节正常编号
-% \usepackage[none]]{tocbibind} 
-            % 禁用所有
+            % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号
 
 \usepackage[section]{placeins}
             % 重新定义了"\section{}"命令，在此之前加上了"\Float-Barrrier"命令，阻止浮动体跨过该位置
@@ -163,43 +131,9 @@
             % 借助geometry宏包进行页面设置
             %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
 
-\usepackage{fancyhdr}
+% \usepackage{fancyhdr}
             % 借助fancyhdr宏包控制页眉和页脚
             %* "hdr"应该是来自"header"的缩写
-    \pagenumbering{arabic}
-            % 设置页码的格式，默认值为arabic，还可以设置为Roman、roman、Alpha、alpha
-    \pagestyle{fancy}
-            % 设置页眉和页脚的格式，还可以设置其他值，包括：empty（无页眉、页脚）、plain（无页眉，页脚只包含一个居中的页码）、headings（无页脚，页眉包含章节编码、章节名称与页码）、myheadings（无页脚，页眉包含页码和用户定义的信息，经检验，默认情况下只包含页眉中的页码）
-            %* 在单边模式下，如果不使用"\pagestyle{fancy}"命令，每一页都会显示不带下边线的页眉，不显示页脚，正文部分的第一页和第二页只在页眉的右侧显示页码，从第三页开始，在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示页码；如果使用"\pagestyle{fancy}"命令，每一页都会显示包含下边线的页眉以及不带基线的页脚，正文部分的第一页和第二页只在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码，从第三页开始，在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码
-            %* 在双边模式下，如果不使用"\pagestyle{fancy}"命令，奇数页显示不带下边线的页眉，偶数页显示页脚，正文部分的第一页只在页眉的右侧显示页码，正文部分的第二页只在页脚处显示页码，从第三页开始，奇数页在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示页码，偶数页在页脚处显示页码；如果使用"\pagestyle{fancy}"命令，每一页都显示带下边线的页眉和不带基线的页脚，正文部分的第一页只在页眉的左侧显示节（section）编号和节名称，在页脚处显示页码，正文部分的第二页只在页眉的右侧显示节（section）编号和节名称，从第三页开始，奇数页在页眉的左侧显示节（section）编号和节名称，在页眉的右侧显示次节（subsection）编号和次节名称，在页脚处显示页码，偶数页在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码
-            %rfr 事实上，上述提到的【节（section）编号和节名称】在页眉和页脚的设置中被属于“较高级别”（higher-level）的信息，【次节（subsection）编号和次节名称】属于“较低级别”（lower-level）的信息，这是在article文档类中的情况，在book文档类中，“较高级别”则是章（chapter），“较低级别”则是节（section），关于页眉和页脚的设置原理的详细介绍，可以参考：https://www.overleaf.com/learn/latex/Articles/How_does_LaTeX_typeset_headers_and_footers%3F#Commands_for_the_output_routine
-%* 注意，如果同时设置empty/plain/headings/myheadings参数和以下命令，优先适用前者，以下命令都不会生效，只有将"\pagestyle{}"命令设置为"fancy"参数，以下命令才会生效
-    % \lhead{} 
-    %             % 设置页眉左侧的内容，没有内容表示清空默认情况下的内容
-    % \chead{} 
-    %             % 设置页眉中间的内容
-    % \rhead{} 
-    %             % 设置页眉右侧的内容，没有内容表示清空默认情况下的内容
-    % \lfoot{} 
-    %             % 设置页脚左侧的内容
-    % \cfoot{} 
-    %             % 设置页脚中间的内容，没有内容表示清空默认情况下的页码
-    % \rfoot{} 
-    %             % 设置页脚右侧的内容
-    \renewcommand{\headrulewidth}{.4pt}
-                % 设置页眉下边线的高度（不是宽度），默认值为0.4pt
-    \renewcommand{\footrulewidth}{.4pt}
-                % 设置页脚基线的高度（不是宽度），默认值为0pt
-    % \fancyhf[HOR]{元昊} 
-            % 可选参数中可以通过三个字母（大小写均可，前后顺序可以变化）来设置内容位置：H/F代表“页眉/页脚”，E/O代表“偶数页/奇数页”，L/C/R代表“左侧/中间/右侧”
-            %* 这一命令相比之前几条设置页眉/页脚的命令，优势在于可以同时设置多个位置的页眉/页脚，并且可以分奇偶页进行设置，也可以单独设置"\fancyhead[places]{header}"或者"\fancyfoot[places]{footer}"
-% 也可以通过"\fancypagestyle{style name}{definitions}"命令自定义页眉和页脚格式
-    % \fancypagestyle{newstyle}{
-    %     \fancyhf{} % 清空页眉和页脚
-    %     \fancyhead[c]{\thesection} % 在页眉中间显示节（section）的计数器内容
-    %     \fancyfoot{\thepage} % 由于没有指定位置，因此在页脚的左中右三个位置处均显示页码
-    %     }
-    % \pagestyle{newstyle}
 
 \usepackage{shortvrb}
             % shortvrb宏包支持以一对符号代替"\verb"命令
@@ -236,51 +170,9 @@
 
 \usepackage{titlesec}
             % 通过titlesec宏包自定义正文中的章节样式
-            %rfr 以下关于titlesec宏包和titletoc宏包的各项命令的具体的参数设置可以参考吴康隆（102-107）以及titlesec/titletoc宏包的官方手册：https://mirror-hk.koddos.net/CTAN/macros/latex/contrib/titlesec/titlesec.pdf
-    \titlelabel{\thetitle.\quad}
-            % 设置各级章节标签格式，在所有章节标签后面多加一个"."符号，默认值为"\thetitle\quad"
-            %* "\thetitle"命令指代的就是各级章节标签（计数器），也可以替换成"\thesection"、"\thesubsection"等，但是最好替换成最低一级的章节计数器，因为章节标签只会打印到所指定的那一级，低于指定等级的章节标签会全部消失。即使这样，也仍然不建议将"\thetitle"命令替换成最低等级的章节计数器，因为这会导致所有章节标签被重新定义，例如本文档中已经将节一级的标签重定义为“第X章”的形式，如果此处将"\thetitle"替换为"\thesubsubsection"，将会导致节一级的标签显示为"X.0.0"的形式
-    \titleformat*{\section}{\itshape\bfseries\Large}
-            % 设置章节整体的字体样式
-            %* 如果第二个必选参数{format}不设置任何值，编译不会报错，但是会消除相应等级章节的字体样式，使其还原为正文字体，下同
-    \titleformat{\subsubsection}[display]{\itshape}{\bfseries 第\thesubsubsection 小节}{2em}{小节前$\leftarrow$\sffamily}[\rmfamily 小节后$\swarrow$]
-            % 更加详细地设置章节的各项参数
-            %* 关于参数设置，有一些细节值得指出：（1）{command}参数默认为设置有编号的大纲样式，可以在后面添加",numberless"，此时转为设置无编号的大纲样式；（2）{format}参数和{label}参数的情况和上一条命令一样，可以留空，但会导致相应的内容还原回正文字体；（3）设置{label}参数可以代替下文【通过重定义章节计数器的调用形式】的方式，并且还有一个优势：这不会影响到此后所有级别更低的章节的标签，以上述命令为例，重定义了section的标签样式并不会影响到subsection的标签样式，但是如果像下文那样通过将计数器section的调用形式重定义为了“第X章”的形式，这就不得不同时重定义其下级计数器subsection的调用形式，将其恢复为本来的形式（不过，只需要重定义比其低一级的计数器subsection的调用形式即可，具体原因见下文）；（4）{sep}参数无法使用"\quad"等空格命令，但是可以使用"\baselineskip"命令
-            %% 有时候，我们只是想要改变标签或者标题文字的一部分字体样式，保留另一部分的字体样式，但是这一命令只能重新为其设置字体样式，因此如果要达到上述目的，就要求我们了解相应文档类当中的各级章节大纲的默认字体样式，下面设置目录中的章节样式的相关命令也是相同的情况。
-            %* 下面这一点单独介绍：（5）不同参数当中的字体命令之间的相互关系可以总结为：{format{{label}{before-code1}{before-code2{after-code}}}}，具体而言：{format}参数中的字体命令影响整个章节部分；{label}参数中的字体命令只会影响标签；{before-code}参数作用于章节的标题文字，如果输入文本，该文本会被添加到标题文字的前面，如果设置了字体命令，字体命令前面的文本不会被该命令影响到，只会受{format}参数中的字体命令的影响，字体命令后的文本会同时受{format}参数和该参数中的字体命令的双重影响；{after-code}参数中设置的文本则会受{format}参数、{before-code}参数以及该参数中的字体命令的三重影响。在下文将要介绍的titletoc宏包提供的"\titlecontents"命令中，不同参数中的字体命令之间的关系和此处也有类似的地方，详见下文
-            %! 注意，打印效果表面上似乎显示{before-code}参数中位于字体命令之后的文本只受到{format}参数中的字体命令"\bfseries"和该参数中的字体命令"\sffamily"的影响，而没有受到{format}参数中的另一个字体命令"\itshape"的影响，这其实是因为对于汉字来说，不存在sf字族下的斜体字形，可以通过观察{after-code}参数中文本的打印效果，验证其确实受到{format}、{before-code}、{after-code}三个参数当中的字体命令的叠加影响
-            %rfr 根据吴康隆（105），可以将{label}参数留空，{sep}设置为0pt，这样就可以在{before-code}参数中分别设计章节标签的字体样式和标题文字的字体样式；另外，[after-code]参数中的文本会另起一行打印，吴康隆（105）很好地利用了这一点，在其中使用"\startcontents"命令和"\printcontents"命令（均由titletoc宏包提供），在每一章的开头打印该章的子目录  
-    \titlespacing*{\subsubsection}{2em}{3ex}{3ex}[10em]
-            % 设置章节的缩进距离、距离前后正文的竖直距离、右端距离文本右边线的距离等
-            %! 注意，如果文档类设置成ctexart，使用这条命令会导致相应等级章节下的内容的首行（无论是以汉字开头还是以英文字母开头）不缩进，即使加载ctex宏包也无法结局该问题，解决办法是加载indentfirst宏包
-    % \titlespacing{\subsubsection}{2em}{*10}{*10}[10em]
-            % "*"符号后面的数字表示章节距离前后正文的竖直距离的倍数
-            %* 经检验，如果同时存在"\titlespacing*{command}{left}{before-sep}{after-sep}[right-sep]"命令和"\titlespacing{command}{left}{before-sep}{after-sep}[right-sep]"命令，只运行后一条命令
-%rfr titlesec宏包还提供"\titleline[align]{horizontal material}"命令和"\titlerule[height]"、"\titlerule*[width]{text}"等命令，参见"6.1 这是一个次节"一节
 
 \usepackage{titletoc}
             % 通过titletoc宏包自定义目录中的章节样式
-    % \dottedcontents{section}[8em]{}{4em}{15pt}
-            % 设置目录的整体字体样式以及一些距离参数
-            %* 设置目录中相应章节大纲【标签的右侧】/【标题文字的左侧】到文本左边线的距离、章节整体的字体样式、标签宽度（从【标签的右侧】/【标题文字的左侧】向左延伸的距离）、圆点填充部分的等距填充的盒子宽度（对应"\titlerule*[width]{text}"命令中的[width]参数），{above-code}参数如果留空，会清空相应章节大纲的整体字体样式，使其还原为正文格式
-            %! 注意，{section}参数中不能加入"\"符号，可以和"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令中的{command}参数进行比较，前者是设置目录当中的大纲格式，后者是设置正文中的大纲格式，后者才和相应的大纲命令有关      
-    \titlecontents{section}[4em]{}{\itshape\bfseries\contentslabel[\sffamily\bfseries\thecontentslabel]{4em}}{\itshape\bfseries}{\bfseries\titlerule*[15pt]{+}\contentspage}[\vspace{2ex}]
-            % 更加详细地设置目录的各项参数
-            %* 前三个参数和"\dottedcontents"相同，因此该命令独有的功能在于之后的几个参数：（1）{numbered-entry-format}参数和{numberless-entry-format}参数分别用来设置在目录中有编号和无编号的章节大纲的样式，注意在其中一定要使用"\contentslabel[]{}"命令（当然，也可以统一在{above-code}参数中使用这一命令），否则不会打印章节标签；（2）{filler-page-format}参数用来设置章节条目之后部分（包括中间填充部分和页码，不区分有编号还是无编号类型）的样式，一般会使用titlesec宏包提供的"\titlerule*[width]{text}"命令进行设置，注意在最后一定要使用"\contentspage[]"命令，否则不会打印页码；（3）[below-code]参数一般用来设置增加的竖直距离，不过这一距离也可以在{above-code}参数中设置
-            %% 可以发现，"\titlecontents"命令专门为目录中有编号和无编号的章节大纲设置了不同的参数，而比较前文设置正文中章节大纲样式的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令，则需要在{command}参数中添加"numberless"参数，另外使用一次该命令来对无编号的章节样式进行设置，这应该和【目录中的章节样式没有正文中复杂】这一特点有关
-            %* 下面这一点单独介绍：（4）不同参数当中的字体命令之间的相互关系可以总结为：{above-code{{numbered-entry-format}{numberless-entry-format}{filler-page-format}}}，具体而言：{above-code}参数中的字体命令影响整个章节目录部分（包括标签、标题文字、中间填充部分和页码），这相当于"\titleformat"命令中的{format}参数；{numbered-entry-format}、{numberless-entry-format}这两个参数分别控制有编号和无编号的章节条目部分（包括标签和标题文字两部分）的字体样式，但是他们不会影响到后面的中间填充部分和页码，这类似于"\titleformat"命令中的{label}参数，只不过后者只能控制章节标签；剩下的部分的字体样式由{filler-page-format}参数控制，这类似于"\titleformat"命令中的{before-code}/{after-code}参数，以上提到的后三个参数中对应的文本都会受{above-code}参数和本参数中的字体命令的双重影响，但是互相之间不会影响，可见，"\titlecontents"命令当中各参数中的字体命令之间的相互关系要比"\titleformat"命令来的简单一些
-            %% 还有必要专门介绍一下"\contentslabel[]{}"命令和"\contentspage[]"命令，这两条命令专门用来设置章节标签的样式和页码的样式，其中可选参数用来设置字体样式，必选参数用来设置标签的宽度，通过这两条命令，就可以在上述的{numbered/numberless-entry-format}参数的对应范围内单独设置章节标签的字体样式，在{filler-page-format}参数的对应范围内单独设置页码的字体样式。如果完全不设置任何样式，这两条命令也可以分别写成"\thecontentslabel"和"\thecontentspage"，此时标签和页码的箱子宽度自适应，如果要通过可选参数来设置字体样式，则在其中不仅要使用相应的字体命令，而且要在字体命令之后加上"\thecontentslabel"命令或者"\thecontentspage"命令，否则相应的章节标签或者页码不会打印出来
-            %! 设置章节标签的字体样式时，写成"\contentslalbel[字体命令+\thecontentslabel]{}"命令明显不同于直接写成"字体命令+\thecontentslabel"，因为需要通过必选参数来设置标签宽度；而对于页码来说，直接写成"字体命令+\thecontentspage"似乎要比"\contentspage[字体命令+\thecontentspage]"简单不少，而且由于不存在必选参数，因此似乎这两条命令是等效的，但这两条命令其实并不相同，而且其差异和章节的情况是类似的：前者会导致页码不再紧贴文本右边线，而是紧跟前面的中间填充部分，这说明"\contentspage[]"命令虽然不像"\contentslabel[]{}"命令那样有一个显性的控制页码宽度的必选参数，但实际上其底层定义中一定存在一部分代码用来自动控制页码宽度，使之始终紧贴文本右边线，否则无法解释前后两种设置方式导致的不同效果           
-    % \titlecontents*{subsection}[2em]{}{\bfseries\thecontentslabel\quad}{}{\quad\bfseries\thecontentspage}[\qquad]
-    % \titlecontents*{subsubsection}[]{}{\itshape\thecontentslabel\quad}{}{\quad\itshape\thecontentspage}[\enskip$\lceil$][\enskip|\enskip][\enskip$\rfloor$]
-            %* 加了"*"符号之后的"\titlecontens*"命令可以将目录中几个相邻的同一等级的章节合并到同一个段落内，因此{filler-page-format}参数当中将无法再使用"\titlerule*[width]{text}"命令进行设置，否则编译会报错
-            %* 与"\titlecontents"命令相比，"\titlecontents*"命令主要多了后面的三个参数[begin]、[separator]、[end]，这代替了原来命令中的最后一个参数[after-code]，其中，[separator]参数和[end]参数是比较常用的，前者控制相邻两个同级章节目录之间的连接部分，后者控制最后一个章节目录的右侧部分。[begin]参数用的比较少，只有在嵌套上下两级章节目录的时候才会用到，此时对应上级章节的"\titlecontents*"命令中的[separator]参数和[end]参数分别控制相邻两个上级章节目录之间的连接部分和最后一个上级章节目录的右侧部分，而对应下级章节的"\titlecontents*"命令中的[begin]参数和[end]参数分别控制在每一个上级目录开始之后的第一个下级章节目录的左侧部分和最后一个下级章节目录的右侧部分，[separator]则控制相邻两个下级章节目录之间的连接部分
-            %! 在使用"\titlecontents"命令时，需要注意"\thecontentslabel"命令只能放置在{numbered-entry-format}参数中，而不能放置在{above-code}参数中，否则会导致除了第一个同级章节目录带有编号，之后的同级章节目录都无编号，这也就意味着此时不再能够为有编号和无编号的同级章节条目统一设置字体样式，而需要分别设置（当然，如果这一级章节在目录中都是有编号或者都是无编号的，只需要设置对应的那个参数即可）。另外，在嵌套上下两集章节目录的情况下，也需要注意下级章节的"\thecontentslabel"命令只能放置在{numbered-entry-format}参数中，否则不仅会导致只有第一个下级目录有编号的问题，而且[begin]对应的部分（如果设置了的话）会被插入到第一个下级章节的标签和标题文字的中间，打印效果非常奇怪       
-    % \contentsmargin{.7em}
-            %* 控制圆点填充部分的右侧到文本右边线的距离，只有存在圆点填充部分的章节大纲才会被这一命令影响
-            %* 存在一个临界值（可以肯定不是0em），此时所有的页码右对齐，并且紧贴文本右边线，当参数值大于这一临界值（默认值也处于这一范围内），并且不断增大时，圆点填充部分的右端会逐渐向左移动，而页码不动，从而在两者之间形成一段空白距离；当参数值小于这一临界值，并且不断减小（包括减小到负数）时，圆点填充部分的右端会逐渐向右移动，并且推动页码也向右移动，中间会经历一个所有页码从右对齐到不同位数的页码各自对齐再到所有页码左对齐的过程
-            %rfr 这一命令其实并不常用，根据官方手册的说法，LaTeX的默认参数并没有为100以上的粗体页码预留足够的空间，因此如果存在这种情况，就需要通过这一命令来增大圆点填充部分到文本右边线的距离
-%! titletoc宏包的官方手册中称"\dottedcontents"命令中的[left]参数代表的是“the left margin from the left page margin”，但是通过设置geometry宏包的"showframe"参数之后，经过测试，可以发现这只是一种粗略的说法，至于"\contentsmargin"命令中的参数，该手册甚至没有明确其控制的是哪一段距离
 
 \usepackage{longtable}
             % longtable宏包用来排版长表格
@@ -293,9 +185,6 @@
 
 \usepackage[shortlabels,inline]{enumitem}
             % enumitem宏包允许在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制列表的相关参数，也可以通过"\setlist[]{}"命令来为各级列表设置统一的参数
-            %* 可供设置的<key>中有一部分（主要是距离参数）是LaTeX当中关于列表的原生参数
-            %* shortlabel这一可选参数主要是为enumerate列表设置的，可以在可选参数的开头通过"A/a/I/i/1"分别代表计数器的数值格式"\Alph*"、"\alph*"、"\Roman*"、"\roman*"、"\arabic*"，并通过将其和字体命令以及其它字符组合，更加方便地设置label参数和ref参数
-            % 通过enumitem宏包的可选参数inline提供的itemize*、enumerate*、description*环境设置行内列表
             %rfr 可以参考enumitem宏包的官方手册，尽管这一手册非常难读：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf
 
 \usepackage{hyperref}
@@ -305,43 +194,7 @@
             % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
             %* 如果以上命令作为hyperref宏包的可选参数，应该将其置于必选参数"{hyperref}"的前面，否则设置的可选参数无法生效
 
-% 其他设置------------------------------------------------------------------------------------------------------------------------------------
-% 设置大纲深度
-\setcounter{tocdepth}{4}
-            %* 大纲在目录中编号到指定深度为止（决定是否有标签，标题文字照旧打印）
-\setcounter{secnumdepth}{4}
-            %* 大纲在正文中编号到指定深度为止（决定是否有标签，标题文字照旧打印）
-            %rfr 书中没有说明"tocdepth"和"secnumdepth"的区别，参考：https://texdoc.org/serve/lshort-zh-cn.pdf/0，两者在book/report文档类中的默认值是2（即"subsection"一级），在article文档类中的默认值是3（即"subsubsection"一级）
-            %! 注意，如果在正文中使用以上两条命令，尤其对于"tocdepth"来说，要将其放置在"\tableofcontents"命令之前，否则无法对目录产生影响
-            %* 还可以发现，计数器名称是不带"\"符号的
 
-% 通过重定义"\the+计数器名称"命令来修改章节标签
-\renewcommand{\thesection}{第\arabic{section}章}
-            %rfr 重定义"\the+计数器名称"命令其实就是重定义计数器的调用形式，这一形式由两部分组成：一部分是计数器的数值形式，这一部分是强制性的，另一部分是其他字符，比如字母、括号等，这一部分不是强制性的，有的计数器只包含了数值形式，而没有设置其他字符，比如章节计数器"section"默认的调用形式"\thesection"就只设置了数值形式"\arabic{section}"。上述命令中将"section"的调用形式从单纯的阿拉伯数字（"\arabic{section}"）改为了"第+阿拉伯数字+章"的形式，也就是添加了其他字符，可以参考：https://tex.stackexchange.com/questions/279744/change-the-name-of-sections
-            %! 在重定义计数器的调用形式时需要慎重添加字母或者汉字，因为这会影响到其下属的各级计数器，当然，这是可以通过重定义下一级计数器的调用形式解决的，见下一条命令的解释，但这仍然会在很多方面造成不便，可以参看"3.7.1 计数器"一节的解释
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-            %* 计数器"subsection"本来的调用形式是"\thesection.\arabic{subsection}"，但是由于"\thesection"命令被重定义成了"第\arabic{section}章"的形式，因此为了让计数器subsection的调用形式保持不变，需要将其中的"\theseciton"替换成"\arabic{section}"
-%// \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
-            %* 计数器subsubsection的调用形式不需要进行上述重定义，因为其本来的调用形式是"\thesubsection.\arabic{subsubsection}"，因此其只受两部分内容的影响：上级计数器subsection的调用形式和其自身的数值形式，上级计数器的调用形式已经通过上一条命令进行了重定义，因此，更上一级的计数器section的调用形式并不会影响到subsubsection的调用形式
-            %% 书中第"3.6.2 大纲与章节"一节中还提到重定义book/report文档类中的"chapter"这一大纲等级的标签，但只涉及了"\chaptername"命令，下面简要介绍重定义"chapter"的两个命令："\chaptername"命令和"\thechapter"命令，使用"\chapter{}"命令，打印出的默认形式是："Chapter + 阿拉伯数字（计数器） + 章名称"，其中，"Chapter"是由"\chaptername"控制的，"chapter"以下的"section"、"subsection"等大纲等级不包含这一部分，阿拉伯数字（计数器）是由"\thechapter"命令控制的，可以类比"section"对应的"\thesection"命令等，章名称是由"\chapter{}"命令控制的，因此，重定义"\chaptername"命令改变的是第一部分，重定义"\thechapter"命令改变的是第二部分。"chapter"之上的"part"这一大纲等级的设置也可以参照"chapter"的情况，只不过"\part{}"命令打印出的默认形式是“Part + 大写罗马数字（计数器） + 卷名称”
-            %rfr 可以通过titlesec宏包来更加方便地修改章节标签，可以参看上文对titlesec宏包中相关命令的介绍
-
-% 自定义一个深度从2开始的新的章节大纲，比如此处的subsubsubsection
-\titleclass{\subsubsubsection}{straight}[\subsubsection]
-            %* 注意，在使用"\titleclass{name}{class}[super-level-cmd]"命令之后，还需要另外定义一些配套的参数，见下文：
-\newcounter{subsubsubsection}
-            %* 通过"\newcounter{foo}"命令设置新的大纲计数器
-\renewcommand{\thesubsubsubsection}{\thesubsubsection.\alph{subsubsubsection}}
-            %* 通过重定义"\the + 新大纲计数器"来设置新大纲的数值形式
-\titleformat{\subsubsubsection}[hang]{\itshape\bfseries}{\thesubsubsubsection}{1ex}{}[]
-            %* 通过"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令来设置新大纲的字体样式和标签样式
-\titlespacing*{\subsubsubsection}{0em}{3ex}{3ex}
-            %* 通过"\titlespacing*{command}{left}{before-sep}{after-sep}"命令来设置新大纲的缩进距离和前后竖直距离
-\titlecontents{subsubsubsection}[10em]{\itshape}{\contentslabel{4em}}{}{\titlerule*[8pt]{.}\contentspage}[]
-            %* 通过"\titlecontents"命令来设置新大纲的目录样式
-            %% 如果没有这一条命令，并且需要打印目录的话，则第一遍编译不会报错，正文中会打印出subsubsubsection一级，但是第二遍编译会报错，因为没有定义其对应的目录样式
-            %! 每当新定义一个章节大纲，从这一大纲开始往下的所有大纲的深度都要顺次加1，由于本文档为ctexart文档类，因此正文和目录中编号深度的默认值为3（即编号到"subsubsection"一级），为了让新设置的subsubsubsection一级（此处其深度为4）能够在正文和目录中打印出编号，需要通过"\setcounter{counter}{value}"命令将"secnumdepth"和"tocdepth"设置为4
-            %* 一定要保证以上命令都位于各自的宏包之后，否则编译会报错
 % --------------------------------------------------------------------------------------------------------------------------------------
 \begin{document}
 
@@ -1040,11 +893,7 @@
             \end{abstract}
         
         \subsubsection{参考文献}
-            This is a sample text.\cite{author1.year1,author2.year2}
-
-            This is the text following the reference. 
-
-            % 在正文最后使用"thebibliography"环境来显示所有参考文献
+            %rfr 关于natbib宏包的相关介绍，可以参看文件"Natbib.tex"
 
     \subsection{正式排版：封面、大纲与目录}
         \subsubsection{封面}
@@ -1094,6 +943,7 @@
             % \backmatter % 后记，页码格式不变，继续计数，章节不编号，但生成页眉、页脚和目录项
 
         \subsubsection{目录}
+            %rfr 关于目录的相关命令，可以参看文件"Titlesec_toc.tex"
 
     \subsection{计数器与列表}
         \subsubsection{计数器}
@@ -1201,7 +1051,7 @@
             %rfr 关于geometry宏包的相关命令，可以参考文件"Geometry.tex"
 
         \subsubsection{页眉和页脚}
-            %rfr 参看导言区关于fancyhdr宏包及相关命令的介绍
+            %rfr 关于fancyhdr宏包及相关命令的介绍，可以参看文件"Fancyhdr.tex"
 
     \subsection{抄录与代码环境}
         %* 下面先引用``3.1.2 保留字符''一节以及``3.2 标点与强调''一节中提到的\LaTeX 无法直接通过文本输入打印的字符（只引用文本中使用的符号，而不包括数学环境中的符号；汉语、英语、法语中的名称用"/"符号隔开）：
@@ -1271,7 +1121,7 @@
             
     \onecolumn
             % 同样可以使用"\onecolumn"命令将双栏模式恢复为单栏模式，与此同时会自动在双栏模式内容的最后加上"\clearpage"命令，因此恢复单栏模式之后的内容会另起一页继续
-            %rfr 关于在双栏模式下插入图片，参考文件"Twocolumn.tex"
+            %rfr 关于在双栏模式下插入图片，参考文件"Twocolumn_figure.tex"
 
 % 可以使用multicol宏包提供的multicols环境，将页面分成任意多栏
             %* 如果不在multicols环境的前面加上"\clearpage"命令，或者使用类似"\onecolumn"的命令，环境外之前的内容有可能会和多栏处于同一页面上
@@ -1547,132 +1397,11 @@
             %* 和上文的可以设置箱子宽高度的命令不同，这一命令在调整箱子宽高度的同时，文本的宽高度也会随之调整，以填充满调整过后的整个箱子
         }
         \subsubsection{标尺箱子}
-            \rule[-2em]{5em}{2em}%
-            p%
-            \rule{5em}{2em}%
-            p%
-            \rule[2em]{5em}{2em}%
-            % 可选参数用来调整升降高度（类似"\raisebox{raise}[height][depth]{text}"命令中的必选参数），必选参数分别是宽度和上下边距
-            %! 但是"\raisebox{raise}{text}"命令中的必选参数可以使用"\width"、"\height"、"\depth"、"\totalheight"等命令，而"\rule[lift]{width}{thickness}"命令的可选参数中却不行，经检验，可以使用"\baselineskip"命令
-            %* 可以发现，如果不设置升降高度的可选参数，标尺箱子的下边线和所在行的箱子基线重合
-
-            {\setlength{\fboxrule}{.1pt}
-            \setlength{\fboxsep}{0pt}
-            \fbox{标尺箱子}
-
-            \fbox{标尺箱子}\fbox{\rule{3em}{0pt}}\fbox{标尺箱子}
-            % 将高度设置为0pt（记得带单位），可以将同一行上的两个文本隔开指定宽度的距离
-
-            \fbox{\rule{0pt}{15.1298pt}}\fbox{标尺箱子}
-
-            \fbox{\rule{0pt}{15.1299pt}}\fbox{标尺箱子}
-            % 将宽度设置为0pt（记得带单位），可以将相邻两行文本隔开一定高度的距离
-            %* 在竖直方向上，情况其实可以很复杂，因为增加上下边距到一定的值，必然会影响到基线间距（可以参见"5.3.3 行距"一节中关于基线间距的详细讨论），由于此处标尺箱子在默认情况下的底边和所在行的箱子基线是重合的，就可以利用这一命令来大致估算ctexart文档类下相应字符所在箱子的高度和深度，以此处“标尺箱子”四个汉字为例，当标尺箱子的上下边距增加到15.1298pt（精确到0.0001）时，还不会引起基线间距的变化，当增加到15.1299pt时，就会因为所在行的箱子的上下间距超过规定的基线间距而导致LaTeX强制为这一行规定了一个新的基线间距：箱子的上下间距加上1pt，打印的效果表现为如果继续增加标尺箱子的上下边距，当前所在行的箱子将会不断往下移动，并且标尺箱子的上边线和上一行箱子的下边线之间总是存在1pt的距离（来自"\lineskip"命令），这样，我们就得到了几个距离的近似值：ctexart文档类下基线间距的默认值16.44145pt（通过"\the\baselineskip"命令得到）、汉字“好”所处箱子的上下边距9.593pt（参见"5.3.3 行距"一节，暂时认为这就是所有汉字所处箱子的上下边距）、从下一行的箱子基线到上一行箱子底线的距离15.1298pt，我们就可以估算出汉字所处箱子的深度为16.44145-15.1298=1.31165pt，高度为9.593-1.31165=8.28135pt，高度和深度的比大致是8.28135/1.31165=6.314 : 1，深度大约占上下边距的1.31165/9.593=13.7%，高度大约占上下边距的8.28135/9.593=86.3%，当标尺箱子的上下边距增加到15.1299pt时，所在行的箱子的上下边距就变成15.1299+1.31165=16.44155pt，超过了基线间距的默认值16.44145pt，而此前标尺箱子的上下边距为15.1298p时，所在行的箱子的上下边距为15.1298+1.31165=16.44145pt，刚好等于基线间距的默认值16.44145pt，说明这个估算的精度是相对可靠的。最后，再回到一开始的说法，所谓“可以将相邻两行文本隔开一定高度的距离”，之所以是“一定高度”而不是“指定高度”，是因为这个高度有两种可能：第一种就是让相邻两行的基线间距仍然保持默认值，这通常不是这一命令追求的目的；另一种就是让相邻两行的基线间距超过默认值，粗略地说，就是让基线间距增大，精确点说，这要求设置的标尺箱子的上下边距加上箱子深度的默认值后超过基线间距的默认值，新的基线间距还要在这个距离和的基础上加上1pt
-            }
-
-            %* 标尺箱子常见的参数设置方式是将可选参数设置为一个负数，其绝对值就是标尺箱子的深度，第一个必选参数宽度设置为0pt，第二个必选参数上下边距同时设定了标尺箱子的高度（上下边距-深度）。我们在"5.3.3 行距"一节提到，每一行的内容都可以看成处于一个大箱子内，有一条固定的基线（由这一行上处于默认状态的箱子的基线确定）穿过这个箱子，箱子顶部到基线的距离称为“高度”，箱子底部到基线的距离称为“深度”，现在我们还可以发现，其实每一行的大箱子内部还可以划分出许多小箱子，并且根据划分的依据不同，箱子的数量也可多可少，不过最重要的分别是这个大箱子内离基线最高的点和离基线最深的点，它们分别决定了整行大箱子的顶部（上边线）和底部（下边线），进而决定了整行大箱子的高度和深度。经过以上讨论，我们可以发现，标尺箱子的这种用法实际上是在为所在行最后的大箱子设置一个高度的最小值以及深度的最小值（当然前提是设置的高度和深度应该超过原来整行大箱子的高度和深度），此后不管这一行上的内容如何变化，整行箱子的高度和深度都不会低于这个标尺箱子的高度和深度。标尺箱子的一种常见用法是用来拉高表格的高度
-
-            {\setlength{\fboxrule}{.1pt}
-            \setlength{\fboxsep}{0pt}
-            \begin{tabular}{|c|}
-                \hline
-                \fbox{a}\\
-                \hline
-                \fbox{1}\\
-                \hline
-                \fbox{好}\\
-                %* 如果不插入标尺箱子，表格的“行距”是默认值1
-                %rfr “行距”由"\arraystretch"命令控制，可以参考文件"Table.tex" 
-                \hline
-                \rule[-2ex]{2pt}{6ex}\fbox{a1好}\\
-                %* 插入设置的标尺箱子之后，表格的行距维持在6ex
-                \hline
-                \rule[-12pt]{2pt}{24pt}\fbox{a1好}\\ 
-                %* 可以发现，一般将深度设置的比高度小一些，这样可以使所在行的文字处于中间偏下的位置
-                \hline
-                \rule[-2ex]{1em}{6ex}\fbox{\Huge a1好}\\ 
-                %* 可以发现，由于临时增加了字体大小，导致表格的行距超过了原来标尺箱子设置的上下边距
-                \hline
-            \end{tabular}
-            }
-
-            %* "\strut"命令（"strut"本身就是“支柱”的意思）插入的是一种特殊的标尺箱子，其效果等同于"\rule[-0.3\baselineskip]{0pt}{\baselineskip}"，因此，这个特殊的标尺箱子其实是一个上下边距等于基线间距的箱子，深度为0.3倍的基线间距，高度为0.7倍的基线间距，由于这个标尺箱子的上下边距始终等于基线间距（随着基线间距的变化而变化），根据前文的估算，在ctexart文档类中，基线间距大致是16.44145pt，由此可以推算出字体大小大致是16.44145/1.2=13.7012083pt，汉字“好”所处箱子的上下边距大致是9.593pt，数字“1”所处箱子的上下边距大致是7.0193pt，小写字母所处箱子的上下边距大致是“a”4.838pt，其中，汉字所处箱子的高度为8.28135pt，占基线间距的比例约为8.28135/16.44145=50.3687%，深度为1.31165pt，占基线间距的比例约为1.31165/16.44145=7.9777%，其他字符以及其他文档类的情况应该也类似，即，基线间距应该大于相应的各类字符所处的箱子上下边距，各类字符所处箱子的高度小于0.7倍的基线间距，深度小于0.3倍的基线间距，这样，"\strut"命令才能发挥效果，让所在行整体所属的大箱子的高度和宽度分别不低于0.7倍的基线间距和0.3倍的基线间距
-            %rfr 不过这一篇帖子却提出有些字符所处箱子的上下边距可能会超过基线间距：https://tex.stackexchange.com/questions/410250/understanding-line-height-line-spacing-baselineskip-in-latex，还需要进一步验证
-
-            %* 可以观察下面几组命令的打印效果的不同，来体会"\strut"命令的“支柱”作用
-            {\setlength{\fboxrule}{.1pt}
-            \setlength{\fboxsep}{0pt}
-
-            %* 不设置任何的“支柱”
-            \framebox[3em]{好1a}%
-            \framebox[3em]{好}%
-            \framebox[3em]{1}%
-            \framebox[3em]{a}%
-
-            \framebox[3em]{好1a}%
-            \framebox[3em]{好}%
-            \framebox[3em]{1}%
-            \framebox[3em]{a}%
-            %* 可以发现，由于缺少支柱，箱子的上下边距将根据其中的字符大小自适应，使得箱子的上线边线和文本边框的上下边线的距离为0
-            %% 此时的基线间距（实际上是段落间距，但是效果是相同的，下同）为默认值
-
-            %* 使用一般的"\rule[lift]{width}{thickness}"命令将支柱距离设置为0.3倍的基线间距，其中深度为0.05倍的基线间距，高度为0.25倍的基线间距
-            \framebox[3em]{\rule[-0.05\baselineskip]{2pt}{0.3\baselineskip}好1a}%
-            \framebox[3em]{\rule[-0.05\baselineskip]{2pt}{0.3\baselineskip}好}%
-            \framebox[3em]{\rule[-0.05\baselineskip]{2pt}{0.3\baselineskip}1}%
-            \framebox[3em]{\rule[-0.05\baselineskip]{2pt}{0.3\baselineskip}a}%
-
-            \framebox[3em]{\rule[-0.05\baselineskip]{0pt}{0.3\baselineskip}好1a}%
-            \framebox[3em]{\rule[-0.05\baselineskip]{0pt}{0.3\baselineskip}好}%
-            \framebox[3em]{\rule[-0.05\baselineskip]{0pt}{0.3\baselineskip}1}%
-            \framebox[3em]{\rule[-0.05\baselineskip]{0pt}{0.3\baselineskip}a}%
-            %* 可以发现，该标尺箱子设置的深度已经超过了数字“1”和小写字母“a”所处箱子原来的深度，因此这两个箱子的下边线到文本边框下边线的距离不为0，这两个箱子的下边线看起来就像是被“顶”了起来，并且处于同一条直线上
-            %% 此时的基线间距仍然为默认值，因为包含汉字“好”的上下间距最大的箱子还没有被受到“支柱”的影响
-
-            %* 使用一般的"\rule[lift]{width}{thickness}"命令将支柱距离设置为0.5倍的基线间距，其中深度为0.1倍的基线间距，高度为0.4倍的基线间距
-            \framebox[3em]{\rule[-0.1\baselineskip]{2pt}{0.5\baselineskip}好1a}%
-            \framebox[3em]{\rule[-0.1\baselineskip]{2pt}{0.5\baselineskip}好}%
-            \framebox[3em]{\rule[-0.1\baselineskip]{2pt}{0.5\baselineskip}1}%
-            \framebox[3em]{\rule[-0.1\baselineskip]{2pt}{0.5\baselineskip}a}%
-
-            \framebox[3em]{\rule[-0.1\baselineskip]{0pt}{0.5\baselineskip}好1a}%
-            \framebox[3em]{\rule[-0.1\baselineskip]{0pt}{0.5\baselineskip}好}%
-            \framebox[3em]{\rule[-0.1\baselineskip]{0pt}{0.5\baselineskip}1}%
-            \framebox[3em]{\rule[-0.1\baselineskip]{0pt}{0.5\baselineskip}a}%
-            %* 可以发现，该标尺箱子设置的深度已经超过了所有箱子原来的深度，因此所有箱子的下边线到文本边框下边线的距离都不为0，并且这些箱子的下边线都处于同一条直线上；而该标尺箱子设置的高度超过了小写字母“a”所处箱子原来的高度，因此这个箱子的上边线到文本边框的上边线的距离不为0，这个箱子的上下边线都像是被“顶”了起来
-            %% 此时的基线间距仍然为默认值，虽然所有箱子的下边线都因为“支柱”的影响而被“顶”了起来，但是仍然不足以影响基线间距，相邻两行箱子之间仍然存在自动补足的距离（"glue"）
-            
-            %* 使用"\strut"命令将支柱距离设置为基线间距
-            \framebox[3em]{\strut 好1a}%
-            \framebox[3em]{\strut 好}%
-            \framebox[3em]{\strut 1}%
-            \framebox[3em]{\strut a}%
-
-            \framebox[3em]{\strut 好1a}%
-            \framebox[3em]{\strut 好}%
-            \framebox[3em]{\strut 1}%
-            \framebox[3em]{\strut a}%
-            %* 可以发现，通过"\strut"命令设置的标尺箱子的高度和深度都超过了所有箱子原来的高度和深度，因此所有箱子的上边线都处于同一直线上，下边线都处于同一直线上
-            %% 此时是基线间距发生变化的临界点，由于上一行箱子的深度为0.3倍的段落间距，下一行箱子的高度为0.7倍的段落间距，加起来刚好等于段落间距，因此相邻两行的箱子应该是无缝堆叠在一起的，此处只是因为外面套的加框箱子存在0.1pt的边框宽度，导致系统在两个箱子之间自动插入了1pt的距离（"\lineskip"）
-
-            %* 使用一般的"\rule[lift]{width}{thickness}"命令将支柱距离设置为1.5倍的基线间距，其中深度为0.3倍的基线间距，高度为1.2倍的基线间距
-            \framebox[3em]{\rule[-0.3\baselineskip]{2pt}{1.5\baselineskip}好1a}%
-            \framebox[3em]{\rule[-0.3\baselineskip]{2pt}{1.5\baselineskip}好}%
-            \framebox[3em]{\rule[-0.3\baselineskip]{2pt}{1.5\baselineskip}1}%
-            \framebox[3em]{\rule[-0.3\baselineskip]{2pt}{1.5\baselineskip}a}%
-
-            \framebox[3em]{\rule[-0.3\baselineskip]{0pt}{1.5\baselineskip}好1a}%
-            \framebox[3em]{\rule[-0.3\baselineskip]{0pt}{1.5\baselineskip}好}%
-            \framebox[3em]{\rule[-0.3\baselineskip]{0pt}{1.5\baselineskip}1}%
-            \framebox[3em]{\rule[-0.3\baselineskip]{0pt}{1.5\baselineskip}a}%
-            %* 此时和"\strut"命令的情况同理，所有箱子的上下边线都在“支柱”的影响下被“顶”了起来，上边线处于同一条直线上，下边线处于同一条直线上
-            %% 此时的基线间距变成了箱子的上下边距加上1pt，也就是1.5*16.44145+1=25.662175pt
-            }
-            %rfr 以上只是展示标尺箱子的“支柱”效果，还可以参考：https://latexref.xyz/_005cstrut.html，该网站提供了enumerate环境中运用"\strut"命令来增大段落间距的例子
+            %rfr 关于标尺箱子的详细介绍，可以参看文件"Rule.tex"
 
         \subsubsection{覆盖箱子}
             % "lap"来自"overlap"的缩写
-            %rfr "\llap{text}"命令和"\rlap{text}"命令的详细讨论，参见文件"Overlap.tex"
+            %rfr 关于"\llap{text}"命令和"\rlap{text}"命令的详细讨论，参见文件"Overlap.tex"
 
         \subsubsection{旋转箱子}
         % 以下命令由graphicx宏包提供
@@ -1747,7 +1476,7 @@
             \parbox[t]{.2\textwidth}{\LaTeX\par\bigskip \LaTeX}
 
         % 自定义水平距离和竖直距离
-        %rfr 关于"\hspace{l}"命令和"\vspace{l}"命令的相关介绍，可以参看文件"Space_Fill.tex"
+            %rfr 关于"\hspace{l}"命令和"\vspace{l}"命令的相关介绍，可以参看文件"Space_fill.tex"
         
         % 定义新的长度命令
             \newlength{\mylatexlength} % 定义新的长度名称，注意名称前面加上"\"符号
@@ -1770,7 +1499,7 @@
             %* 经常将多个设置了不同权重的弹性距离命令"\stretch{number}"搭配使用
 
         % "\fill"命令
-        %rfr 可以参看文件"Space_Fill.tex"
+        %rfr 可以参看文件"Space_fill.tex"
         
         % "\hrulefill"命令和"\dotfill"命令
             a\hrulefill b\dotfill c
@@ -1860,132 +1589,16 @@
             \begin{adjustwidth}{1cm}{3cm}
                 \indent 设置后：首行缩进需要额外手工输入。本环境距文本区左侧1cm，距右侧3cm。
             \end{adjustwidth}
+
     \subsection{自定义章节样式}
+            %rfr 关于titlesec宏包的详细介绍，可以参看文件"Titlesec_toc.tex"
+
     \subsection{自定义目录样式}
+            %rfr 关于titletoc宏包的详细介绍，可以参看文件"Titlesec_toc.tex"
+
     \subsection{自定义图表}
         \subsubsection{长表格}
-        %rfr 下面尝试着对着longtable宏包官方手册中给出的第一个长表格的例子制作一个相同的表格，可以参考：https://sg.mirrors.cicku.me/ctan/macros/latex/required/tools/longtable.pdf
-                % \setlength{\LTleft}{0pt}
-                % longtable环境默认居中对齐，即左右两侧到文本左右边线的距离默认为\fill，可以通过以上命令来使其左对齐
-                %* 如果将"\LTleft"改为"\LTright"，则为右对齐，当然，也可以设置其他距离
-                % 如果将"\LTleft"改为"\LTpre"，则可以控制表格上方到前面正文的距离，默认值为\bigskipamount，通常是一行左右的竖直距离，即12pt +/- 4pt左右
-                %* 如果将"\LTleft"改为"\LTpost"，则可以控制表格下方到后面正文的距离
-            
-            \begin{longtable}{@{*}r||p{1in}@{*}}
-                KILLED&LINE!\kill 
-                % "\kill"表示该行不显示，但用于计算宽度
-                %rfr 何为“计算宽度”？可以参照"5.3.4 制表位*"一节当中的用法，此处可以将"KILLED"、"LINE!"这两格内容替换成距离命令"\hspace{l}"，这可以替代longtable环境必选参数当中的"p{}"参数，用来设定表格宽度。
-                %* 注意，如果在单元格的末尾使用距离命令，需要加上"*"符号，否则无法添加指定距离的空格
-                \caption[An optional table caption (used in the list of tables)]{A long table}\\
-                %! longtable环境当中的"\caption{}"命令最后需要添加"\\"命令，否则编译会报错
-                \hline\hline
-                %* 在longtable环境中，连续两个"\hline"命令会绘制更粗的水平表线，而不是像tabular环境中绘制两条平行的水平表线
-                %% 有的时候，如果表头/表尾当中设置的水平表线碰巧和表体当中设置的水平表线重叠，也会导致叠加后的水平表线变粗
-                \multicolumn{2}{@{*}c@{*}}{This part appears at the top of the table}\\
-                FIRST&SECOND\\
-                \hline\hline
-                \endfirsthead
-                % 定义首页表头（如果首页表头与其它页不同的话）
-            
-                \caption[]{(continued)}\\
-                %* longtable环境重定义了"\caption[]{}"命令，原命令中的可选参数表示在表格目录中显示的标题，如果留空，则表格目录中的对应标题会留白，但是该目录项不会消失，新定义后的命令如果将可选参数留空，可以不将该表格项加入表格目录，这一用法经常用来设置首页之后的各页表头
-                %* longtable环境还新定义了"\caption*{text}"命令，打印出的标题只会显示参数内容，而不会在这之前显示"Table X: "的字样，即不会进行编号，并且该标题也不会被加入表格目录
-                \hline\hline
-                \multicolumn{2}{@{*}c@{*}}{This part appears at the top of every other page}\\
-                \textbf{First}&\textbf{Second}\\
-                \hline\hline
-                \endhead
-                % 定义首页之后的各页表头
-            
-                \hline
-                This goes at the&bottom\\
-                \hline
-                \endfoot
-                % 定义末页之前的各页表尾
-            
-                \hline
-                These lines will&appear\\
-                in place of the&usual foot\\
-                at the end&of the table\\
-                \hline
-                \endlastfoot
-                % 定义末页表尾（如果末页表尾和其它页不同的话）
-                %* 以上定义各页表头、表尾的命令不是必须的，即使不定义也能完成编译
-                %! 书中和longtable宏包官方手册均指出，"\label{}"命令不能用在重复出现的对象当中，因此只能用于首页表头、末页表尾和表体当中，不能用于首页之后的各页表头和末页之前的各页表尾，但是经检验这并不影响编译，点击对应的"\ref{}"命令也总是索引到同一位置：longtable的第一页
-            
-            % \hline
-            \textsf{longtable} columns are specified&in the\\
-            same way as in the \textsf{tabular}&environment.\\
-            \textsf{@\{*\}r||p\{1in\}@\{*\}}&in this case.\\
-            Each row ends with a&\textsf{\textbackslash\textbackslash} command.\\
-            The \textsf{\textbackslash\textbackslash} command has an&optional\\
-            argument, just as in&the\\
-            \textsf{tabualr}&environment.\\[10pt]
-            % "\\"命令后可以设置可选参数插入竖直空距
-            % 如果在"\\"命令后加上"*"符号，等同于加上"\nopagebreak"命令，表示在此处禁止分页
-            %* 经检验，这一设置只适用于表体当中，不适用于表头、表尾和表体的最后一行
-            See the effect of \textsf{\textbackslash\textbackslash[10 pt]}&?\\
-            Lots of lines&like this.\\
-            Lots of lines&like this.\\
-            Lots of lines&like this.\\
-            Lots of lines&like this.\\
-            Also \textsf{\textbackslash{}hline} may be used,&as in \textsf{tabular}.\\
-            \hline
-            That was a \textsf{\textbackslash{}hline}&.\\
-            \hline\hline
-            That was \textsf{\textbackslash{}hline\textbackslash{}hline}&.\\
-            \multicolumn{2}{||c||}{This is a \textsf{\textbackslash{}multicolumn\{2\}\{||c||\}}}\\
-            If a page break occurs at a \textsf{\textbackslash{}hline} then&a line is drawn\\
-            at the bottom of one page and at the&top of the next.\\
-            \hline
-            The \textsf{[t] [b] [c]} argument of \textsf{tabular}&can not be used.\\
-            The optional argument may be one of&\textsf{[l] [r] [c]}\\
-            to specify whether the table should be&adjusted\\
-            to the left, right&or centrally.\\
-            \hline\hline
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Some lines may take up a lot of space, like this:&This last column is a ``p'' column so this ``row'' of the table can take up several lines. Note however that \TeX\ will never break a page within such a row. Page breaks only occur between rows of the table or at \textsf{\textbackslash{}hline} commands.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                \hline
-                Lots of lines\footnote{This is a footnote.}&like this.\\
-                Lots of lines&like this\footnotemark\footnotetext{\textsf{longtable} takes special precautions, so that footnotes may also be used in `p' columns.}.\\
-                % \hline
-                %* 在longtable环境使用脚注的两种方式和在普通的table环境中不同：（1）在longtable环境的表体中可以直接使用"\footnote{}"命令，而在table环境中虽然可以使用，但是不会打印出脚注；（2）在longtable环境的表体中可以搭配使用"\footnotemark"命令和"\footnotetext{text}"命令，由于后者决定了脚注打印的位置，因此需要放置在和脚注位置打印在同一页面的表体的任何位置（一般紧跟在"\footnotemark"命令之后），如果放在表头或者表尾中，脚注不会打印出来，而在table环境中虽然也可以搭配使用这两条命令，但是"\footnotetext{text}"命令必须放在环境结束之后，否则不会打印出脚注（由于table环境打印出的表格不会跨页，因此不存在longtable环境当中【选择"\footnotetext{text}"命令的插入位置】的问题）。这里还涉及"\footnotetext{text}"命令的编号问题：在longtbale环境中，"\footnotetext{text}"命令的编号会根据排列的先后次序自动编号，也可以通过可选参数指定，而在table环境中，由于所有的"\footnotetext{text}"命令都必须放置在环境结束后，因此当存在多个该命令时，就必须通过可选参数为这些命令指定编号，否则这些脚注的编号都会等于最后一条"\footnotemark"命令对应的编号；（3）在longtable环境的表头、表尾和"\caption{}"命令中，不能直接使用"\footnote{}"命令，否则不会打印出脚注，搭配使用"\footnotemark"命令和"\footnotetext{text}"命令时，需要将其放置在和脚注位置打印在同一页面的表体的任何位置，可以发现，在longtable环境中，在"\caption{}"命令中使用"\footnotemark"命令不再需要在前面加上"\protect"命令，而在table环境中，这是必须的，否则编译会报错
-                \hline
-                Lots of lines&like this.\\
-                Lots of lines&like this.\\
-                % \hline
-            \end{longtable}
-            % \newpage
-            %* 最后还涉及到LaTeX提前分页的问题，通过打印效果可以发现，最后一页上的脚注紧贴着longtable的底部，这其实反映出LaTeX自动在longtable环境结束后添加了一条"\pagebreak"命令，使得该页提前结束了，因此脚注会跟着跑到分页的位置，造成了当前页面底部出现大片空白（underfull）的情况，经检验，这一情况在另外的tex文件中单独打印该长表格时没有出现，因此这一情况应该是LaTeX自身在同一文件中存在其他内容时，自动排版导致的
-            %rfr 关于提前分页的问题，可以参考这一帖子：https://tex.stackexchange.com/questions/4902/why-is-my-footnote-glued-to-the-text，其中涉及几个要点：（1）LaTeX中很重要的一个概念"penalty"，简单来说，如果penalty的值小于等于-10000，则强制换页，如果大于等于10000，则禁止换页，如果处于-10000和10000之间，则体现为换页或者不换页的倾向；（2）排版当中换页的两种情况：第一种情况最常见，那就是一个段落在当前页面无法全部填充，则只能换页继续填充，这会导致一个段落被分割成两个甚至多个部分，分布在多个页面上；第二种情况比较特殊，那就是前一个段落的最后一行刚好位于当前页面的底部，下一个段落只能换页填充，这就导致前一个段落的最后一行在前一个页面的底部，后一个段落的第一行在后一个页面的顶部。LaTeX中的penalty值影响到的是前一种情况：以这篇帖子为例，将相邻两行之间的penalty值设为了10000，这似乎说明永远都不允许换页，因为前后两行总是连在一起的，但实际情况却是：当前后两段能够放置在同一页面中时，不换页，一旦两段无法同时放置在同一页面中时，这两段会被分别放置在不同的页面中，此时如果增加任何一段的长度，这一段的内容都会不断往下延伸，最终超出页面范围而不会换页，这说明LaTeX此时仅仅是禁止同意段落内禁止换页，当同一页面无法容纳多个段落时，则允许段落之间进行换页；（3）寡行（widow）和孤行（orphan），这是排版当中的两个重要术语，寡行就是一个段落的最后一行出现在了后一页上，和前一页上的各行分开，孤行就是一个段落的第一行出现在了前一页上，和后一页上的各行分开，LaTeX的提前分页有时就是为了避免寡行或者孤行
-            %rfr 也可以参考这一篇帖子当中提供的例子：https://www.zhihu.com/question/462017394，第一个例子提供了提前分页的另一种情况：后一段由于处于环境之中，因此无法在内部进行分页，导致LaTeX只好提前换页，后一个例子则是直接使用"\pagebreak"强行制造换页，这也体现出"\pagebreak"和"\newpage"、"\clearpage"等命令的不同之处，前者直接换页，这会导致实际的页面高度小于默认值，而脚注的位置永远是由页面底部位置决定的，因此此时脚注就会往上移动，看起来好像是紧贴着正文一样，后者则会在换页之前插入一个"\vfil"命令，以维持实际的页面高度等于默认值，因此脚注将始终位于页面底部，其实这两种情况下，脚注都位于页面底部，只不过前一种情况中实际的页面底部发生了上移，我们可以将四边发生移动后的区域称为“实际页面区域”，而将表面上未曾移动的区域称为“默认页面区域”
-            %* 我们没有必要去完全弄明白提前分页产生的原因（回看本文档前面的内容会发现还存在其他的提前分页的情况），如果想要让页脚始终处于默认页面区域的底部，只需要加载footnotemis宏包并且设置bottom的可选参数即可，但这不会使得导致提前分页的"\pagebreak"消失，另一种临时的解决办法是插入"\newpage"命令，但是这样设置就无法让后续内容在当前页面继续打印，而必须要另起一页打印
+            %rfr 关于longtable宏包的详细介绍，可以参看文件"Longtable.tex"
 
         \subsubsection{三线表}
         % 通过调用booktabs宏包来绘制三线表
@@ -2003,130 +1616,10 @@
             %rfr 以上命令的参数设置细节以及更多的命令介绍，可以参考booktabs宏包的官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/booktabs/booktabs.pdf，关于这一命令的一个应用的例子，可以参考这篇帖子当中绘制的表格：https://tex.stackexchange.com/questions/156219/proper-centering-with-cmidrule-and-multi-row-and-column
 
         \subsubsection{彩色表格}
-        % 设置某一列的背景颜色
-            \begin{tabular}
-                {>{\color{-red}\columncolor{red}[.25\tabcolsep]}c|
-                >{\color{-yellow}\columncolor{yellow}[.5\tabcolsep]}c|
-                >{\color{-blue}\columncolor{blue}[.75\tabcolsep]}c}
-                \hline
-                A&B&C\\
-                D&E&F\\
-                \hline
-            \end{tabular}
-            %* 将xcolor宏包提供的"\color[model]{color}"命令和colortbl宏包提供的"\columncolor[color model]{color}[left overhang][right overhang]"命令和array宏包提供的">{decl}"命令搭配使用，为同一列设置字体颜色和背景颜色
-            %% "\columncolor[color model]{color}[left overhang][right overhang]"命令中的最后两个可选参数分别控制背景颜色从单元格的左右边线到列的左右边线的延伸距离，如果只设置一个参数值，则默认为左右两边的延伸距离相同，如果不设置参数值，则默认为为"\tabcolsep"（array环境中为"\arraycolsep"），即将整个单元格都填充满
-            %rfr 关于colortbl宏包提供的各项命令的参数设置，可以参考该宏包的官方手册：https://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/colortbl/colortbl.pdf
-        
-        % 设置某一行的背景颜色
-            \begin{tabular}{c|c|c}
-                \hline
-                \rowcolor{red}[.25\tabcolsep]
-                A&B&C\\
-                \rowcolor{yellow}[.5\tabcolsep]
-                D&E&F\\
-                \rowcolor{blue}[.75\tabcolsep]
-                G&H&I\\
-                \hline
-            \end{tabular}
-            %* 使用colortbl宏包提供的"\rowcolor[color model]{color}[left overhang][right overhang]"为同一行设置背景颜色，参数设置和"\columncolor[color model]{color}[left overhang][right overhang]"相同，放置在相应行的前面即可
-            %% 当"\rowcolor"命令和"\columncolor"命令冲突时，执行"\rowcolor"命令
-            %! 书中称该命令是用来设置表头行的颜色的，这显然是错误的
-
-        % 批量设置奇数行和偶数行的背景颜色
-        %* 这一命令的一个很有用的应用场景是绘制白底和灰底交替填充的表格
-            {\rowcolors[\hline]{3}{green}{cyan}
-            \begin{tabular}{c|c|c}
-                A&B&C\\
-                D&E&F\\
-                G&H&I\\
-                J&K&L\\
-                M&N&O\\
-                \hiderowcolors
-                P&Q&R\\
-                S&T&U\\
-                \showrowcolors
-                V&W&X\\
-                \rowcolor{red}
-                % \hiderowcolors
-                Y&Z&\therownum\\
-            \end{tabular}
-            }
-            %* "\rowcolors[commands]{row}{color}{color}"的各项参数分别是：[commands]参数应用于每一行（包括表格的上边线和下边线），通常填写"\hline"命令；{row}参数设置从哪一行开始填充颜色；最后两个必选参数分别控制奇数行的背景颜色和偶数行的背景颜色。可以在指定行的前面使用"\rowcolor"命令来覆盖该行原本的背景颜色。如果在指定行的前面使用"\hiderowcolors"命令，表示从该行开始停止填充背景颜色，直到在之后的指定行的前面使用"\showrowcolors"命令，表示从该行开始恢复填充背景颜色。"rownum"是LaTeX中关于表格行数的计数器，可以通过"\therownum"命令来获取当前所在行的行数
-            %% 注意，"\rowcolors[commands]{row}{color}{color}"命令（以及其对应的加"*"符号版本）会影响到此后所有的表格，因此需要在该命令和其统辖的表格两边加上大括号，限制其统辖范围
-
-            {\rowcolors*[\hline]{3}{green}{cyan}
-            \begin{tabular}{c|c|c}
-                \showrowcolors
-                A&B&C\\
-                D&E&F\\
-                G&H&I\\
-                J&K&L\\
-                M&N&O\\
-                \hiderowcolors
-                P&Q&R\\
-                S&T&U\\
-                \showrowcolors
-                V&W&X\\
-                \showrowcolors
-                \rowcolor{red}
-                % \hiderowcolors
-                Y&Z&\therownum\\
-            \end{tabular}
-            }
-            %* 带"*"符号的"\rowcolors*{row}{color}{color}"命令和不带"*"符号的命令相比，唯一的区别是[command]参数不会应用于开始填充背景颜色的行数之前的行以及"\hiderowcolors"命令和"\showrowcolors"命令之间的行
-            %% 可以发现，哪些行填充背景颜色，哪些行不填充背景颜色，这些行比较容易定位，而【"\hline"应用于哪些行】则是一个模糊的说法，经过检验，这一问题的判断标准如下：（1）"\rowcolors*"命令设置了从指定行开始填充背景颜色，此前的所有行当中相邻行的共同边线以及表格的上边线都不会适用"\hline"命令，即使在某一行的前面使用"\showrowcolors"命令，也不会导致此后的行填充背景颜色，或者绘制任何新的水平表线，比如上述命令当中“A、B、C”所在行的上下两侧都不存在水平表线；（2）从开始填充背景颜色的行开始，如果在某一行的前面使用"\hiderowcolors"命令，则会导致此后直到"\showrowcolors"命令之前的行停止填充背景颜色，并且这些行当中相邻行（这要求至少存在两行不填充背景颜色）的共同水平边线都不会适用"\hline"命令，比如“P、Q、R”所在行和“S、T、U”所在行之间不存在水平表线；（3）如果在此前没有使用过"\hiderowcolors"的情况下，在某一行的前面使用"\showrowcolors"命令，或者在已经使用过一次"\showrowcolors"命令之后，在此后某一行的前面在此使用"\showrowcolors"命令，会导致这一行的上边线出现一条加粗的水平表线，比如上述命令当中“Y、Z、9”所在行的上侧存在一条加粗的水平表线（但是如果连用两条"\hiderowcolors"命令却不会导致特别的效果）
-            %todo 在上述两张表格当中，如果在最后一行的前面使用"\hiderowcolors"命令，会导致左边单元格的背景颜色变成黑色，暂时还不知道具体原因
-
-        % 为单个单元格设置背景颜色
-            \begin{tabular}{c|c|c}
-                \hline
-                \color{-red}\cellcolor{red}A&B&\color{-blue}\cellcolor{blue}C\\
-                \hline
-                D&\color{-yellow}\cellcolor{yellow}E&F\\
-                \hline
-            \end{tabular}
-            %! "\cellcolor[color model]{color}"命令无法像"\columncolor[color model]{color}[left overhang][right overhang]"命令和"\rowcolor[color model]{color}[left overhang][right overhang]"命令那样设置背景颜色从单元格的左右边线到列的左右边线的延伸距离，这似乎是一个bug
-
-            %rfr 参考这一篇帖子的做法：https://tex.stackexchange.com/questions/267917/can-overhang-be-set-for-a-single-cell-in-a-table-in-colortbl，需要将"\multicolumn{n}{cols}{text}"命令、">{decl}"命令和"\columncolor[color model]{color}[left overhang][right overhang]"命令搭配使用，以解决这一问题，尽管在colortbl宏包的官方手册中关于"\cellcolor[color model]{color}"命令的一节里声称定义该命令就是为了取代这种做法
-            \begin{tabular}{c|c|c}
-                \hline
-                \multicolumn{1}{>{\color{-red}\columncolor{red}[.25\tabcolsep]}c|}{A}&B&\multicolumn{1}{>{\color{-blue}\columncolor{blue}[.75\tabcolsep]}c}{C}\\
-                \hline
-                D&\multicolumn{1}{>{\color{-yellow}\columncolor{yellow}[.5\tabcolsep]}c|}{E}&F\\
-                \hline
-            \end{tabular}
-
-        % 在彩色表格中合并行
-            {\rowcolors{2}{green}{cyan}
-            \begin{tabular}{ll}
-                \hline
-                Col 1&Col 2\\
-                \hline
-                \multirow{2}{*}{Hey}&A\\
-                &B\\
-                \hline
-                C&D\\
-                \hline
-            \end{tabular}
-            }
-            % 如果按照平常的做法，会导致合并后的文本被背景颜色覆盖
-
-            {\rowcolors{2}{green}{cyan}
-            \begin{tabular}{ll}
-                \hline
-                Col 1&Col 2\\
-                \hline
-                &A\\
-                \multirow{-2}{*}{Hey}&B\\
-                \hline
-                C&D\\
-                \hline
-            \end{tabular}
-            }
-            % 正确的做法是先将"\multirow{number of rows}{width or *}{text}"命令放置到合并范围的最后一行，然后将合并的行数设置为对应的相反数
+            %rfr 关于彩色表格的详细讨论，参见文件"Colortbl.tex"
 
         \subsubsection{子图表}
-        %rfr 关于插入子图的详细讨论，参见文件"Picture.tex"
+            %rfr 关于插入子图的详细讨论，参见文件"Picture.tex"
         % 下面展示使用subcaption宏包提供的subtable环境插入子表格
             \begin{table}
                 \renewcommand{\thesubtable}{(\alph{subtable})}
@@ -2167,8 +1660,10 @@
         % rfr 关于enumitem宏包的相关介绍，参见文件"Enumitem.tex"
             
     \subsection{\hologo{BibTeX}参考文献}
-    
+        %rfr 关于natbib宏包的相关介绍，可以参看文件"Natbib.tex"
+
     \subsection{索引}
+        
     \subsection{公式与图表编号样式}
     \subsection{附录}
     \subsection{自定义浮动体*}
@@ -2176,49 +1671,6 @@
 
 
 
-\section[这是目录中显示的标题]{这是正文中显示的标题}
-            % 可选参数用于在目录中显示另一个标题，通常是正文中标题的一部分，因此也被称为“短标题”
-    \subsection{这是一个次节}
-    % 以下命令由titlesec宏包提供
-    \titlerule[.8pt] 
-            %* "\titlerule[height]"命令填充一条水平直线，可选参数为线条高度（粗细）
-    \titlerule*[10em]{\includegraphics[scale=.3]{doraemon1.jpg}} 
-            %* "\titlerule*[width]{text}"命令不填充一条水平直线，而是等距离填充指定内容（可以是图片），必选参数为重复填充内容，可选参数表示等距离填充的盒子宽度，以此来控制填充次数：宽度如果大于图片宽度，宽度越大，填充次数越少（最少填充一次，居中填充）；宽度如果小于图片宽度，则也只会填充一次，在右侧填充；如果设置为0pt，则不会显示出填充内容，但是保留其竖直距离，类似于"\vspace{l}"命令和"\rule[lift]{width}{thickness}"命令的“支柱”功能
-    \titlerule 
-            %* "\titlerule"命令填充一条水平直线，线条高度为默认值0.4pt
-    \titleline[c]{\textbackslash titleline没有line}
-            %* "\titleline[align]{horizontal material}"命令不填充一条水平直线，而是在水平方向上填充指定内容，可以选择靠左（l）、居中（c）或者靠右（r）填充，默认为靠左填充，填充内容如果超过一行，打印时不会换行，而是超出文本区域继续打印
-    \titlerule
-    \titlerule*{\includegraphics[scale=.3]{doraemon1.jpg}}
-            %* "\titlerule*{text}"命令以填充内容的自然宽度进行填充
-    \titlerule[.8pt]
-            %* 在"\titleformat*{command}{format}"命令或者"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令的{format}参数中也可以使用"\titleline[align]{horizontal material}"命令和"\titlerule*[width]{text}"命令，可以在指定一级章节的上方填充直线或者填充内容，但是无法在其下方进行相同操作
-            %todo 是否可以通过某种方式在指定一级章节的下方填充直线或者填充内容，待研究
-        \subsubsection{这是一个小节}
-            \subsubsubsection{这是一个新定义的小小节}
-                这不是段一级，而是新定义的小小节一级。
-
-\section*{不编号的一章}
-            %* 该命令设置的章节名称在正文中会打印出来，但是不会编号，在目录中不会打印出来
-            \addcontentsline{toc}{section}{不编号的一章}
-            %* 该命令设置的章节名称会在目录中打印出来，但是不会编号，在正文中不会打印出来，点击目录中对应的章节名称，索引到该命令在正文中对应的位置，可以发现，该命令类似于一个普通的"\section{}"命令，但是并不会在正文中打印其章节名称
-            %! 经检验，上述这一条命令也可以加在除了正文之外的的其他位置，包括导言区，以及"\end{document}"命令之后，编译都不会报错。如果加在导言区，则在目录中会打印在开头，如果加在"\end{document}"之后，则在目录中不会打印出来
-            %* 因此，"\section*{title}"命令和"\addcontentsline{file}{secunit}{entry}"命令其实是可以各自独立使用的，但是后者单独使用是没有实际意义的，因为在正文中无法打印出其设置的章节名称。后者实际上只能搭配前者使用，一般将其放置在前者所在的位置之后，这样，在目录中打印出来的章节名称实际上不是前者设置的，而是后者设置的，点击该章节名称实际上也只是索引到后者所在位置，而正文中打印出来的章节名称，则是前者设置的，而不是后者设置的
-            %* 结合"\section[short]{title}"命令中可选参数的效果，"\addcontentsline{file}{secunit}{entry}"其实就是将"\section[short]{title}"的可选参数分离出来单独作为一条命令的结果，与之对应的，"\section*{title}"命令就不再含有可选参数，当然，从另一个角度看，"\section*{title}"命令不会在目录中打印章节名，当然没有可选参数存在的必要
- 
-% 通过重定义"\refname"命令来修改参考文献的标题
-            \renewcommand{\tocbibname}{这是参考文献} 
-            % 如果是book类文档，把"\refname"改成"\bibname"
-            % 如果加载tocbibind宏包，则修改参考文献标题应该重定义"\tocbibname"命令
-            %* 在ctexart文档类型下，参考文献标题默认显示“参考文献”，如果加载tocbibind宏包，依然显示“参考文献”，如果加载natbib宏包，则显示“Bibliography”，如果同时加载natbib宏包和tocbibind宏包，依然显示"Bibliography"，可见，tocbibind宏包并不改变参考文献的默认标题，而natbib会将参考文献的标题从默认的“参考文献”修改为"Bibliography"，但是只要加载了tocbibind宏包，修改参考文献的标题就要通过重定义"\tocbibname"来完成
-
-% 显示所有参考文献
-            \begin{thebibliography}{99} % “99”表示以最多两位数来编号参考文献，用于对齐
-                \addtolength{\itemsep}{-2ex} % 将参考文献中条目之间的距离减少2ex，注意单个条目内部的行距不会发生变化
-                \bibitem{author1.year1}{Au1. ArtName1[J]. JN1. Y:1--2} % 书中在参考文献的形式两边没有加大括号，加与不加，编译的结果相同
-                \bibitem{author2.year2}Au2. ArtName2[J]. JN2. Y:1--2
-            \end{thebibliography}
-            %* 以上都是\LaTeX的原生命令，即使不加载natbib宏包也能编译成功，natbib宏包仅仅是修改了索引的上标形式
 
 % 显示所有尾注
             \theendnotes

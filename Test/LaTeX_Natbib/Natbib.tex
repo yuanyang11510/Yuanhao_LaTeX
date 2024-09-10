@@ -1,0 +1,76 @@
+﻿\documentclass{article}
+\usepackage{ctex}
+\usepackage[numbers,sort&compress,super,square]{natbib} 
+            % 使用natbib宏包可以定制参考文献标号在文中的显示方式
+            %* "nat"可能是"numbers+autheryear"的缩写
+% \usepackage{natbib} 
+    %* 只加载natbib宏包，编译会报错
+% \usepackage[numbers]{natbib} 
+    % 数字编号
+    %* 单独设置该选项，编译成功
+% \usepackage[sort&compresss]{natbib} 
+    % 排序且压缩
+    %! 单独设置该选项，编译会报错
+% \usepackage[super]{natbib} 
+    % 上标
+    %* 单独设置该选项，编译成功
+% \usepackage[square]{natbib} 
+    % 外侧方括号
+    %! 单独设置该选项，编译会报错
+
+\usepackage[numbib,numindex]{tocbibind}
+    % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号
+    %* 但是并没有专门为图目录和表目录的正常编号设置的可选参数  
+    %* "toc"是"table of contents"的缩写  
+% \usepackage[nottoc]{tocbibind} 
+    % 目录本身不编入目录
+% \usepackage[notlof]{tocbibind} 
+    % 图目录不编入目录
+% \usepackage[notlot]{tocbibind} 
+    % 表目录不编入目录
+% \usepackage[notindex]{tocbibind} 
+    % 索引不编入目录
+% \usepackage[notbib]{tocbibind} 
+    % 参考文献不编入目录
+% \usepackage[numindex]{tocbibind} 
+    % 给索引章节正常编号
+% \usepackage[numbib]{tocbibind} 
+    % 给参考文献章节正常编号
+% \usepackage[none]]{tocbibind} 
+    % 禁用所有
+
+% 重定义参考文献的各项参数
+    %! 注意，以下各条命令不是用来执行的，它们类似长度命令"\parindent"，只能通过重定义来修改它的值
+    % 通过重定义"\refname"命令来修改参考文献的标题
+    \renewcommand{\tocbibname}{这是参考文献} 
+    % 如果是book类文档，把"\refname"改成"\bibname"
+    % 如果加载tocbibind宏包，则修改参考文献标题应该重定义"\tocbibname"命令
+    %* 在ctexart文档类型下，参考文献标题默认显示“参考文献”，如果加载tocbibind宏包，依然显示“参考文献”，如果加载natbib宏包，则显示“Bibliography”，如果同时加载natbib宏包和tocbibind宏包，依然显示"Bibliography"，可见，tocbibind宏包并不改变参考文献的默认标题，而natbib会将参考文献的标题从默认的“参考文献”修改为"Bibliography"，但是只要加载了tocbibind宏包，修改参考文献的标题就要通过重定义"\tocbibname"来完成   
+% 以下各参数由natbib宏包提供
+    % 在文献目录之前、文献标题之下，用"\bibpreamble"插入一段文字
+        \renewcommand{\bibpreamble}{以下是参考文献：}
+    % 用"\bibfont"更改参考文献的字体
+        \renewcommand{\bibfont}{\small}
+    % 用"\citenumfont"定义在正文中引用时文献编号的字体
+        \renewcommand{\citenumfont}{\itshape}
+    % 用"\bibnumfmt"定义文献目录的编号，默认是[1],...的形式
+        \renewcommand{\bibnumfmt}[1]{\textbf{#1.}}
+    % 用"\bibsep"调整文献项之间的间距
+        \renewcommand{\bibsep}{1ex}
+
+\begin{document}
+\section{AAA}
+This is a sample text.\cite{author1.year1,author2.year2}
+
+This is the text following the reference. 
+    % 在正文最后使用"thebibliography"环境来显示所有参考文献
+
+% 显示所有参考文献
+    \begin{thebibliography}{99} % “99”表示以最多两位数来编号参考文献，用于对齐
+        \addtolength{\itemsep}{-2ex} % 将参考文献中条目之间的距离减少2ex，注意单个条目内部的行距不会发生变化
+        \bibitem{author1.year1}{Au1. ArtName1[J]. JN1. Y:1--2} % 书中在参考文献的形式两边没有加大括号，加与不加，编译的结果相同
+        \bibitem{author2.year2}Au2. ArtName2[J]. JN2. Y:1--2
+    \end{thebibliography}
+    %* 以上都是\LaTeX的原生命令，即使不加载natbib宏包也能编译成功，natbib宏包仅仅是修改了索引的上标形式
+
+\end{document}

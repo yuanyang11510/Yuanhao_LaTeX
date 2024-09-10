@@ -1,0 +1,150 @@
+﻿\documentclass{article}
+\usepackage{ctex}
+\usepackage{blindtext}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage[showframe]{geometry}
+\usepackage{titlesec} % 通过titlesec宏包自定义正文中的章节样式
+
+%rfr 以下关于titlesec宏包和titletoc宏包的各项命令的具体的参数设置可以参考吴康隆（102-107）以及titlesec/titletoc宏包的官方手册：https://mirror-hk.koddos.net/CTAN/macros/latex/contrib/titlesec/titlesec.pdf
+
+    \titlelabel{\thetitle.\quad}
+        % 设置各级章节标签格式，在所有章节标签后面多加一个"."符号，默认值为"\thetitle\quad"
+        %* "\thetitle"命令指代的就是各级章节标签（计数器），也可以替换成"\thesection"、"\thesubsection"等，但是最好替换成最低一级的章节计数器，因为章节标签只会打印到所指定的那一级，低于指定等级的章节标签会全部消失。即使这样，也仍然不建议将"\thetitle"命令替换成最低等级的章节计数器，因为这会导致所有章节标签被重新定义，例如本文档中已经将节一级的标签重定义为“第X章”的形式，如果此处将"\thetitle"替换为"\thesubsubsection"，将会导致节一级的标签显示为"X.0.0"的形式
+    \titleformat*{\section}{\itshape\bfseries\Large}
+        % 设置章节整体的字体样式，各参数为\titleformat*{command%plain}{format}
+        %* 如果第二个必选参数{format}不设置任何值，编译不会报错，但是会消除相应等级章节的字体样式，使其还原为正文字体，下同
+    \titleformat{\subsubsection}[display]{\itshape}{\bfseries 第\thesubsubsection 小节}{2em}{小节前$\leftarrow$\sffamily}[\rmfamily 小节后$\swarrow$]
+        % 更加详细地设置章节的各项参数，各参数为\titleformat{command%plain}[shape%keyvals]{format}{label}{sep%l}{before-code}[after-code]
+        %* 关于参数设置，有一些细节值得指出：（1）{command}参数默认为设置有编号的大纲样式，可以在后面添加",numberless"，此时转为设置无编号的大纲样式；（2）{format}参数和{label}参数的情况和上一条命令一样，可以留空，但会导致相应的内容还原回正文字体；（3）设置{label}参数可以代替下文【通过重定义章节计数器的调用形式】的方式，并且还有一个优势：这不会影响到此后所有级别更低的章节的标签，以上述命令为例，重定义了section的标签样式并不会影响到subsection的标签样式，但是如果像下文那样通过将计数器section的调用形式重定义为了“第X章”的形式，这就不得不同时重定义其下级计数器subsection的调用形式，将其恢复为本来的形式（不过，只需要重定义比其低一级的计数器subsection的调用形式即可，具体原因见下文）；（4）{sep}参数无法使用"\quad"等空格命令，但是可以使用"\baselineskip"命令
+        %% 有时候，我们只是想要改变标签或者标题文字的一部分字体样式，保留另一部分的字体样式，但是这一命令只能重新为其设置字体样式，因此如果要达到上述目的，就要求我们了解相应文档类当中的各级章节大纲的默认字体样式，下面设置目录中的章节样式的相关命令也是相同的情况。
+        %* 下面这一点单独介绍：（5）不同参数当中的字体命令之间的相互关系可以总结为：{format{{label}{before-code1}{before-code2{after-code}}}}，具体而言：{format}参数中的字体命令影响整个章节部分；{label}参数中的字体命令只会影响标签；{before-code}参数作用于章节的标题文字，如果输入文本，该文本会被添加到标题文字的前面，如果设置了字体命令，字体命令前面的文本不会被该命令影响到，只会受{format}参数中的字体命令的影响，字体命令后的文本会同时受{format}参数和该参数中的字体命令的双重影响；{after-code}参数中设置的文本则会受{format}参数、{before-code}参数以及该参数中的字体命令的三重影响。在下文将要介绍的titletoc宏包提供的"\titlecontents"命令中，不同参数中的字体命令之间的关系和此处也有类似的地方，详见下文
+        %! 注意，打印效果表面上似乎显示{before-code}参数中位于字体命令之后的文本只受到{format}参数中的字体命令"\bfseries"和该参数中的字体命令"\sffamily"的影响，而没有受到{format}参数中的另一个字体命令"\itshape"的影响，这其实是因为对于汉字来说，不存在sf字族下的斜体字形，可以通过观察{after-code}参数中文本的打印效果，验证其确实受到{format}、{before-code}、{after-code}三个参数当中的字体命令的叠加影响
+        %rfr 根据吴康隆（105），可以将{label}参数留空，{sep}设置为0pt，这样就可以在{before-code}参数中分别设计章节标签的字体样式和标题文字的字体样式；另外，[after-code]参数中的文本会另起一行打印，吴康隆（105）很好地利用了这一点，在其中使用"\startcontents"命令和"\printcontents"命令（均由titletoc宏包提供），在每一章的开头打印该章的子目录
+
+    \titlespacing*{\subsubsection}{2em}{3ex}{3ex}[10em]
+        % 设置章节的缩进距离、距离前后正文的竖直距离、右端距离文本右边线的距离等，各参数为\titlespacing*{command%plain}{left%l}{before-sep%l}{after-sep%l}
+        %! 注意，如果文档类设置成ctexart，使用这条命令会导致相应等级章节下的内容的首行（无论是以汉字开头还是以英文字母开头）不缩进，即使加载ctex宏包也无法结局该问题，解决办法是加载indentfirst宏包
+
+    % \titlespacing{\subsubsection}{2em}{*10}{*10}[10em]
+        % "*"符号后面的数字表示章节距离前后正文的竖直距离的倍数，各参数为\titlespacing{command}{left}{before-sep}{after-sep}[right-sep]
+        %* 经检验，如果同时存在"\titlespacing*{command}{left}{before-sep}{after-sep}[right-sep]"命令和"\titlespacing{command}{left}{before-sep}{after-sep}[right-sep]"命令，只运行后一条命令
+%rfr titlesec宏包还提供"\titleline[align]{horizontal material}"命令和"\titlerule[height]"、"\titlerule*[width]{text}"等命令，参见"6.1 这是一个次节"一节
+
+\usepackage{titletoc}
+        % 通过titletoc宏包自定义目录中的章节样式
+
+    % \dottedcontents{section}[8em]{}{4em}{15pt}
+        % 设置目录的整体字体样式以及一些距离参数，各参数为\dottedcontents{⟨section⟩}[⟨left⟩]{⟨above-code⟩}{⟨label width⟩}{⟨leader width⟩}
+        %* 设置目录中相应章节大纲【标签的右侧】/【标题文字的左侧】到文本左边线的距离、章节整体的字体样式、标签宽度（从【标签的右侧】/【标题文字的左侧】向左延伸的距离）、圆点填充部分的等距填充的盒子宽度（对应"\titlerule*[width]{text}"命令中的[width]参数），{above-code}参数如果留空，会清空相应章节大纲的整体字体样式，使其还原为正文格式
+        %! 注意，{section}参数中不能加入"\"符号，可以和"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令中的{command}参数进行比较，前者是设置目录当中的大纲格式，后者是设置正文中的大纲格式，后者才和相应的大纲命令有关
+        
+    \titlecontents{section}[4em]{}{\itshape\bfseries\contentslabel[\sffamily\bfseries\thecontentslabel]{4em}}{\itshape\bfseries}{\bfseries\titlerule*[15pt]{+}\contentspage}[\vspace{2ex}]
+        % 更加详细地设置目录的各项参数，各参数为\titlecontents{⟨section⟩}[⟨left⟩]{⟨above-code⟩}{⟨numbered-entry-format⟩}{⟨numberless-entry-format⟩}{⟨filler-page-format⟩}[⟨below-code⟩]
+        %* 前三个参数和"\dottedcontents"相同，因此该命令独有的功能在于之后的几个参数：（1）{numbered-entry-format}参数和{numberless-entry-format}参数分别用来设置在目录中有编号和无编号的章节大纲的样式，注意在其中一定要使用"\contentslabel[]{}"命令（当然，也可以统一在{above-code}参数中使用这一命令），否则不会打印章节标签；（2）{filler-page-format}参数用来设置章节条目之后部分（包括中间填充部分和页码，不区分有编号还是无编号类型）的样式，一般会使用titlesec宏包提供的"\titlerule*[width]{text}"命令进行设置，注意在最后一定要使用"\contentspage[]"命令，否则不会打印页码；（3）[below-code]参数一般用来设置增加的竖直距离，不过这一距离也可以在{above-code}参数中设置
+        %% 可以发现，"\titlecontents"命令专门为目录中有编号和无编号的章节大纲设置了不同的参数，而比较前文设置正文中章节大纲样式的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令，则需要在{command}参数中添加"numberless"参数，另外使用一次该命令来对无编号的章节样式进行设置，这应该和【目录中的章节样式没有正文中复杂】这一特点有关
+        %* 下面这一点单独介绍：（4）不同参数当中的字体命令之间的相互关系可以总结为：{above-code{{numbered-entry-format}{numberless-entry-format}{filler-page-format}}}，具体而言：{above-code}参数中的字体命令影响整个章节目录部分（包括标签、标题文字、中间填充部分和页码），这相当于"\titleformat"命令中的{format}参数；{numbered-entry-format}、{numberless-entry-format}这两个参数分别控制有编号和无编号的章节条目部分（包括标签和标题文字两部分）的字体样式，但是他们不会影响到后面的中间填充部分和页码，这类似于"\titleformat"命令中的{label}参数，只不过后者只能控制章节标签；剩下的部分的字体样式由{filler-page-format}参数控制，这类似于"\titleformat"命令中的{before-code}/{after-code}参数，以上提到的后三个参数中对应的文本都会受{above-code}参数和本参数中的字体命令的双重影响，但是互相之间不会影响，可见，"\titlecontents"命令当中各参数中的字体命令之间的相互关系要比"\titleformat"命令来的简单一些
+        %% 还有必要专门介绍一下"\contentslabel[]{}"命令和"\contentspage[]"命令，这两条命令专门用来设置章节标签的样式和页码的样式，其中可选参数用来设置字体样式，必选参数用来设置标签的宽度，通过这两条命令，就可以在上述的{numbered/numberless-entry-format}参数的对应范围内单独设置章节标签的字体样式，在{filler-page-format}参数的对应范围内单独设置页码的字体样式。如果完全不设置任何样式，这两条命令也可以分别写成"\thecontentslabel"和"\thecontentspage"，此时标签和页码的箱子宽度自适应，如果要通过可选参数来设置字体样式，则在其中不仅要使用相应的字体命令，而且要在字体命令之后加上"\thecontentslabel"命令或者"\thecontentspage"命令，否则相应的章节标签或者页码不会打印出来
+        %! 设置章节标签的字体样式时，写成"\contentslalbel[字体命令+\thecontentslabel]{}"命令明显不同于直接写成"字体命令+\thecontentslabel"，因为需要通过必选参数来设置标签宽度；而对于页码来说，直接写成"字体命令+\thecontentspage"似乎要比"\contentspage[字体命令+\thecontentspage]"简单不少，而且由于不存在必选参数，因此似乎这两条命令是等效的，但这两条命令其实并不相同，而且其差异和章节的情况是类似的：前者会导致页码不再紧贴文本右边线，而是紧跟前面的中间填充部分，这说明"\contentspage[]"命令虽然不像"\contentslabel[]{}"命令那样有一个显性的控制页码宽度的必选参数，但实际上其底层定义中一定存在一部分代码用来自动控制页码宽度，使之始终紧贴文本右边线，否则无法解释前后两种设置方式导致的不同效果
+
+    % \titlecontents*{subsection}[2em]{}{\bfseries\thecontentslabel\quad}{}{\quad\bfseries\thecontentspage}[\qquad]
+    % \titlecontents*{subsubsection}[]{}{\itshape\thecontentslabel\quad}{}{\quad\itshape\thecontentspage}[\enskip$\lceil$][\enskip|\enskip][\enskip$\rfloor$]
+        % 各参数为\titlecontents*{⟨section⟩}[⟨left⟩]{⟨above-code⟩}{⟨numbered-entry-format⟩}{⟨numberless-entry-format⟩}{⟨filler-page-format⟩}[⟨separator ⟩]
+        % or ...{⟨filler-page-format⟩}[⟨separator ⟩][⟨end⟩]
+        % or ...{⟨filler-page-format⟩}[⟨begin⟩][⟨separator ⟩][⟨end⟩]
+        %* 加了"*"符号之后的"\titlecontens*"命令可以将目录中几个相邻的同一等级的章节合并到同一个段落内，因此{filler-page-format}参数当中将无法再使用"\titlerule*[width]{text}"命令进行设置，否则编译会报错
+        %* 与"\titlecontents"命令相比，"\titlecontents*"命令主要多了后面的三个参数[begin]、[separator]、[end]，这代替了原来命令中的最后一个参数[after-code]，其中，[separator]参数和[end]参数是比较常用的，前者控制相邻两个同级章节目录之间的连接部分，后者控制最后一个章节目录的右侧部分。[begin]参数用的比较少，只有在嵌套上下两级章节目录的时候才会用到，此时对应上级章节的"\titlecontents*"命令中的[separator]参数和[end]参数分别控制相邻两个上级章节目录之间的连接部分和最后一个上级章节目录的右侧部分，而对应下级章节的"\titlecontents*"命令中的[begin]参数和[end]参数分别控制在每一个上级目录开始之后的第一个下级章节目录的左侧部分和最后一个下级章节目录的右侧部分，[separator]则控制相邻两个下级章节目录之间的连接部分
+        %! 在使用"\titlecontents"命令时，需要注意"\thecontentslabel"命令只能放置在{numbered-entry-format}参数中，而不能放置在{above-code}参数中，否则会导致除了第一个同级章节目录带有编号，之后的同级章节目录都无编号，这也就意味着此时不再能够为有编号和无编号的同级章节条目统一设置字体样式，而需要分别设置（当然，如果这一级章节在目录中都是有编号或者都是无编号的，只需要设置对应的那个参数即可）。另外，在嵌套上下两集章节目录的情况下，也需要注意下级章节的"\thecontentslabel"命令只能放置在{numbered-entry-format}参数中，否则不仅会导致只有第一个下级目录有编号的问题，而且[begin]对应的部分（如果设置了的话）会被插入到第一个下级章节的标签和标题文字的中间，打印效果非常奇怪
+
+    % \contentsmargin{.7em}
+        %* 控制圆点填充部分的右侧到文本右边线的距离，只有存在圆点填充部分的章节大纲才会被这一命令影响
+            %* 存在一个临界值（可以肯定不是0em），此时所有的页码右对齐，并且紧贴文本右边线，当参数值大于这一临界值（默认值也处于这一范围内），并且不断增大时，圆点填充部分的右端会逐渐向左移动，而页码不动，从而在两者之间形成一段空白距离；当参数值小于这一临界值，并且不断减小（包括减小到负数）时，圆点填充部分的右端会逐渐向右移动，并且推动页码也向右移动，中间会经历一个所有页码从右对齐到不同位数的页码各自对齐再到所有页码左对齐的过程
+        %rfr 这一命令其实并不常用，根据官方手册的说法，LaTeX的默认参数并没有为100以上的粗体页码预留足够的空间，因此如果存在这种情况，就需要通过这一命令来增大圆点填充部分到文本右边线的距离
+
+%! titletoc宏包的官方手册中称"\dottedcontents"命令中的[left]参数代表的是“the left margin from the left page margin”，但是通过设置geometry宏包的"showframe"参数之后，经过测试，可以发现这只是一种粗略的说法，至于"\contentsmargin"命令中的参数，该手册甚至没有明确其控制的是哪一段距离
+
+% 其他设置------------------------------------------------------------------------------------------------------------------------------------
+
+% 通过重定义"\the+计数器名称"命令来修改章节标签
+    \renewcommand{\thesection}{第\arabic{section}章}
+        %rfr 重定义"\the+计数器名称"命令其实就是重定义计数器的调用形式，这一形式由两部分组成：一部分是计数器的数值形式，这一部分是强制性的，另一部分是其他字符，比如字母、括号等，这一部分不是强制性的，有的计数器只包含了数值形式，而没有设置其他字符，比如章节计数器"section"默认的调用形式"\thesection"就只设置了数值形式"\arabic{section}"。上述命令中将"section"的调用形式从单纯的阿拉伯数字（"\arabic{section}"）改为了"第+阿拉伯数字+章"的形式，也就是添加了其他字符，可以参考：https://tex.stackexchange.com/questions/279744/change-the-name-of-sections
+        %! 在重定义计数器的调用形式时需要慎重添加字母或者汉字，因为这会影响到其下属的各级计数器，当然，这是可以通过重定义下一级计数器的调用形式解决的，见下一条命令的解释，但这仍然会在很多方面造成不便，可以参看"3.7.1 计数器"一节的解释
+
+    \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+        %* 计数器"subsection"本来的调用形式是"\thesection.\arabic{subsection}"，但是由于"\thesection"命令被重定义成了"第\arabic{section}章"的形式，因此为了让计数器subsection的调用形式保持不变，需要将其中的"\theseciton"替换成"\arabic{section}"
+%// \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+        %* 计数器subsubsection的调用形式不需要进行上述重定义，因为其本来的调用形式是"\thesubsection.\arabic{subsubsection}"，因此其只受两部分内容的影响：上级计数器subsection的调用形式和其自身的数值形式，上级计数器的调用形式已经通过上一条命令进行了重定义，因此，更上一级的计数器section的调用形式并不会影响到subsubsection的调用形式
+        %% 书中第"3.6.2 大纲与章节"一节中还提到重定义book/report文档类中的"chapter"这一大纲等级的标签，但只涉及了"\chaptername"命令，下面简要介绍重定义"chapter"的两个命令："\chaptername"命令和"\thechapter"命令，使用"\chapter{}"命令，打印出的默认形式是："Chapter + 阿拉伯数字（计数器） + 章名称"，其中，"Chapter"是由"\chaptername"控制的，"chapter"以下的"section"、"subsection"等大纲等级不包含这一部分，阿拉伯数字（计数器）是由"\thechapter"命令控制的，可以类比"section"对应的"\thesection"命令等，章名称是由"\chapter{}"命令控制的，因此，重定义"\chaptername"命令改变的是第一部分，重定义"\thechapter"命令改变的是第二部分。"chapter"之上的"part"这一大纲等级的设置也可以参照"chapter"的情况，只不过"\part{}"命令打印出的默认形式是“Part + 大写罗马数字（计数器） + 卷名称”
+%rfr 可以通过titlesec宏包来更加方便地修改章节标签，可以参看上文对titlesec宏包中相关命令的介绍
+
+% 自定义一个深度从2开始的新的章节大纲，比如此处的subsubsubsection
+    \titleclass{\subsubsubsection}{straight}[\subsubsection]
+        % 各参数为\titleclass{name%cmd}{class%keyvals}[super-level-cmd]
+        % {class}参数可以选择page（独占一页，比如part）、top（另开新页，比如chapter）以及straight（普通）
+
+%* 注意，在使用"\titleclass{name}{class}[super-level-cmd]"命令之后，还需要另外定义一些配套的参数：
+
+% 通过"\newcounter{foo}"命令设置新的大纲计数器
+    \newcounter{subsubsubsection}
+        
+% 通过重定义"\the + 新大纲计数器"来设置新大纲的数值形式
+    \renewcommand{\thesubsubsubsection}{\thesubsubsection.\alph{subsubsubsection}}
+        
+% 通过"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令来设置新大纲的字体样式和标签样式
+    \titleformat{\subsubsubsection}[hang]{\itshape\bfseries}{\thesubsubsubsection}{1ex}{}[]
+        
+% 通过"\titlespacing*{command}{left}{before-sep}{after-sep}"命令来设置新大纲的缩进距离和前后竖直距离
+    \titlespacing*{\subsubsubsection}{0em}{3ex}{3ex}
+        
+% 通过"\titlecontents"命令来设置新大纲的目录样式
+    \titlecontents{subsubsubsection}[10em]{\itshape}{\contentslabel{4em}}{}{\titlerule*[8pt]{.}\contentspage}[]
+        %* 如果没有这一条命令，并且需要打印目录的话，则第一遍编译不会报错，正文中会打印出subsubsubsection一级，但是第二遍编译会报错，因为没有定义其对应的目录样式
+        %! 每当新定义一个章节大纲，从这一大纲开始往下的所有大纲的深度都要顺次加1，由于本文档为ctexart文档类，因此正文和目录中编号深度的默认值为3（即编号到"subsubsection"一级），为了让新设置的subsubsubsection一级（此处其深度为4）能够在正文和目录中打印出编号，需要通过"\setcounter{counter}{value}"命令将"secnumdepth"和"tocdepth"设置为4
+
+% 设置大纲深度
+    \setcounter{tocdepth}{4}
+        %* 大纲在目录中编号到指定深度为止（决定是否有标签，标题文字照旧打印）
+    \setcounter{secnumdepth}{4}
+        %* 大纲在正文中编号到指定深度为止（决定是否有标签，标题文字照旧打印）
+        %rfr 书中没有说明"tocdepth"和"secnumdepth"的区别，参考：https://texdoc.org/serve/lshort-zh-cn.pdf/0，两者在book/report文档类中的默认值是2（即"subsection"一级），在article文档类中的默认值是3（即"subsubsection"一级）
+        %! 注意，如果在正文中使用以上两条命令，尤其对于"tocdepth"来说，要将其放置在"\tableofcontents"命令之前，否则无法对目录产生影响
+        %* 还可以发现，计数器名称是不带"\"符号的
+
+%% 一定要保证以上命令都位于各自的宏包之后，否则编译会报错
+
+\begin{document}
+\tableofcontents
+
+\blinddocument
+
+\section[这是目录中显示的标题]{这是正文中显示的标题}
+            % 可选参数用于在目录中显示另一个标题，通常是正文中标题的一部分，因此也被称为“短标题”
+    \subsection{这是一个次节}
+    % 以下命令由titlesec宏包提供
+    \titlerule[.8pt] 
+            %* "\titlerule[height]"命令填充一条水平直线，可选参数为线条高度（粗细）
+    \titlerule*[10em]{\includegraphics[scale=.3]{doraemon1.jpg}} 
+            %* "\titlerule*[width]{text}"命令不填充一条水平直线，而是等距离填充指定内容（可以是图片），必选参数为重复填充内容，可选参数表示等距离填充的盒子宽度，以此来控制填充次数：宽度如果大于图片宽度，宽度越大，填充次数越少（最少填充一次，居中填充）；宽度如果小于图片宽度，则也只会填充一次，在右侧填充；如果设置为0pt，则不会显示出填充内容，但是保留其竖直距离，类似于"\vspace{l}"命令和"\rule[lift]{width}{thickness}"命令的“支柱”功能
+    \titlerule 
+            %* "\titlerule"命令填充一条水平直线，线条高度为默认值0.4pt
+    \titleline[c]{\textbackslash titleline没有line}
+            %* "\titleline[align]{horizontal material}"命令不填充一条水平直线，而是在水平方向上填充指定内容，可以选择靠左（l）、居中（c）或者靠右（r）填充，默认为靠左填充，填充内容如果超过一行，打印时不会换行，而是超出文本区域继续打印
+    \titlerule
+    \titlerule*{\includegraphics[scale=.3]{doraemon1.jpg}}
+            %* "\titlerule*{text}"命令以填充内容的自然宽度进行填充
+    \titlerule[.8pt]
+            %* 在"\titleformat*{command}{format}"命令或者"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令的{format}参数中也可以使用"\titleline[align]{horizontal material}"命令和"\titlerule*[width]{text}"命令，可以在指定一级章节的上方填充直线或者填充内容，但是无法在其下方进行相同操作
+            %todo 是否可以通过某种方式在指定一级章节的下方填充直线或者填充内容，待研究
+        \subsubsection{这是一个小节}
+            \subsubsubsection{这是一个新定义的小小节}
+                这不是段一级，而是新定义的小小节一级。
+
+\section*{不编号的一章}
+            %* 该命令设置的章节名称在正文中会打印出来，但是不会编号，在目录中不会打印出来
+            \addcontentsline{toc}{section}{不编号的一章}
+            %* 该命令设置的章节名称会在目录中打印出来，但是不会编号，在正文中不会打印出来，点击目录中对应的章节名称，索引到该命令在正文中对应的位置，可以发现，该命令类似于一个普通的"\section{}"命令，但是并不会在正文中打印其章节名称
+            %! 经检验，上述这一条命令也可以加在除了正文之外的的其他位置，包括导言区，以及"\end{document}"命令之后，编译都不会报错。如果加在导言区，则在目录中会打印在开头，如果加在"\end{document}"之后，则在目录中不会打印出来
+            %* 因此，"\section*{title}"命令和"\addcontentsline{file}{secunit}{entry}"命令其实是可以各自独立使用的，但是后者单独使用是没有实际意义的，因为在正文中无法打印出其设置的章节名称。后者实际上只能搭配前者使用，一般将其放置在前者所在的位置之后，这样，在目录中打印出来的章节名称实际上不是前者设置的，而是后者设置的，点击该章节名称实际上也只是索引到后者所在位置，而正文中打印出来的章节名称，则是前者设置的，而不是后者设置的
+            %* 结合"\section[short]{title}"命令中可选参数的效果，"\addcontentsline{file}{secunit}{entry}"其实就是将"\section[short]{title}"的可选参数分离出来单独作为一条命令的结果，与之对应的，"\section*{title}"命令就不再含有可选参数，当然，从另一个角度看，"\section*{title}"命令不会在目录中打印章节名，当然没有可选参数存在的必要
+
+\end{document}

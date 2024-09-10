@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.6)  9 SEP 2024 16:11
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.6)  10 SEP 2024 12:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -705,17 +705,6 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layouthoffset=\dimen351
 \Gm@layoutvoffset=\dimen352
 \Gm@dimlist=\toks32
-) (c:/texlive/2024/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and footers
-\f@nch@headwidth=\skip73
-\f@nch@O@elh=\skip74
-\f@nch@O@erh=\skip75
-\f@nch@O@olh=\skip76
-\f@nch@O@orh=\skip77
-\f@nch@O@elf=\skip78
-\f@nch@O@erf=\skip79
-\f@nch@O@olf=\skip80
-\f@nch@O@orf=\skip81
 ) (c:/texlive/2024/texmf-dist/tex/latex/base/shortvrb.sty
 Package: shortvrb 2024/04/26 v3.0p Standard LaTeX documentation package V3 (FMi)
 ) (c:/texlive/2024/texmf-dist/tex/latex/tools/multicol.sty
@@ -732,8 +721,8 @@ Package: multicol 2024/05/23 v1.9h multicolumn formatting (FMi)
 \page@free=\dimen355
 \premulticols=\dimen356
 \postmulticols=\dimen357
-\multicolsep=\skip82
-\multicolbaselineskip=\skip83
+\multicolsep=\skip73
+\multicolbaselineskip=\skip74
 \partial@page=\box95
 \last@line=\box96
 \mc@boxedresult=\box97
@@ -792,8 +781,8 @@ Package: import 2020/04/01  v 6.2
 ) (c:/texlive/2024/texmf-dist/tex/latex/boxedminipage/boxedminipage.sty
 Package: boxedminipage 2020/04/19 v1.1 Boxed LaTeX2e minipages
 \bmp@box=\box140
-\bmp@width=\skip84
-\bmp@height=\skip85
+\bmp@width=\skip75
+\bmp@height=\skip76
 ) (c:/texlive/2024/texmf-dist/tex/latex/changepage/changepage.sty
 Package: changepage 2009/10/20 v1.0c check page and change page layout
 \c@cp@cntr=\count392
@@ -801,8 +790,8 @@ Package: changepage 2009/10/20 v1.0c check page and change page layout
 ) (c:/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \ttl@box=\box141
-\beforetitleunit=\skip86
-\aftertitleunit=\skip87
+\beforetitleunit=\skip77
+\aftertitleunit=\skip78
 \ttl@plus=\dimen362
 \ttl@minus=\dimen363
 \ttl@toksa=\toks33
@@ -814,10 +803,10 @@ Package: titletoc 2023/10/27 v2.16 TOC entries
 \ttl@leftsep=\dimen367
 ) (c:/texlive/2024/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2024-04-26 v4.20 Multi-page Table package (DPC)
-\LTleft=\skip88
-\LTright=\skip89
-\LTpre=\skip90
-\LTpost=\skip91
+\LTleft=\skip79
+\LTright=\skip80
+\LTpre=\skip81
+\LTpost=\skip82
 \LTchunksize=\count394
 \LTcapwidth=\dimen368
 \LT@head=\box142
@@ -852,10 +841,10 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 ) (c:/texlive/2024/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
 \everycr=\toks35
-\minrowclearance=\skip92
+\minrowclearance=\skip83
 ) (c:/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip93
+\labelindent=\skip84
 \enit@outerparindent=\dimen382
 \enit@toks=\toks36
 \enit@inbox=\box147
@@ -946,35 +935,34 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip94
+\Hy@SectionHShift=\skip85
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 304.
-\c@subsubsubsection=\count418
+Package hyperref Info: Option `colorlinks' set `true' on input line 193.
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
  (./LaTeX_Wu_Kanglong.aux)
 \openout1 = `LaTeX_Wu_Kanglong.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 346.
-LaTeX Font Info:    ... okay on input line 346.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 199.
+LaTeX Font Info:    ... okay on input line 199.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -982,56 +970,56 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 346.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 346.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 346.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 346.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 346.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 346.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 346.
-LaTeX Font Info:    Redeclaring math accent \check on input line 346.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 346.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 346.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 346.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 346.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 346.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 199.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 199.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 199.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 199.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 199.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 199.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 199.
+LaTeX Font Info:    Redeclaring math accent \check on input line 199.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 199.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 199.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 199.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 199.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 199.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 346.
+(Font)              `operators' in the math version `normal' on input line 199.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 346.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 199.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 346.
+(Font)              `operators' in the math version `bold' on input line 199.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 346.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 199.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 346.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 346.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 346.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 346.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 346.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 199.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 346.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 346.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 346.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 199.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 346.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 199.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: changepage package is loaded.
 \caption@adjustwidth@hsize=\dimen387
@@ -1080,7 +1068,7 @@ Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 346.
+Package hyperref Info: Link coloring ON on input line 199.
 (./LaTeX_Wu_Kanglong.out) (./LaTeX_Wu_Kanglong.out)
 \@outlinefile=\write4
 \openout4 = `LaTeX_Wu_Kanglong.out'.
@@ -1088,13 +1076,61 @@ Package hyperref Info: Link coloring ON on input line 346.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.06749> not available
-(Font)              size <17.28> substituted on input line 350.
+(Font)              size <17.28> substituted on input line 203.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <15.05624> not available
-(Font)              size <14.4> substituted on input line 350.
+(Font)              size <14.4> substituted on input line 203.
 
 (./LaTeX_Wu_Kanglong.toc
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 5.
+
+
+
+[1
+
+]
+
+LaTeX Font Info:    Font shape `TU/SimSun(1)/m/sl' in size <10.53937> not available
+(Font)              Font shape `TU/SimSun(1)/m/it' tried instead on input line 52.
+[2]
+
+[3])
+\tf@toc=\write5
+\openout5 = `LaTeX_Wu_Kanglong.toc'.
+
+ (./LaTeX_Wu_Kanglong.lof)
+\tf@lof=\write6
+\openout6 = `LaTeX_Wu_Kanglong.lof'.
+
+
+
+[4] (./LaTeX_Wu_Kanglong.lot)
+\tf@lot=\write7
+\openout7 = `LaTeX_Wu_Kanglong.lot'.
+
+
+
+[5]
+
+[6]
+
+[7]
+
+[8]
+Package lettrine.sty Info: Targeted height = 21.85869pt
+(lettrine.sty)             (for loversize=0, accent excluded),
+(lettrine.sty)             Lettrine height = 21.76263pt (T);
+(lettrine.sty)             reported on input line 451.
+
+
+[9]
+
+[10]
+
+[11]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "Microsoft YaHei Bold/I" (it
@@ -1105,8 +1141,6 @@ Package fontspec Info:
 (fontspec)             Could not resolve font "Microsoft YaHei/I" (it probably
 (fontspec)             doesn't exist).
 
-LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <10.53937> not available
-(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 4.
 
 Package fontspec Info: 
 (fontspec)             Font family 'MicrosoftYaHei(0)' created for font
@@ -1123,173 +1157,6 @@ Package fontspec Info:
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Microsoft
 (fontspec)             YaHei/BI/OT:script=hani;language=dflt;"
 
-
-
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
-(Font)              size <10.95> substituted on input line 5.
-
-
-
-[1
-
-]
-
-LaTeX Font Info:    Font shape `TU/SimSun(1)/m/sl' in size <10.53937> not available
-(Font)              Font shape `TU/SimSun(1)/m/it' tried instead on input line 52.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[2]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[3]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[4])
-\tf@toc=\write5
-\openout5 = `LaTeX_Wu_Kanglong.toc'.
-
- (./LaTeX_Wu_Kanglong.lof)
-\tf@lof=\write6
-\openout6 = `LaTeX_Wu_Kanglong.lof'.
-
- (./LaTeX_Wu_Kanglong.lot)
-\tf@lot=\write7
-\openout7 = `LaTeX_Wu_Kanglong.lot'.
-
-LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.53937> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 377.
-
-
-LaTeX Font Warning: Font shape `TU/MicrosoftYaHei(0)/m/it' undefined
-(Font)              using `TU/MicrosoftYaHei(0)/m/n' instead on input line 377.
-
-LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <7> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 377.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[5]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[6]
-Overfull \vbox (316.54774pt too high) has occurred while \output is active []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[7]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[8]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[9]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[10]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[11]
-Package lettrine.sty Info: Targeted height = 21.85869pt
-(lettrine.sty)             (for loversize=0, accent excluded),
-(lettrine.sty)             Lettrine height = 21.76263pt (T);
-(lettrine.sty)             reported on input line 598.
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[12]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[13]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[14]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[15]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "FangSong/BI" (it probably
@@ -1316,18 +1183,13 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"FangSong/OT:script=hani;language=dflt;"
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[16]
 LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <12.045> not available
-(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 758.
+(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 611.
+
+
+[12]
+LaTeX Font Info:    Font shape `TU/lmss/bx/it' in size <10.53937> not available
+(Font)              Font shape `TU/lmss/bx/sl' tried instead on input line 613.
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "Lucida Calligraphy/BI" (it
@@ -1354,16 +1216,6 @@ Package fontspec Info:
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Lucida
 (fontspec)             Calligraphy/OT:language=dflt;"
 
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[17]
 
 Package fontspec Info: 
 (fontspec)             Could not resolve font "SimSun/BI" (it probably doesn't
@@ -1527,6 +1379,9 @@ Package fontspec Info:
 (fontspec)             <->"SimSun/OT:script=hani;language=dflt;embolden=4;slant=0.167;"
 
 
+
+[13]
+
 Package fontspec Info: 
 (fontspec)             Font family 'SimSun(4)' created for font 'SimSun' with
 (fontspec)             options
@@ -1546,29 +1401,13 @@ Package fontspec Info:
 
 
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[18]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[19]
+[14]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 919.
+(hyperref)                removing `\@ifnextchar' on input line 772.
 
 
-Overfull \hbox (21.07874pt too wide) in paragraph at lines 925--932
+Overfull \hbox (21.07874pt too wide) in paragraph at lines 778--785
 []$[]$
  []
 
@@ -1576,390 +1415,90 @@ Overfull \hbox (21.07874pt too wide) in paragraph at lines 925--932
 
 
 
+[15]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
+[16]
+
+[17]
+\c@parentcounter=\count418
+\c@soncounter=\count419
+
+
+[18]
+
+[19]
 
 [20]
+Overfull \hbox (2.70752pt too wide) in paragraph at lines 1113--1115
+\TU/lmr/m/n/10.53937 luctus a, egestas a, turpis. Mauris lacinia lorem
+ []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[21]
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[22]
+Overfull \hbox (2.70752pt too wide) in paragraph at lines 1120--1121
+\TU/lmr/m/n/10.53937 luctus a, egestas a, turpis. Mauris lacinia lorem
+ []
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
+
+[21
+
+] [22
+
+]
 
 [23]
-\c@parentcounter=\count419
-\c@soncounter=\count420
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[24]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[25]
-Overfull \vbox (38.73166pt too high) has occurred while \output is active []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[26]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[27]
-Overfull \hbox (2.70752pt too wide) in paragraph at lines 1263--1265
-\TU/lmr/m/n/10.53937 luctus a, egestas a, turpis. Mauris lacinia lorem
- []
-
-
-
-
-Overfull \hbox (2.70752pt too wide) in paragraph at lines 1270--1271
-\TU/lmr/m/n/10.53937 luctus a, egestas a, turpis. Mauris lacinia lorem
- []
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[28
-
-]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[29
-
-]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[30]
-Overfull \hbox (2.73158pt too wide) in paragraph at lines 1326--1329
+Overfull \hbox (2.73158pt too wide) in paragraph at lines 1176--1179
 []\TU/lmr/m/n/10.53937 JKLMN JKLMN JKLMN // JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN
  []
 
 
-Overfull \hbox (30.73454pt too wide) in paragraph at lines 1336--1337
+Overfull \hbox (30.73454pt too wide) in paragraph at lines 1186--1187
 [][] \TU/lmr/m/n/10.53937 / [] / [] / [] / [] / [] 
  []
 
 
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[31
+[24
 
 ]
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[32]
-Underfull \hbox (badness 10000) detected at line 1448
+[25]
+Underfull \hbox (badness 10000) detected at line 1298
 \TU/SimSun(4)/m/n/10.53937 无 框 箱 子
  []
 
 
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[33]
-Underfull \hbox (badness 10000) detected at line 1466
+Underfull \hbox (badness 10000) detected at line 1316
 \TU/SimSun(4)/m/n/10.53937 加 框 箱 子
  []
 
 
-Underfull \hbox (badness 10000) detected at line 1491
+Underfull \hbox (badness 10000) detected at line 1341
 \TU/SimSun(4)/m/n/10.53937 加 框 箱 子
  []
 
 
 
+[26]
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[34]
+[27]
+\mylatexlength=\skip86
 
 
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
+[28]
 
-[35]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[36]
-\mylatexlength=\skip95
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[37]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[38]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 1938--1939
-[]|\TU/lmr/m/n/10.53937 can not be
- []
-
-
-Underfull \hbox (badness 3849) in paragraph at lines 1963--1964
-[]|\TU/lmr/m/n/10.53937 This last col-
- []
-
-
-Underfull \hbox (badness 1527) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 umn is a “p”
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 “row” of the
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 Note however
- []
-
-
-Underfull \hbox (badness 2245) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 that T[]X will
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 never break
- []
-
-
-Underfull \hbox (badness 2050) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 a page within
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 such a row.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 Page breaks
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 only occur
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 between rows
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 of the table
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1963--1964
-\TU/lmr/m/n/10.53937 or at \TU/lmss/m/n/10.53937 \hline
- []
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[40]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[41]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[42]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[43]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[44]
-Overfull \hbox (2.33974pt too wide) in paragraph at lines 2140--2156
+[29]
+Overfull \hbox (2.33974pt too wide) in paragraph at lines 1636--1652
 [][] [] 
  []
 
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-File: doraemon1.jpg Graphic file (type bmp)
-<doraemon1.jpg>
-
-Package hyperref Warning: bookmark level for unknown subsubsubsection defaults to 0.
 
 
+[30] (./LaTeX_Wu_Kanglong.ent)
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[45]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 2199.
-
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[46] (./LaTeX_Wu_Kanglong.ent)
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 12.64723pt, for example:
-(fancyhdr)                \setlength{\headheight}{12.64723pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-(fancyhdr)                \addtolength{\topmargin}{-0.64723pt}.
-
-[47] 
+[31] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./LaTeX_Wu_Kanglong.aux)
  ***********
@@ -2061,7 +1600,6 @@ tabularx.sty    2023/12/11 v2.12a `tabularx' package (DPC)
  dcolumn.sty    2023/07/08 v1.06 decimal alignment package (DPC)
 geometry.sty    2020/01/02 v5.9 Page Geometry
   ifvtex.sty    2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-fancyhdr.sty    2024/07/23 v4.3.1 Extensive control of page headers and footers
 shortvrb.sty    2024/04/26 v3.0p Standard LaTeX documentation package V3 (FMi)
 multicol.sty    2024/05/23 v1.9h multicolumn formatting (FMi)
   import.sty    2020/04/01  v 6.2
@@ -2097,8 +1635,6 @@ ltcaption.sty    2021/01/08 v1.4c longtable captions (AR)
 ninecolors.sty    2022-02-13 v2022D Select colors with proper color contrast
 LaTeX_Wu_Kanglong.out
 LaTeX_Wu_Kanglong.out
-doraemon1.jpg    Graphic file (type bmp)
-doraemon1.jpg    Graphic file (type bmp)
 LaTeX_Wu_Kanglong.ent
  ***********
 
@@ -2106,19 +1642,16 @@ LaTeX_Wu_Kanglong.ent
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
 Package rerunfilecheck Info: File `LaTeX_Wu_Kanglong.out' has not changed.
-(rerunfilecheck)             Checksum: 5D86BCB8F5519206A407DEE28401E4EB;13114.
+(rerunfilecheck)             Checksum: A315A2DDA873A0357651A9C39AF981A3;12400.
  ) 
 Here is how much of TeX's memory you used:
- 25131 strings out of 474235
- 543684 string characters out of 5745819
- 1958612 words of memory out of 5000000
- 47285 multiletter control sequences out of 15000+600000
- 571202 words of font info for 173 fonts, out of 8000000 for 9000
+ 24837 strings out of 474235
+ 536514 string characters out of 5745819
+ 1942612 words of memory out of 5000000
+ 47009 multiletter control sequences out of 15000+600000
+ 571138 words of font info for 165 fonts, out of 8000000 for 9000
  1351 hyphenation exceptions out of 8191
- 93i,16n,111p,1208b,639s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,12n,111p,886b,942s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on LaTeX_Wu_Kanglong.pdf (47 pages).
+Output written on LaTeX_Wu_Kanglong.pdf (31 pages).

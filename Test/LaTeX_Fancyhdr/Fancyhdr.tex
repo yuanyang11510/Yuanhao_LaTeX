@@ -1,0 +1,52 @@
+﻿\documentclass[twoside]{article}
+\usepackage{ctex}
+\usepackage{blindtext}
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+        % 借助fancyhdr宏包控制页眉和页脚
+        %* "hdr"应该是来自"header"的缩写
+    \pagenumbering{arabic}
+        % 设置页码的格式，默认值为arabic，还可以设置为Roman、roman、Alpha、alpha
+    \pagestyle{fancy}
+        % 设置页眉和页脚的格式，还可以设置其他值，包括：empty（无页眉、页脚）、plain（无页眉，页脚只包含一个居中的页码）、headings（无页脚，页眉包含章节编码、章节名称与页码）、myheadings（无页脚，页眉包含页码和用户定义的信息，经检验，默认情况下只包含页眉中的页码）
+        %* 在单边模式下，如果不使用"\pagestyle{fancy}"命令，每一页都会显示不带下边线的页眉，不显示页脚，正文部分的第一页和第二页只在页眉的右侧显示页码，从第三页开始，在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示页码；如果使用"\pagestyle{fancy}"命令，每一页都会显示包含下边线的页眉以及不带基线的页脚，正文部分的第一页和第二页只在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码，从第三页开始，在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码
+        %* 在双边模式下，如果不使用"\pagestyle{fancy}"命令，奇数页显示不带下边线的页眉，偶数页显示页脚，正文部分的第一页只在页眉的右侧显示页码，正文部分的第二页只在页脚处显示页码，从第三页开始，奇数页在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示页码，偶数页在页脚处显示页码；如果使用"\pagestyle{fancy}"命令，每一页都显示带下边线的页眉和不带基线的页脚，正文部分的第一页只在页眉的左侧显示节（section）编号和节名称，在页脚处显示页码，正文部分的第二页只在页眉的右侧显示节（section）编号和节名称，从第三页开始，奇数页在页眉的左侧显示节（section）编号和节名称，在页眉的右侧显示次节（subsection）编号和次节名称，在页脚处显示页码，偶数页在页眉的左侧显示次节（subsection）编号和次节名称，在页眉的右侧显示节（section）编号和节名称，在页脚处显示页码
+        %rfr 事实上，上述提到的【节（section）编号和节名称】在页眉和页脚的设置中被属于“较高级别”（higher-level）的信息，【次节（subsection）编号和次节名称】属于“较低级别”（lower-level）的信息，这是在article文档类中的情况，在book文档类中，“较高级别”则是章（chapter），“较低级别”则是节（section），关于页眉和页脚的设置原理的详细介绍，可以参考：https://www.overleaf.com/learn/latex/Articles/How_does_LaTeX_typeset_headers_and_footers%3F#Commands_for_the_output_routine
+
+%! 注意，只有将"\pagestyle{}"命令设置为"fancy"参数，以下命令才会生效
+    % \lhead{} 
+    %     % 设置页眉左侧的内容，没有内容表示清空默认情况下的内容
+    % \chead{} 
+    %     % 设置页眉中间的内容
+    % \rhead{} 
+    %     % 设置页眉右侧的内容，没有内容表示清空默认情况下的内容
+    % \lfoot{} 
+    %     % 设置页脚左侧的内容
+    % \cfoot{} 
+    %     % 设置页脚中间的内容，没有内容表示清空默认情况下的页码
+    % \rfoot{} 
+    %     % 设置页脚右侧的内容
+    \renewcommand{\headrulewidth}{.4pt}
+                % 设置页眉下边线的高度（不是宽度），默认值为0.4pt
+    \renewcommand{\footrulewidth}{.4pt}
+                % 设置页脚基线的高度（不是宽度），默认值为0pt
+    \fancyhf[HOR]{元昊}
+            % 可选参数中可以通过三个字母（大小写均可，前后顺序可以变化）来设置内容位置：H/F代表“页眉/页脚”，E/O代表“偶数页/奇数页”，L/C/R代表“左侧/中间/右侧”
+            %* 这一命令相比之前几条设置页眉/页脚的命令，优势在于可以同时设置多个位置的页眉/页脚，并且可以分奇偶页进行设置，也可以单独设置"\fancyhead[places]{header}"或者"\fancyfoot[places]{footer}"
+
+% 也可以通过"\fancypagestyle{style name}{definitions}"命令自定义页眉和页脚格式
+    % \fancypagestyle{newstyle}{
+    %     \fancyhf{} % 清空页眉和页脚
+    %     \fancyhead[c]{\thesection} % 在页眉中间显示节（section）的计数器内容
+    %     \fancyfoot{\thepage} % 由于没有指定位置，因此在页脚的左中右三个位置处均显示页码
+    %     }
+    % \pagestyle{newstyle}
+
+\title{Fancyhdr宏包}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\Blinddocument
+
+\end{document}
