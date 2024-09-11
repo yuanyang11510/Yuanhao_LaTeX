@@ -2,9 +2,6 @@
 \usepackage{ctex}
 \usepackage[showframe]{geometry}
 \usepackage[shortlabels,inline]{enumitem}
-\usepackage{blindtext}
-\usepackage{calc}
-\usepackage{lua-visual-debug}
 \newcommand{\printvalues}{
         labelindent = \the\labelindent,
         labelwidth = \the\labelwidth,
@@ -18,31 +15,14 @@
         itemsep=\the\itemsep, 
         parsep=\the\parsep
     }
-\usepackage{titlesec}
-\usepackage{natbib}
-\setcitestyle{
-    authoryear,
-    round,
-    citesep={\&},
-    merge,
-    elide,
-    }
-\bibliographystyle{}
+\usepackage{blindtext}
+\usepackage{lipsum}
+% ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+\usepackage[numbers]{natbib}
 
 
 \begin{document}
 
-\cite{author2.year2}
 
-\cite{author1.year1,author2.year2}
-
-
-
-
-\begin{thebibliography}{99} 
-    \addtolength{\itemsep}{-2ex} 
-    \bibitem[author1 (year1)]{author1.year1}{Au1. ArtName1[J]. JN1. Y:1--2}
-    \bibitem[author2 (year2)]{author2.year2}Au2. ArtName2[J]. JN2. Y:1--2
-\end{thebibliography}
 
 \end{document}

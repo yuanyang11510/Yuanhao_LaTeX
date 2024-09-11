@@ -1,76 +1,252 @@
 ﻿\documentclass{article}
 \usepackage{ctex}
-\usepackage[numbers,sort&compress,super,square]{natbib} 
-            % 使用natbib宏包可以定制参考文献标号在文中的显示方式
-            %* "nat"可能是"numbers+autheryear"的缩写
-% \usepackage{natbib} 
-    %* 只加载natbib宏包，编译会报错
-% \usepackage[numbers]{natbib} 
-    % 数字编号
-    %* 单独设置该选项，编译成功
-% \usepackage[sort&compresss]{natbib} 
-    % 排序且压缩
-    %! 单独设置该选项，编译会报错
-% \usepackage[super]{natbib} 
-    % 上标
-    %* 单独设置该选项，编译成功
-% \usepackage[square]{natbib} 
-    % 外侧方括号
-    %! 单独设置该选项，编译会报错
+\usepackage{booktabs}
+\usepackage[sort&compress,longnamesfirst]{natbib} 
+    % 使用natbib宏包可以定制参考文献标号在文中的显示方式
+    %* "nat"应该是"numbers+autheryear"的缩写
+    %% 注意，以下可选参数只能放在natbib宏包命令当中，不能放在下面的"\setcitestyle{options%keyvals}"命令当中，否则不会生效（但是编译不会报错）：
+
+    %% sectionbib：该参数和chapterbib宏包搭配使用，将参考文献从后者设置的属于一个不编号的章（\chapter*{title}）改为一个不编号的节（\section*{title}），这通常使用在需要为每一章创建一个参考文献的时候
+
+% 下面这个可选参数一般只在authoryear模式下设置
+    %% longnamesfirst：设置该参数后，存在三个及三个以上的作者的条目在第一次引用时，会显示所有的作者名，此后再次引用时，作者名则显示缩略形式（XX et al.）
+    %! 此时如果想要让某些作者过多的参考文献在第一次引用时，作者名就显示缩略形式，可以在第一次引用这些参考文献前使用"\shortcites{keylist}"命令，将涉及的这类参考文献的标签名放入其中，此后即使第一次引用，作者名也显示缩略形式  
+
+% 下面开始的可选参数一般都只在numbers模式下设置
+    %% sort表示在正文中同时引用多个条目时自动排序
+
+    %% compress表示压缩，即连续三个或三个以上的序号会显示为用连字符连接两端数字的形式，如"2-4"
+
+    %% nonamebreak：禁止作者名称中间出现断行
+
+    %% merge：设置了这一参数之后，在引用多个标签时可以在标签前面使用"*"符号，"*"符号的前后两个标签对应的参考文献在正文中和最后的陈列部分都会被合为一个条目
+
+    %% elide：这一参数和"merge"参数搭配使用，在需要合并为一个条目的两个参考文献存在相同的作者或者年份时，合并该作者或者年份
+
+    %% mcite：禁止"merge"参数和"elide"参数生效
+
+% 也可以通过natbib宏包提供的"\setcitestyle{options%keyvals}"命令来定义宏包选项
+    \setcitestyle{%
+% 引用模式可以选择numbers、authoryear或者super，表示在正文当中参考文献的呈现形式，默认值为authoryear
+    % numbers,%
+    %* "numbers"表示参考文献在正文中呈现为序号（其实不一定是数字，甚至可以是无规律的字符，见下文关于"\bibitem[label]{citekey}"命令的介绍）；"authoryear"表示参考文献在正文中呈现为由“作者名+年份”两部分组成的形式（至于具体形式如何可以另外设置）；"super"表示参考文献在正文中在"numbers"形式的基础上呈现为上标
+    %! 一般来说，这一参数是必须设置的，否则会报错，有一种情况是例外：当"\bibitem[label]{citekey}"命令设置了可选参数时，即使不设置引用模式，编译也不会报错，正文中的参考文献会显示和可选参数相关的形式，具体情况见下文讨论
+% 括号形式可以选择round（圆括号，默认值）、square（方括号）、curly（花括号）、angle（尖括号）
+    square,%
+    %* 这一括号形式出现在"numbers"和"super"模式下的编号两边，以及"authoryear"模式下的年份的两边
+% 引用分隔符可以选择semicolon（分号）、comma（逗号）或者自定义形式citesep={sep}
+    citesep={\nobreakspace\&},%
+    %* 注意，如果在宏包命令的可选参数中设置了compress参数，这一分隔符就只会出现在只有两个参考文献的情况下
+% 通过"aysep"参数设置作者与年代间的符号
+    % aysep={},%
+% 通过"yysep"参数设置同作者下多个年代间的符号
+    % yysep={},%
+% 通过"notesep"参数设置参考文献和说明文字（通过引用命令的可选参数设置）之间的符号
+    % notesep={},%
+    %! 书中称其设置“说明文字后的符号”，有误
+    }
+    % 这一命令的默认值是："\setcitestyle{authoryear,round,comma,aysep={;},yysep={,},notesep={, }}"
+    %* 但是经检验，如果加载了natbib宏包，但是没有设置"\setcitestyle{options%keyvals}"命令，打印的效果也没有完全符合这一默认值：至少"comma"应为"semicolon"，"aysep"应为","
+%! 注意，如果要以上面这种形式分行书写，要记得在每一行的末尾添加"%"符号，否则编译要么会报错，要么不生效
 
 \usepackage[numbib,numindex]{tocbibind}
-    % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号
-    %* 但是并没有专门为图目录和表目录的正常编号设置的可选参数  
-    %* "toc"是"table of contents"的缩写  
-% \usepackage[nottoc]{tocbibind} 
-    % 目录本身不编入目录
-% \usepackage[notlof]{tocbibind} 
-    % 图目录不编入目录
-% \usepackage[notlot]{tocbibind} 
-    % 表目录不编入目录
-% \usepackage[notindex]{tocbibind} 
-    % 索引不编入目录
-% \usepackage[notbib]{tocbibind} 
-    % 参考文献不编入目录
-% \usepackage[numindex]{tocbibind} 
-    % 给索引章节正常编号
-% \usepackage[numbib]{tocbibind} 
-    % 给参考文献章节正常编号
-% \usepackage[none]]{tocbibind} 
-    % 禁用所有
+    % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号，可选参数包括：
+    % nottoc（目录本身不编入目录）、
+    %* "toc"是"table of contents"的缩写
+    % notlof（图目录不编入目录）、
+    % notlot（表目录不编入目录）、
+    % notindex（索引不编入目录）、numindex（给索引章节正常编号）、
+    % notbib（参考文献不编入目录）、numbib（给参考文献章节正常编号）、
+    % none（禁用所有）
 
 % 重定义参考文献的各项参数
-    %! 注意，以下各条命令不是用来执行的，它们类似长度命令"\parindent"，只能通过重定义来修改它的值
+%! 注意，以下各条命令不是用来执行的，它们类似长度命令"\parindent"，只能通过重定义来修改它的值
+
     % 通过重定义"\refname"命令来修改参考文献的标题
-    \renewcommand{\tocbibname}{这是参考文献} 
-    % 如果是book类文档，把"\refname"改成"\bibname"
-    % 如果加载tocbibind宏包，则修改参考文献标题应该重定义"\tocbibname"命令
-    %* 在ctexart文档类型下，参考文献标题默认显示“参考文献”，如果加载tocbibind宏包，依然显示“参考文献”，如果加载natbib宏包，则显示“Bibliography”，如果同时加载natbib宏包和tocbibind宏包，依然显示"Bibliography"，可见，tocbibind宏包并不改变参考文献的默认标题，而natbib会将参考文献的标题从默认的“参考文献”修改为"Bibliography"，但是只要加载了tocbibind宏包，修改参考文献的标题就要通过重定义"\tocbibname"来完成   
+        \renewcommand{\tocbibname}{这是参考文献} 
+        % 如果是book类文档，把"\refname"改成"\bibname"
+        % 如果加载tocbibind宏包，则修改参考文献标题应该重定义"\tocbibname"命令
+        %* 在ctexart文档类型下，参考文献标题默认显示“参考文献”，如果加载tocbibind宏包，依然显示“参考文献”，如果加载natbib宏包，则显示“Bibliography”，如果同时加载natbib宏包和tocbibind宏包，依然显示"Bibliography"，可见，tocbibind宏包并不改变参考文献的默认标题，而natbib会将参考文献的标题从默认的“参考文献”修改为"Bibliography"，但是只要加载了tocbibind宏包，修改参考文献的标题就要通过重定义"\tocbibname"来完成
+
 % 以下各参数由natbib宏包提供
     % 在文献目录之前、文献标题之下，用"\bibpreamble"插入一段文字
         \renewcommand{\bibpreamble}{以下是参考文献：}
-    % 用"\bibfont"更改参考文献的字体
-        \renewcommand{\bibfont}{\small}
-    % 用"\citenumfont"定义在正文中引用时文献编号的字体
-        \renewcommand{\citenumfont}{\itshape}
+
     % 用"\bibnumfmt"定义文献目录的编号，默认是[1],...的形式
         \renewcommand{\bibnumfmt}[1]{\textbf{#1.}}
+
+    % 用"\bibfont"更改参考文献的字体
+        \renewcommand{\bibfont}{\small}
+
     % 用"\bibsep"调整文献项之间的间距
         \renewcommand{\bibsep}{1ex}
+        %* 在LaTeX的原生参数当中，这一间距由"\itemsep"来控制
+
+    % 用"\citenumfont"定义在正文中引用时文献编号的字体
+        \renewcommand{\citenumfont}{\itshape}
 
 \begin{document}
-\section{AAA}
-This is a sample text.\cite{author1.year1,author2.year2}
 
-This is the text following the reference. 
-    % 在正文最后使用"thebibliography"环境来显示所有参考文献
+\section{引用命令和\textbackslash{bibitem}命令的可选参数}
+% 引用命令的可选参数
+    \citet[见][这是说明文字]{author1.2001,author1.2002}
+    %* 引用命令可以带上两个可选参数，前一个可选参数表示在正文当中引用参考文献时在前面添加的内容，一般设置为"see"，后一个可选参数则表示参考文献之后的说明文字
 
-% 显示所有参考文献
-    \begin{thebibliography}{99} % “99”表示以最多两位数来编号参考文献，用于对齐
-        \addtolength{\itemsep}{-2ex} % 将参考文献中条目之间的距离减少2ex，注意单个条目内部的行距不会发生变化
-        \bibitem{author1.year1}{Au1. ArtName1[J]. JN1. Y:1--2} % 书中在参考文献的形式两边没有加大括号，加与不加，编译的结果相同
-        \bibitem{author2.year2}Au2. ArtName2[J]. JN2. Y:1--2
+    \citet[见][这是说明文字]{author1.2001,author1.2002}
+    %* 如果只设置一个可选参数，则默认为设置说明文字
+
+    \citet[见][]{author1.2001,author1.2002}
+    %* 如果只要显示参考文献前文字，需要将后一个可选参数留空
+
+% "\bibitem[label]{citekey}"命令的可选参数
+    \shortcites{author234.2006}
+
+    \citet{author123.2005}
+    %* 由于设置了longnamesfirst参数，因此在第一次引用时，显示作者名的完整形式，而在默认情况下，从第一次引用开始就显示作者名的缩略形式
+
+    \citet{author123.2005}
+    %* 之后再次引用该参考文献，则显示作者名的缩略形式
+
+    \citet{author2134.2006}
+    %* 由于在longnamesfirst模式下，将该参考文献放入了"\shortcites{keylist}"命令，因此即使在第一次引用时，也显示作者名的缩略形式（保持默认情况）
+
+\section{\textbackslash{cite}、\textbackslash{citet}、\textbackslash{citep}命令}
+% 下面用表格分别展示使用"\cite{}"命令、"\citet{}"命令和"\citep{}"命令引用一个参考文献、两个参考文献以及三个连续编号的参考文献的效果，通过修改前言部分的参数，此处的效果也会相应改变
+%* 只有"\cite{}"命令是LaTeX的原生命令，除去"\citet{}"命令和"\citep{}"命令外，natbib宏包还提供其它一些命令，见下文的介绍
+
+    % "\cite{}"命令
+    \begin{tabular}{ll}
+        \toprule
+        &\textbackslash{}cite\\
+        \midrule
+        一个参考文献&\cite{author1.2001}\\
+        \midrule
+        两个参考文献&\cite{author1.2001,author2.2002}\\
+        \midrule
+        三个连续编号的参考文献&\cite{author2.2002,author3.2003,author4.2004}\\   
+        \bottomrule
+    \end{tabular}
+        %* natbib宏包的官方手册不建议使用该命令，因为其在numbers模式下效果等同于"\citep{}"命令，在authoryear模式下效果等同于"\citet{}"命令，对参数的改变比较敏感，效果不稳定
+        
+    \vspace{2ex}
+
+    % "\citet{}"命令
+    \begin{tabular}{ll}
+        \toprule
+        &\textbackslash{}citet\\
+        \midrule
+        一个参考文献&\citet{author1.2001}\\
+        两个参考文献&\citet{author1.2001,author2.2002}\\
+        三个连续编号的参考文献&\citet{author2.2002,author3.2003,author4.2004}\\
+        \bottomrule
+    \end{tabular}
+        %* "\citet{}"命令表示将参考文献呈现为可以插入文本（text）的形式，编号和说明文字（numbers模式下）或者年份和说明文字（authoryear模式下）放置在括号当中，置于作者名之后
+        % 另外还有一个"\citet*{}"命令，表示在存在三个及三个以上的作者时显示所有的作者名，不显示为缩略形式
+        %! 在numbers模式下使用该命令是没有意义的，因为此时
+
+    \vspace{2ex}
+
+    % "\citep{}"命令
+    \begin{tabular}{ll}
+        \toprule
+        &\textbackslash{}citep\\
+        \midrule
+        一个参考文献&\citep{author1.2001}\\
+        两个参考文献&\citep{author2.2002,author3.2003}\\
+        三个连续编号的参考文献&\citep{author2.2002,author3.2003,author4.2004}\\
+        \bottomrule
+    \end{tabular}
+        %* "\citep{}"命令表示将参考文献全部放到括号（parenthesis）当中去，在numbers模式下，放入括号的是参考文献前文字、编号和说明文字，在authoryear模式下，放入括号的是参考文献前文字、作者名、年份和说明文字
+        % 另外还有一个"\citep*{}"命令，表示在存在三个及三个以上的作者时显示所有的作者名，不显示为缩略形式
+
+\section{其他引用命令}
+% 下面展示natbib宏包提供的其他引用命令的效果
+    \begin{tabular}{l|l}
+        \toprule
+        \textbackslash{citealt}&\citealt{author1.2002}\\
+        % 相当于在"\citet{}"命令效果的基础上去掉括号
+        %* “al”来自"alternative"的缩写
+        \textbackslash{citealp}&\citealp{author1.2002}\\
+        % 相当于在"\citep{}"命令效果的基础上去掉括号
+        \textbackslash{citenum}&\citenum{author1.2002}\\
+        % 输出当前参考文献在最后陈列部分的编号
+        %* 可以发现，即使在authoryear模式下，最后的陈列部分没有显示编号，但是这不影响这一命令的效果
+        \textbackslash{citetext}&\citetext{请同时参见\citealp{author1.2001}和\citealp{author2.2002}}\\
+        % 输出一段用括号括起来的文本
+        %* 常常和不带括号的"\citealp{}"命令搭配使用
+        \textbackslash{citeauthor}&\citeauthor{author1.2002}\\
+        % 输出文献作者
+        % 另外还有一个"\citeauthor*{}"命令，在存在三个及三个以上的作者时显示所有的作者名，不显示为缩略形式
+        \textbackslash{citeyear}&\citeyear{author1.2002}\\
+        % 输出文献年份
+        \textbackslash{citeyearpar}&\citeyearpar{author1.2002}\\
+        % 输出带括号的文献年份
+        \bottomrule
+    \end{tabular}
+
+% 此外还有"\Citet{}"、"\Citep{}"、"\Citealt{}"和"\Citealp{}"命令，确保姓名首字母大写
+
+% 在正文最后使用"thebibliography"环境来显示所有参考文献
+%* 以下都是LaTeX的原生命令，即使不加载natbib宏包也能编译成功，natbib宏包仅仅是修改了索引的上标形式
+    \begin{thebibliography}{99} 
+        %rfr 必选参数用来限制参考文献条目序号的最大宽度，通常设置为与参考文献的条目数一致，可以参考：https://texdoc.org/serve/lshort-zh-cn.pdf/0
+        \addtolength{\itemsep}{-2ex} 
+        % 将参考文献中条目之间的距离减少2ex，注意单个条目内部的行距不会发生变化
+        %* 在natbib宏包当中这一间距由"\bibsep"来控制
+        \bibitem[author1(2001)]{author1.2001}
+            Au1. ArtName1\_1[J]. JN1. 2001 : page1--page2
+        \bibitem[author1(2002)]{author1.2002}
+            Au1. ArtName1\_2[J]. JN1. 2002 : page1--page2
+        % 以上两条作者名相同，年份不同
+        \bibitem[author2(2002)]{author2.2002}
+            Au2. ArtName2[J]. JN2. 2002 : page1--page2
+        \bibitem[author3(2003)]{author3.2003}
+            Au3. ArtName3[J]. JN3. 2003 : page1--page2
+        \bibitem[author4(2004)]{author4.2004}
+            Au4. ArtName4[J]. JN4. 2004 : page1--page2
+        % 以上三条作者名、年份各不相同
+        \bibitem[author1 et al.(2005)author1, author2 and author3]{author123.2005}
+            Au1 et al. ArtName5[J]. JN5. 2005 : page1--page2
+        \bibitem[author2 et al.(2006)author2, author1, author3 and author4]{author2134.2006}
+            Au2 et al. ArtName6[J]. JN6. 2006 : page1--page2
+        % 以上两条存在三个及三个以上的作者名
+        %// \bibitem[abc]{author5.2007}
+        %//     Au5. ArtName7[J]. JN7. 2007 : page1--page2
+        %// 以上这一条可选参数没有符合authoryear模式要求的格式
     \end{thebibliography}
-    %* 以上都是\LaTeX的原生命令，即使不加载natbib宏包也能编译成功，natbib宏包仅仅是修改了索引的上标形式
+        % "\bibitem[label]{citekey}"命令的可选参数控制参考文献在正文中的引用形式，必选参数表示正文中引用该参考文献所用的对应标签，相当于一个"\label{}"命令，正文中的引用命令相当于一个"\ref{}"命令
+        %* 在authoryear模式（默认情况，不需要主动设置）下，"\bibitem[label]{citekey}"命令必须设置可选参数，否则编译会报错。设置的格式是"作者名+(年份)"、"作者名缩略形式+(年份)"、"作者名缩略形式+(年份)+作者名完整形式"，注意，括号和前后内容之间不能有空格，否则这些空格会被看成是正文中引用形式的一部分
+        %* 在numbers模式（需要主动设置）下，可以选择不设置可选参数，此时编号按照最后陈列部分的先后顺序排序，否则可以在可选参数当中指定编号，编号甚至可以是任何文本形式
+        %! 注意，在authoryear模式下，不可以混合上述的两种可选参数的形式，否则编译会报错；但是在numbers模式下，可选参数可以混合多种形式，编译不会报错（尽管一般都只会选择单一的数字形式）
+        %% 但是可以通过"\bibitem[label]{citekey}"命令的可选参数设置符合authoryear模式的格式，然后设置引用模式为numbers，此时编号就按照最后陈列部分的先后顺序排序
 
+%% 因此上述参考文献条目在numbers模式下可以设置为：
+    % \begin{thebibliography}{99} 
+    %     \addtolength{\itemsep}{-2ex} 
+    %     \bibitem[1]{author1.2001}
+    %         Au1. ArtName1\_1[J]. JN1. 2001 : page1--page2
+    %     \bibitem[2]{author1.2002}
+    %         Au1. ArtName1\_2[J]. JN1. 2002 : page1--page2
+    %         % 以上两条作者名相同，年份不同
+    %     \bibitem[4]{author2.2002}
+    %         Au2. ArtName2[J]. JN2. 2002 : page1--page2
+    %     \bibitem[3]{author3.2003}
+    %         Au3. ArtName3[J]. JN3. 2003 : page1--page2
+    %     \bibitem[5]{author4.2004}
+    %         Au4. ArtName4[J]. JN4. 2004 : page1--page2
+    %         % 以上三条作者名、年份各不相同
+    %     \bibitem[7]{author123.2005}
+    %         Au1 et al. ArtName5[J]. JN5. 2005 : page1--page2
+    %     \bibitem[6]{author2134.2006}
+    %         Au2 et al. ArtName6[J]. JN6. 2006 : page1--page2
+    %         % 以上两条存在三个及三个以上的作者名
+    %     \bibitem[abc]{author5.2007}
+    %         Au5. ArtName7[J]. JN7. 2007 : page1--page2
+    %     % 以上这一条可选参数的形式和其他条目不同
+    % \end{thebibliography}
+        %* 可以发现，在numbers模式下如果通过可选参数来设置编号，最后打印效果当中的编号顺序并不会按照设置的编号自动排序，而只会按照代码当中先后次序打印出来，LaTeX的原生命令也无法提供自动排序功能
+        %! 注意，在numbers模式下如果按照这种格式设置可选参数，引用时使用"\citet{}"命令会产生奇怪的效果：因为可选参数中没有设置为authoryear模式规定的格式，"\citet{}"命令无从得知作者名，因此打印出的效果当中，作者名的部分将是"(author?)"，但是"\citep{}"命令的效果正常，呈现为一个被括号括起来的编号（也就是此处的可选参数的形式）
+
+%rfr 事实上，不管是authoryear模式还是numbers模式，直接使用LaTeX原生的thebibliography环境和"\bibitem[label]{citekey}"命令来手动输入参考文献是非常低效而且容易出错的，现在通行的做法是在另外的.bib文件当中按照统一的格式设置参考文献信息，再在.tex文件当中通过"\bibliography{}"命令调用该.bib文件，并且搭配"\bibliographystyle{}"命令来自动化设置参考文献的呈现格式，可以参考文件"BibTeX.tex"
+    
 \end{document}

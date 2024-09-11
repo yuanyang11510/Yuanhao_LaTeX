@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{ctex}
+% \usepackage{natbib}
+
+% 我们通过JabRef软件将之前在文件"Natbib.tex"当中通过thebibliography环境和"\bibitem[label]{citekey}"命令手动设置的参考文献的相关信息保存在文件"mybib.bib"当中，由于.bib文件可以很轻松地设置文献类型（在"@"符号之后设置），我们在原来参考文献的基础上随机修改了其中的一些文献类型以及相关信息
+
+%! 注意，此处使用的是bibtex而不是biblatex宏包要求的biber进行编译，编译的过程是xelatex->bibtex->xelatex*2
+
+%rfr 对于.bib文件当中的特殊字符"_"，经检验，需要表示成"{\_}"，仅仅表示成"\_"或者"{_}"都会导致bibtex编译报错，可以参考：https://tex.stackexchange.com/questions/383678/underscore-in-bibtex-url
+%! 如果bibtex编译报错，有时候再次尝试下一轮编译会发现无论怎么调整都始终报错，这个时候要记得删除上一轮编译报错产生的.bbl文件，再进行下一轮尝试
+%todo 至于.bib文件当中其他特殊字符的表示方法，待研究
+
+\bibliographystyle{unsrt}
+% "\bibliographystyle{}"命令和"\bibliography{}"命令都是LaTeX的原生命令，不需要依靠natbib宏包即可执行
+%* "\bibliographystyle{}"命令控制的是参考文献最后陈列部分的呈现格式（包括排序、名字缩写、姓和名的前后顺序等），natbib宏包只提供了三种形式：plainnat、unsrtnat和abbrvnat，分别对应LaTeX原生命令当中的plain、unsrt和abbrv
+%% 其中，plain指的是按照第一作者的作者名排序
+%% unsrt（来自"unsorted"的缩写）指的是按照正文当中的引用顺序排序
+%% abbrv指的是将作者的名字缩写为大写首字母 
+%rfr 除此之外，LaTeX还提供了一些其他形式，比如alpha、acm等，可以参考：https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
+%% acm（来自"Association for Computing Machinery"，计算机协会）是指将作者的名字缩写，并且姓在名前（其他格式大多都是名在姓前）
+%rfr natbib宏包的官方手册提到，这一命令其实可以放在文档的任何位置，但建议放在开头，方便进行设置和调整
+\begin{document}
+
+\cite{Au22003,Au22006}
+
+\cite{Au32003}
+
+\cite{Au12001}
+
+\cite{Au12002}
+
+\cite{Au22003}
+
+\cite{Au22005}
+
+\cite{Au42004}
+
+\bibliography{mybib}
+% "\bibliography{}"命令的参数不需要加扩展名.bib
+
+%! 在练习时发现，bibtex只能识别"title"参数，而无法识别biber能够识别的"booktitle"参数，并且自动将@book、@InBook类别的文献当中的"title"参数加斜，这样，尤其在@InBook类文献中如果要添加图书名称，就只好在"title"参数当中，在文章名称的后面添加"in..."的内容
+
+\end{document}
