@@ -1,7 +1,7 @@
 \listfiles
 %rfr 在tex文件顶部使用"\listfiles"命令，编译后生成的log文件将包含使用的宏包列表（及其版本号），可以参考：https://mp.weixin.qq.com/s/Xkfaxo_EPTGxam5DL_veOQ
 
-\documentclass{ctexart} 
+\documentclass{ctexart}
 
 % 封面
 \title{简单高效\LaTeX（ 吴康隆）学习笔记\thanks{This is a footnote in the title.}}
@@ -81,7 +81,16 @@
             % 使用natbib宏包可以定制参考文献标号在文中的显示方式
 
 \usepackage[numbib,numindex]{tocbibind}
-            % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录，并且给参考文献章节和索引章节正常编号
+            % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录（以上为默认值，可以通过下述相应参数取消），并且给参考文献章节和索引章节正常编号，可选参数包括：
+            % nottoc（目录本身不编入目录）、
+            %* "toc"是"table of contents"的缩写
+            % notlof（图目录不编入目录）、
+            % notlot（表目录不编入目录）、
+            % notindex（索引不编入目录）、numindex（给索引章节正常编号，默认情况为不编号）、
+            % notbib（参考文献不编入目录）、numbib（给参考文献章节正常编号，默认情况为不编号）、
+            % none（禁用所有）
+            %! 测试中发现，如果将该宏包放在imakeidx宏包的前面，该宏包不会生效；但是如果将该宏包放在imakeidx宏包的后面，该宏包会生效，但是会导致imakeidx宏包提供的"\makeindex"命令当中的三个可选参数"columns"、"columnsep"、"columnseprule"失效，索引始终保持双栏
+            %% 解决的办法是直接使用imakeidx宏包提供的"\indexsetup"命令，添加"level=\section"参数即可
 
 \usepackage[section]{placeins}
             % 重新定义了"\section{}"命令，在此之前加上了"\Float-Barrrier"命令，阻止浮动体跨过该位置
@@ -134,6 +143,7 @@
 % \usepackage{fancyhdr}
             % 借助fancyhdr宏包控制页眉和页脚
             %* "hdr"应该是来自"header"的缩写
+            %! ctexart文档类提前定义了页眉样式，因此即使不加载fancyhdr宏包，也会显示页眉内容
 
 \usepackage{shortvrb}
             % shortvrb宏包支持以一对符号代替"\verb"命令
@@ -186,6 +196,19 @@
 \usepackage[shortlabels,inline]{enumitem}
             % enumitem宏包允许在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制列表的相关参数，也可以通过"\setlist[]{}"命令来为各级列表设置统一的参数
             %rfr 可以参考enumitem宏包的官方手册，尽管这一手册非常难读：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf
+
+\usepackage{makeidx}
+            % 使用makeidx宏包来建立索引
+
+\usepackage{showidx}
+            %* showidx宏包用来将设置索引的命令内容显示在当前页面的边注位置，通常在撰写文档过程中使用，方便立刻定位到所设置的索引位置
+            %! 注意，这一宏包需要搭配hyperref宏包使用，否则编译会报错
+
+\usepackage{imakeidx} 
+            %* imakeidx宏包重定义了"\makeindex"命令，允许为其添加可选参数来设置索引样式（比如将索引加入目录、设置索引分栏等、为索引分组等）
+            %% 经检验，单独加载该宏包也可以建立索引
+
+
 
 \usepackage{hyperref}
             % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
@@ -1663,7 +1686,8 @@
         %rfr 关于natbib宏包的相关介绍，可以参看文件"Natbib.tex"
 
     \subsection{索引}
-        
+        %rfr 关于makeidx、showidx、imakeidx宏包的相关介绍，可以参看文件"Index.tex"
+
     \subsection{公式与图表编号样式}
     \subsection{附录}
     \subsection{自定义浮动体*}

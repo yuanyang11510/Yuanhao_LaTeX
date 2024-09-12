@@ -1,11 +1,11 @@
 \contentsline {section}{\numberline {1}Heading on level\xspace 1 (section)}{1}{}%
-\contentsline {subsection}{\numberline {1.1}Heading on level\xspace 2 (subsection)}{3}{}%
-\contentsline {subsubsection}{\numberline {1.1.1}Heading on level\xspace 3 (subsection)}{5}{}%
+\contentsline {subsection}{\numberline {1.1}Heading on level\xspace 2 (subsection)}{2}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}Heading on level\xspace 3 (subsection)}{4}{}%
 \contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{6}{}%
 \contentsline {section}{\numberline {2}Lists}{8}{}%
 \contentsline {subsection}{\numberline {2.1}Example for list\xspace (itemize)}{8}{}%
 \contentsline {subsubsection}{\numberline {2.1.1}Example for list\xspace (4*itemize)}{10}{}%
 \contentsline {subsection}{\numberline {2.2}Example for list\xspace (enumerate)}{13}{}%
 \contentsline {subsubsection}{\numberline {2.2.1}Example for list\xspace (4*enumerate)}{15}{}%
-\contentsline {subsection}{\numberline {2.3}Example for list\xspace (description)}{19}{}%
-\contentsline {subsubsection}{\numberline {2.3.1}Example for list\xspace (4*description)}{21}{}%
+\contentsline {subsection}{\numberline {2.3}Example for list\xspace (description)}{18}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Example for list\xspace (4*description)}{20}{}%

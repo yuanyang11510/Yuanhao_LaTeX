@@ -51,7 +51,8 @@
         %* 通过设置每页的行数来设置文本高度
     includeall,
         %* 是否包含页眉（head）、页脚（foot）、侧页边（marginalpar，来自"marginal paragraph"的缩写），其他可以选择的值有"includefoot"、"includeheadfoot"、"includemp"、"includeall"，以及将各个值中的"include"改为"ignore"之后的值
-        %! 吴康隆P60称“默认的选项为includehead，表示总文本区包含页眉”，这句话其实是有问题的，geometry的宏包中在"includehead"参数后面明确提到，这一项默认设置为false，因此默认情况下其实页眉、页脚和侧页边都没有被包含在页面内
+        %! 吴康隆P60称“默认的选项为includehead，表示总文本区包含页眉”，这句话其实是有问题的，geometry宏包的官方手册在"includehead"参数后面明确提到，这一项默认设置为false，因此默认情况下其实页眉、页脚和侧页边都没有被包含在页面内
+        %! 注意，这一参数只是控制页眉、页脚、侧页边是否被包括进页面区域，也就是未来的【现实打印区域】，而页眉、页脚和侧页边的内容样式则由fancyhdr宏包提供的"\pagestyle{}"命令进行设置（如plain、headings等），如果没有设置内容样式，则不管是否设置了此处的"includeall"参数，也不会在LaTeX的打印效果中显示页眉、页脚和侧页边的内容（当然，某些文档类，比如ctexart提前定义了页眉样式，因此即使不使用"\pagestyle{}"命令进行设置，也会现实页眉）
 %% totalbody&margin
 %% 下面这一参数可以同时设置页面和页边距，但是geometry将"total body"误作了"body"
     % divide = {3cm,15cm,}

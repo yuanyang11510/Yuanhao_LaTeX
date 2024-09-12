@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.6)  10 SEP 2024 11:19
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.9.6)  12 SEP 2024 14:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -239,22 +239,22 @@ Package: fancyhdr 2024/07/23 v4.3.1 Extensive control of page headers and footer
 ) (./Fancyhdr.aux)
 \openout1 = `Fancyhdr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
 
 Package fontspec Info: 
 (fontspec)             Adjusting the maths setup (use [no-math] to avoid
@@ -262,95 +262,74 @@ Package fontspec Info:
 
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 47.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 47.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 47.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 47.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 47.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 47.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 47.
-LaTeX Font Info:    Redeclaring math accent \check on input line 47.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 47.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 47.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 47.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 47.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 47.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 48.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 48.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 48.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 48.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 48.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 48.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 48.
+LaTeX Font Info:    Redeclaring math accent \check on input line 48.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 48.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 48.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 48.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 48.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 48.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 47.
+(Font)              `operators' in the math version `normal' on input line 48.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 47.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 48.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 47.
+(Font)              `operators' in the math version `bold' on input line 48.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 47.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 48.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 47.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 47.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 47.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 47.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 47.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 48.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 47.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 47.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 47.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 48.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 47.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12.045> on input line 48.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 48.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 48.
-
-
-LaTeX Warning: No \author given.
-
-(./Fancyhdr.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.53937> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 2.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 2.
-)
-\tf@toc=\write3
-\openout3 = `Fancyhdr.toc'.
-
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 48.
 
 
 [1
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [2]
-
-[3]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
+[3]
+
 [4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [5]
 
@@ -362,26 +341,26 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [7]
 
 [8]
+Underfull \vbox (badness 5667) has occurred while \output is active []
+
+
 
 [9]
-
-[10]
-Overfull \hbox (7.46777pt too wide) in paragraph at lines 50--50
+Overfull \hbox (7.46777pt too wide) in paragraph at lines 51--51
 []\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam
  []
 
 
-Underfull \vbox (badness 1803) has occurred while \output is active []
+
+[10]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [11]
-Overfull \hbox (7.46777pt too wide) in paragraph at lines 50--50
+Overfull \hbox (7.46777pt too wide) in paragraph at lines 51--51
 []\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -390,16 +369,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [13]
 
 [14]
-
-[15]
-Overfull \hbox (7.46777pt too wide) in paragraph at lines 50--50
+Overfull \hbox (7.46777pt too wide) in paragraph at lines 51--51
 []\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam
  []
 
 
 
+[15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
 [16]
-Overfull \hbox (7.46777pt too wide) in paragraph at lines 50--50
+Overfull \hbox (7.46777pt too wide) in paragraph at lines 51--51
 []\TU/lmr/m/n/10.53937 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam
  []
 
@@ -415,29 +397,27 @@ Underfull \vbox (badness 1803) has occurred while \output is active []
 [19]
 
 [20]
+Underfull \vbox (badness 1803) has occurred while \output is active []
+
+
 
 [21]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 
 [22]
 
-[23]
-
-[24] (./Fancyhdr.aux)
+[23] (./Fancyhdr.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2022/07/14>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 6663 strings out of 474235
- 195111 string characters out of 5745819
+ 6601 strings out of 474235
+ 193868 string characters out of 5745819
  1932612 words of memory out of 5000000
- 29280 multiletter control sequences out of 15000+600000
- 563587 words of font info for 78 fonts, out of 8000000 for 9000
+ 29241 multiletter control sequences out of 15000+600000
+ 559863 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,11n,111p,444b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,12n,111p,444b,648s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on Fancyhdr.pdf (24 pages).
+Output written on Fancyhdr.pdf (23 pages).
