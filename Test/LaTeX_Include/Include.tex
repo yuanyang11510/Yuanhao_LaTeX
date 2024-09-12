@@ -1,5 +1,6 @@
 ﻿\documentclass{article}
-\usepackage{import} % import宏包提供了"\import{full path}{file}"命令和"\subimport{relative path}{file}"命令，前者类似"\input{}"命令，后者可以嵌套使用：在文件一中使用"\import{full path}{file}"命令引用文件二，在文件二中使用"\subimport{relative path}{file}"命令引用文件三，这样就可以直接在文件一中使用"\import{full path}{file}"命令引用文件三
+\usepackage{import}
+%* import宏包提供了"\import{full path}{file}"命令和"\subimport{relative path}{file}"命令，前者类似"\input{}"命令，后者可以嵌套使用：在文件一中使用"\import{full path}{file}"命令引用文件二，在文件二中使用"\subimport{relative path}{file}"命令引用文件三，这样就可以直接在文件一中使用"\import{full path}{file}"命令引用文件三
 %rfr 可以参考import宏包的官方手册：https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/import/import.pdf，其中关于相对路径的说明："The 〈full-path〉 argument for \import can be a full absolute path or a relative path starting from the main working directory for the document."
 
 \input{../LaTeX_Include/Package/Package.tex}

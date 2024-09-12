@@ -1,10 +1,10 @@
 \listfiles
 %rfr 在tex文件顶部使用"\listfiles"命令，编译后生成的log文件将包含使用的宏包列表（及其版本号），可以参考：https://mp.weixin.qq.com/s/Xkfaxo_EPTGxam5DL_veOQ
 
-\documentclass{ctexart}
+\documentclass[twoside]{ctexart}
 
 % 封面
-\title{简单高效\LaTeX（ 吴康隆）学习笔记\thanks{This is a footnote in the title.}}
+\title{简单高效\LaTeX（吴康隆）学习笔记\thanks{This is a footnote in the title.}}
 \author{殷元昊\thanks{This is a footnote in the author.}}
 \date{}
             % "\title{title}和"\author{}"是必须定义的，"\date{text}"如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以输入"\date{}"
@@ -170,7 +170,6 @@
 
 \usepackage{import} 
             %* import宏包提供了"\import{full path}{file}"命令和"\subimport{relative path}{file}"命令，前者类似"\input{}"命令，后者可以嵌套使用：在文件一中使用"\import{full path}{file}"命令引用文件二，在文件二中使用"\subimport{relative path}{file}"命令引用文件三，这样就可以直接在文件一中使用"\import{full path}{file}"命令引用文件三
-            %rfr 可以参考import宏包的官方手册：https://ftp.kddilabs.jp/CTAN/macros/latex/contrib/import/import.pdf，其中关于相对路径的说明："The 〈full-path〉 argument for \import can be a full absolute path or a relative path starting from the main working directory for the document."
 
 \usepackage{boxedminipage}
             % boxedminipage宏包提供加框小页环境
@@ -208,8 +207,17 @@
             %* imakeidx宏包重定义了"\makeindex"命令，允许为其添加可选参数来设置索引样式（比如将索引加入目录、设置索引分栏等、为索引分组等）
             %% 经检验，单独加载该宏包也可以建立索引
 
+\usepackage[titletoc]{appendix}
+            % 使用appendix宏包设置附录样式
+            %* 这需要使用该宏包提供的appendices环境而不是LaTeX的原生命令"\appendix"
+            % 可选参数"titletoc"表示在目录中附录计数器（section/chapter）的添加一个名称，默认值为"Appendix"
+            %* 在ctexart文档类中，则显示为"附录A"
+    \renewcommand{\appendixname}{这是附录}
+            % 重定义"\appendixname"命令来修改目录当中附录计数器前面的名称
 
-
+\usepackage[switch,pagewise,modulo]{lineno}
+            % 使用lineno宏包可以生成行号
+            
 \usepackage{hyperref}
             % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
             % 加载hyperref宏包后，目录可以实现点击跳转
@@ -1680,7 +1688,7 @@
             
         \subsubsection{GIF动态图}
     \subsection{自定义编号列表}
-        % rfr 关于enumitem宏包的相关介绍，参见文件"Enumitem.tex"
+        %rfr 关于enumitem宏包的相关介绍，参见文件"Enumitem.tex"
             
     \subsection{\hologo{BibTeX}参考文献}
         %rfr 关于natbib宏包的相关介绍，可以参看文件"Natbib.tex"
@@ -1692,12 +1700,23 @@
     \subsection{附录}
     \subsection{自定义浮动体*}
     \subsection{编程代码与行号}
-
-
-
+        %rfr 关于lineno宏包的介绍，可以参看文件"Lineno.tex" 
 
 % 显示所有尾注
-            \theendnotes
+\theendnotes
+
+% \appendix
+% 从"\appendix"命令开始，计数器section的调用形式会从"\arabic{}"变成"\Alph{}"，其他计数器调用形式不变
+%* 以上是article文档类的情况，在book文档类当中，则是计数器chapter的调用形式从"Chapter \arabic{}"变为"Appendix \Alph{}"，其他计数器调用形式不变
+
+% "\appendix"是LaTeX的原生命令，下面是appendix宏包提供的appendices环境
+\begin{appendices}
+    \section{附录一}
+        \subsection{附录一（一）}
+            \subsubsection{附录一（一）.1}
+    \section{附录二}
+\end{appendices}
+
 
 \end{document}
 

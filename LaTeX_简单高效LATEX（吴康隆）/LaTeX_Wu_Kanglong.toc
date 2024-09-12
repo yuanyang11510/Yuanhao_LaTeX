@@ -110,4 +110,8 @@
 \contentsline {subsection}{\numberline {5.11}附录}{31}{subsection.5.11}%
 \contentsline {subsection}{\numberline {5.12}自定义浮动体*}{31}{subsection.5.12}%
 \contentsline {subsection}{\numberline {5.13}编程代码与行号}{31}{subsection.5.13}%
+\contentsline {section}{这是附录 \numberline {A}附录一}{32}{appendix.a.A}%
+\contentsline {subsection}{\numberline {A.1}附录一（一）}{32}{subsection.a.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}附录一（一）.1}{32}{subsubsection.a.A.1.1}%
+\contentsline {section}{这是附录 \numberline {B}附录二}{32}{appendix.a.B}%
 \contentsfinish 
