@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage[scheme=plain]{ctex}
+    % 设置"scheme=plain"（默认值为chinese），表示只提供中文支持功能，而不对文章版式进行任何修改（字号、行距、标题/章节样式等等）
+%rfr 可以参考ctex宏包的官方手册：https://sg.mirrors.cicku.me/ctan/language/chinese/ctex/ctex.pdf
+
+\ctexset{space=true,% 
+    % 设置"space=true"，表示不忽略汉字之间的空格，默认值auto模式下，汉字之间的空格会被忽略，汉字和字母之间的空格不会被忽略
+    %* 实际上，汉字和字母之间不管代码中是否空格，打印效果中始终存在空格，可以通过插入空盒子"\mbox{}"来消除空格
+today={old},% 
+    % 设置"today=old"，保持日期的旧有格式，不进行汉化
+}
+
+
+\begin{document}
+你 好 啊
+
+你 A
+
+你A
+
+
+\end{document}

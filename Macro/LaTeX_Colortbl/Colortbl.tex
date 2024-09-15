@@ -1,0 +1,129 @@
+﻿\documentclass{article}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{colortbl} % 彩色表格依靠colortbl宏包，它会调用array宏包和color宏包，可以在加载xcolor宏包时添加table选项来调用colortbl宏包
+
+\begin{document}
+
+% 设置某一列的背景颜色
+\begin{tabular}
+    {>{\color{-red}\columncolor{red}[.25\tabcolsep]}c|
+    >{\color{-yellow}\columncolor{yellow}[.5\tabcolsep]}c|
+    >{\color{-blue}\columncolor{blue}[.75\tabcolsep]}c}
+    \hline
+    A&B&C\\
+    D&E&F\\
+    \hline
+\end{tabular}
+    %* 将xcolor宏包提供的"\color[model]{color}"命令和colortbl宏包提供的"\columncolor[color model]{color}[left overhang][right overhang]"命令和array宏包提供的">{decl}"命令搭配使用，为同一列设置字体颜色和背景颜色
+    %# "\columncolor[color model]{color}[left overhang][right overhang]"命令中的最后两个可选参数分别控制背景颜色从单元格的左右边线到列的左右边线的延伸距离，如果只设置一个参数值，则默认为左右两边的延伸距离相同，如果不设置参数值，则默认为为"\tabcolsep"（array环境中为"\arraycolsep"），即将整个单元格都填充满
+    %rfr 关于colortbl宏包提供的各项命令的参数设置，可以参考该宏包的官方手册：https://ftp.jaist.ac.jp/pub/CTAN/macros/latex/contrib/colortbl/colortbl.pdf
+
+% 设置某一行的背景颜色
+\begin{tabular}{c|c|c}
+    \hline
+    \rowcolor{red}[.25\tabcolsep]
+    A&B&C\\
+    \rowcolor{yellow}[.5\tabcolsep]
+    D&E&F\\
+    \rowcolor{blue}[.75\tabcolsep]
+    G&H&I\\
+    \hline
+\end{tabular}
+    %* 使用colortbl宏包提供的"\rowcolor[color model]{color}[left overhang][right overhang]"为同一行设置背景颜色，参数设置和"\columncolor[color model]{color}[left overhang][right overhang]"相同，放置在相应行的前面即可
+    %# 当"\rowcolor"命令和"\columncolor"命令冲突时，执行"\rowcolor"命令
+    %! 书中称该命令是用来设置表头行的颜色的，这显然是错误的
+
+% 批量设置奇数行和偶数行的背景颜色
+%* 这一命令的一个很有用的应用场景是绘制白底和灰底交替填充的表格
+{\rowcolors[\hline]{3}{green}{cyan}
+\begin{tabular}{c|c|c}
+    A&B&C\\
+    D&E&F\\
+    G&H&I\\
+    J&K&L\\
+    M&N&O\\
+    \hiderowcolors
+    P&Q&R\\
+    S&T&U\\
+    \showrowcolors
+    V&W&X\\
+    \rowcolor{red}
+    % \hiderowcolors
+    Y&Z&\therownum\\
+\end{tabular}
+}
+    %* "\rowcolors[commands]{row}{color}{color}"的各项参数分别是：[commands]参数应用于每一行（包括表格的上边线和下边线），通常填写"\hline"命令；{row}参数设置从哪一行开始填充颜色；最后两个必选参数分别控制奇数行的背景颜色和偶数行的背景颜色。可以在指定行的前面使用"\rowcolor"命令来覆盖该行原本的背景颜色。如果在指定行的前面使用"\hiderowcolors"命令，表示从该行开始停止填充背景颜色，直到在之后的指定行的前面使用"\showrowcolors"命令，表示从该行开始恢复填充背景颜色。"rownum"是LaTeX中关于表格行数的计数器，可以通过"\therownum"命令来获取当前所在行的行数
+    %# 注意，"\rowcolors[commands]{row}{color}{color}"命令（以及其对应的加"*"符号版本）会影响到此后所有的表格，因此需要在该命令和其统辖的表格两边加上大括号，限制其统辖范围
+
+{\rowcolors*[\hline]{3}{green}{cyan}
+\begin{tabular}{c|c|c}
+    \showrowcolors
+    A&B&C\\
+    D&E&F\\
+    G&H&I\\
+    J&K&L\\
+    M&N&O\\
+    \hiderowcolors
+    P&Q&R\\
+    S&T&U\\
+    \showrowcolors
+    V&W&X\\
+    \showrowcolors
+    \rowcolor{red}
+    % \hiderowcolors
+    Y&Z&\therownum\\
+\end{tabular}
+}
+    %* 带"*"符号的"\rowcolors*{row}{color}{color}"命令和不带"*"符号的命令相比，唯一的区别是[command]参数不会应用于开始填充背景颜色的行数之前的行以及"\hiderowcolors"命令和"\showrowcolors"命令之间的行
+    %# 可以发现，哪些行填充背景颜色，哪些行不填充背景颜色，这些行比较容易定位，而【"\hline"应用于哪些行】则是一个模糊的说法，经过检验，这一问题的判断标准如下：（1）"\rowcolors*"命令设置了从指定行开始填充背景颜色，此前的所有行当中相邻行的共同边线以及表格的上边线都不会适用"\hline"命令，即使在某一行的前面使用"\showrowcolors"命令，也不会导致此后的行填充背景颜色，或者绘制任何新的水平表线，比如上述命令当中“A、B、C”所在行的上下两侧都不存在水平表线；（2）从开始填充背景颜色的行开始，如果在某一行的前面使用"\hiderowcolors"命令，则会导致此后直到"\showrowcolors"命令之前的行停止填充背景颜色，并且这些行当中相邻行（这要求至少存在两行不填充背景颜色）的共同水平边线都不会适用"\hline"命令，比如“P、Q、R”所在行和“S、T、U”所在行之间不存在水平表线；（3）如果在此前没有使用过"\hiderowcolors"的情况下，在某一行的前面使用"\showrowcolors"命令，或者在已经使用过一次"\showrowcolors"命令之后，在此后某一行的前面在此使用"\showrowcolors"命令，会导致这一行的上边线出现一条加粗的水平表线，比如上述命令当中“Y、Z、9”所在行的上侧存在一条加粗的水平表线（但是如果连用两条"\hiderowcolors"命令却不会导致特别的效果）
+    %todo 在上述两张表格当中，如果在最后一行的前面使用"\hiderowcolors"命令，会导致左边单元格的背景颜色变成黑色，暂时还不知道具体原因
+
+% 为单个单元格设置背景颜色
+\begin{tabular}{c|c|c}
+    \hline
+    \color{-red}\cellcolor{red}A&B&\color{-blue}\cellcolor{blue}C\\
+    \hline
+    D&\color{-yellow}\cellcolor{yellow}E&F\\
+    \hline
+\end{tabular}
+    %! "\cellcolor[color model]{color}"命令无法像"\columncolor[color model]{color}[left overhang][right overhang]"命令和"\rowcolor[color model]{color}[left overhang][right overhang]"命令那样设置背景颜色从单元格的左右边线到列的左右边线的延伸距离，这似乎是一个bug
+    %rfr 参考这一篇帖子的做法：https://tex.stackexchange.com/questions/267917/can-overhang-be-set-for-a-single-cell-in-a-table-in-colortbl，需要将"\multicolumn{n}{cols}{text}"命令、">{decl}"命令和"\columncolor[color model]{color}[left overhang][right overhang]"命令搭配使用，以解决这一问题，尽管在colortbl宏包的官方手册中关于"\cellcolor[color model]{color}"命令的一节里声称定义该命令就是为了取代这种做法
+\begin{tabular}{c|c|c}
+    \hline
+    \multicolumn{1}{>{\color{-red}\columncolor{red}[.25\tabcolsep]}c|}{A}&B&\multicolumn{1}{>{\color{-blue}\columncolor{blue}[.75\tabcolsep]}c}{C}\\
+    \hline
+    D&\multicolumn{1}{>{\color{-yellow}\columncolor{yellow}[.5\tabcolsep]}c|}{E}&F\\
+    \hline
+\end{tabular}
+
+% 在彩色表格中合并行
+{\rowcolors{2}{green}{cyan}
+\begin{tabular}{ll}
+    \hline
+    Col 1&Col 2\\
+    \hline
+    \multirow{2}{*}{Hey}&A\\
+    &B\\
+    \hline
+    C&D\\
+    \hline
+\end{tabular}
+}
+    % 如果按照平常的做法，会导致合并后的文本被背景颜色覆盖
+
+{\rowcolors{2}{green}{cyan}
+\begin{tabular}{ll}
+    \hline
+    Col 1&Col 2\\
+    \hline
+    &A\\
+    \multirow{-2}{*}{Hey}&B\\
+    \hline
+    C&D\\
+    \hline
+\end{tabular}
+}
+    % 正确的做法是先将"\multirow{number of rows}{width or *}{text}"命令放置到合并范围的最后一行，然后将合并的行数设置为对应的相反数
+
+\end{document}

@@ -1,0 +1,121 @@
+\documentclass[twoside]{article}
+\usepackage{blindtext}
+\usepackage[switch,pagewise,modulo]{lineno}
+    % 使用lineno宏包可以生成行号
+    %! 有的时候编译一次可能会出现奇怪的效果，可以尝试再次编译
+    % left表示行号在页面左侧（默认值），right表示行号在页面右侧，switch表示双边模式下行号在页面外侧，switch*表示双边模式下行号在页面内侧
+    %* 经检验，即使在单边模式下设置switch(*)参数，行号出现的位置不变
+    % running表示每页连续编号（默认值），pagewise表示每页行号从1计数 
+    % modulo表示每五行显示
+    %rfr 可以参考lineno宏包的官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/lineno/doc/ulineno.pdf
+
+\begin{document}
+
+%* 先举一个包括了两个宏包的基本命令"\linenumbers"和"\nolinenumbers"的例子
+    \linenumbers[10] % 行号开始编号，可以设置可选参数，表示起始行号
+    % 如果使用带"*"符号的版本，则表示从1开始编号，不可以带可选参数
+    % 如果使用"\runninglinenumbers(*)"命令，则表示跨页连续编号
+    %! 注意，如果宏包命令中设置了"pagewise"参数，"\linenumbers"命令的可选参数将失效，始终从1开始编号，但是"\runninglinenumbers"命令的可选参数仍然有效
+    \blindtext
+
+    \blindtext
+    \nolinenumbers % 行号结束编号
+
+\hrulefill
+
+%* "\linenumbers"命令和"\nolinenumbers"命令的管辖范围完全相同，都可以分为之前和之后两种情况
+
+%* （一）先看命令之后的情况，以"\linenumbers"命令举例，命令之后的文本至少需要是完整的一段（命令和文本之间是否空一行或者存在"\par"命令都不影响），命令的管辖范围以段为单位向后延伸，完整的一段的标准是在段落的最后空一行或者使用"\par"命令，上文当中，"\linenumbers"命令之后的第一段文本之后空了一行，因此属于管辖范围，会带上行号，但是第二段文本之后直接跟上了"\nolinenumbers"命令，因此不属于管辖范围，没有带上行号，如果在这一段文本和后面的"\nolinenumbers"命令之间空一行，或者插入一个"\par"命令，则也会带上行号
+%# 因此，在使用"\nolinenumbers"命令时，放置的位置需要特别注意，一定要记得在即将结束编号的文本之后空一行使用该命令，或者在文本之后插入一个"\par"命令之后不空行使用该命令，否则该命令前的那一段文本将不会带上行号。上述例子当中"\nolinenumbers"命令的放置位置只是供举例说明使用，实际情况当中一般是不会这样放置的
+
+%* 如果将这一环境当中的"\linenumbers"命令替换为"\nolinenumbers"命令，就是最常见的结束编号之后的状态，不再赘述
+
+%rfr 官方手册举了一个类似下面的这个例子，此处的"\begingroup"命令和"\endgroup"命令的效果相当于一对大括号，用来限制命令的管辖范围，可以发现，由于此时"\blindtext"命令之后直接跟上"\endgroup"命令，导致这段文本在该范围内没有形成完整的一段，因此不属于"\linenumbers"命令的管辖范围，不会带上行号
+    \begingroup
+        \linenumbers
+        \blindtext
+    \endgroup
+
+\hrulefill
+
+%* （二）再看命令之前的情况，此时又可以分为两种情况，
+
+%* （1）如果命令之后空一行或者存在一个"\par"命令，命令之前存在一段文本，并且该文本和该命令之间不存在空一行或者"\par"命令，则该命令也会作用于这一段文本，比如上文的第一个例子当中，"\nolinenumbers"命令之后空了一行，前面的两段文本之间空了一行，则从空行到该命令之间的第二段文本就属于该命令的管辖范围，不会带上行号
+
+%rfr 如果将这种环境当中的"\nolinenumbers"命令换成"\linenumbers"命令，则紧跟在"\linenumbers"命令前的完整的一段文本会带上行号，由于这种情况实在少见，因此，官方手册称这种编号方式是“费解”（esoteric）的，实际上，整个第（二）种情况都是令人费解的，因为几乎不会在实际情况当中这样使用命令，但是在这里讨论这一种情况，是为了在出现问题时能够理解问题所在，毕竟总会存在遗漏空行的时候
+    \blindtext
+    \linenumbers
+
+\dotfill
+
+%* （2）如果命令之后是（一）当中的情况，命令之前有一段文本，且该文本和该命令之间没有空行或者不存在"\par"命令，则该命令也会作用于这一段文本，这种情况也十分罕见，比如下面“构造”出的一个例子
+    \blindtext
+    \linenumbers
+    \blindtext
+
+    \nolinenumbers
+    %# 还可以发现，如果在"\(no)linenumbers"命令的前后不空行各加上一段文本，这两段文本会合为一段
+
+\hrulefill
+
+%* 鉴于上述使用"\(no)linenumbers"命令时可能存在的遗漏空行问题，官方手册建议使用(running)linenumbers(*)/(running)linenumbers[]环境，环境结束前在底层会自动添加一个"\par"命令，因此不需要考虑末尾空一行的问题
+    \begin{linenumbers}
+        \blindtext
+
+        \blindtext
+    \end{linenumbers}
+
+\hrulefill
+
+%* 但是，前文提到的第（二）种情况，在环境命令中也同样存在，请看下面的例子
+    \blindtext
+    \begin{linenumbers}
+        \blindtext
+
+        \blindtext
+    \end{linenumbers}
+    \blindtext
+    %# 和"\linenumbers"命令的情况一样，如果在linenumbers环境的前面不空行输入一段文本，这段文本会和环境中的第一段文本合为一段，并且同样带上编号。不过环境后面不空行输入的一段文本则会另起一段，并且也不会带上行号
+
+%todo 以上"\linenumbers"命令和linenumbers环境的种种表现都让人联想到文件"LaTeX_Wu_Kanglong.tex"当中提到的对齐环境（raggedleft/raggedright/centering）和"\fontsize{size}{skip}"命令的例子，在这些环境或者命令当中，也都需要在相应范围中的文本的末尾记得空一行或者添加一个"\par"命令来确保环境或者命令生效，尽管此处只有"\linenumbers"命令有这个问题，linenumbers环境不需要考虑这个问题，至于这是否反映出这些命令在底层存在共性，待研究
+
+\hrulefill
+
+% 使用"\resetlinenumber[N]"命令在某处把行号设置为某个数值，如果不带可选参数，则默认设置为1
+%! 注意这一命令名称的末尾是不带"-s"的
+    \begin{linenumbers}
+        \resetlinenumber[10]
+        \blindtext
+    \end{linenumbers}
+
+\dotfill
+
+    \begin{runninglinenumbers}
+        \resetlinenumber[10]
+        \blindtext
+    \end{runninglinenumbers}
+
+\dotfill
+
+    \resetlinenumber[10]
+    \runninglinenumbers
+    \blindtext
+    %# 可以发现，这一命令在pagesize模式下不起作用，除非将其和"\runninglinenumbers"命令或者runninglinenumbers环境搭配使用，相当于设置行数命令的可选参数
+
+\hrulefill
+
+% 使用"\modulolinenumbers[N]"命令设置每N行显示行号，如果不带可选参数，则默认为每5行显示行号
+    \modulolinenumbers[3]
+    \linenumbers
+    \blindtext
+
+\hrulefill
+
+
+
+
+
+
+
+
+\end{document}
