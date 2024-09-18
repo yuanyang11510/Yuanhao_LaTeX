@@ -1,0 +1,161 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage[space=false]{xeCJK}
+% \usepackage{xcolor} % fontspec宏包设置的字体颜色不依赖其他颜色宏包
+
+% 设置有衬线字族字体
+\setmainfont{Charis SIL}[IgnoreFontspecFile,%
+BoldFeatures={Color=blue},ItalicFeatures={Color=red},%
+]
+    % fontspec宏包每次加载指定字体（实际是字族，下同）时，首先会搜索相应的.fontspec文件，里面包含了该字体所有的相关信息（比如Extension、UprightFont、BoldFont、ItalicFont、SlantedFont、BoldItalicFont、BoldSlantedFont、Ligatures、AutoFakeBold、AutoFakeSlant等），可以通过"IgnoreFontspecFile"可选参数禁止这一步骤
+    % fontspec宏包的官方手册提到设置字族字体有三种方式：（1）设置字体名（比如Charis SIL）；（2）设置字体文件名（比如CharisSIL-Regular.ttf）；（3）通过.fontspec文件自定义字体，第一种方式系统会自动匹配相应字体的加粗、加斜等形式（如果存在的话），第二种方式则需要主动在可选参数当中明确写出相应字体的加粗、加斜等形式对应的字体文件名称（也可以不设置，但是就无法使用这些字形），因此比较麻烦，但是优点是可以明确知道不同条件下字体的具体参数，在精确性要求比较高的时候，这是一种更好的设置方式，第三种方式相比第二种方式则在精确性的基础上增加了更多的自由度，可以从零开始定制自己想要的字体字形，然后通过第一种方式设置即可
+
+% 设置无衬线字族字体
+\setsansfont{Latin Modern Sans} % 默认值
+
+% 设置等宽字族字体
+\setmonofont{inconsolata}
+% \setmonofont{Inconsolata} %! 编译报错
+% \setmonofont[IgnoreFontspecFile]{inconsolata} %! 编译报错
+    %rfr Inconsolata字体在texmf-dist文件夹中存在一个inconsolata.fontspec文件，因此如果直接使用"\setmainfont{inconsolata}"命令可以成功调用该字体，但是如果试图使用该字体名"Inconsolata"，或者在使用"consolata"的同时设置了"IngoreFontspecFile"参数，就会调用失败，可以参考：https://tex.stackexchange.com/questions/484876/tex-live-2018-not-finding-font-inconsolata
+    %! 但是在后续的其他命令当中，使用"inconsolata"仍然会报错，因此最好不要使用第一种设置方式，宁可使用第二种设置方式
+    %todo 暂时还不太清楚为什么无法直接使用字体名"Inconsolata"调用该字体
+
+%* 很少有字体同时拥有无衬线、有衬线以及等宽三种类型的字族，比如XeLaTeX编译器的默认字体Latin Modern Roman、Latin Modern Sans和Latin Modern Mono，即使从名字显然可以看出这是同一系列的三个字体，但是其名称也各不相同，因此如果需要额外设置字体，一般都会为这三种字族设置不同的字体
+%rfr 关于LaTeX当中的字体（字族）目录，可以参考：https://tug.org/FontCatalogue/
+
+% 设置CJK字体
+\setCJKmainfont{SimSun}
+\setCJKsansfont{SimHei}
+% \defaultCJKfontfeatures{Color=red} 
+    % 为导言区位于其后的字体全局设置“颜色为红色”的字体特征
+\setCJKmonofont{KaiTi}
+    % "\setmainfont{font}"命令不能设置CJK字体，要想设置CJK字体，需要使用xeCJK宏包提供的"\setCJKmainfont{font name}"命令
+
+\begin{document}
+
+% 三类字族字体
+西文字体是有衬线字族Charis SIL，CJK字体是宋体，西文字体加粗时是\textbf{蓝色的Charis SIL}，加斜时是\textit{红色的Charis SIL}
+
+{\sffamily 西文字体是无衬线字族Latin Modern Sans，CJK字体是黑体}
+
+{\ttfamily 西文字体是等宽字族Inconsolata，CJK字体是楷体}
+
+\hrulefill
+
+% 自定义字族命令
+西文字体是Charis SIL，但CJK字体是宋体
+
+\newfontfamily{\arial}{Arial}
+    % 如果待设置的命令已存在，编译会报错
+% \setfontfamily{\rmfamily}{Arial}
+    % 系统不会检查待设置的命令是否已经存在，因此该条命令有误将已存在命令覆盖的风险
+% \renewfontfamily{\rmfamily}{Arial}
+    % 如果待重定义的命令先前不存在，编译会报错
+\providefontfamily{\rmfamily}{Arial}
+    % 如果待设置的命令已存在，系统会忽略该条命令（比如此处）
+
+{\arial 西文字体是Arial，但CJK字体是宋体}
+
+{\rmfamily 西文字体不是Arial，而是Charis SIL}
+
+\hrulefill
+
+% 临时改变字体
+{\fontspec{Arial}[Color=blue,Opacity=.5,Scale=1.5]
+这是50\%蓝色、放大1.5倍的Arial}
+
+% CJK字体
+{\CJKfontspec{YouYuan}[Color=blue,Opacity=.5,Scale=1.5]
+这是50\%蓝色、放大1.5倍的幼圆}
+    % "\fontspec{font}"命令不能临时改变CJK字体，要想临时改变CJK字体，需要使用xeCJK宏包提供的"\CJKfontspec{font name}"命令
+
+\hrulefill
+
+% 设置字体特征
+\defaultfontfeatures[Times New Roman]{Color=blue} 
+    % 为此后的Times New Roman字体增加“颜色为蓝色”的字体特征
+    %* 可选参数当中也可以设置声明型命令，比如"\sffamily"、"\ttfamily"等，但是由于前文提到Inconsolata字体的问题，此处设置"\ttfamily"并不会生效
+\setmonofont{Times New Roman}
+    % 将这一新的Times New Roman字体应用于默认的等宽字族
+    %* 似乎没有找到能够在正文中途为某个无衬线字族/等宽字族CJK字体设置字体特征的命令，"\defaultCJKfontfeatures{}"命令在参数设置（没有设置字体的可选参数，导言区位于其后的字体都会被影响）、使用环境（只能用于导言区）上都和"\defaultfontfeatures[]{}"命令不同
+    %# 补救办法是使用"\CJKfontspec[]{}"命令，在可选参数当中设置字体特征，在必选参数当中设置等宽字族CJK字体，问题是如果在导言区没有主动设置等宽字族CJK字体，其默认值是未知的（暂时还没有找到什么途径可以得知文档的各个字族下的默认CJK字体）
+{\ttfamily\CJKfontspec[Color=red]{KaiTi} 西文字体是蓝色的Times New Roman，不是Charis SIL，中文字体是红色的楷体}
+    %* 汉字部分没有加粗加斜，是因为宋体的默认设置当中没有相应的加粗加斜字形
+
+\defaultfontfeatures[Times New Roman]{}
+    % 恢复Times New Roman字体默认的字体特征
+\setmonofont{Times New Roman}
+    % 将恢复字体特征后的Times New Roman字体应用于默认的等宽字族
+    %* 这一步必不可少
+{\ttfamily 西文字体又变回默认颜色的Times New Roman}
+
+{\addfontfeatures{Color=red}
+\addCJKfontfeatures{Color=red}
+    % 这两条命令会影响此后所有的(CJK)mainfont，而不会影响(CJK)sansfont和(CJK)monofont，
+西文字体是红色的Charis SIL，中文字体是红色的宋体
+}
+
+{\addfontfeatures{ItalicFeatures={Color=blue}}
+    % 可以指定某一字形下的字体特征
+西文字体不加斜时是默认颜色的Chrais SIL，\itshape 加斜时是蓝色的Charis SIL
+}
+
+\hrulefill
+
+% 伪粗体
+{\fontspec{Quattrocento-Regular.ttf}\bfseries ABCxyz}
+    %* 由于是通过字体文件名临时设置的字体，因此即使使用"\bfseries"命令，后面的字体也不会变成粗体
+{\fontspec{Quattrocento-Regular.ttf}[FakeBold=3]ABCxyz}
+    %* "FakeBold"让字体直接变成伪粗体
+
+{\fontspec{Quattrocento-Regular.ttf}[AutoFakeBold=3]ABCxyz}
+{\fontspec{Quattrocento-Regular.ttf}[AutoFakeBold=3]\bfseries ABCxyz}
+    %* "AutoFakeBold"让字体在"\bfseries"命令后才变成伪粗体
+
+{\fontspec{Quattrocento-Regular.ttf}[BoldFeatures={FakeBold=1.5}]\bfseries ABCxyz}
+    %todo 官方手册称"AutoFakeBold"和"BoldFeatures={FakeBold=1.5}"效果相同，但是经检验，后者设置的字体即使在"\bfseries"命令后也不变成伪粗体，暂时不知道原因，下同
+
+% CJK字体
+{\CJKfontspec{YouYuan}\bfseries 幼圆没有粗体}
+{\CJKfontspec{YouYuan}[FakeBold=3]这是幼圆的3倍伪粗体}
+    %* "\CJKfontspec[]{}"命令下，"FakeBold"不会影响到西文字体
+
+{\CJKfontspec{YouYuan}[AutoFakeBold=3]幼圆没有粗体}
+{\CJKfontspec{YouYuan}[AutoFakeBold=3]\bfseries 这是幼圆的3倍伪粗体}
+    %* "\CJKfontspec[]{}"命令下，"AutoFakeBold"搭配"\bfseries"命令只会将CJK字体变成伪斜体，西文字体会变成正常的粗体
+
+{\CJKfontspec{YouYuan}[BoldFeatures={FakeBold=3}]\bfseries 幼圆没有粗体}
+
+\dotfill
+
+% 伪斜体
+{\fontspec{Quattrocento-Regular.ttf}\slshape ABCxyz}
+{\fontspec{Quattrocento-Regular.ttf}[FakeSlant=.3]ABCxyz}
+
+{\fontspec{Quattrocento-Regular.ttf}[AutoFakeSlant=.3]ABCxyz}
+{\fontspec{Quattrocento-Regular.ttf}[AutoFakeSlant=.3]\slshape ABCxyz}
+{\fontspec{Quattrocento-Regular.ttf}[AutoFakeSlant=.3]\itshape ABCxyz}
+    %* 对于没有斜体定义而只有伪斜体定义的字体来说，"\slshape"命令和"\itshape"命令都可以显示伪斜体
+
+{\fontspec{Quattrocento-Regular.ttf}[SlantFeatures={FakeSlant=.3}]\slshape ABCxyz}
+
+% CJK字体
+{\CJKfontspec{YouYuan}\itshape 幼圆没有斜体}
+{\CJKfontspec{YouYuan}[FakeSlant=.3]这是幼圆的0.3倍伪斜体}
+
+{\CJKfontspec{YouYuan}[AutoFakeSlant=.3]这是幼圆的0.3倍伪斜体}
+{\CJKfontspec{YouYuan}[AutoFakeSlant=.3]\slshape 这是幼圆的0.3倍伪斜体}
+{\CJKfontspec{YouYuan}[AutoFakeSlant=.3]\itshape 这是幼圆的0.3倍伪斜体}
+
+{\CJKfontspec{YouYuan}[BoldFeatures={FakeSlant=.3}]\itshape 幼圆没有斜体}
+
+\hrulefill
+
+
+
+
+
+
+
+\end{document}

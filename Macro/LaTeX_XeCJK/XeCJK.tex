@@ -1,0 +1,54 @@
+\documentclass{article}
+
+%rfr 可以参考xeCJK宏包的官方手册：https://ftp.jaist.ac.jp/pub/CTAN/macros/xetex/latex/xecjk/xeCJK.pdf
+\usepackage{xeCJK}
+\usepackage{xeCJKfntef}
+\usepackage{xcolor}
+
+\xeCJKsetup{CJKspace=false} % 不忽略汉字之间的空格
+
+% 定义新的CJK字体命令
+\newCJKfontfamily[song]\SwitchToSong{SimSun} 
+    % 最简单的形式是"\newCJKfontfamily\song{SimSun}"
+    %* "\newCJKfontfamily[⟨family⟩]\⟨font-switch⟩[⟨font features⟩]{⟨font name⟩}"命令中的[family]参数是可以省略的，其默认值等同于"<font-switch>"
+    
+% 以上命令等价于
+% \setCJKfamilyfont{song}{SimSun} 
+    % 定义一个新的字族"song"，供后文使用
+% \newcommand{\SwitchToSong}{\CJKfamily{song}} 
+    % 定义一个新的字族切换命令"\songti"，会使用到之前定义的新字族
+    %* 也可以在正文中之间使用"\CJKfontspec[font features%keyvals]{font name}"命令临时切换，"\CJKfontspec"命令相比"\CJKfamily"命令可以在可选参数当中设置字体特征
+
+%* 以上命令最后定义出的都是一个声明型命令，还可以在此基础上定义相应的参数型命令
+\newCJKfontfamily{\youyuandecl}{YouYuan} % 定义声明型命令
+\newcommand{\youyuan}[1]{\youyuandecl#1} % 定义参数型命令
+
+% 全局设置CJK字体
+\setCJKmainfont{SimSun}
+    % 全局设置罗马字族的默认CJK字体，会影响"\rmfamily"命令和"\textrm{}"命令
+    % 如果要设置无衬线字族和等宽字族的默认CJK字体，可以使用"\setCJKsansfont{font name}"命令和"\setCJKmonofont{font name}"命令
+
+\begin{document}
+这是SimSun宋体
+
+\CJKfontspec{SimHei} % 临时切换字体
+这是临时切换为SimHei黑体
+
+\SwitchToSong
+这是导言区定义的切换宋体的声明型命令
+
+{\youyuandecl 这是导言区定义的切换幼圆的声明型命令}
+
+\youyuan{这是导言区定义的切换幼圆的参数型命令}
+
+% 表示高亮的两种方式
+\CJKsout*[thickness=2.5ex, format=\color{yellow}]{虚室生白，吉祥止止}
+    % 带"*"符号的版本表示不会跳过标点，下同，也可以通过在"\xeCJKsetup{options%keyvals}"命令当中设置"skip=false"来为所有类型的下划线进行统一设置
+    %* 该命令实质上是将下划线的高度加大
+
+\CJKunderanyline*{0.5ex}{\color{yellow}\rule{.2em}{2.5ex}}{虚室生白，吉祥止止}
+    % 该命令需要同时加载xeCJKfntef宏包和xcolor宏包
+    %! 虽然官方手册称xeCJKfntef宏包是xeCJK宏包的子宏包，但是此处如果不加载xeCJKfntef宏包，编译会报错
+    %todo 该命令实质上是将下划线看成是由含有某一内容的箱子重复排列而成，暂时还没有弄清楚排列的机制，比如上述命令当中，标尺箱子的宽度是影响下划线宽度的关键参数，经检验，发现该参数为.2em时，效果和第一条命令相同，参数为其他值时，效果则有或多或少的不同
+
+\end{document}

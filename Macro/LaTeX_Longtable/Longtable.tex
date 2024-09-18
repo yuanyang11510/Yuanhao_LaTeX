@@ -1,4 +1,5 @@
 ﻿\documentclass{article}
+% \usepackage{colortbl}
 \usepackage{longtable} % longtable宏包用来排版长表格
 %rfr 下面尝试着对着longtable宏包官方手册中给出的第一个长表格的例子制作一个相同的表格，可以参考：https://sg.mirrors.cicku.me/ctan/macros/latex/required/tools/longtable.pdf
 
@@ -15,8 +16,8 @@
     \caption[An optional table caption (used in the list of tables)]{A long table}\\
     %! longtable环境当中的"\caption{}"命令最后需要添加"\\"命令，否则编译会报错
     \hline\hline
-    %* 在longtable环境中，连续两个"\hline"命令会绘制更粗的水平表线，而不是像tabular环境中绘制两条平行的水平表线
-    %# 有的时候，如果表头/表尾当中设置的水平表线碰巧和表体当中设置的水平表线重叠，也会导致叠加后的水平表线变粗
+    %! 如果同时加载colortbl宏包和longtable宏包，会导致在longtable环境中，连续两个"\hline"命令绘制的两根水平表线之间的距离会大幅减小（消失？），看起来就像是绘制了一根更粗的水平表线，而不是像tabular环境中绘制两条平行的水平表线
+    %* 有的时候，如果表头/表尾当中设置的水平表线碰巧和表体当中设置的水平表线重叠，这种情况下，即使不加载colortbl宏包，也会导致叠加后的水平表线变粗
     \multicolumn{2}{@{*}c@{*}}{This part appears at the top of the table}\\
     FIRST&SECOND\\
     \hline\hline

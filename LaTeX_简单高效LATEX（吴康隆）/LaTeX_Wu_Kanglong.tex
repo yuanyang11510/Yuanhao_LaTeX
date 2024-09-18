@@ -63,6 +63,7 @@
 
 % \usepackage{nameref} 
             % nameref宏包不满足于只引用编号，还提供了引用对象的标题内容的功能
+            %* 书中提到"\nameref{label}"命令由nameref宏包提供，但是经检验，即使不加载nameref宏包，这一命令依然生效，说明这一命令应该已经被LaTeX吸收，或者也许本来就是LaTeX的原生命令
 
 \usepackage{lastpage} 
             % lastpage宏包提供的标签"LastPage"可以保证打印出整个文档最后一页的页数
@@ -75,7 +76,7 @@
             % 用于设置尾注的宏包
 
 \usepackage{csquotes} 
-            %* 管理在正文中引用文本的宏包
+            %* 管理在正文中援引文本的宏包
 
 \usepackage[numbers,sort&compress,super,square]{natbib} 
             % 使用natbib宏包可以定制参考文献标号在文中的显示方式
@@ -579,7 +580,7 @@
             \end{itemize}
         
         % 设置字系
-            默认字系：\seriesdefault % "m"应该就是"MiddleSeries"的缩写
+            默认字系：\seriesdefault % "m"代表"Medium weight and width"的缩写
             \begin{itemize}
                 \item BoldSeries v.s. \textbf{BoldSeries} % 粗体字系（BoldSeries）
                 \item MiddleSeries v.s. \textmd{MiddleSeries} % 中粗体字系（MiddleSeries）
@@ -588,7 +589,7 @@
 
         % 设置字形
             默认字形：\shapedefault 
-            %todo 暂时还不知道打印出来的"n"代表什么
+            %* "n"代表"Normal"，即"upright"或者"roman"
             \begin{itemize}
                 \item Upright v.s. \textup{Upright} % 竖直字形
                 %* 区别不明显
@@ -779,8 +780,7 @@
         % LaTeX原生命令提供的索引形式
             这是在\ref{subsubsec:3.4.6} 一节设置的标签，这一节的名称是\nameref{subsubsec:3.4.6}，这一标签所在的页码是\pageref{subsubsec:3.4.6}
             %* 注意，如果不使用"\section{title}"命令而使用多一个"*"号的"\section*{title}"命令，则计时器功能将关闭，同时也会影响到"\label{}"命令和"\ref{}"命令，无法索引出相应的大纲编号
-            %* 书中提到"\nameref{label}"命令由nameref宏包提供，但是经检验，即使不加载nameref宏包，这一命令依然生效，说明这一命令应该已经被LaTeX吸收，或者也许本来就是LaTeX的原生命令
-            %rfr 但是这种索引方式仍然需要依靠在相应位置设置标签来完成，如果想要直接索引出相应章节的名称，可以参考：https://tex.stackexchange.com/questions/75168/get-current-section-name-without-label
+            %rfr "\nameref{label}"这种索引方式仍然需要依靠在相应位置设置标签来完成，如果想要直接索引出相应章节的名称，可以参考：https://tex.stackexchange.com/questions/75168/get-current-section-name-without-label
             
         % amsmath宏包提供的索引形式
             这是在\eqref{subsubsec:3.4.6}一节设置的标签

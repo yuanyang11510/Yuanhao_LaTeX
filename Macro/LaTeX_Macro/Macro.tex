@@ -1,0 +1,147 @@
+\documentclass{article}
+% \usepackage[showframe]{geometry}
+\usepackage{ctex}
+\usepackage{hologo}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{colortbl}
+
+% 设置表格行数计数器
+\newcounter{magicrownumber}
+\newcommand{\rownumber}{\stepcounter{magicrownumber}\themagicrownumber}
+%rfr 关于表格行数计数器的设置，可以参考：https://tex.stackexchange.com/questions/21243/automatic-table-row-numbers
+% 另外，colortbl宏包提供的声明型命令"\rowcolors(*)[⟨commands⟩]{⟨row⟩}{⟨odd-row color⟩}{⟨even-row color⟩}"也会创设一个"rownum"计数器
+%! 经检验，将该命令放在tabular环境或者longtable环境必选参数的"@{}"命令中，需要同时加载array宏包，否则编译会报错
+
+% 这个文件中存放至今所有接触到的宏包及其注意事项
+%todo 后续需要使用hyperref宏包提供的"\href"命令为每个宏包添加官方手册链接
+\setlength{\LTleft}{-5em}
+\begin{document}
+
+
+\begin{longtable}{!{\makebox[3em][c]{\rownumber}}|l|l|l|l}
+    \caption*{宏包列表}\vspace{-2ex}\\
+    \toprule
+    \multicolumn{1}{!{\makebox[3em][c]{序号}}|c|}{类别}&%
+    \multicolumn{1}{c|}{宏包}&%
+    \multicolumn{1}{c|}{功能}&%
+    \multicolumn{1}{c}{备注}\\
+    \endfirsthead
+
+    \caption*{续表：宏包列表}\vspace{-2ex}\\
+    \hline
+    \multicolumn{1}{!{\makebox[3em][c]{序号}}|l|}{}&%
+    \multicolumn{1}{c|}{宏包}&%
+    \multicolumn{1}{c|}{功能}&%
+    \multicolumn{1}{c}{备注}\\
+    \hline
+    \endhead
+
+    \hline
+    \multicolumn{4}{r}{\small{（见下页）}}
+    \endfoot
+
+    \bottomrule
+    \multicolumn{4}{r}{\small{（完）}}
+    \endlastfoot
+
+    \hline
+    \multirow{2}{*}{测试文字}&lipsum&&\\
+    &blindtext&&\\
+    \hline
+    \multirow{1}{*}{语言}&\cellcolor{gray!30}\textbf{polyglossia}&&需要搭配\hologo{XeLaTeX}编译器使用\\
+    \hline
+    \multirow{2}{*}{图标}&hologo&&\\
+    &pifont&&\\
+    \hline
+    \multirow{3}{*}{字体}&fontspec&&\\
+    &ctex&&\\
+    &xeCJK&&\\
+    \hline
+    \multirow{2}{*}{颜色}&xcolor&&\\
+    &colortbl&&\\
+    \hline
+    \multirow{3}{*}{缩进}&indentfirst&&\\
+    &parskip&&\\
+    &changepage&&\\
+    \hline
+    \multirow{1}{*}{页面设置}&geometry&&\\
+    \hline
+    \multirow{1}{*}{页眉页脚}&fancyhdr&&\\
+    \hline
+    \multirow{3}{*}{章节目录}&titlesec&&\\
+    &titletoc&&\\
+    &tocbibind&&\\
+    \hline
+    \multirow{3}{*}{图片}&graphicx&&\\
+    % &caption&&\\
+    &subcaption&&\\
+    &wrapfig&&\\
+    \hline
+    \multirow{11}{*}{表格}&multirow&&\\
+    &array&&\\
+    &booktabs&&\\
+    &longtable&&\\
+    &\cellcolor{gray!30}\textbf{rotating}&旋转表格&需要放在tablefootnote宏包的前面\\
+    &\cellcolor{gray!30}\textbf{tabularray}&&\\
+    &tabularx&&\\
+    &makecell&&\\
+    &\cellcolor{gray!30}\textbf{tablefootnote}&&\\
+    &diagbox&&\\
+    &dcolumn&&\\
+    \hline
+    \multirow{1}{*}{列表}&enumitem&&\\
+    \hline
+    \multirow{1}{*}{抄录}&shortvrb&&\\
+    \hline
+    \multirow{3}{*}{引用}&hyperref&&\\
+    &amsmath&&\\
+    &lastpage&&\\
+    % &nameref&&\\
+    \hline
+    \multirow{2}{*}{注释}&footmisc&&\\
+    &endnotes&&\\
+    \hline
+    \multirow{2}{*}{分栏}&multicol&&\\
+    % &\textbf{cuted}&&\\
+    % &\textbf{dblfloatfix}&&\\
+    &\textbf{stfloats}&&\\
+    % &\textbf{nidanfloat}&&\\
+    \hline
+    \multirow{2}{*}{参考文献}&natbib&&\\
+    &\cellcolor{gray!30}\textbf{biblatex}&&\{biblatex\}要放在最后\\
+    \hline
+    \multirow{3}{*}{索引}&makeidx&&\\
+    &showidx&&\\
+    &imakeidx&&\\
+    \hline
+    \multirow{1}{*}{附录}&appendix&&\\
+    \hline
+    \multirow{1}{*}{文档拆分}&import&&\\
+    \hline
+    \multirow{1}{*}{行号}&lineno&&\\
+    \hline
+    \multirow{5}{*}{其他}&letterine&&\\
+    &ulem&&\\
+    &boxedminipage&&\\
+    &\textbf{csquotes}&&\\
+    &\textbf{lua-visual-debug}&&\\
+    \hline
+    &&&\\
+    &&&\\
+    &&&\\
+    &&&\\
+    &&&\\
+\end{longtable}
+
+
+
+
+
+
+
+
+\end{document}
