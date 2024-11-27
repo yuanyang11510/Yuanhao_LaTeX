@@ -1,0 +1,117 @@
+%author : Jiahao Shi 2024/5/10
+\documentclass[hyperref={colorlinks=true, linkcolor=blue, anchorcolor=blue, citecolor=blue, urlcolor=red}]{beamer}
+\usepackage[utf8]{inputenc}
+
+\usetheme{Madrid}
+\usecolortheme{dolphin}
+
+% custom colors 自定义颜色，可根据主题调整
+\definecolor{redforsnnu}{RGB}{155,35,28}
+\definecolor{blueforsnnu}{RGB}{0, 47, 167}
+\definecolor{greenforsnnu}{RGB}{14,133,66}
+\definecolor{darkblue}{RGB}{0,49,82}
+\definecolor{middleblue}{RGB}{0, 102, 204}
+\definecolor{lightblue}{RGB}{0, 128, 255}
+
+\setbeamercolor*{palette primary}{bg=lightblue}
+\setbeamercolor*{palette secondary}{bg=middleblue, fg = white}
+\setbeamercolor*{palette tertiary}{bg=blueforsnnu, fg = white}
+\setbeamercolor*{titlelike}{fg=blueforsnnu}
+\setbeamercolor*{title}{bg=blueforsnnu, fg = white}
+\setbeamercolor*{item}{fg=blueforsnnu}
+\setbeamercolor*{caption name}{fg=blueforsnnu}
+\usefonttheme{professionalfonts}
+
+\usepackage{tikz}
+\titlegraphic {
+\begin{tikzpicture}[overlay,remember picture]
+\node[yshift=4cm] at (current page.center){
+    \includegraphics[scale=.8]{inalco-logo-color.pdf}
+};%# 第一个logo
+\node[xshift=5cm,yshift=-3cm] at (current page.center){
+    \includegraphics[scale=.5]{inalco-logo-2.jpg}
+};%# 第二个logo
+\end{tikzpicture}
+}
+%------------------------------------------------------------
+%\titlegraphic{\includegraphics[height=2cm]{school_logo1.png}}%%根据需求修改Logo
+
+\setbeamerfont{title}{size=\large}
+\setbeamerfont{subtitle}{size=\small}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{date}{size=\small}
+\setbeamerfont{institute}{size=\small}
+
+\title[]{\textbf{}}%主标题
+%\subtitle{}%%副标题
+\author[]{YIN Yuanhao (CNRS-CRLAO-INALCO)}%%作者
+% \institute[]{}%%学校，单位
+\date[\textcolor{white}{\today} ]
+{28 novembre 2024}%%时间
+
+%------------------------------------------------------------
+%This block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+% \AtBeginSection[]{
+%   \begin{frame}
+%   \vfill
+%   \transfade
+%   \centering
+%   \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
+%     \usebeamerfont{title}\insertsectionhead\par%
+%   \end{beamercolorbox}
+%   \vfill
+%   \end{frame}
+% }
+%---------------------------------------------------------------
+
+% 自己的包
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{polyglossia}%需要搭配XeLaTex编译器使用
+\setmainlanguage{french}
+\usepackage{fontspec}
+% \setmainfont{Charis SIL}
+\setsansfont{Charis SIL}%beamer默认使用无衬线体,而\setmainfont会输出有衬线体,因此不能在beamer中使用\setmainfont命令
+\usepackage{xeCJK}
+\newcommand{\zh}[1]{{\CJKfontspec{SimSun}#1}}
+\usepackage[backend=biber, style=langsci-unified]{biblatex}%{biblatex}要放在最后
+\addbibresource{AllDoc.bib}
+
+% ------------------------------------------------------------------------------------------------------------------------------导言结束，正文开始
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+% \begin{frame}
+% \frametitle{Table des matières}
+% \tableofcontents
+% \end{frame}
+%------------------------------------------------------------
+
+\section{\textbf{I}}
+\begin{frame}{I}
+    
+\end{frame}
+
+\section{\textbf{II}}
+\begin{frame}{II}
+
+\end{frame}
+
+\section*{\textbf{Bibliographie}}
+\begin{frame}[allowframebreaks]{Bibliographie}
+    \printbibliography
+\end{frame}
+
+\end{document}
