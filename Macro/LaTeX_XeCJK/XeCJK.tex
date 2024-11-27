@@ -21,7 +21,8 @@
 
 %* 以上命令最后定义出的都是一个声明型命令，还可以在此基础上定义相应的参数型命令
 \newCJKfontfamily{\youyuandecl}{YouYuan} % 定义声明型命令
-\newcommand{\youyuan}[1]{\youyuandecl#1} % 定义参数型命令
+\newcommand{\youyuan}[1]{{\youyuandecl#1}} % 定义参数型命令
+%! 注意定义参数型命令时，如果使用的内部命令是声明型命令，则需要在声明型命令两边套上一对大括号，才能使最终新定义的命令成为参数型命令
 
 % 全局设置CJK字体
 \setCJKmainfont{SimSun}
@@ -34,8 +35,18 @@
 \CJKfontspec{SimHei} % 临时切换字体
 这是临时切换为SimHei黑体
 
+还是黑体吗
+%! 注意，这是声明型命令，可以修改为参数型命令，注意上文提到的需要在内部的声明型命令两边套上一对大括号
+\newcommand{\heiti}[1]{{\CJKfontspec{SimHei}#1}}
+
 \SwitchToSong
 这是导言区定义的切换宋体的声明型命令
+
+这是SimSun宋体
+
+\heiti{这是上文定义的参数型命令，将参数字体切换为黑体}
+
+这又是SimSun宋体
 
 {\youyuandecl 这是导言区定义的切换幼圆的声明型命令}
 
