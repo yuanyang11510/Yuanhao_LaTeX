@@ -1,40 +1,41 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (MiKTeX 24.4) (preloaded format=xelatex 2024.7.26)  30 AUG 2024 17:33
+This is XeTeX, Version 3.141592653-2.6-0.999994 (MiKTeX 22.12) (preloaded format=xelatex 2023.1.25)  28 NOV 2024 00:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
 **./Table.tex
 (Table.tex
-LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2024-05-27>
+LaTeX2e <2022-11-01> patch level 1
+L3 programming layer <2023-01-16>
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
-Document Class: article 2024/02/08 v1.4n Standard LaTeX document class
+Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
-File: size10.clo 2024/02/08 v1.4n Standard LaTeX file (size option)
+File: size10.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count190
-\c@section=\count191
-\c@subsection=\count192
-\c@subsubsection=\count193
-\c@paragraph=\count194
-\c@subparagraph=\count195
-\c@figure=\count196
-\c@table=\count197
-\abovecaptionskip=\skip49
-\belowcaptionskip=\skip50
-\bibindent=\dimen141
+\c@part=\count181
+\c@section=\count182
+\c@subsection=\count183
+\c@subsubsection=\count184
+\c@paragraph=\count185
+\c@subparagraph=\count186
+\c@figure=\count187
+\c@table=\count188
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/ctex\ctex.sty
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2024-05-27 L3 programming layer (loader) 
+Package: expl3 2023-01-16 L3 programming layer (loader) 
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-xet
 ex.def
-File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
-\g__graphics_track_int=\count198
-\l__pdf_internal_box=\box52
-\g__pdf_backend_annotation_int=\count199
-\g__pdf_backend_link_int=\count266
+File: l3backend-xetex.def 2023-01-16 L3 backend support: XeTeX
+\g__graphics_track_int=\count189
+\l__pdf_internal_box=\box51
+\g__pdf_backend_object_int=\count190
+\g__pdf_backend_annotation_int=\count191
+\g__pdf_backend_link_int=\count192
 ))
 Package: ctex 2022/07/14 v2.5.10 Chinese adapter in LaTeX (CTEX)
 
@@ -51,11 +52,11 @@ Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
-\l__ctex_tmp_int=\count267
-\l__ctex_tmp_box=\box53
-\l__ctex_tmp_dim=\dimen142
-\g__ctex_section_depth_int=\count268
-\g__ctex_font_size_int=\count269
+\l__ctex_tmp_int=\count193
+\l__ctex_tmp_box=\box52
+\l__ctex_tmp_dim=\dimen141
+\g__ctex_section_depth_int=\count194
+\g__ctex_font_size_int=\count195
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/ctex/config\ctexopts.cf
 g
@@ -70,15 +71,19 @@ Package: xeCJK 2022/08/05 v3.9.1 Typesetting CJK scripts with XeLaTeX
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xtemplate\xt
 emplate.sty
-Package: xtemplate 2024-05-08 L3 Experimental prototype document functions
+Package: xtemplate 2023-01-16 L3 Experimental prototype document functions
+\l__xtemplate_tmp_dim=\dimen142
+\l__xtemplate_tmp_int=\count196
+\l__xtemplate_tmp_muskip=\muskip16
+\l__xtemplate_tmp_skip=\skip50
 )
-\l__xeCJK_tmp_int=\count270
-\l__xeCJK_tmp_box=\box54
+\l__xeCJK_tmp_int=\count197
+\l__xeCJK_tmp_box=\box53
 \l__xeCJK_tmp_dim=\dimen143
 \l__xeCJK_tmp_skip=\skip51
-\g__xeCJK_space_factor_int=\count271
-\l__xeCJK_begin_int=\count272
-\l__xeCJK_end_int=\count273
+\g__xeCJK_space_factor_int=\count198
+\l__xeCJK_begin_int=\count199
+\l__xeCJK_end_int=\count266
 \c__xeCJK_CJK_class_int=\XeTeXcharclass1
 \c__xeCJK_FullLeft_class_int=\XeTeXcharclass2
 \c__xeCJK_FullRight_class_int=\XeTeXcharclass3
@@ -88,8 +93,8 @@ Package: xtemplate 2024-05-08 L3 Experimental prototype document functions
 \c__xeCJK_CM_class_int=\XeTeXcharclass7
 \c__xeCJK_HangulJamo_class_int=\XeTeXcharclass8
 \l__xeCJK_last_skip=\skip52
-\c__xeCJK_none_node=\count274
-\g__xeCJK_node_int=\count275
+\c__xeCJK_none_node=\count267
+\g__xeCJK_node_int=\count268
 \c__xeCJK_CJK_node_dim=\dimen144
 \c__xeCJK_CJK-space_node_dim=\dimen145
 \c__xeCJK_default_node_dim=\dimen146
@@ -99,14 +104,14 @@ Package: xtemplate 2024-05-08 L3 Experimental prototype document functions
 \l__xeCJK_ccglue_skip=\skip54
 \l__xeCJK_ecglue_skip=\skip55
 \l__xeCJK_punct_kern_skip=\skip56
-\l__xeCJK_indent_box=\box55
-\l__xeCJK_last_penalty_int=\count276
+\l__xeCJK_indent_box=\box54
+\l__xeCJK_last_penalty_int=\count269
 \l__xeCJK_last_bound_dim=\dimen149
 \l__xeCJK_last_kern_dim=\dimen150
-\l__xeCJK_widow_penalty_int=\count277
+\l__xeCJK_widow_penalty_int=\count270
 
-LaTeX template Info: Declaring template type 'xeCJK/punctuation' taking 0
-(template)           argument(s) on line 2396.
+Package xtemplate Info: Declaring object type 'xeCJK/punctuation' taking 0
+(xtemplate)             argument(s) on line 2396.
 
 \l__xeCJK_fixed_punct_width_dim=\dimen151
 \l__xeCJK_mixed_punct_width_dim=\dimen152
@@ -127,34 +132,34 @@ LaTeX template Info: Declaring template type 'xeCJK/punctuation' taking 0
 \l__xeCJK_margin_dim=\dimen167
 \l__xeCJK_minimum_bound_dim=\dimen168
 \l__xeCJK_kerning_margin_dim=\dimen169
-\g__xeCJK_family_int=\count278
-\l__xeCJK_fam_int=\count279
-\g__xeCJK_fam_allocation_int=\count280
-\l__xeCJK_verb_case_int=\count281
+\g__xeCJK_family_int=\count271
+\l__xeCJK_fam_int=\count272
+\g__xeCJK_fam_allocation_int=\count273
+\l__xeCJK_verb_case_int=\count274
 \l__xeCJK_verb_exspace_skip=\skip57
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec.sty
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/xparse\xpars
 e.sty
-Package: xparse 2024-05-08 L3 Experimental document command parser
+Package: xparse 2023-01-16 L3 Experimental document command parser
 )
-Package: fontspec 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTeX
+Package: fontspec 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTeX
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/fontspec\fontspec-xetex
 .sty
-Package: fontspec-xetex 2024/05/11 v2.9e Font selection for XeLaTeX and LuaLaTe
+Package: fontspec-xetex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count282
-\l__fontspec_language_int=\count283
-\l__fontspec_strnum_int=\count284
-\l__fontspec_tmp_int=\count285
-\l__fontspec_tmpa_int=\count286
-\l__fontspec_tmpb_int=\count287
-\l__fontspec_tmpc_int=\count288
-\l__fontspec_em_int=\count289
-\l__fontspec_emdef_int=\count290
-\l__fontspec_strong_int=\count291
-\l__fontspec_strongdef_int=\count292
+\l__fontspec_script_int=\count275
+\l__fontspec_language_int=\count276
+\l__fontspec_strnum_int=\count277
+\l__fontspec_tmp_int=\count278
+\l__fontspec_tmpa_int=\count279
+\l__fontspec_tmpb_int=\count280
+\l__fontspec_tmpc_int=\count281
+\l__fontspec_em_int=\count282
+\l__fontspec_emdef_int=\count283
+\l__fontspec_strong_int=\count284
+\l__fontspec_strongdef_int=\count285
 \l__fontspec_tmpa_dim=\dimen170
 \l__fontspec_tmpb_dim=\dimen171
 \l__fontspec_tmpc_dim=\dimen172
@@ -172,8 +177,8 @@ File: xeCJK.cfg 2022/08/05 v3.9.1 Configuration file for xeCJK package
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/zhnumber\zhnumber.sty
 Package: zhnumber 2022/07/14 v3.0 Typesetting numbers with Chinese glyphs
-\l__zhnum_scale_int=\count293
-\l__zhnum_tmp_int=\count294
+\l__zhnum_scale_int=\count286
+\l__zhnum_tmp_int=\count287
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/zhnumber\zhnumber-utf8.
 cfg
@@ -189,7 +194,7 @@ tf8.cfg
 File: ctex-name-utf8.cfg 2022/07/14 v2.5.10 Caption with encoding UTF-8 (CTEX)
 ))
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
-Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/ctex\ctex-c5size.clo
 File: ctex-c5size.clo 2022/07/14 v2.5.10 c5size option (CTEX)
@@ -199,23 +204,19 @@ et-windows.def
 File: ctex-fontset-windows.def 2022/07/14 v2.5.10 Windows fonts definition (CTE
 X)
 
-Package fontspec Info: 
-(fontspec)             Could not resolve font "KaiTi/B" (it probably doesn't
+Package fontspec Info: Could not resolve font "KaiTi/B" (it probably doesn't
 (fontspec)             exist).
 
 
-Package fontspec Info: 
-(fontspec)             Could not resolve font "SimHei/I" (it probably doesn't
+Package fontspec Info: Could not resolve font "SimHei/I" (it probably doesn't
 (fontspec)             exist).
 
 
-Package fontspec Info: 
-(fontspec)             Could not resolve font "SimSun/BI" (it probably doesn't
+Package fontspec Info: Could not resolve font "SimSun/BI" (it probably doesn't
 (fontspec)             exist).
 
 
-Package fontspec Info: 
-(fontspec)             Font family 'SimSun(0)' created for font 'SimSun' with
+Package fontspec Info: Font family 'SimSun(0)' created for font 'SimSun' with
 (fontspec)             options
 (fontspec)             [Script={CJK},BoldFont={SimHei},ItalicFont={KaiTi}].
 (fontspec)              
@@ -224,58 +225,46 @@ Package fontspec Info:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"SimSun/OT:script=hani;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"SimHei/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
 (fontspec)             <->"KaiTi/OT:script=hani;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
 
 ))
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/ctex/config\ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
-Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: xetex.def on input line 274.
+Package xcolor Info: Driver file: xetex.def on input line 227.
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\xetex.def
 File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 ) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.lt
 x)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
-Package xcolor Info: Model `RGB' extended on input line 1366.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2024-07-10 v7.01j Hypertext links for LaTeX
-
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
-keys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
-ty
-Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
 .sty
@@ -289,12 +278,33 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode not found.
-))
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro
+.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
-Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+Package: nameref 2022-05-17 v2.50 Cross-referencing by name of section
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
@@ -306,45 +316,39 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count295
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count296
-)
-(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
-ty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
-)
+\c@section@level=\count288
 )
 \@linkdim=\dimen175
-\Hy@linkcounter=\count297
-\Hy@pagecounter=\count298
+\Hy@linkcounter=\count289
+\Hy@pagecounter=\count290
  (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2024-07-10 v7.01j Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2022-11-13 v7.00u Hyperref: PDFDocEncoding definition (HO)
 ) (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count299
- (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2024-07-10 v7.01j Hyperref: PDF Unicode definition (HO)
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-Package hyperref Info: Option `unicode' set `true' on input line 4040.
-Package hyperref Info: Option `colorlinks' set `true' on input line 4040.
-Package hyperref Info: Hyper figures OFF on input line 4157.
-Package hyperref Info: Link nesting OFF on input line 4162.
-Package hyperref Info: Hyper index ON on input line 4165.
-Package hyperref Info: Plain pages OFF on input line 4172.
-Package hyperref Info: Backreferencing OFF on input line 4177.
+\Hy@SavedSpaceFactor=\count291
+ (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (HO)
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4045.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4045.
+Package hyperref Info: Hyper figures OFF on input line 4162.
+Package hyperref Info: Link nesting OFF on input line 4167.
+Package hyperref Info: Hyper index ON on input line 4170.
+Package hyperref Info: Plain pages OFF on input line 4177.
+Package hyperref Info: Backreferencing OFF on input line 4182.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4424.
-\c@Hy@tempcnt=\count300
+Package hyperref Info: Bookmarks ON on input line 4410.
+\c@Hy@tempcnt=\count292
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4763.
+LaTeX Info: Redefining \url on input line 4748.
 \XeTeXLinkMargin=\dimen176
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
@@ -355,33 +359,39 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count301
+\Fld@menulength=\count293
 \Field@Width=\dimen177
 \Fld@charsize=\dimen178
-Package hyperref Info: Hyper figures OFF on input line 6042.
-Package hyperref Info: Link nesting OFF on input line 6047.
-Package hyperref Info: Hyper index ON on input line 6050.
-Package hyperref Info: backreferencing OFF on input line 6057.
-Package hyperref Info: Link coloring ON on input line 6060.
-Package hyperref Info: Link coloring with OCG OFF on input line 6067.
-Package hyperref Info: PDF/A mode OFF on input line 6072.
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring ON on input line 6045.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count302
-\c@Item=\count303
-\c@Hfootnote=\count304
+\Hy@abspage=\count294
+\c@Item=\count295
+\c@Hfootnote=\count296
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hxetex.def
-File: hxetex.def 2024-07-10 v7.01j Hyperref driver for XeTeX
-\pdfm@box=\box56
-\c@Hy@AnnotLevel=\count305
-\HyField@AnnotCount=\count306
-\Fld@listcount=\count307
-\c@bookmark@seq@number=\count308
+File: hxetex.def 2022-11-13 v7.00u Hyperref driver for XeTeX
+
+(C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
+)
+\pdfm@box=\box55
+\c@Hy@AnnotLevel=\count297
+\HyField@AnnotCount=\count298
+\Fld@listcount=\count299
+\c@bookmark@seq@number=\count300
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -405,16 +415,16 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2024/05/23 v1.4g Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
-Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
 fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: xetex.def on input line 106.
+Package graphics Info: Driver file: xetex.def on input line 107.
 )
 \Gin@req@height=\dimen179
 \Gin@req@width=\dimen180
@@ -422,26 +432,26 @@ Package graphics Info: Driver file: xetex.def on input line 106.
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip60
-\multirow@cntb=\count309
+\multirow@cntb=\count301
 \multirow@dima=\skip61
 \bigstrutjot=\dimen181
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
-Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
+Package: array 2022/03/10 v2.5f Tabular extension package (FMi)
 \col@sep=\dimen182
-\ar@mcellbox=\box57
+\ar@mcellbox=\box56
 \extrarowheight=\dimen183
-\NC@list=\toks18
+\NC@list=\toks17
 \extratabsurround=\skip62
 \backup@length=\skip63
-\ar@cellbox=\box58
+\ar@cellbox=\box57
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tabularray\tabularray.s
 ty
 Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
-\l__tblr_a_int=\count310
-\l__tblr_c_int=\count311
-\l__tblr_r_int=\count312
+\l__tblr_a_int=\count302
+\l__tblr_c_int=\count303
+\l__tblr_r_int=\count304
 \l__tblr_d_dim=\dimen184
 \l__tblr_h_dim=\dimen185
 \l__tblr_o_dim=\dimen186
@@ -452,29 +462,29 @@ Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
 \l__tblr_t_dim=\dimen191
 \l__tblr_v_dim=\dimen192
 \l__tblr_w_dim=\dimen193
-\l__tblr_a_box=\box59
-\l__tblr_b_box=\box60
-\l__tblr_c_box=\box61
-\l__tblr_d_box=\box62
-\g__tblr_table_count_int=\count313
-\c@rownum=\count314
-\c@colnum=\count315
-\c@rowcount=\count316
-\c@colcount=\count317
+\l__tblr_a_box=\box58
+\l__tblr_b_box=\box59
+\l__tblr_c_box=\box60
+\l__tblr_d_box=\box61
+\g__tblr_table_count_int=\count305
+\c@rownum=\count306
+\c@colnum=\count307
+\c@rowcount=\count308
+\c@colcount=\count309
 \abovesep=\dimen194
 \belowsep=\dimen195
 \leftsep=\dimen196
 \rightsep=\dimen197
-\g_tblr_level_int=\count318
-\g__tblr_data_row_key_count_int=\count319
-\g__tblr_data_column_key_count_int=\count320
-\g__tblr_data_cell_key_count_int=\count321
-\g__tblr_array_int=\count322
-\l__tblr_key_count_int=\count323
-\l__tblr_key_quotient_int=\count324
-\l__tblr_key_quotient_two_int=\count325
-\l__tblr_key_remainder_int=\count326
-\g__tblr_data_str_value_count_int=\count327
+\g_tblr_level_int=\count310
+\g__tblr_data_row_key_count_int=\count311
+\g__tblr_data_column_key_count_int=\count312
+\g__tblr_data_cell_key_count_int=\count313
+\g__tblr_array_int=\count314
+\l__tblr_key_count_int=\count315
+\l__tblr_key_quotient_int=\count316
+\l__tblr_key_quotient_two_int=\count317
+\l__tblr_key_remainder_int=\count318
+\g__tblr_data_str_value_count_int=\count319
 \rulewidth=\dimen198
 \l__tblr_strut_dp_dim=\dimen199
 \l__tblr_strut_ht_dim=\dimen256
@@ -483,32 +493,32 @@ Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
 \g__tblr_cell_head_dim=\dimen259
 \g__tblr_cell_foot_dim=\dimen260
 \l__column_target_dim=\dimen261
-\l__tblr_caption_box=\box63
-\l__tblr_caption_left_box=\box64
-\l__tblr_row_head_box=\box65
-\l__tblr_row_foot_box=\box66
+\l__tblr_caption_box=\box62
+\l__tblr_caption_left_box=\box63
+\l__tblr_row_head_box=\box64
+\l__tblr_row_foot_box=\box65
 \l__tblr_row_head_foot_dim=\dimen262
 \tablewidth=\dimen263
-\l__tblr_table_firsthead_box=\box67
-\l__tblr_table_middlehead_box=\box68
-\l__tblr_table_lasthead_box=\box69
-\l__tblr_table_firstfoot_box=\box70
-\l__tblr_table_middlefoot_box=\box71
-\l__tblr_table_lastfoot_box=\box72
+\l__tblr_table_firsthead_box=\box66
+\l__tblr_table_middlehead_box=\box67
+\l__tblr_table_lasthead_box=\box68
+\l__tblr_table_firstfoot_box=\box69
+\l__tblr_table_middlefoot_box=\box70
+\l__tblr_table_lastfoot_box=\box71
 \l__tblr_remain_height_dim=\dimen264
-\l__tblr_long_from_int=\count328
-\l__tblr_long_to_int=\count329
-\l__tblr_curr_i_int=\count330
-\l__tblr_prev_i_int=\count331
-\l__tblr_table_page_int=\count332
-\l__tblr_table_head_box=\box73
-\l__tblr_table_foot_box=\box74
+\l__tblr_long_from_int=\count320
+\l__tblr_long_to_int=\count321
+\l__tblr_curr_i_int=\count322
+\l__tblr_prev_i_int=\count323
+\l__tblr_table_page_int=\count324
+\l__tblr_table_head_box=\box72
+\l__tblr_table_foot_box=\box73
 \l__tblr_table_head_foot_dim=\dimen265
 \l__tblr_table_head_body_foot_dim=\dimen266
-\l__tblr_table_box=\box75
-\l__tblr_table_hlines_box=\box76
-\l__tblr_hline_box=\box77
-\l__tblr_row_box=\box78
+\l__tblr_table_box=\box74
+\l__tblr_table_hlines_box=\box75
+\l__tblr_hline_box=\box76
+\l__tblr_row_box=\box77
 \l__tblr_col_o_wd_dim=\dimen267
 \l__tblr_col_b_wd_dim=\dimen268
 \l__tblr_hline_leftskip_dim=\dimen269
@@ -517,9 +527,9 @@ Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
 \l__tblr_row_dp_dim=\dimen272
 \l__tblr_row_abovesep_dim=\dimen273
 \l__tblr_row_belowsep_dim=\dimen274
-\l__tblr_row_vlines_box=\box79
-\l__tblr_vline_box=\box80
-\l__tblr_cell_box=\box81
+\l__tblr_row_vlines_box=\box78
+\l__tblr_vline_box=\box79
+\l__tblr_cell_box=\box80
 \l__row_upper_dim=\dimen275
 \l__row_lower_dim=\dimen276
 \l__row_vpace_dim=\dimen277
@@ -527,13 +537,13 @@ Package: tabularray 2024-02-16 v2024A Typeset tabulars and arrays with LaTeX3
 \l__tblr_vline_belowskip_dim=\dimen279
 \l__tblr_cell_wd_dim=\dimen280
 \l__tblr_cell_ht_dim=\dimen281
-\l__tblr_diag_box=\box82
+\l__tblr_diag_box=\box81
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen282
-\c@nlinenum=\count333
-\TeXr@lab=\toks19
+\c@nlinenum=\count325
+\TeXr@lab=\toks18
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/diagbox\diagbox.sty
 Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
@@ -550,7 +560,7 @@ Package pict2e Info: Driver file for pict2e: p2e-xetex.def on input line 114.
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\p2e-xetex.def
 File: p2e-xetex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 )
-\pIIe@GRAPH=\toks20
+\pIIe@GRAPH=\toks19
 \@arclen=\dimen283
 \@arcrad=\dimen284
 \pIIe@tempdima=\dimen285
@@ -561,21 +571,21 @@ File: p2e-xetex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 \pIIe@tempdimf=\dimen290
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
-Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count334
-\calc@Bcount=\count335
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count326
+\calc@Bcount=\count327
 \calc@Adimen=\dimen291
 \calc@Bdimen=\dimen292
 \calc@Askip=\skip64
 \calc@Bskip=\skip65
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count336
+\calc@Ccount=\count328
 \calc@Cskip=\skip66
 )
-\diagbox@boxa=\box83
-\diagbox@boxb=\box84
-\diagbox@boxm=\box85
+\diagbox@boxa=\box82
+\diagbox@boxb=\box83
+\diagbox@boxm=\box84
 \diagbox@wd=\dimen293
 \diagbox@ht=\dimen294
 \diagbox@insepl=\dimen295
@@ -584,17 +594,17 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \diagbox@outsepr=\dimen298
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
-Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
 \TX@col@width=\dimen299
 \TX@old@table=\dimen300
 \TX@old@col=\dimen301
 \TX@target=\dimen302
 \TX@delta=\dimen303
-\TX@cols=\count337
-\TX@ftn=\toks21
+\TX@cols=\count329
+\TX@ftn=\toks20
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/tools\dcolumn.sty
-Package: dcolumn 2023/07/08 v1.06 decimal alignment package (DPC)
+Package: dcolumn 2014/10/28 v1.06 decimal alignment package (DPC)
 )
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/placeins\placeins.sty
 Package: placeins 2005/04/18  v 2.2
@@ -623,8 +633,7 @@ LaTeX Font Info:    ... okay on input line 15.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 15.
 LaTeX Font Info:    ... okay on input line 15.
 
-Package fontspec Info: 
-(fontspec)             Adjusting the maths setup (use [no-math] to avoid
+Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup4
@@ -688,7 +697,8 @@ Package hyperref Info: Link coloring ON on input line 15.
 
 (C:\Users\11510\AppData\Local\Programs\MiKTeX\tex/latex/ninecolors\ninecolors.s
 ty
-Package: ninecolors 2022-02-13 v2022D Select colors with proper color contrast
+Package: ninecolors 2022-02-13 vv2022D Select colors with proper color contrast
+
 ) (Table.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.53937> on input line 2.
@@ -702,9 +712,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write4
 \openout4 = `Table.toc'.
 
-
-
-[1
+ [1
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -762,8 +770,6 @@ Underfull \hbox (badness 1147) in paragraph at lines 59--61
 Underfull \hbox (badness 1147) in paragraph at lines 59--61
 \TU/lmr/m/n/10.53937 texte texte texte
  []
-
-
 
 [2]
 Underfull \hbox (badness 1147) in paragraph at lines 77--79
@@ -839,8 +845,6 @@ Underfull \hbox (badness 1147) in paragraph at lines 81--86
 Underfull \hbox (badness 1147) in paragraph at lines 81--86
 \TU/lmr/m/n/10.53937 texte texte texte
  []
-
-
 
 [3]
 Underfull \hbox (badness 1147) in paragraph at lines 97--99
@@ -925,8 +929,6 @@ Underfull \hbox (badness 1147) in paragraph at lines 101--106
 > Step: execute table commands.
 > Step: calculate cell and line sizes.
 > Step: build the whole table.
-
-
 [4]
 > Step: init table outer spec.
 > Step: parse table options.
@@ -974,8 +976,6 @@ Underfull \hbox (badness 1147) in paragraph at lines 158--158
 \TU/lmr/m/n/10.53937 texte texte texte
  []
 
-
-
 [5]
 Overfull \hbox (5.2697pt too wide) detected at line 239
 $\OML/cmm/m/it/10.53937 :\OT1/cmr/m/n/10.53937 345$ 
@@ -996,24 +996,14 @@ Overfull \hbox (15.8091pt too wide) detected at line 241
 $\OML/cmm/m/it/10.53937 :\OT1/cmr/m/n/10.53937 78999$ 
  []
 
-
-
-[6]
-
-[7]
+[6] [7]
 Overfull \hbox (33.90085pt too wide) in paragraph at lines 336--338
 []\TU/SimSun(0)/m/n/10.53937 可 以 通 过 \TU/lmr/m/n/10.53937 “\setlength{cmd}{leng
 th}” \TU/SimSun(0)/m/n/10.53937 命 令 或 者 \TU/lmr/m/n/10.53937 “\renewcommand{cmd
 }{def}”
  []
 
-
-
-[8]
-
-[9]
-
-[10]
+[8] [9] [10]
 Underfull \hbox (badness 10000) in alignment at lines 484--487
 [][][] 
  []
@@ -1028,33 +1018,22 @@ Overfull \hbox (21.07874pt too wide) in paragraph at lines 495--499
 [][] 
  []
 
-
-
-[11]
-
-[12]
+[11] [12]
 Overfull \hbox (21.07874pt too wide) in paragraph at lines 533--535
 [][] 
  []
 
+[13] [14]
 
-
-[13]
-
-[14]
-
-Package fontspec Info: 
-(fontspec)             Could not resolve font "Microsoft YaHei Bold/I" (it
+Package fontspec Info: Could not resolve font "Microsoft YaHei Bold/I" (it
 (fontspec)             probably doesn't exist).
 
 
-Package fontspec Info: 
-(fontspec)             Could not resolve font "Microsoft YaHei/I" (it probably
+Package fontspec Info: Could not resolve font "Microsoft YaHei/I" (it probably
 (fontspec)             doesn't exist).
 
 
-Package fontspec Info: 
-(fontspec)             Font family 'MicrosoftYaHei(0)' created for font
+Package fontspec Info: Font family 'MicrosoftYaHei(0)' created for font
 (fontspec)             'Microsoft YaHei' with options
 (fontspec)             [Script={CJK},BoldFont={* Bold}].
 (fontspec)              
@@ -1063,10 +1042,13 @@ Package fontspec Info:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.: <->"Microsoft
 (fontspec)             YaHei/OT:script=hani;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.: <->"Microsoft YaHei
 (fontspec)             Bold/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.: <->"Microsoft
 (fontspec)             YaHei/BI/OT:script=hani;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
 
 Underfull \hbox (badness 1147) in paragraph at lines 714--715
@@ -1082,8 +1064,6 @@ Underfull \hbox (badness 1147) in paragraph at lines 714--715
 Underfull \hbox (badness 1147) in paragraph at lines 714--715
 \TU/lmr/m/n/10.53937 texte texte texte
  []
-
-
 
 [15]
 Underfull \hbox (badness 1147) in paragraph at lines 733--734
@@ -1100,13 +1080,7 @@ Underfull \hbox (badness 1147) in paragraph at lines 733--734
 \TU/lmr/m/n/10.53937 texte texte texte
  []
 
-
-
-[16]
-
-[17]
-
-[18]
+[16] [17] [18]
 Underfull \hbox (badness 10000) in paragraph at lines 907--907
 []|\TU/lmr/m/n/10.53937 Super-
  []
@@ -1146,30 +1120,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 909--910
 \TU/lmr/m/n/10.53937 scious-
  []
 
-
-
 [19]
 Overfull \hbox (16.02017pt too wide) in paragraph at lines 922--937
 [][] [] 
  []
 
-
-
 [20] (Table.aux)
- ***********
-LaTeX2e <2024-06-01> patch level 2
-L3 programming layer <2022/07/14>
- ***********
 Package rerunfilecheck Info: File `Table.out' has not changed.
 (rerunfilecheck)             Checksum: 0A714672960F0B9AB131CB4AD602B357;3404.
  ) 
 Here is how much of TeX's memory you used:
- 17159 strings out of 409034
- 384836 string characters out of 5756841
- 1942560 words of memory out of 5000000
- 39624 multiletter control sequences out of 15000+600000
- 567792 words of font info for 98 fonts, out of 8000000 for 9000
+ 17403 strings out of 411564
+ 395990 string characters out of 2820141
+ 1865985 words of memory out of 3000000
+ 37333 multiletter control sequences out of 15000+600000
+ 522010 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,14n,111p,939b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,14n,100p,939b,467s stack positions out of 10000i,1000n,20000p,200000b,80000s
 
 Output written on Table.pdf (20 pages).
