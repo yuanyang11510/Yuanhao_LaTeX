@@ -73,17 +73,18 @@
 %---------------------------------------------------------------
 
 % 自己的包
+\hypersetup{pdfpagemode=FullScreen} % 该选项使PDF打开时无需使用快捷键而直接进入播放模式（经检验对Adobe Acrobat有效，对WPS无效）
 \usepackage{multirow}
 \usepackage{colortbl}
 \usepackage{booktabs}
-\usepackage{polyglossia}%需要搭配XeLaTex编译器使用
+\usepackage{polyglossia} % 需要搭配XeLaTex编译器使用
 \setmainlanguage{french}
 \usepackage{fontspec}
 % \setmainfont{Charis SIL}
-\setsansfont{Charis SIL}%beamer默认使用无衬线体,而\setmainfont会输出有衬线体,因此不能在beamer中使用\setmainfont命令
+\setsansfont{Charis SIL} % beamer默认使用无衬线体,而\setmainfont会输出有衬线体,因此不能在beamer中使用\setmainfont命令
 \usepackage{xeCJK}
 \newcommand{\zh}[1]{{\CJKfontspec{SimSun}#1}}
-\usepackage[backend=biber, style=langsci-unified]{biblatex}%{biblatex}要放在最后
+\usepackage[backend=biber, style=langsci-unified]{biblatex} % {biblatex}要放在最后
 \addbibresource{AllDoc.bib}
 
 % ------------------------------------------------------------------------------------------------------------------------------导言结束，正文开始
