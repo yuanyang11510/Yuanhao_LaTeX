@@ -1,0 +1,117 @@
+\contentsline {section}{这是目录}{1}{Doc-Start}%
+\contentsline {section}{这是插图目录}{5}{Doc-Start}%
+\contentsline {section}{这是表格目录}{5}{Doc-Start}%
+\contentsline {section}{\numberline {1}写给读者*}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}什么是\LaTeX }{6}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}\TeX 与\LaTeX 的优缺点}{6}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}为什么需要\LaTeX }{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}MS Word难道不优秀吗}{6}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}\LaTeX 生成的文件格式}{6}{subsection.1.5}%
+\contentsline {section}{\numberline {2}\LaTeX 环境配置}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}\LaTeX 的使用方法}{6}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}本地使用：下载\LaTeX 发行版}{6}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}在线使用：在线\LaTeX 网站}{6}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}\TeX Live的安装}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}\TeX Live本地宏包的管理*}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}\TeX Studio的安装与配置}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}\TeX Live的其他使用情况}{6}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}卸载\TeX Live}{6}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}更新\TeX Live}{6}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}更快的\hologoRobust {XeLaTeX} 编译速度*}{6}{subsubsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.6}编译文档}{6}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}尝试第一份文稿}{6}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}错误的排查}{7}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}\TeX 帮助资源}{7}{subsubsection.2.6.3}%
+\contentsline {subsubsection}{\numberline {2.6.4}\TeX 实用工具}{7}{subsubsection.2.6.4}%
+\contentsline {section}{\numberline {3}\LaTeX 基础}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}认识\LaTeX }{7}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}命令与环境}{7}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}保留字符}{7}{subsubsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.3}导言区}{7}{subsubsection.3.1.3}%
+\contentsline {subsubsection}{\numberline {3.1.4}文件输出}{7}{subsubsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.2}标点与强调}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}引号}{8}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}短横、省略号与破折号}{8}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}强调：粗与斜}{8}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}下划线和删除线}{8}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}其他}{8}{subsubsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}格式控制}{8}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}空格、换行与分段}{9}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}分页}{9}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}缩进、对齐与行距}{11}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}字体与颜色}{11}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}字族、字系与字形}{11}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}中西文“斜体”}{12}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}原生字体命令}{12}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}西文字体}{13}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}中文支持与CJK字体}{13}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}颜色}{14}{subsubsection.3.4.6}%
+\contentsline {subsection}{\numberline {3.5}引用与注释}{14}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}标签和引用}{14}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}脚注、边注与尾注\footnote {This is a footnote in the subsubsection.}}{15}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}援引环境}{15}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}摘要}{16}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}参考文献}{16}{subsubsection.3.5.5}%
+\contentsline {subsection}{\numberline {3.6}正式排版：封面、大纲与目录}{16}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}封面}{16}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}大纲与章节}{16}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}目录}{18}{subsubsection.3.6.3}%
+\contentsline {subsection}{\numberline {3.7}计数器与列表}{18}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}计数器}{18}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}列表}{18}{subsubsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.8}浮动体与图表}{19}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}浮动体}{19}{subsubsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.2}图片}{19}{subsubsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.3}表格}{19}{subsubsection.3.8.3}%
+\contentsline {subsubsection}{\numberline {3.8.4}非浮动体图标和并列图表}{19}{subsubsection.3.8.4}%
+\contentsline {subsection}{\numberline {3.9}页面设置}{19}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.9.1}纸张、方向和边距}{19}{subsubsection.3.9.1}%
+\contentsline {subsubsection}{\numberline {3.9.2}页眉和页脚}{19}{subsubsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.10}抄录与代码环境}{19}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}分栏}{21}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.12}文档拆分}{24}{subsection.3.12}%
+\contentsline {subsection}{\numberline {3.13}西文排版及其他}{24}{subsection.3.13}%
+\contentsline {subsubsection}{\numberline {3.13.1}连写}{24}{subsubsection.3.13.1}%
+\contentsline {subsubsection}{\numberline {3.13.2}断词}{24}{subsubsection.3.13.2}%
+\contentsline {subsubsection}{\numberline {3.13.3}硬空格与句末标点}{24}{subsubsection.3.13.3}%
+\contentsline {subsubsection}{\numberline {3.13.4}特殊符号}{25}{subsubsection.3.13.4}%
+\contentsline {section}{\numberline {4}数学排版}{25}{section.4}%
+\contentsline {section}{\numberline {5}\LaTeX 进阶}{25}{section.5}%
+\contentsline {subsection}{\numberline {5.1}自定义命令与环境}{25}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}箱子：排版的基础}{26}{subsection.5.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}无框箱子}{26}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}加框箱子}{26}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.3}竖直升降的箱子}{26}{subsubsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.4}段落箱子}{27}{subsubsection.5.2.4}%
+\contentsline {subsubsection}{\numberline {5.2.5}缩放箱子}{27}{subsubsection.5.2.5}%
+\contentsline {subsubsection}{\numberline {5.2.6}标尺箱子}{27}{subsubsection.5.2.6}%
+\contentsline {subsubsection}{\numberline {5.2.7}覆盖箱子}{27}{subsubsection.5.2.7}%
+\contentsline {subsubsection}{\numberline {5.2.8}旋转箱子}{27}{subsubsection.5.2.8}%
+\contentsline {subsubsection}{\numberline {5.2.9}颜色箱子}{27}{subsubsection.5.2.9}%
+\contentsline {subsection}{\numberline {5.3}复杂距离}{27}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}水平和竖直距离}{27}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}填充距离与弹性距离}{28}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}行距}{29}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}制表位*}{29}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}悬挂缩进*}{29}{subsubsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.6}整段缩进*}{30}{subsubsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.4}自定义章节样式}{30}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}自定义目录样式}{30}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}自定义图表}{30}{subsection.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}长表格}{30}{subsubsection.5.6.1}%
+\contentsline {subsubsection}{\numberline {5.6.2}三线表}{30}{subsubsection.5.6.2}%
+\contentsline {subsubsection}{\numberline {5.6.3}彩色表格}{31}{subsubsection.5.6.3}%
+\contentsline {subsubsection}{\numberline {5.6.4}子图表}{31}{subsubsection.5.6.4}%
+\contentsline {subsubsection}{\numberline {5.6.5}GIF动态图}{31}{subsubsection.5.6.5}%
+\contentsline {subsection}{\numberline {5.7}自定义编号列表}{31}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}\hologoRobust {BibTeX}参考文献}{31}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}索引}{31}{subsection.5.9}%
+\contentsline {subsection}{\numberline {5.10}公式与图表编号样式}{31}{subsection.5.10}%
+\contentsline {subsection}{\numberline {5.11}附录}{31}{subsection.5.11}%
+\contentsline {subsection}{\numberline {5.12}自定义浮动体*}{31}{subsection.5.12}%
+\contentsline {subsection}{\numberline {5.13}编程代码与行号}{31}{subsection.5.13}%
+\contentsline {section}{这是附录 \numberline {A}附录一}{32}{appendix.a.A}%
+\contentsline {subsection}{\numberline {A.1}附录一（一）}{32}{subsection.a.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}附录一（一）.1}{32}{subsubsection.a.A.1.1}%
+\contentsline {section}{这是附录 \numberline {B}附录二}{32}{appendix.a.B}%
+\contentsfinish 

@@ -4,7 +4,7 @@
 \documentclass[twoside]{ctexart}
 
 % 封面
-\title{简单高效\LaTeX（吴康隆）学习笔记\thanks{This is a footnote in the title.}}
+\title{简单高效\LaTeX{}（吴康隆）学习笔记\thanks{This is a footnote in the title.}}
 \author{殷元昊\thanks{This is a footnote in the author.}}
 \date{}
             % "\title{title}和"\author{}"是必须定义的，"\date{text}"如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以输入"\date{}"
@@ -46,7 +46,7 @@
 \usepackage[slantfont,boldfont]{xeCJK} 
             % "slantfont"和"bolfont"选项表示允许设置中文的斜体和粗体字形
 
-    \setCJKmainfont[boldfont = SimHei]{SimSun} 
+    % \setCJKmainfont[boldfont = SimHei]{SimSun} 
             % 设置"SimSun"（宋体）为主要字体，"SimHei"（黑体）为主要字体的粗体字形，即"\textbf{}"或者"{\bfseries}"命令的变换结果。也可以通过slantfont选项来设置主要字体的斜体字行
             %* 各章节的汉字字形也因此发生变化
             %! 注意，"SimSun"和"SimHei"名称中的大小写一定要写对，否则编译会报错
@@ -720,7 +720,7 @@
             {\songtii 宋体}
 
         % 临时设置一种CJK字体
-            {\CJKfontspec[fakeslant = 0.2,fakebold = 3]{SimSun} 临时字体}
+            % {\CJKfontspec[fakeslant = 0.2,fakebold = 3]{SimSun} 临时字体}
             %todo 暂时还没有弄明白中括号中的选项的功能
 
         \subsubsection{颜色}\label{subsubsec:3.4.6}
