@@ -1,0 +1,218 @@
+% 宏包-----------------------------------------------------------------------------------------------------------------------------------
+
+% \usepackage{ctex}
+
+\usepackage{lipsum}
+            %rfr lipsum宏包提供"\lipsum"命令，用于生成一段无意义的测试文本，默认输出150段中的前7段，可以通过可选参数来指定输出的段落序数，比如："\lipsum[4-57]"（第4段到第57段）、"\lipsum[23]"（第23段），还可以通过第二个可选参数指定输出段落中的句子序数，比如："\lipsum[3-9][4-8]"（第3段到第9段当中，每一段的第4句到第8句），可以参看其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/lipsum/lipsum.pdf
+            %* 经检验，无法在一个指定参数中指定不连续的段落或者句子，比如"\lipsum[2,4]"、"\lipsum[2-4][1,3]"都无法输出正确的结果
+
+\usepackage{blindtext}
+            %rfr blindtext宏包提供"\blindtext"命令，生成一段无意义的测试文本，可以通过可选参数来指定重复次数（重复后的多段文本在一个段落内首尾相接）；"\Blindtext"命令用于生成五段相同的上述文本，可以通过可选参数来控制重复的段落数，默认值为5，可以通过第二个可选参数来控制每个段落内文本的重复次数（相当于"\blindtext"命令的可选参数）；"\blinddocument"命令用于生成一篇带有章节名（section、subsection……）、列表（itemize、enumerate、description）等内容的文档；"\Blinddocument"命令用于生成一篇更长的类似文档，可以参考其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/blindtext/blindtext.pdf
+
+% \usepackage{lua-visual-debug}
+            % 使用LuaLaTeX编译，可以将所有盒子和基线可视化
+
+\usepackage[normalem]{ulem}
+            % ulem宏包，提供各种下划线和删除线，normalem选项可以防止\emph{}命令的效果变成加下划线
+
+\usepackage{hologo}
+            % hologo宏包可以输出许多TeX家族标志
+
+\usepackage{lettrine}
+            % 宏包lettrine能够生成首字下沉的效果
+
+\usepackage{indentfirst}
+            %* article文档类下，即使在首行开头使用"\indent"命令，以英文字母开头的首行也不缩进，解决方法有三种：（1）加载indentfirst宏包，这是最常用的办法；（2）加载ctex宏包；（3）设置文档类为ctexart
+            %rfr 第二种和第三种方法设置的首行缩进效果会被下文提到的titlesec宏包的"\titlespacing*{command}{left}{before-sep}{after-sep}"命令消除，由此也可以看出加载indentfirst宏包是防止首行不缩进的最好的办法
+
+% \usepackage{parskip}
+            %rfr 强制所有段首不缩进，参考：https://tex.stackexchange.com/questions/196922/indent-first-paragraph-after-section-and-dont-indent-new-lines
+
+\usepackage{fontspec} 
+            % 在XelaTeX编译下，使用fontspec宏包来选择本地安装的字体。注意，该宏包可能会明显增加编译时间
+
+\usepackage[slantfont,boldfont]{xeCJK} 
+            % "slantfont"和"bolfont"选项表示允许设置中文的斜体和粗体字形
+
+    % \setCJKmainfont[boldfont = SimHei]{SimSun} 
+            % 设置"SimSun"（宋体）为主要字体，"SimHei"（黑体）为主要字体的粗体字形，即"\textbf{}"或者"{\bfseries}"命令的变换结果。也可以通过slantfont选项来设置主要字体的斜体字行
+            %* 各章节的汉字字形也因此发生变化
+            %! 注意，"SimSun"和"SimHei"名称中的大小写一定要写对，否则编译会报错
+
+\usepackage{pifont} 
+            %* 用于输出图标（symbol fonts）的宏包
+
+\usepackage{xcolor} 
+            % 使用xcolor宏包来方便地调用颜色
+            % 提供"\colorbox{color}{text}"、"\fcolorbox{color}{color}{text}"命令
+
+\usepackage{amsmath} 
+            % 宏包amsmath提供了"\eqref"命令，输出默认形式如"(3.1)"所示的数值
+
+% \usepackage{nameref} 
+            % nameref宏包不满足于只引用编号，还提供了引用对象的标题内容的功能
+            %* 书中提到"\nameref{label}"命令由nameref宏包提供，但是经检验，即使不加载nameref宏包，这一命令依然生效，说明这一命令应该已经被LaTeX吸收，或者也许本来就是LaTeX的原生命令
+
+\usepackage{lastpage} 
+            % lastpage宏包提供的标签"LastPage"可以保证打印出整个文档最后一页的页数
+
+\usepackage[perpage,bottom]{footmisc} 
+            % footmisc宏包的perpage选项可以让脚注每页重新编号，默认情况下，脚注按章编号
+            %* bottom的可选参数可以使得脚注始终处于默认页面区域的底部，而不会因为LaTeX的提前分页操作导致上移到实际页面区域的底部
+
+\usepackage{endnotes} 
+            % 用于设置尾注的宏包
+
+\usepackage{csquotes} 
+            %* 管理在正文中援引文本的宏包
+
+\usepackage[numbers,sort&compress,super,square]{natbib} 
+            % 使用natbib宏包可以定制参考文献标号在文中的显示方式
+
+\usepackage[numbib,numindex]{tocbibind}
+            % 使用tocbibind宏包将目录本身、图目录、表目录、索引、参考文献全部编入目录（以上为默认值，可以通过下述相应参数取消），并且给参考文献章节和索引章节正常编号，可选参数包括：
+            % nottoc（目录本身不编入目录）、
+            %* "toc"是"table of contents"的缩写
+            % notlof（图目录不编入目录）、
+            % notlot（表目录不编入目录）、
+            % notindex（索引不编入目录）、numindex（给索引章节正常编号，默认情况为不编号）、
+            % notbib（参考文献不编入目录）、numbib（给参考文献章节正常编号，默认情况为不编号）、
+            % none（禁用所有）
+            %! 测试中发现，如果将该宏包放在imakeidx宏包的前面，该宏包不会生效；但是如果将该宏包放在imakeidx宏包的后面，该宏包会生效，但是会导致imakeidx宏包提供的"\makeindex"命令当中的三个可选参数"columns"、"columnsep"、"columnseprule"失效，索引始终保持双栏
+            %# 解决的办法是直接使用imakeidx宏包提供的"\indexsetup"命令，添加"level=\section"参数即可
+
+\usepackage[section]{placeins}
+            % 重新定义了"\section{}"命令，在此之前加上了"\Float-Barrrier"命令，阻止浮动体跨过该位置
+
+\usepackage{graphicx}
+            % 使用graphicx宏包和"\includegraphics[options]{name}"命令插入图片
+            % 提供"\scalebox{h-scale}[v-scale]{text}"和"\rotatebox[keyvals]{angle}{text}"命令
+
+\usepackage{caption}
+            % caption宏包用来设置浮动体的标题格式
+
+\usepackage{subcaption}
+            %* 使用subcaption宏包提供的subfigure环境，在figure环境中嵌套多图
+            % 使用subcaption宏包提供的subtable环境，在table环境中嵌套多张表格
+            %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错
+
+% \usepackage{subfig}
+            % 使用subfig宏包提供的"\subfloat[sub-caption]{body}"命令，在figure环境中嵌套多图
+            %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错 
+            
+\usepackage{wrapfig}
+            % 使用wrapfig宏包进行图文混排
+
+\usepackage{multirow}
+            % 使用multirow宏包解决跨行跨列的问题
+
+\usepackage{array} 
+            % array宏包提供"m{}"、"b{}"、">{decl}"、"<{decl}"、"!{intercolumn sign}"、"\newcolumntype{name}{definition}"等命令
+
+\usepackage{tabularray} 
+            %* tabularray宏包提供使文本靠近表格上端或者下端的命令
+
+\usepackage{makecell} 
+            % makecell宏包提供了一种方便在单元格内换行的方式，以及设置水平表线宽度的命令
+
+\usepackage{diagbox} 
+            % diagbox宏包提供了分割表头的命令
+
+\usepackage{tabularx} 
+            % tabularx宏包的tabularx环境使得表格可以通过在每列上均匀增加列宽的方式设置整表宽度
+
+\usepackage{dcolumn} 
+            % dcolumn宏包提供了小数点对齐的对齐方式
+
+\usepackage[showframe]{geometry}
+    % \geometry{twoside}
+            % 借助geometry宏包进行页面设置
+            %* twoside选项会影响到边注命令"\marginpar[left]{right}"中可选参数对应的内容在偶数页上的显示位置，如果不设置twoside选项，则偶数页上的边注都一律显示在右侧，参见"3.5.2 脚注、边注与尾注"一节
+
+% \usepackage{fancyhdr}
+            % 借助fancyhdr宏包控制页眉和页脚
+            %* "hdr"应该是来自"header"的缩写
+            %! ctexart文档类提前定义了页眉样式，因此即使不加载fancyhdr宏包，也会显示页眉内容
+
+\usepackage{shortvrb}
+            % shortvrb宏包支持以一对符号代替"\verb"命令
+
+% \usepackage{cuted}
+            %* cuted宏包提供strip环境，用于解决figure*环境中的图片在双栏模式下无法在首页被插入的问题
+            %! 注意，在strip环境中需要使用caption宏包提供的"\captionof{float type}{heading}"命令来设置标题
+
+% \usepackage{dblfloatfix}
+            %* dblfloatfix宏包用于解决figure*环境中的图片在双栏模式下无法在底部被插入的问题，但是仍然无法解决图片无法在首页被插入的问题
+            %! 注意，dblfloatfix宏包和stfloats宏包不兼容，只能加载其中一个
+            %* 但是dblfloatfix宏包可以和nidanfloat宏包兼容
+
+% \usepackage{stfloats} 
+            %* stfloats宏包可以同时解决上述两个问题
+
+% \usepackage{nidanfloat} 
+            %* nidanfloat宏包也可以同时解决上述两个问题
+            %! 注意，加载nidanfloat宏包会导致通过cuted宏包提供的strip环境中的图片消失，但编译不会报错
+
+\usepackage{multicol}
+            % multicol宏包提供multicols环境，可以使同一页内分栏与单栏并存，或者分成多栏，但是此时将无法使用不带星号的浮动体和边注
+            %! 注意不要将multicols环境和表格中用于合并列的"\multicolumn{n}{cols}{text}"混淆
+
+\usepackage{import} 
+            %* import宏包提供了"\import{full path}{file}"命令和"\subimport{relative path}{file}"命令，前者类似"\input{}"命令，后者可以嵌套使用：在文件一中使用"\import{full path}{file}"命令引用文件二，在文件二中使用"\subimport{relative path}{file}"命令引用文件三，这样就可以直接在文件一中使用"\import{full path}{file}"命令引用文件三
+
+\usepackage{boxedminipage}
+            % boxedminipage宏包提供加框小页环境
+            
+\usepackage{changepage}
+            % changepage宏包提供了一个adjustwidth环境，能够控制段落两侧到文本区的距离
+
+\usepackage{titlesec}
+            % 通过titlesec宏包自定义正文中的章节样式
+
+\usepackage{titletoc}
+            % 通过titletoc宏包自定义目录中的章节样式
+
+\usepackage{longtable}
+            % longtable宏包用来排版长表格
+
+\usepackage{booktabs}
+            % booktabs宏包提供"\toprule"、"\midrule"与"\bottomrule"命令来绘制三线表
+
+\usepackage{colortbl}
+            % 彩色表格依靠colortbl宏包，它会调用array宏包和color宏包，可以在加载xcolor宏包时添加table选项来调用colortbl宏包
+
+\usepackage[shortlabels,inline]{enumitem}
+            % enumitem宏包允许在列表环境开始的时候添加一个可选参数，在可选参数中通过"<key>=<value>"的形式来控制列表的相关参数，也可以通过"\setlist[]{}"命令来为各级列表设置统一的参数
+            %rfr 可以参考enumitem宏包的官方手册，尽管这一手册非常难读：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/enumitem/enumitem.pdf
+
+\usepackage{makeidx}
+            % 使用makeidx宏包来建立索引
+
+\usepackage{showidx}
+            %* showidx宏包用来将设置索引的命令内容显示在当前页面的边注位置，通常在撰写文档过程中使用，方便立刻定位到所设置的索引位置
+            %! 注意，这一宏包需要搭配hyperref宏包使用，否则编译会报错
+
+\usepackage{imakeidx} 
+            %* imakeidx宏包重定义了"\makeindex"命令，允许为其添加可选参数来设置索引样式（比如将索引加入目录、设置索引分栏等、为索引分组等）
+            %# 经检验，单独加载该宏包也可以建立索引
+
+\usepackage[titletoc]{appendix}
+            % 使用appendix宏包设置附录样式
+            %* 这需要使用该宏包提供的appendices环境而不是LaTeX的原生命令"\appendix"
+            % 可选参数"titletoc"表示在目录中附录计数器（section/chapter）的添加一个名称，默认值为"Appendix"
+            %* 在ctexart文档类中，则显示为"附录A"
+    \renewcommand{\appendixname}{这是附录}
+            % 重定义"\appendixname"命令来修改目录当中附录计数器前面的名称
+
+\usepackage[switch,pagewise,modulo]{lineno}
+            % 使用lineno宏包可以生成行号
+            
+\usepackage{hyperref}
+            % 索引更常用的是hyperref宏包，由于它经常与其他宏包冲突，一般把它放在导言区的最后
+            % 加载hyperref宏包后，目录可以实现点击跳转
+    \hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
+            % hyperref宏包的选项也可以以"\hypersetup"的形式另起一行书写，colorlinks选项中的默认值是：colorlinks = false,linkcolor = red, anchorcolor = black, citecolor = green, urlcolor = magenta
+            %* 如果以上命令作为hyperref宏包的可选参数，应该将其置于必选参数"{hyperref}"的前面，否则设置的可选参数无法生效
+
+
+% --------------------------------------------------------------------------------------------------------------------------------------

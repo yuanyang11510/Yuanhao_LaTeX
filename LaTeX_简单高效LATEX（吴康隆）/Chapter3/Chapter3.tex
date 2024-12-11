@@ -1,0 +1,970 @@
+\section{\LaTeX{}基础}
+    \subsection{认识\LaTeX}
+        \subsubsection{命令与环境}
+        \subsubsection{保留字符}
+            \# 
+            \$ 
+            \% 
+            %* 书中提到：“如果在行末添加"%"这个命令，可以防止LaTeX在行末插入一些奇怪的空白符”，其实这个说法语焉不详，我们知道，如果在LaTeX的代码中换一行，打印时就会在换行处插入一个空格，而此时如果在每一行的末尾插入一个"%"符号，就能移除这个空格
+            \& 
+            \_ 
+            \{ 
+            \} 
+
+        % 以下是输出反斜杠的三种方法
+        % 方法一，这一命令两边的数学环境是不可少的，否则会报错        
+            $\backslash$
+
+        % 方法二，这一命令不需要数学环境
+            \textbackslash
+
+        % 方法三，使用ASCII码进行输出，需要搭配tt字体环境使用，更多符号输出方式可以参考P21
+            %* 实际上除了tt字体之外，也可以选择其他字体命令，比如默认的rm字体
+            \textrm{\char92}
+
+            {\rmfamily \char92}
+            %! 第一种方法、第三种方法输出的反斜杠和第二种方法输出的反斜杠不完全相同：如果将这几种方法输出的反斜杠排列在一行上，会发现第二种方式输出的反斜杠和后面反斜杠符号的间距更小，但是有意思的是，如果将反斜杠后面的符号替换成其他符号，这些反斜杠后的这一间距又会恢复相同，因此在实际情况中，只需要在需要连续使用两个反斜杠符号时，注意选择命令即可，比如，如果要输出"\\"符号，应该选用两个连续的"\textbackslash"命令
+            %* 顺便在此可以讨论"\texttt{}"和"{\ttfamily}"这两类不同的命令，这两类命令的大括号的位置和功能是不同的：前一种命令的大括号置于命令之后，是强制性的，用来放置相应的参数，只有大括号内的内容才会受到该命令的影响，其特点有点类似于环境
+            %! 如果将这对大括号放置在命令和统辖范围的两边，则该命令只会影响到气候的第一个字符，之后的其它字符则不受影响
+            %* 而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要限制该命令影响的范围，则可以在该命令和需要统辖的范围两边加上大括号
+            %! 如果只在命令之后的统辖内容的两边加上大括号，则该大括号不会发挥作用，即其后的大括号以外的内容仍然会受到该命令的影响
+            %* 下文中会反复出现这两类命令，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论
+
+        % 以下是输出类似扬抑符的命令
+            \^{} \^a
+            %* 该符号如果按照书上所说的命令，单独打印时会报错，需要在后面加上一对大括号，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），实际输出的就是一个扬抑符（circumflex）
+
+        % 以下是输出波浪线的几种方法
+        % 方法一，这实际是一个数学符号“约等于”（similar）
+            $\sim$
+            
+        % 方法二
+            \~{} \~a
+            %* 和上文中的^符号一样，该命令如果后面跟上一个字母，实际输出的就是一个波浪号/腭化符（tilde），如果要单独输出这一符号，必须在后面添加一对大括号，在TeXstudio中输出的是一个单独的腭化符，但是在VS Code中输出的就是一个正常的波浪线
+            
+        % 方法三
+            \textasciitilde
+            %! 上述命令在不同的编辑器中输出效果不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线
+
+        \subsubsection{导言区}
+            %todo 加表格
+
+        \subsubsection{文件输出}
+
+    \subsection{标点与强调}
+        % 大于号和小于号
+        %* 以下两种方法输出的都是数学符号中的大于号和小于号
+            > < 
+            %! TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境
+            
+            $>$ $<$ 
+            % 数学符号中的大于号和小于号需要放在数学环境$$中
+            
+        %* 文本中的大于号和小于号需要使用\textgreater和\textless命令
+            \textgreater \textless 
+        
+            \subsubsection{引号}
+            “你好，‘世界’！” 
+            % 中文下的单引号和双引号可以用中文输入法直接输入
+            
+            ``\thinspace`Max' is here.'' 
+            % 英文的左单引号是重音符“`”，右单引号是常用的引号符“'”
+            %* 英文下的引号嵌套需要借助\thinspace命令分隔
+            %* 双引号括起内容中的左单引号和外部左双引号之间的间隔大小：没有任何空格 < 加了\thinspace命令 < 简单的空格
+    
+        \subsubsection{短横、省略号与破折号}
+        % 连字符
+            daughter-in-law
+
+        % 数字起止符
+            1--2
+            
+        % 英文破折号
+            Listen---I'm serious.
+        
+        % 中文破折号照常输入即可
+            ——
+            
+        % 中文省略号照常输入即可
+            ……
+            
+        % 英文省略号需要使用\ldots命令
+            \ldots
+            %* 意即lower dots, v.s. \cdots, 意即center dots
+            %todo 该命令效果也等同于\dots，但是\ldots在任何模式下都适用，关于dots的相关命令有待探索
+            
+        % 连打三个句点输出的不是真正的英文省略号
+            ...
+
+	    \subsubsection{强调：粗与斜}
+            This is the emphasis form of \emph{abc}.
+            % 西文的强调命令就是将相应文本转换为斜体，而不是像在中文中将其加粗或者加下划线
+    
+	    \subsubsection{下划线和删除线}
+		% LaTeX原生的加下划线命令
+            \underline{abc} 
+		
+		%以下命令来自ulem宏包，见导言区
+            \uline{下划线}\\
+            \uuline{双下划线}\\
+            \dashuline{虚下划线}\\
+            \dotuline{点下划线}\\
+            \uwave{波浪线}\\
+            \sout{删除线}\\
+            %* "sout"来自"strike out"的缩写
+            \xout{斜删除线}
+            %* "xout"来自"cross out"的缩写
+            %rfr 上述每一条命令后面使用了"\\"命令，但是这一条命令的输出效果实际是在同一段之内强制换行，因此在每一条"\\"命令之后的内容都会换行并且顶格打印，而不会空两格，"\newline"命令也具有相同的输出效果。如果需要换行且顶格打印，可以在相应的内容前面使用"\par"命令，或者直接在需要换行处空出一行，参考：https://tex.stackexchange.com/questions/82664/when-to-use-par-and-when-newline-or-blank-lines，书中也在后续的"3.3.1 空格、换行与分段"一节提到了这一问题
+
+        \subsubsection{其他}
+    
+    \subsection{格式控制}
+            \LaTeX 的长度单位：
+
+            \textbf{pt}：point，磅
+
+            \textbf{pc}：pica，1 pc = 12 pt，四号字
+
+            \textbf{in}：inch，英寸，1 in = 72.27 pt
+
+            \textbf{bp}：bigpoint，1 bp = 1/72 in
+
+            \textbf{cm}：centimeter，厘米，1 cm = 1/2.54 in
+
+            \textbf{mm}：millimeter，毫米，1 mm = 1/10 cm
+
+            \textbf{sp}：scaled point，\TeX 的基本长度单位，1 sp = 1/65536 pt
+
+            \textbf{em}：当前字号下，大写字母M的宽度
+
+            \textbf{ex}：当前字号下，小写字母x的高度
+
+            % \textwidth % 页面上文字的总宽度，即页宽减去两侧边距
+            % \linewidth % 当前行允许的行宽
+            %* 书中没有明确上述两条命令的用法，不过参照下文关于段首缩进长度、段落间距的设置，应该也是和"\setlength{cmd}{length}"命令搭配使用
+
+        \subsubsection{空格、换行与分段}
+        % 空格
+            Fig.~8
+            % "~"命令输出效果等同于一个空格，并且在此空格之后不会换行，这样可以使空格前后内容始终在同一行上
+
+        % 换行和分段
+            This is a paragraph (空行). 
+            % 之后空一行，空行之后的一行作为新的段落，开头空两格打印
+            
+            This is another paragraph (\textbackslash par). 
+            % 之后不需要空一行，在这一行和下一行之间（通常放在这一行的末尾，或者下一行的开头）的使用"\par"命令，效果等同于空行
+            %* 但是即使此处空一行，再在这一行的末尾或者下一行的开头使用"\par"命令，效果也不会有变化
+            %rfr 关于空行和"\par"命令在对齐方式和设置行距方面的重要作用，参见"3.3.3 缩进、对齐与行距"一节和"3.4.3 原生字体命令"一节
+            \par This is another paragraph. 
+
+            \mbox{}
+            % 使用"\mbox{}"命令，并且前一行和后一行都空出，输出效果是打印一个空白段落
+            %* "\mbox{}"命令的功能实际上是防止放入其中的词在换行时断开（虽然即使断开也会有连字符连接）
+            %* 如果"\mbox{}"命令所在行的前后两行中有一行没有空行，则打印时不会输出空白段落，而是直接开始一个新的段落，即效果等同于空一行
+            %rfr "\mbox{}"中的"m"代表"make"，与之相关的另一个命令是"\makebox{}"，关于箱子的命令可以参看"5.2 箱子：排版的基础"一节
+
+            This is another paragraph (\textbackslash \textbackslash).\\ % 在同一个段落内强制换行，下一行顶格打印
+            This is still in the same paragraph (\textbackslash newline).\newline % 效果同上
+            This is still in the same paragraph.
+            
+        % 设置段落间距
+            \setlength{\parskip}{0pt plus 1pt} % 默认段落间距
+            %rfr 关于默认段落间距，可以参考：https://latexref.xyz/_005cparindent-_0026-_005cparskip.html
+            %rfr "0pt plus 1pt"是弹性距离，意即普通情况下是0pt，在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus），参考：https://github.com/shifujun/UESTCthesis/issues/2
+            %rfr “段落间距”其实是一个差值，是【前一段的最后一行的箱子和后一段的第一行的箱子的基线间距】减去【同一段内的基线间距】之后的差值，具体可以参见下文关于“基线间距”（baselineskip）的讨论
+
+            set the parskip (default)
+
+            set the parskip (default)
+
+            set the parskip (default)
+
+        % 自定义段落间距
+            {\setlength{\parskip}{30pt}
+            %* 这一命令如果放到导言区，会导致全文所有的段落间距变为10pt，直到设置新的段落间距为止
+            
+            set the parskip (30pt)
+
+            set the parskip (30pt)
+
+            set the parskip (30pt)
+            }
+            %* 该命令的控制对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围外之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围外之后的第一段来控制的，下文中行距的设置的也具有类似的特点
+            %! "{\setlength{cmd}{length}}"命令作用于统辖范围内的所有段落，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和之前一段之间的距离都是该命令设置的长度，即"\setlength{cmd}{length}"命令的效果不依靠每一段最后的空行或者"\par"命令来触发，下文利用该命令来设置段首缩进长度的情况也具有类似的特点
+
+        % 宏包lettrine能够生成首字下沉的效果
+            \lettrine{T}{this} is an example. Hope you like this package, and enjoy your \LaTeX\ trip !
+            
+        \subsubsection{分页}
+            \newpage % "\newpage"命令的功能是从当前行开始到当前页的最后不再打印内容，而直接从下一页开始打印后续内容
+            \mbox{}
+            \newpage
+            % 将"\mbox{}"命令和前后两个"\newpage"命令搭配使用，可以达到空出一整页的效果
+        
+        \subsubsection{缩进、对齐与行距}
+        % 设置段首缩进长度
+        % 默认段首缩进长度
+            set the parindent (default)
+        
+        % 自定义段首缩进长度
+            {\setlength{\parindent}{10em} set the parindent (10em)
+
+            set the parindent (10em)}
+            %! 在大括号中的各个段落的段首缩进长度都会受到该命令的影响，并不需要在每个段落的末尾空一行或者加上"\par"命令
+
+        % 强制取消缩进
+            \noindent set the parindent (no indent)
+            %* 这一命令只会影响到其后的一个段落，而不会导致其后所有的段落都取消缩进，也不需要任何大括号来限制其统辖范围
+
+        %* 段首缩进长度恢复默认值
+            set the parindent (default)
+            %rfr 关于默认段首缩进长度，可以参考：https://tex.stackexchange.com/questions/247441/what-is-the-width-of-the-standard-paragraph-indent-in-latexs-article-class、https://latexref.xyz/_005cparindent-_0026-_005cparskip.html，其中提到，10pt的article（最常见的LaTeX类型）中默认的段首缩进长度为15pt
+            %* ctexart文档类的默认段首缩进长度为20pt（2em），可以通过"\the\parindent"命令获得
+
+        % 设置对齐方式
+        % 设置方法一
+            \begin{flushleft}
+                左对齐
+
+                依然左对齐
+            \end{flushleft}
+            %* 左对齐的同时也就取消了段首缩进，事实上，右对齐和居中对齐同样也取消了段首缩进，只不过不在页面左侧，看不出来
+
+            \begin{flushright}
+                右对齐
+
+                依然右对齐
+            \end{flushright}
+
+            \begin{center}
+                居中对齐
+
+                依然居中对齐
+            \end{center}
+            %* 上述三条命令都是以环境形式设立的，因此不会影响到环境以外内容的对齐方式，是推荐的设置方式
+        
+        % 设置方法二
+            {\raggedleft 右对齐
+            %* "ragged"在此处是“凹凸不平”的意思，以"raggedleft"为例，其意思是文本的左侧是凹凸不平的，意即“右对齐”
+            
+            依然右对齐
+
+            }
+
+            {\raggedright 左对齐\par
+            依然左对齐\par
+            }
+
+            {\centering 居中对齐
+            \par 依然居中对齐
+            
+            }
+            %* 以上三条命令会导致其后内容的对齐方式都发生改变，直到设置新的对齐方式或者段首缩进长度，因此不推荐使用，书中也提到，"{\centering}"（包括"{\raggedleft}"、"{\raggedright}"）命令常常用在环境内部（或者一对花括号内部）
+            %! 和上文中的"{\setlength{cmd}{length}}"命令不同，"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的对齐方式将无法生效
+            %rfr 参考：https://tex.stackexchange.com/questions/354669/par-before-vs-after，而如果使用方法一，最后一段的末尾不需要空行或者添加"\par"命令
+
+        %rfr 关于行距的设置，参照"5.3.3 行距"一节
+
+    \subsection{字体与颜色}
+        \subsubsection{字族、字系与字形}
+            字体（typeface $\sim$ font）
+            \begin{itemize}
+                \item 字族：宋体、黑体、楷体 v.s. 罗马体、等宽体
+                \item 字系和字形：加粗、加斜
+                \item 字号：五号、小四号
+            \end{itemize}
+
+        \subsubsection{中西文“斜体”}
+        \subsubsection{原生字体命令}
+        %* 文本系列的命令和字体系列的命令
+            %* 文本系列的命令，以"text-"开头，用于临时改变字体，命令的统辖范围用大括号括起来
+            %# 有些教程会将这种命令称为"argument style"（参数型）
+            %* 字族/字系/字号系列的命令，以"-family/-series/-shape"结尾，会导致其后的所有内容的字族/字系/字号改变，因此需要在命令和统辖范围的两边加上大括号；另外，这类命令放在导言区虽然不会报错，但是不会影响到正文，只有放在正文中，才会对其后的内容产生影响
+            %# 有些教程会将这种命令称为"declarative style"（声明型）
+            %* 以下均使用文本系列的命令
+        
+        % 设置字族
+            默认字族：\familydefault % "lmr"意即"Latin Modern Roman"
+            \begin{itemize}
+                \item Roman v.s. \textrm{Roman} % 罗马字族
+                %* 默认值
+                \item Sans Serif v.s. \textsf{Sans Serif} % 无衬线字族（Sans Serif）
+                \item Typewriter v.s. \texttt{Typewriter} % 等宽字族（Typewriter）
+            \end{itemize}
+        
+        % 设置字系
+            默认字系：\seriesdefault % "m"代表"Medium weight and width"的缩写
+            \begin{itemize}
+                \item BoldSeries v.s. \textbf{BoldSeries} % 粗体字系（BoldSeries）
+                \item MiddleSeries v.s. \textmd{MiddleSeries} % 中粗体字系（MiddleSeries）
+                %* 默认值
+            \end{itemize}
+
+        % 设置字形
+            默认字形：\shapedefault 
+            %* "n"代表"Normal"，即"upright"或者"roman"
+            \begin{itemize}
+                \item Upright v.s. \textup{Upright} % 竖直字形
+                %* 区别不明显
+                \item Slant v.s. \textsl{Slant} % 斜体字形
+                \item Italic v.s. \textit{Italic} % 强调体字形
+                %! 书中在"3.4.2 中西文‘斜体’"一节中提到“加斜是指某种字族的Italy字系”（根据命令"\itshape"，实际应当是字形），而“斜体是指Slant字族”，可是根据命令"\slshape"，Slant也应当是字形的一种。不过不管怎么说，西文中表示强调，都是对字体应用Italic字形。
+                \item scap v.s. \textsc{scap} % 小号大写体字形
+                %* 适用于小写字母
+                %* "sc"来自"small cap(ital)s"
+            \end{itemize}
+
+        % 自定义字族/字系/字形命令
+            % 以下两条命令是等价的
+            % \newcommand*{\newrm}[1]{\textrm{#1}}
+            % \newcommand*{\newrm}[1]{{\rmfamily #1}}
+            %* 关于这两类命令的区别，参见"3.4.3 原生字体命令"一节
+             %rfr 更多关于CJK字体的设置，可以参考：https://blog.csdn.net/xiazdong/article/details/8892070
+
+        % 重定义默认字族
+            % \renewcommand*{\familydefault}{\rmdefault} % 默认字族为罗马字族（Roman）
+            % \renewcommand*{\familydefault}{\sfdefault} % 默认字族改为无衬线字族（Sans Serif）
+            % \renewcommand*{\familydefault}{\ttdefault} % 默认字族改为等宽字族（Typewriter）
+            % \renewcommand*{\CJKfamilydefault}{\CJKsfdefault}
+
+        % 重定义某个字族下的默认字体
+            % \renewcommand*{\rmdefault}{font-name}
+            % \renewcommand*{\sfdefault}{font-name}
+            % \renewcommand*{\rmdefault}{ptm}
+            %rfr "ptm is the name under which the font family “Times” is installed in your LATEX system"，参考：https://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf
+           
+        % 相对字号命令  
+            相对字号命令：
+            \begin{itemize}
+                \item {\tiny tiny} 
+                \item {\scriptsize scriptsize}
+                \item {\footnotesize footnotesize}
+                \item {\small small}
+                \item {\normalsize normalsize} 
+                % 字号默认值取决于documentclass，比如article的默认值是10pt
+                \item {\large large}
+                \item {\LARGE LARGE}
+                \item {\huge huge}
+                \item {\Huge Huge}
+            \end{itemize}
+                %* 相对字号命令似乎没有对应的文本系列命令，因此在上述列表中，要注意在相对字号命令和统辖范围的两边加上大括号，否则相对字号命令会影响到后面的内容
+                %# 又由于这些相对字号命令都处于环境之中，并且每一个条目的开头会换一个相对字号命令，因此如果不将每一条相对字号命令及其统辖范围用大括号括起来，实际打印出的效果是后一个条目的标签和前一个条目的文本拥有相同的字号，但是列表环境之后的文本不会受环境内相对字号命令的影响
+        
+        %# 默认字体命令
+            ABC ABC
+
+            {\sffamily\large\bfseries\itshape ABC \normalfont ABC}
+            
+            {\sffamily\large\bfseries\itshape ABC \normalsize ABC}
+            
+            {\sffamily\large\bfseries\itshape ABC \normalsize\normalfont ABC}
+            %* LaTeX的原生命令当中提供了两个命令："\normalsize"命令和"\normalfont"命令（与之搭配的是"\textnormal{}"命令），前者用来将字体还原回默认字体大小，但不能修改其他的字族、字形、字系等特征，后者用来将字体还原回除了字体大小以外的默认字体特征，因此这两条命令是互补的，可以通过以上命令进行验证
+            %rfr 以上命令是受这篇帖子的启发：https://tex.stackexchange.com/questions/618394/the-fonts-large-and-normalfont-not-normalsize-are-strikingly-similar-is-th
+
+        % 设置字号和行距
+            %rfr "\fontsize{size}{skip}"这一命令要求同时设置字号和行距，如果要单独设置行距，可以使用"\linespread{}"命令，参考：https://tex.stackexchange.com/questions/48741/temporarily-increase-line-spacing/48743#48743、https://mirrors.ibiblio.org/CTAN/macros/latex/required/psnfss/psnfss2e.pdf
+            % 字号、行距为默认值
+            set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (default)
+
+            % 字号15pt，行距为默认值（1.2倍字体大小）
+            {\fontsize{15pt}{\baselineskip}{\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize
+        
+            \selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-baselineskip)
+            
+            }}
+
+            % 字号15pt，行距30pt
+            {\fontsize{15}{30}\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-30pt)\par}
+            %* 字号和行距的单位"pt"可以省略
+
+            set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (default)
+            %! "\selectfont"是"\fontsize{size}{skip}{\selectfont}"命令中预先设定好的一个命令名称，用来引出后面需要修改字号和行距的内容，不要错误地将其理解为需要替换为一个具体的字体名称
+            %* 类比前文提到的段落间距的设置，该命令的控制对象是统辖范围内的每一行和其前面一行之间的距离（包括统辖范围内第一行和统辖范围外之前的最后一行之间的距离），因此，不管统辖范围内的最后一行的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一行之间的距离都会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的
+            %! 和上文中的"{\setlength{cmd}{length}}"命令不同，而与上文中的"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令类似，"\fontsize{size}{skip}{\selectfont}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的行距将无法生效，而只有设置的字号生效
+            %* 因此可以发现，如果要用这一命令设置行距，统辖范围内的第一行和统辖范围外之前的最后一行可以在同一段落内（通过"\\"命令或者"\newline"命令强制换行），但是统辖范围内的最后一行和统辖范围外之后的第一行一定不在同一段落内，因为统辖范围内的最后一行的末尾必须要空行或者加上"\par"命令，否则这一行和之前一行之间设置的行距将无法生效
+            %rfr 参考：https://tex.stackexchange.com/questions/148508/how-does-fontsize-work、https://tex.stackexchange.com/questions/48741/temporarily-increase-line-spacing/48743#48743，从后面这篇帖子还可以发现，即使不需要主动地调整行距，当出现类似的用大括号将命令和统辖范围括起来的情况，最好也在每一段的末尾空行或者加上"\par"命令，否则行距可能会被动地发生变化
+            %! 书中给出的命令结构是在"\selectfont"命令"和统辖范围的两边加上大括号，经检验，这对大括号可以省去，但是原文没有提到，还需要在整个"\fontsize{size}{skip}{\selectfont}"命令和统辖范围的两边加上大括号，否则该命令会影响其后所有的内容
+            %* 总的来说，如果出现用大括号将命令和统辖范围括起来的情况，在每一段（尤其是最后一行）的末尾空行或者加上"\par"命令是最保险的做法，可以避免很多不必要的问题
+            %rfr 更多关于行距的讨论，参看"5.3.3 行距"一节 
+
+        \subsubsection{西文字体}
+            %todo 加表格（西文字体）
+        % 自定义可调整字族的命令
+            \newcommand*{\myfont}[2]{{\fontfamily{#1}\selectfont #2}}
+            Let's change font to \myfont{lmss}{Palatino} !
+            %rfr 书中输入自定义命令时，字族参数选用的是"ppl"（Palatino），但是系统会警告："LaTeX Font: Font shape `TU/ppl/m/n' undefined (Font)	 using `TU/lmr/m/n' instead." 意即这一字体搭配不存在，参考：https://tex.stackexchange.com/questions/24628/font-shape-undefined-with-latex-and-isodoc，因此虽然能够打印出结果，但是字体没有发生变化，将字族替换为"lmss"（Latin Modern Roman Serif）之后，警告消失，打印出的字体也发生变化
+
+        % 利用本地安装的字体定义新的字族命令
+            %* 书中将以下命令放在了fontspec宏包的部分，但是经检验，即使不加载fontspec，以下命令依然可以生效
+            \newfontfamily{\lucida}{Lucida Calligraphy} % 第一个参数定义命令名称，第二个参数输入本地的字体名称
+            {\lucida This is Lucida Calligraphy.}
+            %! 注意，书中将大括号放在了命令后统辖范围的两边，实际应该放在命令和统辖范围的两边，否则后续内容的西文字体都会变成Lucida Calligraphy
+
+            %rfr 更多关于字体的介绍，可以参考：https://www.tug.org/pracjourn/2006-1/schmidt/schmidt.pdf、https://mirrors.ibiblio.org/CTAN/macros/latex/required/psnfss/psnfss2e.pdf
+
+        \subsubsection{中文支持与CJK字体}
+        % ctex宏包支持的字体命令
+            {\songti 宋体}
+
+            {\heiti 黑体}
+
+            {\fangsong 仿宋}
+
+            {\kaishu 楷书}
+
+            {\yahei 雅黑}
+
+            {\lishu 隶书}
+
+            {\youyuan 幼圆}
+            %* 注意，大括号要放在命令和统辖范围两边
+            
+        % 使用xeCJK宏包设置CJK主要字体及其粗体
+            设置CJK主要字体：宋体
+
+            \textbf{设置CJK主要字体的粗体：黑体}
+        
+        % 自定义新的CJK字族命令
+            %* 可以和上文中定义新的西文字族命令的"\newfontfamily{}{}"比对
+            \newCJKfontfamily{\songtii}{SimSun}
+            %! 书中给出的定义结构是"\newCJKfontfamily[song]\songti{SimSun}"，"\songti"两边没有加大括号，编译时会报错
+            %todo 另外，不太明白中括号中的"song"的功能是什么，将其删除，不影响该字族命令的定义
+
+            {\songtii 宋体}
+
+        % 临时设置一种CJK字体
+            % {\CJKfontspec[fakeslant = 0.2,fakebold = 3]{SimSun} 临时字体}
+            %todo 暂时还没有弄明白中括号中的选项的功能
+
+        \subsubsection{颜色}\label{subsubsec:3.4.6}
+        % 使用xcolor宏包定义颜色
+            \definecolor{goldenrod}{RGB}{218,165,32}
+            {\color{goldenrod}秋麒麟色}
+
+        % xcolor宏包预定义的颜色
+            {\color{black}黑色}
+            
+            {\color{darkgray}深灰色}
+
+            {\color{lime}酸橙色}
+
+            {\color{pink}粉红色}
+
+            {\color{violet}紫罗兰色}
+
+            {\color{blue}蓝色}
+
+            {\color{gray}灰色}
+
+            {\color{magenta}品红色/洋红色}
+
+            {\color{purple}紫色}
+
+            {\color{white}白色}
+
+            {\color{brown}棕色}
+
+            {\color{green}绿色}
+
+            {\color{olive}橄榄色}
+
+            {\color{red}红色}
+
+            {\color{yellow}黄色}
+
+            {\color{cyan}青色}
+
+            {\color{lightgray}浅灰色}
+
+            {\color{orange}橙色}
+
+            {\color{teal}鸭绿色}
+
+        % 通过“调色”做出新的效果
+            \textcolor{red!70}{70\%红色}
+
+            \textcolor{blue!50!black!20!white}{50\%蓝色20\%黑色\%30白色}
+
+            \textcolor{-yellow}{黄色的互补色}
+            %rfr "\color{color}"命令会改变后面所有内容的颜色，因此需要在命令和统辖范围的两边加上大括号；"\textcolor{color}{text}"命令将需要修改颜色的文本纳入第二个必选参数，只会改变这一必选参数中文本中的颜色，可以参考xcolor宏包的官方手册：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/xcolor/xcolor.pdf
+
+    \subsection{引用与注释}
+        \subsubsection{标签和引用}
+        % LaTeX原生命令提供的索引形式
+            这是在\ref{subsubsec:3.4.6} 一节设置的标签，这一节的名称是\nameref{subsubsec:3.4.6}，这一标签所在的页码是\pageref{subsubsec:3.4.6}
+            %* 注意，如果不使用"\section{title}"命令而使用多一个"*"号的"\section*{title}"命令，则计时器功能将关闭，同时也会影响到"\label{}"命令和"\ref{}"命令，无法索引出相应的大纲编号
+            %rfr "\nameref{label}"这种索引方式仍然需要依靠在相应位置设置标签来完成，如果想要直接索引出相应章节的名称，可以参考：https://tex.stackexchange.com/questions/75168/get-current-section-name-without-label
+            
+        % amsmath宏包提供的索引形式
+            这是在\eqref{subsubsec:3.4.6}一节设置的标签
+
+        % hyperref宏包提供的索引形式
+            这是在\autoref{subsubsec:3.4.6}一节设置的标签，这一节的名称是\hyperref[subsubsec:3.4.6]{颜色}
+            %* 有意思的是，"\hyperref[label]{text}"中的[lable]虽然是可选参数，但是如果不设置这一参数会导致编译报错
+
+            这是我的\LaTeX 代码的GitHub仓库的链接：\url{https://github.com/yuanyang11510/Yuanhao_LaTeX}（可点击）|| % 打印出可以点击的链接
+            \nolinkurl{https://github.com/yuanyang11510/Yuanhao_LaTeX}（不可点击）, % 打印出的颜色为黑色，无法点击的链接 
+            它的名称是\href{https://github.com/yuanyang11510/Yuanhao_LaTeX}{Yuanhao\_LaTeX} 
+
+        % 重定义hyperref宏包中"\autoref{label}"的索引形式
+            \renewcommand*{\subsubsectionautorefname}{小节标题}
+            这是重新定义"\textbackslash autoref\{label\}"索引形式过后的\autoref{subsubsec:3.4.6}一节
+        
+        % lastpage宏包提供的"LastPage"标签
+            第\thepage 页，共\pageref{LastPage}页
+            
+        \subsubsection{脚注、边注与尾注\protect\footnote{This is a footnote in the subsubsection.}} % 大纲中的脚注需要在"\footnote{}"命令前面再加上"\protect"命令
+        % 1. 脚注
+        % 正文内的脚注
+            正文脚注示例\footnote{This is a footnote.}
+
+        % minipage环境内的脚注
+            \begin{minipage}{\linewidth}
+                minipage环境脚注示例1\footnote{This is a footnote in the minipage.} %直接在minipage环境内使用"\footnote{}"命令
+
+                minipage环境脚注示例2\footnotemark %在minipage环境内使用"\footnotemark"命令，在minipage环境外使用"\footnotetext{text}"命令
+            \end{minipage}
+            \footnotetext{This is another footnote in the minipage.}
+            %rfr 可以发现，在minipage环境中，两种脚注的设置方式都是有效的，但是两种方式打印出来的脚注的显示位置和标号都不一样，参考：https://tex.stackexchange.com/questions/274/can-i-get-a-normal-footnote-in-a-minipage-environment-in-latex-how
+
+        % 表格环境内的脚注
+            \begin{tabular}{l}
+                表格环境脚注示例1\footnotemark\\
+                表格环境脚注示例2\footnotemark
+            \end{tabular}
+            \footnotetext{你不需要更多。}
+            \footnotetext{你还需要更多。}
+            % 表格环境内的脚注可以使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置，但不能直接使用"\footnote{}"命令设置
+            %* 如果要在表格环境内使用类似"\footnote{}"的命令设置脚注，可以加载tablefootnote宏包
+            
+            %* 通过以上两种环境的例子，可以发现，使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置的脚注，会视同正文内设置的脚注，出现在正文的底部，并且参与正文脚注的数字编号；而在minipage环境中直接使用"\footnote{}"命令设置的脚注，则只会出现在minipage的底部，并且采用英文字母编号
+
+        % 在大纲中使用脚注
+            %rfr 需要在"\footnote{}"命令前加上"\protect"，见这一小节标题
+
+        % 在"\caption{}"命令中使用脚注
+            \begin{table}
+                \centering
+                \caption{Title\protect\footnotemark}
+                \begin{tabular}{l|l|l}
+                    \hline
+                    A&B&C\\
+                    D&E&F\\
+                    \hline
+                \end{tabular}
+            \end{table}
+            \footnotetext{{This is a footnote in the caption.}}
+            %* "\caption{}"命令必须放在浮动体环境中才能够生效，比如table环境或者figure环境
+            %rfr 但是经检验，如果在浮动体环境中的"\caption{}"命令中使用"\protect\footnote{}"命令，最后编译虽然不会报错，但是无法在底部显示脚注，需要将"\footnote{}"命令替换为"\footnotemark"命令搭配"\footnotetext{text}"命令，并且"\footnotetext{text}"命令需要放在浮动体环境结束之后，可以参考：https://blog.csdn.net/iteye_17686/article/details/82336269、https://blog.csdn.net/yq_forever/article/details/127415107
+
+        % 脚注之间的距离
+            % \footnotesep
+            %* 可以搭配"\setlength{cmd}{length}"命令使用
+            
+        % 重定义每页脚注之上的横线的宽度和高度
+            % \renewcommand{\footnoterule}{\rule{0.4\columnwidth}{0.4pt}}
+            %rfr "\rule{width}{height}"命令的两个参数分别代表需要设置的宽度和高度，可以参考：https://liam.page/2018/01/11/floats-in-LaTeX-multiple-elements-in-a-single-float/
+            
+        % 调整脚注到正文的间距
+            % \setlength{\skip\footins}{0.5cm}
+            %todo 暂时还不知道"footins"中的"ins"是什么含义
+
+        % 2. 边注
+            这一行有边注\marginpar[左侧]{右侧}
+            % 默认情况下，边注显示在右侧，边注内容由必选参数控制，如果设置可选参数，则边注在偶数页上会显示在左侧，内容由可选参数控制
+            %rfr 但是原文没有指出，这一设置需要文档类型是“双边的”（two-sided）的，book类型默认是双边的，而article和report类型默认是单边的（single-sided），可以在"\documentclass[options]{style}"命令中添加"twoside"选项来使后两类文档变为双边类型，参考：https://blog.csdn.net/xovee/article/details/127625198
+
+        % 改变边注的位置
+            {这一行有边注\marginpar[左侧]{右侧}
+            \reversemarginpar
+            
+            这一行有边注\marginpar[左侧]{右侧}
+            
+            }
+             % "\reversemarginpar"命令之后的所有内容的边注的位置会和原本的位置相反
+            %todo 另外，有意思的一点是，如果该命令之前的内容和该命令之间没有空行（即在同一段落内），该命令之前的内容也会落入该命令的统辖范围，暂时还不知道原因是什么
+            %! 如果用大括号将该命令和统辖范围括起来，则每一段的末尾都需要空行或者加上"\par"命令来触发"\reversemarginpar"命令生效
+
+            这一行有边注\marginpar[左侧]{右侧}
+
+        % 有关边注的长度命令
+            % \marginparwidth % 控制边注的宽
+            % \marginparsep % 控制边注到正文的距离
+            % \marginparpush % 控制边注之间的最小距离
+            %* 可以搭配"\setlength{cmd}{length}"命令使用
+            % 前两者也可以通过geometry宏包来设置
+
+        % 3. 尾注
+            % 需要endnotes宏包，书中没有过多介绍
+            尾注示例\endnote{This is an endnote.}
+            %rfr 需要在正文最后使用"\theendnotes"命令来显示所有尾注，参考：https://tex.stackexchange.com/questions/56145/is-there-a-way-to-move-all-footnotes-to-the-end-of-the-document
+            
+        \subsubsection{援引环境}
+        % quote环境
+            鲁智深其师有偈言曰：
+            \begin{quote}
+                逢夏而擒，遇腊而执。
+
+                听潮而圆，见信而寂。
+            \end{quote}
+            % 援引内容首行不缩进
+
+        % quotation环境
+            圆寂之后，其留颂曰：
+            \begin{quotation}
+                平生不修善果，只爱杀人放火。
+                忽地顿开金绳，这里扯断玉锁。
+
+                咦！钱塘江上潮信来，今日方知我是我。
+            \end{quotation}
+            % 援引内容首行缩进
+
+        % verse环境
+            泰戈尔在他的《园丁集》中写道：
+            \begin{verse}
+                从你眼里频频掷来的刺激，使我的痛苦永远新鲜。
+
+                这是一段测试文字，这是一段测试文字，这是一段测试文字，这是一段测试文字，这是一段测试文字，这是一段测试文字，这是一段测试文字，这是一段测试文字……
+
+                test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test\ldots
+            \end{verse}
+            % 援引内容悬挂缩进，由于书中举的例子的长度太短，因此此处增加两段较长的文字，以显示悬挂缩进的效果
+
+        \subsubsection{摘要}
+            \renewcommand{\abstractname}{这是摘要} % 重定义"\abstractname"命令来修改摘要标题
+            \begin{abstract}
+                \textbf{article}和\textbf{report}文档类支持摘要。在单栏模式下，摘要相当于一个带标题的quotation环境。双栏模式下，摘要相当于\textbackslash section*命令定义的一节。
+            \end{abstract}
+        
+        \subsubsection{参考文献}
+            %rfr 关于natbib宏包的相关介绍，可以参看文件"Natbib.tex"
+
+    \subsection{正式排版：封面、大纲与目录}
+        \subsubsection{封面}
+        \subsubsection{大纲与章节}
+        % LaTeX的大纲级别
+            \LaTeX 的大纲级别：
+
+            \begin{itemize}
+                \item \textbackslash part：部分，这个大纲级别不会打断chapter的编号
+                \item \textbackslash chapter：章，\textbf{article}的文档类不包含本大纲级别
+                \item \textbackslash section：节
+                \item \textbackslash subsection：次节，默认\textbf{report/book}文档类中本级别及以下的大纲级别不进行编号，也不纳入目录
+                \item \textbackslash subsubsection：小节，默认\textbf{article}文档类中本级别及以下的大纲级别不进行编号，也不纳入目录
+                %! 以上两个大纲级别中作者所谓的“默认”情况，可能是行业中的惯例，并不是命令本身的特点，在"3.5.1 标签和引用"一节已经提到，是否编号和纳入目录，以及在设置标签后是否能索引出大纲编号，是由大纲命令中的"*"号控制的。加上"*"号则不进行编号，也不纳入目录
+                \item \textbackslash paragraph：段，极少使用
+                \item \textbackslash subparagraph：次段，极少使用
+            \end{itemize}
+
+        % LaTeX的大纲深度
+            \textbf{book/report}文档类的大纲深度：
+
+            \begin{itemize}
+                \item \textbackslash part：-1（与\textbf{article}文档类不同）
+                \item \textbackslash chapter：0
+                \item \textbackslash section：1（以下与\textbf{article}文档类相同）
+                \item \textbackslash subsection：2
+                \item \textbackslash subsubsection：3
+                \item \textbackslash paragraph：4
+                \item \textbackslash subparagraph：5
+            \end{itemize}
+
+            \textbf{article}文档类的大纲深度：
+
+            \begin{itemize}
+                \item \textbackslash part：0 （与\textbf{book/report}文档类不同）
+                \item \textbackslash chapter：\textbf{article}文档类不存在这一大纲级别
+                \item \textbackslash section：1（以下与\textbf{book/report}类文档相同）
+                \item \textbackslash subsection：2
+                \item \textbackslash subsubsection：3
+                \item \textbackslash paragraph：4
+                \item \textbackslash subparagraph：5
+            \end{itemize}
+
+        % book文档类还提供以下命令
+            % \frontmatter % 前言，页码为小写罗马字母，其后的章节不编号，但生成页眉、页脚和目录项
+            % \mainmatter % 正文，页码为阿拉伯数字，其后的章节编号，页眉、页脚和目录项正常生成
+            % \backmatter % 后记，页码格式不变，继续计数，章节不编号，但生成页眉、页脚和目录项
+
+        \subsubsection{目录}
+            %rfr 关于目录的相关命令，可以参看文件"Titlesec_toc.tex"
+
+    \subsection{计数器与列表}
+        \subsubsection{计数器}
+            \LaTeX 中的计数器：
+            \begin{itemize}
+                \item \textbf{章节}：part、chapter、section、subsection、subsubsection、paragraph与subparagraph
+                \item \textbf{编号列表}：enumi、enumii、enumiii与enumiv
+                \item \textbf{公式和图表}：equation、figure与table
+                \item \textbf{其他}：page、footnote与mpfootnote（mpfootnote用于实现minipage环境的脚注）
+                    %rfr 注意，"mpfootnote"应该只是minipage环境中脚注的计数器名称，而不是该环境中设置脚注的命令，minipage中有两种方法设置脚注，其中通过"\footnote{}"命令设置的脚注，计数方法是小写英文字母，对应的计数器应当就是mpfootnote，参见"3.5.2 脚注、边注与尾注"一节
+            \end{itemize}
+
+        % 通过"\the+计数器名称"命令来调用计数器
+            当前所在章节为\thesection、第\thesubsection 节、第\thesubsubsection 次节
+            %! 如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此需要改写为“当前所在章节为\thesection”，这也说明尽量不要在重定义计数器的调用形式时增加文本内容，因为计数器的调用形式最初的目的只是为了呈现其数值形式以及几个数值的组合形式，如果想要修改章节的标签形式，可以通过titlesec宏包提供的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令进行修改
+
+        % 指定计数器数值格式
+            第\arabic{section}节 % 阿拉伯数字
+
+            第\Alph{section}节 % 大写英文字母
+
+            第\alph{section}节 % 小写英文字母
+
+            第\Roman{section}节 % 大写罗马数字
+
+            第\roman{section}节 % 小写罗马数字
+
+            第\chinese{section}节 % 汉字（ctexart文档类特有）
+            %* 可以发现，如果在正文中直接调用计数器的数值，使用"\the+计数器名称"命令，如果要通过以上命令指定计数器数值的格式，则直接在以上命令中使用计数器名称即可，否则如果仍然使用"\the+计数器名称"的结构，编译会报错
+        
+        % 定义一个新的计数器
+            \newcounter{parentcounter} 
+            \newcounter{soncounter}[parentcounter] 
+            %* 先定义父级计数器，再定义子级计数器，如果顺序颠倒，编译会报错
+            父级计数器：\arabic{parentcounter} % 默认初始值为0
+            子级计数器：\arabic{soncounter} % 默认初始值为0
+
+            \setcounter{soncounter}{1} %* 将子级计数器的初始值手动设置为1
+            父级计数器：\arabic{parentcounter} % 父级计数器为0
+            子级计数器：\arabic{soncounter} % 子级计数器为1
+
+            \addtocounter{soncounter}{1} %* 为子级计数器手动增加1
+            父级计数器：\arabic{parentcounter} % 父级计数器为0
+            子级计数器：\arabic{soncounter} % 子级计数器为2
+
+
+            \addtocounter{parentcounter}{1} %* 为父级计数器手动增加1，子级计数器不归零
+            父级计数器：\arabic{parentcounter} % 父级计数器为1
+            子级计数器：\arabic{soncounter} % 子级计数器为2
+            
+            \stepcounter{parentcounter} %* 父级计数器步进1，子级计数器归零
+            父级计数器：\arabic{parentcounter} % 父级计数器为2
+            子级计数器：\arabic{soncounter} % 子级计数器为0
+            %* 可以发现，如果没有设置父级计数器，则"\addtocounter{counter}{1}"命令和"\stepcounter{counter}"命令的效果是一样的
+            %! 注意，定义的新计数器只能和"\arabic{counter}"类命令搭配使用输出数值，不能像"\section{}"类命令一样具有设置章节名称的功能，也不能通过重定义"\the+计数器名称"的方式来设置计数器数值的表述形式
+
+        \subsubsection{列表}
+        % 1. itemize环境
+            无序列表：
+            \begin{itemize}
+                \item 第一项 
+                % 项目符号默认值为圆点（\textbullet）
+                %* 更确切地说，这是itemize列表当中第一级的条目符号样式
+                \item [-] 第二项 
+                % 在itemize列表环境当中的每个条目后面的可选参数会改写该条目的默认符号样式
+            \end{itemize}
+            %rfr 关于itemize列表的嵌套以及各级列表的条目符号样式，参见文件"Enumitem.tex"
+
+        % 2. enumerate环境
+            自动编号列表：
+            \begin{enumerate}
+                \item 第一项
+                \item [张三] 第二项 
+                % 方括号的使用会打断编号，之后的编号顺次推移
+                %* 在enumerate列表环境当中的每个条目后面的可选参数会改写该条目默认的编号样式，而条目默认的编号样式会调用相应级别的计数器，因此此处如果可选参数设置为文本，则计数器不会递进1，而会到下一次调用的时候递进1
+                \item 第三项
+            \end{enumerate}
+            %rfr 关于enumerate列表的嵌套以及各级列表的条目编号样式，参见文件"Enumitem.tex"
+
+        % 3. description环境
+            描述列表：
+            \begin{description}
+                \item[LaTeX] 一个排版系统
+                \item[.tex] LaTeX文档扩展名  
+            \end{description}
+            % 方括号中的内容会加粗显示
+            %rfr 关于description列表的嵌套以及项样式，参见文件"Enumitem.tex"
+
+    \subsection{浮动体与图表}
+
+        \subsubsection{浮动体}
+            %rfr 关于浮动体的相关命令,可以参考文件"Picture.tex"
+
+        \subsubsection{图片}
+            %rfr 关于图片的相关命令，可以参考文件"Picture.tex"
+
+        \subsubsection{表格}
+            %rfr 关于表格的相关命令，可以参考文件"Table.tex"
+
+        \subsubsection{非浮动体图标和并列图表}
+            %rfr 关于并列图表的相关命令，可以参考文件"Picture.tex"
+
+    \subsection{页面设置}
+        \subsubsection{纸张、方向和边距}
+            %rfr 关于geometry宏包的相关命令，可以参考文件"Geometry.tex"
+
+        \subsubsection{页眉和页脚}
+            %rfr 关于fancyhdr宏包及相关命令的介绍，可以参看文件"Fancyhdr.tex"
+
+    \subsection{抄录与代码环境}
+        %* 下面先引用``3.1.2 保留字符''一节以及``3.2 标点与强调''一节中提到的\LaTeX 无法直接通过文本输入打印的字符（只引用文本中使用的符号，而不包括数学环境中的符号；汉语、英语、法语中的名称用"/"符号隔开）：
+            \begin{itemize}
+                \item \#（井号/number sign, hash, hashtag, pound sign/croisillon）
+                \item \$（美元符号，金钱符号，比索符号/dollar sign, peso sign/symbole dollar）
+                \item \%（百分号/percent signr/pour cent, pour(-)cent）
+                \item \&（和号/ampersand, and sign/esperluette）
+                \item \_（下横线，独立下划线，底线/free(-)standing underscore, underline, low line, low dash）
+                \item \{\}（大括号，花括号/braces, curly brackets/accolades）
+                \item \textbackslash \textrm{\char92} {\rmfamily \char92}（反斜杠，反斜线/backslash,reverse slash, hack, whack, slosh, bash, backslant, etc./contre-oblique, barre oblique inversé, backslash, antislash
+                \item \^{}（扬抑符/circumflex/accent circonflexe）
+                \item \~{} \textasciitilde（波浪号/tilde/tilde）
+                \item \textgreater \textless（大于号、小于号）
+            \end{itemize}
+        
+        % 使用"\verb(*)"命令或者verbatim(*)直接输出这些符号，在相应的命令或者环境中，这些符号在原来编程语言中的功能都会失效，打印出的字体默认为tt字族
+            % \verb|# $ % & _ { } \ ^ ~ < >|
+            %! 书中提到可以用花括号（即大括号）将抄录内容括起来，但是经检验，这样编译会报错，可以用"{}"、"*"符号以外的符号将抄录内括起来，但是最好不要选用这些抄录内容中的符号，否则会导致末尾的符号的字体发生变化，比如此处选用"|"符号将抄录内容括起来
+            %* VS Code中使用这一命令时，虽然编译不会报错，但是会被当成错误（error）而划上红线，因此此处将其注释掉
+
+            \begin{verbatim}
+                # $ % & _ { } \ ^ ~ < >
+            \end{verbatim}
+            %todo 使用verbatim环境将抄录内容包起来，但是打印的时候抄录内容的前面和下面一行各自会出现一段空格，前面的空格似乎和verbatim环境在页面中的缩进有关系，下面一行上的空格还暂时不知道原因是什么
+        
+        % 带"*"号的"verb*"命令或者verbatim*环境表示将抄录内容中的空格用"\textvisiblespace"命令表示出来（显示为"␣"符号）
+            % \verb*|# $ % & _ { } \ ^ ~ < >|
+
+            \begin{verbatim*}
+                # $ % & _ { } \ ^ ~ < >
+            \end{verbatim*}
+
+        % shortvrb宏包支持以一对符号代替"\verb"命令
+            % \MakeShortVerb |
+            % |# $ % & _ { } \ ^ ~ < >|
+            %! 即使在上述的命令和相关内容两边加上大括号，选取的符号在之后的内容中将无法再被输出，经检验，如果选择"|"符号，则之后编译不会报错，但是不再会打印出"|"符号，如果选择"?"符号，则之后编译会报错
+
+% 分栏开始-----------------------------------------------------------------------------------------------------------------------------------
+        {\setlength{\columnsep}{10pt}
+            % 设置“栏间距”（左栏右边线和右栏的左边线之间的距离），默认值是10pt
+            %* 和表格中的"\tabcolsep"命令代表的“单元格边距”不同（参考文件"Table.tex"），此处的“栏间距”和中间的分隔线没有关系，关键的证据是双栏模式下文本宽度、栏宽和栏间距之间的长度关系：\textwidth = \columnwidth * 2 + \columnsep
+            %! 注意，这一命令只有放置在"\twocolumn[text]"命令之前才能对栏间距产生影响
+            %todo 原因还不是很清楚
+    \twocolumn[\centering 这是分成双栏的前言]
+            % 可以使用"\twocolumn[text]"命令进行临时分栏，分栏的同时会自动在前一行命令的最后加上"\clearpage"命令，因此分栏一定是另起一页进行
+            % 可选参数用于输出双栏上方预留出的单栏区域的内容
+        \setlength{\columnseprule}{.4pt}
+            % 双栏之间的分隔线宽\度默认值为0pt，一般可以设置为0.4pt
+            %! 注意，这一命令放置在"\twocolumn[text]"命令之前或者之后，都可以对分隔线宽度产生影响
+        % \setlength{\columnwidth}{167.5pt}
+            %* 上文已经提到双栏模式下文本宽度、栏宽和栏间距之间的长度关系：\textwidth = \columnwidth * 2 + \columnsep，因此一般设置了栏间距，就不必再设置栏宽，因为栏宽可以通过该长度关系自动计算出来，如果同时设置了不满足这一长度关系的栏间距和栏宽，会导致奇怪的打印效果
+            %* 而在单栏模式下，文本宽度的默认值就等于栏宽：\textwidth = \columnwidth，注意，此时虽然可以将栏宽设置为其他值，但是由于单栏模式下文本的宽度是由【文本宽度】而非【栏宽】决定，因此并不会对打印效果造成任何影响，因此可以认为"\columnwidth"命令和"\columnsep"命令一样，只有在双栏模式下才能发挥作用
+            %! 注意，这一命令只有放置在"\twocolumn[text]"命令之后才能对栏宽产生影响，这个原因很好理解，因为"\columnwidth"只有在双栏模式下才能真正发挥作用
+    \subsection{分栏}
+            %* 可以发现，如果要在双栏模式下设置章节名，相应的命令需要放置在"\twocolumn[text]"命令之后
+
+            \blindtext
+            \the\columnwidth
+            %* 在两栏的末尾打印栏宽，可以尝试调整上文的"\columnsep"，会发现栏宽会随着栏间距的变化而变化
+            
+            \newpage
+            % 在双栏模式下，"\newpage"命令的效果是换栏，"\clearpage"命令的效果才是换页
+
+            \blindtext
+            \the\columnwidth
+            
+    \onecolumn
+            % 同样可以使用"\onecolumn"命令将双栏模式恢复为单栏模式，与此同时会自动在双栏模式内容的最后加上"\clearpage"命令，因此恢复单栏模式之后的内容会另起一页继续
+            %rfr 关于在双栏模式下插入图片，参考文件"Twocolumn_figure.tex"
+
+% 可以使用multicol宏包提供的multicols环境，将页面分成任意多栏
+            %* 如果不在multicols环境的前面加上"\clearpage"命令，或者使用类似"\onecolumn"的命令，环境外之前的内容有可能会和多栏处于同一页面上
+    \begin{multicols}{3}[\centering 这是分成三栏的前言] 
+            % 和"\twocolumn[text]"命令的可选参数一样，相应内容会打印在多栏顶部预留出的单栏区域
+            \blindtext
+            \the\columnwidth
+            %* 在多栏的末尾打印栏宽，会发现和在双栏模式下一样，栏宽会随着栏间距的变化而变化
+
+            \columnbreak
+            % 在multicols环境下应该使用"\columnbreak"命令来换栏
+
+            \blindtext
+            \the\columnwidth
+
+            \newpage
+            %* 此时使用"\newpage"命令会和"clearpage"命令一样导致换页
+
+            \blindtext
+            \the\columnwidth
+    \end{multicols}
+
+    \blindtext
+
+    \clearpage 
+            %* 如果不在multicols环境的后面加上"\clearpage"命令，环境外之后的内容有可能会和多栏处于同一页面上
+            %todo 这其实会引出一个问题：多栏环境中，系统如何决定多栏的高度？待研究
+            %rfr 关于在multicols环境中插入图片，参考文件"Twocolumn.tex"
+        } 
+        %! 注意，如果要用大括号把设置了特定参数的双栏内容括起来，要注意将"\onecolumn"命令也包括在内，否则这些设置的特定参数不会生效，原因暂时还不清楚
+% 分栏结束------------------------------------------------------------------------------------------------------------------------------------
+
+    \subsection{文档拆分}
+            %rfr 关于"\input{}"命令的相关内容，可以参考文件"Include.tex"
+
+    \subsection{西文排版及其他}
+        \subsubsection{连写}
+            ff fi fl % 会连写
+
+            f\mbox{}f f\mbox{}i f\mbox{}l % 插入空白箱子防止连写
+
+        \subsubsection{断词}
+        % 使用"\hyphenation{space separated words}"命令规定单词的断词方式或者禁止单词断词
+            ABCDEFGHI ABCDEFGHI ABCDEFGHI //// ABCDEFGHI ABCDEFGHI ABCDEFGHI // ABCDEFGHI /// ABCDEFGHI ABCDEFGHI //// ABCDEFGHI /// ABCDEFGHI /// ABCDEFGHI ///// ABCDEFGHI ABCDEFGHI ABCDEFGHI
+            %* 没有规定断词方式前，"ABCDEFGHI"虽然不是一个真实存在的单词，但是系统似乎也为其设定了某种断词方式
+
+            \hyphenation{ABC-DEF-GH-I JKLMN forget}
+            ABCDEFGHI ABCDEFGHI ABCDEFGHI //// ABCDEFGHI ABCDEFGHI ABCDEFGHI // ABCDEFGHI /// ABCDEFGHI ABCDEFGHI //// ABCDEFGHI /// ABCDEFGHI /// ABCDEFGHI ///// ABCDEFGHI ABCDEFGHI ABCDEFGHI
+            % 规定了"ABCDEFGHI"的断词方式之后，"ABCDEFGHI"会按照设置好的界限断词，英文单词则会按照预先定义好的音节界限断词
+            %* 有意思的是，规定"ABCDEFGHI"的断词方式前，可能是判定出其不是真实存在的英语单词，所以命令下面会加上蓝线（暂时还不知道蓝线的意义是什么），但是在规定其断词方式后，蓝线消失
+
+            JKLMN JKLMN JKLMN // JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN //// JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN //// JKLMN JKLMN JKLMN ////// JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN
+            % 禁止"KJLMN"断词
+            %* 与规定了断词方式的"ABCDEFGHI"不同，如果禁止一个并不存在的单词断词，命令下方的蓝线不会消失
+
+        % 使用"\-"符号临时规定单词的断词方式
+            OP\-QRS\-T OP\-QRS\-T /// OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T //// OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T // OP\-QRS\-T OP\-QRS\-T // OP\-QRS\-T OP\-QRS\-T OP\-QRS\-T 
+         
+        % 使用"\mbox{text}"命令临时禁止单词断词
+            012 3456 7890 / 012 3456 7890 / 012 3456 7890 / 012 3456 7890 / 012 3456 7890 / 012 3456 7890
+
+            \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890} / \mbox{012 3456 7890}
+
+        \subsubsection{硬空格与句末标点}
+        % 空格
+            这是\TeX Live % 不带空格
+
+            这是\TeX{} Live % 在不带参数的命令后面加上一对花括号可以确保其后可以打印出空格
+
+            这是\TeX\ Live % 在不带参数的命令后面加上"\ "也可以在其后打印出空格（书中表示为"\␣"是为了表明此处有一个空格）
+
+            这是\TeX\space Live % 在不带参数的命令后面加上"\space"也可以达到相同的目的，书中将前一种"\ "称为“硬空格”，将这里的"\space"称为“软空格”
+
+        % 句末标点
+            OK. That's fine. %* 句末以大写字母"K"，LaTeX会认为句末的"."符号是人名的一部分，因而后面的空格的长度会短于将"."符号识别为句号时的长度
+
+            OK\@. That's fine. % 可以通过在大写字母和句号之间添加"\@"来增加空格长度
+
+            Prof. Smith is a nice man. %* 句末以小写字母结尾，LaTeX又会认为句末的"."符号是句号，因而后面的空格的长度会长于将"."符号识别为人名部分时的长度
+
+            Prof.\ Smith is a nice man. 
+
+            Prof.~Smith is a nice man.
+            % 可以通过将空格替换为"\ "或者"~"符号来缩短空格长度，前者允许断行，后者不允许断行
+            %* 可以发现，上述调整空格长度的两种情况中，添加符号的位置不同：前一种添加在前一句的最后一个字母和句号之间，句号后的空格保持不变，后一种添加在句号和后一句的第一个字母之间，原来的空格需要删去
+
+            1. abc
+
+            1.\frenchspacing abc
+            % 在标点之后添加"\frenchspacing"命令，可以让标点后后面内容之间的空格距离变成极小，在排版参考文献列表时可能被使用
+
+            例子-1
+            %* 书中举的例子是在汉字后面接上连字符，此时汉字和连字符之间在打印时不会出现空格
+
+            例子a 例子1
+            %* 但是如果在汉字后面紧跟英文字母或者数字时，汉字和这些字符之间在打印时会出现空格
+            
+            \mbox{例子}a 例子\mbox{A} \mbox{例子}\mbox{1}
+            %* 解决的办法是把两者之一，或者两者都放在"\mbox{}"命令当中
+
+        \subsubsection{特殊符号}

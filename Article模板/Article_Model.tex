@@ -9,52 +9,29 @@
 
 % 宏包-----------------------------------------------------------------------------------------------------------------------------------
 
-% 测试文本
-\usepackage{lipsum}
-\usepackage{blindtext}
+% 文档拆分
+\usepackage{import}
 
 % 页面设置
 % \usepackage{lua-visual-debug}
-\usepackage[showframe]{geometry}
+% \usepackage[showframe]{geometry}
 \usepackage{changepage}
 
-% 下划线
-\usepackage[normalem]{ulem}
-
-% 图标
-\usepackage{hologo}
-\usepackage{pifont} 
+% 缩进
+\usepackage{indentfirst}
+% \usepackage{parskip}
 
 % 字体
 \usepackage{lettrine}
 \usepackage{fontspec}
 % \usepackage{ctex}
 \usepackage[slantfont,boldfont]{xeCJK}
-    \setCJKmainfont{SimSun}
-
-    % [boldfont = simhei]
-
-% 缩进
-\usepackage{indentfirst}
-% \usepackage{parskip}
+\setCJKmainfont{SimSun}
+% [boldfont = SimHei]
 
 % 颜色
 \usepackage{xcolor}
 \usepackage{colortbl}
-
-% 页眉、页脚、页码
-% \usepackage{fancyhdr}
-\usepackage{lastpage}
-
-% 注释
-\usepackage[perpage,bottom]{footmisc}
-\usepackage{endnotes}
-
-% 参考文献
-\usepackage[numbers,sort&compress,super,square]{natbib} 
-
-% 目录
-\usepackage[numbib,numindex]{tocbibind}
 
 % 浮动体
 \usepackage[section]{placeins}
@@ -73,8 +50,17 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 
-% 代码环境
-\usepackage{shortvrb}
+% --------------------------------------------------------------------------------------------------------------------------------------
+
+% 列表
+\usepackage[shortlabels,inline]{enumitem}
+
+% 注释
+\usepackage[perpage,bottom]{footmisc}
+\usepackage{endnotes}
+
+% 目录
+\usepackage[numbib,numindex]{tocbibind}
 
 % 分栏
 % \usepackage{cuted}
@@ -83,50 +69,69 @@
 % \usepackage{nidanfloat}
 \usepackage{multicol}
 
-% 文档拆分
-\usepackage{import} 
-
-% 其他
-\usepackage{boxedminipage}  
-
-% 自定义
+% 自定义样式
 \usepackage{titlesec} % 通过titlesec宏包自定义正文中的章节样式
 \usepackage{titletoc} % 通过titletoc宏包自定义目录中的章节样式
 
-% 列表
-\usepackage[shortlabels,inline]{enumitem}
+% 页眉、页脚、页码
+% \usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% 附录
+\usepackage[titletoc]{appendix}
+% \renewcommand{\appendixname}{这是附录} % 重定义"\appendixname"命令来修改目录当中附录计数器前面的名称
 
 % 索引
 \usepackage{makeidx}
 \usepackage{showidx}
-\usepackage{imakeidx} 
+\usepackage{imakeidx}
 
-% 附录
-\usepackage[titletoc]{appendix}
-    \renewcommand{\appendixname}{这是附录} % 重定义"\appendixname"命令来修改目录当中附录计数器前面的名称
+% --------------------------------------------------------------------------------------------------------------------------------------
+
+% 测试文本
+\usepackage{lipsum}
+\usepackage{blindtext}
+
+% 代码环境
+\usepackage{shortvrb}
 
 % 行号
 \usepackage[switch,pagewise,modulo]{lineno}
+
+% 下划线
+\usepackage[normalem]{ulem}
+
+% 图标
+\usepackage{hologo}
+\usepackage{pifont} 
+
+% 其他
+\usepackage{boxedminipage}
+
+% --------------------------------------------------------------------------------------------------------------------------------------
+
+% 参考文献
+\usepackage[backend=biber, style=langsci-unified]{biblatex}
+% \addbibresource{AllDoc.bib}
+% \usepackage[numbers,sort&compress,super,square]{natbib}
 
 % 引用
 \usepackage{amsmath}
 % \usepackage{nameref}
 \usepackage{csquotes}
 \usepackage{hyperref}
-    \hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
+\hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
 
 % --------------------------------------------------------------------------------------------------------------------------------------
+
 \begin{document}
 
 % 打印标题
 \maketitle
 
-% 通过重定义"\contentsname"命令来修改目录的标题
-\renewcommand{\contentsname}{这是目录}
-% 通过重定义"\listfigurename"命令来修改图片目录的标题
-\renewcommand{\listfigurename}{这是插图目录}
-% 通过重定义"\listtablename"命令来修改表格目录的标题
-\renewcommand{\listtablename}{这是表格目录}
+% \renewcommand{\contentsname}{这是目录} % 通过重定义"\contentsname"命令来修改目录的标题
+% \renewcommand{\listfigurename}{这是插图目录} % 通过重定义"\listfigurename"命令来修改图片目录的标题
+% \renewcommand{\listtablename}{这是表格目录} % 通过重定义"\listtablename"命令来修改表格目录的标题
 
 % 目录
 \tableofcontents
@@ -135,7 +140,7 @@
 % 表格目录
 \listoftables
 
-\section{第一章*}
+\section{第一章}
     \subsection{第一节}
         \subsubsection{第一小节}
 
@@ -143,7 +148,6 @@
 		    Hello, world ! 
 
 		    你好，世界！
-
 
 \theendnotes
 

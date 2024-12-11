@@ -1,0 +1,11 @@
+% \appendix
+% 从"\appendix"命令开始，计数器section的调用形式会从"\arabic{}"变成"\Alph{}"，其他计数器调用形式不变
+%* 以上是article文档类的情况，在book文档类当中，则是计数器chapter的调用形式从"Chapter \arabic{}"变为"Appendix \Alph{}"，其他计数器调用形式不变
+
+% "\appendix"是LaTeX的原生命令，下面是appendix宏包提供的appendices环境
+\begin{appendices}
+    \section{附录一}
+        \subsection{附录一（一）}
+            \subsubsection{附录一（一）.1}
+    \section{附录二}
+\end{appendices}

@@ -1,0 +1,444 @@
+\section{\LaTeX 进阶}
+    \subsection{自定义命令与环境}
+        % 由于自定义命令"\newcommand{cmd}[args][default]{def}"和自定义环境"\newenvironment{nam}[args][default]{begdef}{enddef}"的命令结构差不多，而自定义环境更复杂一些，下面首先介绍自定义环境的相关要点，自定义环境的命令格式为"\newenvironment{nam}[args][default]{begdef}{enddef}"，各个参数分别为：环境名称、参数个数、首个参数#1的默认值、文本之前的命令内容、文本之后的命令内容
+
+        % 如果在文本之前的命令中使用参数，这些参数直接用"#+数字"的形式表示即可
+            %* 没有为首个参数#1设置默认值
+            \newenvironment{newenv0}[2]
+            {\begin{flushright}#1\par#2\par}
+            {\end{flushright}}
+
+            % 首个参数为必选参数，需要用大括号括起来
+            \begin{newenv0}{first value}{second value}
+                右对齐
+            \end{newenv0}
+
+            %* 为首个参数#1设置默认值
+            \newenvironment{newenv1}[2][default value]
+            {\begin{flushright}#1\par#2\par}
+            {\end{flushright}}
+            
+            % 首个参数为可选参数，如果不使用该参数，则打印时显示默认值
+            \begin{newenv1}{second value}
+                右对齐
+            \end{newenv1}
+
+            % 如果使用该参数，则需要用中括号括起来
+            \begin{newenv1}[first value]{second value}
+                右对齐
+            \end{newenv1}
+
+            % 如果误用大括号括起来，则再看起初定义了几个参数，如果起初定义了不止一个参数，则系统会将输入的值识别为第二个参数的值，如果起初只定义了一个参数，则系统会将该值识别为文本的一部分
+            \begin{newenv1}{first value}{second value}
+                右对齐
+            \end{newenv1}
+            % 以上述命令为例，由于起初定义了两个参数，因此系统将"first value"识别为第二个参数的值，后面的"second value"就被识别为文本的一部分，其两边的大括号会被系统忽略（属于"3.1.2 保留字符"一节中提到的保留字符，不会引起编译报错，但是不会打印出来，也不会预留出对应的空格），相当于在环境中输入"second value右对齐"
+
+        % 如果在文本之后的命令中使用参数，则需要在文本之前的命令中提前使用"\newcommand{cmd}{def}"命令设定好调用该参数的命令（类似于赋值），再在文本之后的命令中使用该命令来调用该参数
+            \newenvironment{newenv2}[2][default value]
+            {\newcommand{\firstvalue}{#1}
+            \newcommand{\secondvalue}{#2}
+            \begin{center}\firstvalue\par}
+            {\par\secondvalue\end{center}}
+
+            \begin{newenv2}[first value]{second value}
+                居中对齐
+            \end{newenv2}
+
+            \begin{newenv2}{second value}
+                居中对齐
+            \end{newenv2}
+
+        % 自定义命令的命令格式为"\newcommand{cmd}[args][default]{def}"，各个参数分别为：命令名称、参数数量、首个参数#1的默认值、命令内容，和自定义环境相比，其不涉及【在文本之后的命令中调用参数】的问题
+            %* 另外需要注意，命令名称的开头必须包含"\"符号，否则编译会报错，而自定义环境中环境名称不包含"\"符号
+
+            \newcommand{\newcd}[1][default value]{#1}
+            \newcd 
+
+            \newcd[1]
+            % 和自定义环境一样，如果设置了首个参数的默认值，则在之后使用该参数时，需要用中括号括起来
+
+            % 如果误用大括号括起来，则再看起初定义了几个参数，如果定义了不止一个参数，系统会将输入的值识别为第二个参数的值，如果起初只定义了一个参数，则系统会将该值识别为文本的一部分
+            \newcd{1}
+            % 以上述命令为例，由于起初只定义了一个参数，因此系统将"1"识别为文本的一部分，其两边的大括号会被系统忽略，而前面的"\newcd"命令将会输出参数的默认值"default"
+
+    \subsection{箱子：排版的基础}
+        \subsubsection{无框箱子}
+            \mbox{无框箱子}
+            % 由于该命令中的文本强制不换行，因此可以用来禁止断词
+
+            \makebox[10em][s]{无框箱子}
+            %rfr 基础箱子命令，如果不设定宽度参数，则宽度自适应，如果设置宽度，除了可以使用具体的数值和单位，也可以使用"\width"（箱子自适应时的宽度，下同）、"\height"（箱子高度）、"\depth"（箱子深度）、"\totalheight"（箱子上下间距）来表示（注意不要和geometry宏包中代表页面宽高度的"\(total)width"和"\(total)height"混淆），对齐方式默认居中对齐（c），也可以设置其他对齐方式：左对齐（l）、右对齐（r）、两端对齐（s，来自"stretch"的缩写），可以参考：https://latexref.xyz/_005cmbox-_0026-_005cmakebox.html
+            %* 书中还提到可以设置上对齐（t）和下对齐（b），经检验，t等同于l，b等同于r，这很好理解，因为和通过"\mbox{text}"命令设置的箱子一样，这个箱子内部也禁止换行，因此无所谓竖直方向上的对齐方式
+
+            对齐
+            \begin{minipage}[b][3em][t]{10em}
+                无框箱子
+
+                无框箱子
+            \end{minipage}
+            %* 小页（minipage）环境强制要求设置宽度，除此之外还有三个可选参数：和周围文字的对齐方式、高度、环境内部的文字的对齐方式，如果只设置一个对齐方式的参数，则默认是和周围文字的对齐方式，不管是哪一种对齐方式的参数，都只能选择上对齐（t）、垂直居中对齐（m）和下对齐（r）三种有效的对齐方式，虽然也可以设置slcr，但在和周围文字的对齐方式的参数中，这三者的效果都等同于m（这个可以理解，因为和周围文字的对齐方式只能是竖直方向上的），在环境内部的对齐方式的参数中，sl等同于t，c等同于m，r等同于b
+            %! 也就是说，在minipage环境中，即使可以换行，水平方向上却无法设置居中对齐、右对齐、两端对齐等对齐方式，只能左对齐，下文的boxedminipage环境、"\parbox[position][height][inner-pos]{width}{text}"命令中也是一样的情况。
+            %# 可以通过将内容放置在flushleft/flushright/center环境中解决
+
+        \subsubsection{加框箱子}
+            \fbox{加框箱子}
+            % 这一命令和"\mbox{text}"命令一样强制其中的文本不换行
+
+            \framebox[10em][s]{加框箱子}
+            % 这一命令的参数设置和"\makebox[width][position]{text}"命令一样
+
+            对齐
+            \begin{boxedminipage}[b][3em][t]{10em}
+                加框箱子
+
+                加框箱子
+            \end{boxedminipage}
+            % 加框小页环境由boxedminipage宏包提供，参数设置和minipage环境相同
+
+            {\setlength{\fboxrule}{.3em} 
+            % 自定义加框箱子的边框宽度，默认值为0.4pt
+            %! 书中称此处调整的是“加框箱子的宽度”，具有误导性，加框箱子的宽度是由"\framebox[width][position]{text}"命令中的第一个可选参数控制的，和此处的"\fboxrule"无关
+            \setlength{\fboxsep}{.7em} 
+            % 自定义“文本边框”（其实就是原本存在的无框箱子的边框）到箱子内边框的距离（以下称为“文本边距”），默认值为3pt
+            %* 更严谨地说，应该是文本边框对齐的那一侧到箱子内边框的距离
+            \fbox{加框箱子}
+            }
+
+            %* 可以发现，相同的参数设置下，上述minipage环境和boxedminipage环境的打印效果似乎不同，这并不是因为存在故障，而是因为加框箱子的边框宽度和文本边距占用了一部分距离，影响了打印效果，事实上，“无框箱子”可以看作是将“加框箱子”的边框宽度和文本边距全部设置为0pt时的一种特殊情况，但是从另一个角度来说，“无框箱子”才是箱子的默认情况，这就不可避免地造成一个矛盾：如果我们想要利用一个可视边框来观察文本在箱子中的对齐情况，我们不可避免地需要设置一个加框箱子，但是一旦我们设置了一个加框箱子，将不可避免地为这个箱子设置边框宽度和文本边距，而这反过来会影响文本在这个箱子中的对齐情况，这意味着我们实际上无法百分之百地通过加框箱子来观察文本在其中的对齐情况，总会存在一定的误差，下面通过将边框宽度设置为0.1pt，将文本边距设置为0pt来呈现"5.2.1 无框箱子"一节所有命令加上加框箱子后的对应效果
+            {\setlength{\fboxrule}{0.1pt}
+            \setlength{\fboxsep}{0pt}
+            \fbox{加框箱子}
+
+            \framebox[10em][s]{加框箱子}
+
+            对齐
+            \begin{boxedminipage}[b][3em][t]{10em}
+                加框箱子
+
+                加框箱子
+            \end{boxedminipage}
+            }
+            %* 可以发现，这样设置过后，和无框箱子对应的加框箱子命令的效果更加接近无框箱子的情况，尽管仍有误差
+
+        \subsubsection{竖直升降的箱子}
+            %* 通过在竖直升降的箱子外面套一层加框箱子，可以更深刻地理解升降箱子的运作原理
+            {\setlength{\fboxrule}{.1pt}
+            \setlength{\fboxsep}{0pt}
+            \fbox{\raisebox{-2ex}{下降的文本}}%
+            \fbox{\raisebox{0ex}不升不降的文本}%
+            \fbox{\raisebox{2ex}{上升的文本}}%
+            %* 可以发现，如果不设置箱子高度和深度的可选参数，下降的箱子的高度默认为0pt，即基线和上边线重合，深度自适应；上升的箱子的深度默认为0pt，即基线和下边线重合，高度自适应
+
+            \fbox{\raisebox{-7ex}[0pt][5ex]{下降出位的文本}}%
+            \fbox{\raisebox{\depth-5ex}[0pt][5ex]{下降的文本}}%
+            \fbox{\raisebox{0ex}[5ex][5ex]不升不降的文本}%
+            \fbox{\raisebox{5ex-\height}[5ex][0pt]{上升的文本}}%
+            \fbox{\raisebox{7ex}[5ex][0pt]{上升出位的文本}}%
+            }
+            %* "\raisebox{raise}[height][depth]{text}"命令的第一个可选参数对应的其实是文本上下移动的距离，并且可以使用"\width"（箱子自适应时的宽度，下同）、"\height"（箱子高度）、"\depth"（箱子深度）、"\totalheight"（箱子上下间距）等命令，因此，这一个命令的实际效果其实并不是让“箱子”上下移动，而是让其中的文本上下移动，文本甚至可以超出箱子的范围，真正让箱子上下移动的是下文的"\rule[lift]{width}{thickness}"命令设置的标尺箱子
+            %* 如果说前文的无框箱子、加框箱子的相应命令可以设置箱子的宽度，那么此处竖直升降的箱子的命令可以设置箱子的高度和深度
+            %rfr 还有一个值得注意的点，"\raisebox{raise}[height][depth]{text}"这一命令由于可以对箱子的高度和深度设置任意值，当设置的值超过某个界限时，必然会影响到基线间距（可以参见"35.3.3 行距"一节中关于基线间距的详细讨论）
+            
+        \subsubsection{段落箱子}
+            对齐
+                \parbox[b][3em][t]{10em}
+                {段落箱子
+            
+                段落箱子}
+            % 段落箱子的参数设置和minipage环境相同
+            %* 段落箱子的打印效果和minipage环境似乎没什么不同，只不过一个是命令，一个是环境
+
+        \subsubsection{缩放箱子}
+        % 以下命令由graphicx宏包提供
+        {\setlength{\fboxrule}{.1pt}
+        \setlength{\fboxsep}{0pt}
+            \fbox{\LaTeX}---\fbox{\scalebox{-1}[1]{\LaTeX}} 
+            % 左右翻转，可选参数不能省略，否则效果是上下左右同时翻转
+
+            \fbox{\LaTeX}---\fbox{\scalebox{1}[-1]{\LaTeX}} 
+            % 上下翻转
+
+            \fbox{\LaTeX}---\fbox{\scalebox{-1}{\LaTeX}} 
+            % 上下左右同时翻转，效果等同于"\scalebox{-1}[-1]{\LaTeX}"
+
+            \fbox{\LaTeX}---\fbox{\scalebox{2}[1]{\LaTeX}}
+            % 水平方向上拉长1倍，竖直方向上不拉伸
+
+            \fbox{\resizebox{10em}{3em}{resizebox}}
+            %* 和上文的可以设置箱子宽高度的命令不同，这一命令在调整箱子宽高度的同时，文本的宽高度也会随之调整，以填充满调整过后的整个箱子
+        }
+        \subsubsection{标尺箱子}
+            %rfr 关于标尺箱子的详细介绍，可以参看文件"Rule.tex"
+
+        \subsubsection{覆盖箱子}
+            % "lap"来自"overlap"的缩写
+            %rfr 关于"\llap{text}"命令和"\rlap{text}"命令的详细讨论，参见文件"Overlap.tex"
+
+        \subsubsection{旋转箱子}
+        % 以下命令由graphicx宏包提供
+            \rotatebox[origin=c]{90}{专}治颈椎病
+            %rfr origin表示旋转中心，可以参考文件"Pricture.tex"中关于旋转图片的相关介绍
+            %rfr 根据该网站的介绍：https://latexref.xyz/_005crotatebox.html，可选参数中还可以通过设置"x=,y="的形式来设置任意的旋转中心，通过设置"units=-360"表示顺时针角度制旋转，通过设置"units=6.283185"（2pi）表示逆时针弧度制旋转
+
+        \subsubsection{颜色箱子}
+        % 以下命令由xcolor宏包提供
+            {\color{red}红色文本}
+            
+            \textcolor{red}{红色文本}
+            % 以上两条命令在"3.4.6 颜色"一节已经介绍过
+
+            \colorbox[gray]{.95}{浅灰色背景}
+            % "\colorbox{color}{text}"命令的效果是在文本外面套上一层加框箱子，并且为这个加框箱子设置底色
+            %rfr 还可以设置一个可选参数[model]，意为各种颜色模板，此时第一个可选参数就不再用来设置颜色，而是用来设置相应模板的系数，各类模板以及系数可以参考xcolor宏包的官方手册：https://sg.mirrors.cicku.me/ctan/macros/latex/contrib/xcolor/xcolor.pdf
+
+            \fcolorbox{blue}{cyan}{蓝色边框，青色背景}
+            % "\fcolorbox{color}{color}{text}"第一个可选参数设置的是加框箱子的边框颜色，第二个可选参数设置的是加框箱子的底色
+            %rfr 同样地，也可以设置可选参数[model]，既可以选择为边框颜色和底色设置共同的颜色模板，也可以分别设置颜色模板，但是根据官方手册的规定，似乎只可以在设置边框颜色的同时为底色设置颜色模板，却不能在设置底色的同时为边框颜色设置颜色模板
+
+            \fcolorbox{red}{cyan}{\textcolor{green}{红色边框，青色背景，绿色文本}}
+
+            {\setlength{\fboxrule}{1pt}
+            \setlength{\fboxsep}{0pt}
+            \colorbox[gray]{.95}{浅灰色背景}
+
+            \fcolorbox{red}{cyan}{\textcolor{green}{红色边框，青色背景，绿色文本}}
+            }
+            % 加框的颜色箱子也可以通过"\fboxrule"命令和"\fboxsep"命令设置边框宽度和文本边距，对于"\fcolorbox{color}{color}{text}"命令设置的颜色箱子，两者都可以进行设置，但是对于"\colorbox{color}{text}"命令设置的颜色箱子，则只能设置文本边距
+
+    \subsection{复杂距离}
+        \subsubsection{水平和竖直距离}
+            禁止换行的水平距离：
+            \begin{itemize}
+                \item a\thinspace b或者a\,b，长度为0.1667em
+                % 注意在后一种使用方式中，"\,"和后面的字符之间不能有空格，否则会多打印一个空格距离，下同
+                \item a\negthinspace b或者a\!b，长度为-0.1667em
+                % "neg"显然来自"negative"的缩写，表示距离的方向是负的
+                \item a\enspace b，长度为0.5em
+                % 对应长度相等的"\enskip"命令
+                \item a\nobreakspace b或者a~b，长度为一个空格距离
+            \end{itemize}
+
+            允许换行的水平距离：
+            \begin{itemize}
+                \item a\quad b，长度为1em
+                %rfr "quad"来自意大利语"quadratone" (big square)的缩写，起初作为一个排版术语，指的是一个高度矮于铅字的正方形金属块，用于隔开铅字，在LaTeX中则专门用来指一段相当于当前字体下大写字母"M"宽度的距离，不过，1em并不真的就是当前字体下大写字母"M"的宽度，而是更长一些，可以参考：https://tex.stackexchange.com/questions/119068/meaning-of-quad
+                \item a\qquad b，长度为2em
+                \item a\enskip b，长度为0.5em
+                % 对应长度相等的"\enspace"命令
+                %* "\enspace"命令和"\enskip"命令中的"en"应该是来自"equal to n"的缩写，表示这段距离和一个大写字母N的宽度相等（参照"em"表示相当于当前字体下大写字母M的宽度）
+                \item a\ b，长度为一个空格距离
+            \end{itemize}
+
+            %* 所谓“禁止换行”，是指通过上述四个符号连接的前后两段文本在自然断行时不会在此处断开换行，而是始终保持一个整体移动，这一性质通过"\nobreakspace"这一命令的名字可以很容易地看出来；所谓“允许换行”，对比之前的“禁止换行”，自然就是指上述四个符号连接的前后两段文本在自然断行时会在此处断开换行，可以比较下面几条命令的不同效果
+            test test test test test test test test test test test test test test test test test test test test test test
+            % 在倒数第二个词前面自然断行
+
+            test test test test test test test test test test test test test test test test test test test test\enspace test test 
+            % 在原自然断行处插入"\enspace"命令，导致前后两段文本连为一个整体，文本排版自动调整
+
+            test test test test test test test test test test test test test test test test test test test test\enskip test test 
+            % 在原自然断行处插入"\enskip"命令，允许文本在此处断行，因此文本排版没有变化
+
+            LaTeX定义的三个竖直距离：
+
+            \parbox[t]{.2\textwidth}{\LaTeX\par \LaTeX}
+            \parbox[t]{.2\textwidth}{\LaTeX\par\smallskip \LaTeX}
+            \parbox[t]{.2\textwidth}{\LaTeX\par\medskip \LaTeX}
+            \parbox[t]{.2\textwidth}{\LaTeX\par\bigskip \LaTeX}
+
+        % 自定义水平距离和竖直距离
+            %rfr 关于"\hspace{l}"命令和"\vspace{l}"命令的相关介绍，可以参看文件"Space_fill.tex"
+        
+        % 定义新的长度命令
+            \newlength{\mylatexlength} % 定义新的长度名称，注意名称前面加上"\"符号
+            \setlength{\mylatexlength}{10pt} % 重设现有长度的值
+            %* 因此，如果要定义一个长度命令，需要经过以上两步
+            \addtolength{\mylatexlength}{-5pt} % 增加或者减少现有长度
+            a\hspace{\mylatexlength}b 
+            %* 如果要使用新的长度命令，不能直接使用，而是要放置在允许设置相应长度参数的命令中，比如此处的"\hspace{l}"
+
+            a\hspace{5pt}b
+
+        \subsubsection{填充距离与弹性距离}
+        % "\stretch{number}"命令
+            % 弹性距离的一般命令是"\stretch{number}"参数为弹性距离在总距离中的权重（注意不是比例）
+            %* 注意该命令不能单独使用，而是要放置在允许设置相应长度参数的命令中，比如"\hspace{l}"
+            左\hfill 右
+            %rfr "\fill"实际上就是"\stretch{1}"，因此"\hfill"就是"\hspace*{\stretch{1}}"，可以参考：https://texdoc.org/serve/lshort-zh-cn.pdf/0
+
+            左\hspace{\stretch{1}}中\hspace{\stretch{2}}右
+            %* 经常将多个设置了不同权重的弹性距离命令"\stretch{number}"搭配使用
+
+        % "\fill"命令
+        %rfr 可以参看文件"Space_fill.tex"
+        
+        % "\hrulefill"命令和"\dotfill"命令
+            a\hrulefill b\dotfill c
+
+            \hrulefill
+
+            \dotfill
+            % 也可以单独使用
+            
+        \subsubsection{行距}
+            %* 所谓的“行距”在LaTeX中称为“基线间距”（baselineskip），这一称呼建立在LaTeX的另一个重要概念“箱子”（box）的基础之上，每一行的内容都可以看成处于一个大箱子内，有一条固定的基线（由这一行上处于默认状态的箱子的基线确定）穿过这个箱子，箱子顶部到基线的距离称为“高度”（height），箱子底部到基线的距离称为“深度”（depth），“行距”这一称呼常常会被误认为是【上一行箱子的下边线和下一行箱子的上边线之间的距离】（以下称为“相邻两行箱子的上下边距”，下文另行讨论），因此，即使要称呼“行距”，也要意识到其指的是相邻两条基线之间的距离（注意，这只是默认情况，特殊情况见下文讨论），基线间距的默认值是1.2倍的字体大小（在article文档类中显示为12pt，对应其默认的文字磅数10pt），而相邻两行箱子的基线间距实际也等于这两行箱子的上边线间距或者下边线间距。另外，要注意“基线间距”的概念是在同一个段落内进行定义的，当开始一个新的段落时，一般不要求上一段的最后一行的箱子和下一段的第一行的箱子的“基线间距”额外增加新的距离，这也是LaTeX定义的“段落间距”（parskip）的默认值为0pt+1pt中"0pt"这一部分的由来（"1pt"的部分见下文讨论），因此，“段落间距”其实是一个差值，是在“段落间距”的基础上增加的长度，它也像“行距”一样容易被误认为是【上一段的最后一行的箱子的下边线和下一段的第一行的箱子的上边线之间的距离】，如果要在页面上为其找到一个对应的距离的话，可以将其理解为设置了新的段落间距后的段落从原来的位置向下移动的长度
+            %rfr 书中称baselineskip默认是1.2倍文字高，这种说法是错误的，应该是1.2倍的字体大小（fontsize），字体大小并不对应任何一段距离，它是由字体的设计者规定的，参考：https://latexref.xyz/_005cbaselineskip-_0026-_005cbaselinestretch.html
+            %* 这里还要另外讨论一下和段落间距有关的两个命令："\lineskiplimit"和"\lineskip"，这两条命令都和前文提到的“相邻两行箱子的上下边距”有关系，这段距离会随着基线间距的变化而变化，变化的方式有一些复杂，需要考察基线间距和箱子上下间距的大小关系：如果前者等于后者，即上一行箱子的深度加下一行箱子的高度等于基线间距，则相邻两行箱子的上下边距为0pt，这两行箱子上下无缝堆叠在一起；如果前者大于后者，即上一行箱子的深度加下一行箱子的高度（其大小等于箱子的上下边距，下同）小于基线间距，则LaTeX会在两个箱子之间自动插入一段距离（称为"glue"），以满足规定的基线间距；如果前者小于后者，即上一行箱子的深度加下一行箱子的高度大于基线间距，此时如果还要满足规定的基线间距，必然要求上一行箱子和下一行箱子出现重叠部分（想象一下最极端的情况，基线间距越来越小直到0，则每一行的箱子都会重叠在一起，当然，这只是想象中的情况，实际并不会发生），第一种情况（两行箱子没有重叠部分）对应的是相邻两行箱子的上下边距大于0pt，第二种情况（上一行箱子的下边线和下一行箱子的上边线重合）对应的是相邻两行箱子的上下边距等于0pt，第三种情况（两行箱子预计会出现重叠部分）对应的是相邻两行箱子的上下边距预计会小于0pt（可以理解为距离方向为负），这个“0pt”就是前文提到的"\lineskiplimit"，其默认值为0pt，为了避免第三种情况的发生，LaTeX的处理方式是在上一行箱子的下边线和下一行箱子的上边线之间加上一段固定的距离，也就是前文提到的"\lineskip"，其默认值为1pt，而不再要求基线间距达到规定的长度，也就是说，此时实际的基线间距并不是那个设置的小于箱子上下边距的值，而是【箱子上下边距加上1pt】。从设置基线间距的角度总结一下，如果设置的基线间距大于等于箱子的上下边距，实际的基线间距就是这个设置的值；如果设置的基线间距小于箱子的上下边距，实际的基线间距是箱子的上下边距加上1pt。
+            %* 从另一个角度，可以发现，基线间距由字体大小决定（总是字体大小的1.2倍），而箱子的上下间距也是由其中的字体大小决定，因此，可以说，字体大小是决定各种距离的决定性因素
+            %rfr 可以参考：https://tex.stackexchange.com/questions/410250/understanding-line-height-line-spacing-baselineskip-in-latex、https://tex.stackexchange.com/questions/463039/spacing-difference-when-using-boxes
+            %rfr 还有的教程中会提到，“基线间距”其实也是弹性距离，参考：https://latexref.xyz/_005cbaselineskip-_0026-_005cbaselinestretch.html，通过以上讨论，可以更好地理解这一论断，弹性距离的性质就体现在第三种情况当中：一旦由于某种原因，上下两行箱子的上下边距预计会小于0pt（"5.2.6 标尺箱子"一节提供了一种会导致这一情况的例子，可以参看），则这两行箱子会被LaTeX分开，并在上一行箱子的下边线和下一行箱子的上边线之间插入1pt的距离，这很让我们很自然地联想到了段落间距的默认值0pt+1pt，这也是一个弹性距离，很显然，这两者之间是有联系的，段落间距默认值当中的"1pt"的适用条件其实就是此处基线间距当中的"\lineskip"的适用条件，只不过适用的环境从同一段落的相邻两行之间转移到了上一段的最后一行和下一段的第一行之间
+            %* 根据这一原理，我们可以粗略地去估算不同的字符所处箱子的上下边距：我们不断缩小设定的基线间距，打印出来的这段距离也会不断缩小，直至缩小到一个值的时候，上一行的下边线和下一行的上边线会几乎贴合在一起，一旦再往下缩小，就会出现一个有趣的现象：原本紧挨着的两行会突然分开，并且之后不管怎样缩小基线间距的设定值，打印出来的这段距离（其实就是"\lineskip"的默认值1pt）将不会再发生变化，下面分别使用小写字母“a”、数字“1”以及汉字“好”分别估算其所处箱子的上下边距，注意，由于这一片文档是"ctexart"文档类，因此默认的基线间距并不是12pt，而是接近16.44pt
+
+            a\par
+            a\par
+            {\setlength{\baselineskip}{4.838pt}
+            a\par
+            a\par
+            }
+            %* 经过测试，小写字母“a”所处箱子的上下边距约等于4.838pt（精确到0.001），如果缩小到4.832pt，两行文字就会突然分开
+
+            1\par
+            1\par
+            {\setlength{\baselineskip}{7.0193pt}
+            1\par
+            1\par
+            }
+            %* 同理，数字“1”所处箱子的上下边距约等于7.0193pt（精确到0.0001）
+            
+            好\par
+            好\par
+            {\setlength{\baselineskip}{9.593pt}
+            好\par
+            好\par
+            }
+            %* 汉字“好”所处箱子的上下边距约等于9.593pt（精确到0.001）
+            %rfr 关于同一行上的箱子的划分以及其对排版的影响，参见"5.2.6 标尺箱子"一节
+
+            % 前文提到，基线间距是字体大小的1.2倍，"3.4.3 原生字体命令"一节也已经提到，如果要单独设置行距，可以使用"\linespread{x}"命令，新设置的基线间距会变成字体大小的1.2x倍，比如如果设置"\linespread{x}"为1.3，基线间距就会变成字体大小的1.2*1.3=1.56倍，由于ctexart文档类的基线间距默认值为16.44145pt，因此新的基线间距就会变成16.44145*1.56=25.648662pt
+            
+        \subsubsection{制表位*}
+            \begin{tabbing}
+                制\hspace{2em}\=表\hspace{4em}\=位\hspace{6em}\kill
+                1\>2\>3\\
+                a\>b\>c\\
+                重\hspace{8em}\=设\hspace{2em}\kill
+                A\>B\\
+                大\>小\\
+            \end{tabbing}
+        \subsubsection{悬挂缩进*}
+        % 第一种设置方式："\hangafter"命令和"\hangindent"命令
+            \hangafter 3 % 同一段内，前3行不缩进
+            \hangindent 6em % 悬挂缩进距离为6em
+            \noindent\blindtext\par %* 注意要空一行或者设置"\par"才能使悬挂缩进生效
+
+            %* "\hangafter"命令和"\hangindent"命令只能为之后的第一段设置悬挂缩进，新的一段需要另外设置，因此不需要在命令和统辖范围的两边加大括号
+            \hangafter 5
+            \noindent\hangindent 10em
+            \blindtext\par
+
+        %rfr 第二种设置方式：使用enumitem宏包，参见"5.7 自定义编号列表"一节
+
+        %rfr 第三种设置方式：使用verse环境，参见"3.5.3 援引环境"一节
+
+        % 第四种设置方式：设置"\leftskip"和"\parindent"命令
+            正文：\\ % 首行缩进默认值为2em
+            正文第二行\par % 剩余行左缩进默认值为0em
+            {\setlength{\parindent}{-2em} % 设置首行缩进距离为-2em（即向外突出2em）
+            \setlength{\leftskip}{3em} % 设置左缩进距离为3em
+            这是第一段。注意整体需要放在一组花括号内，且花括号前应当有空白行。第一段前需要加indent命令，最后一段的末尾需额外空一行，否则可能出现异常。
+
+            ``左缩进''指的是每行内容左缩进，包括首行，但是首行缩进默认值为2em，因此实际上首行左缩进2em，剩余行左缩进0em，此处设置首行缩进-2em，左缩进3em，因此首行缩进1em，剩余行左缩进3em
+
+            这是第二段。
+
+            这是最后一段。别忘了空行。\par
+            }
+            
+        \subsubsection{整段缩进*}
+            设置前：首行缩进需要额外手工输入。本环境距文本区左侧1cm，距右侧3cm。
+
+            \begin{adjustwidth}{1cm}{3cm}
+                \indent 设置后：首行缩进需要额外手工输入。本环境距文本区左侧1cm，距右侧3cm。
+            \end{adjustwidth}
+
+    \subsection{自定义章节样式}
+            %rfr 关于titlesec宏包的详细介绍，可以参看文件"Titlesec_toc.tex"
+
+    \subsection{自定义目录样式}
+            %rfr 关于titletoc宏包的详细介绍，可以参看文件"Titlesec_toc.tex"
+
+    \subsection{自定义图表}
+        \subsubsection{长表格}
+            %rfr 关于longtable宏包的详细介绍，可以参看文件"Longtable.tex"
+
+        \subsubsection{三线表}
+        % 通过调用booktabs宏包来绘制三线表
+            \begin{tabular}{cccc}
+                \toprule
+                &\multicolumn{3}{c}{序数}\\
+                \cmidrule(l{.25em}r){1-2}\cmidrule[.25ex](lr){3-4}
+                &1&2&3\\
+                \midrule
+                英文字母&A&B&C\\
+                罗马数字&I&II&III\\
+                \bottomrule
+            \end{tabular}
+            %* LaTeX关于表格的原生命令中，"\cline{x-y}"命令用于绘制横跨第y列到第y列的水平表线，但是如果将两个"\cline{x-y}"命令连用，并且前一个命令当中的右边的参数值和后一个命令当中的左边的参数值相同，则绘制出的两条表现会接在一起。而booktabs宏包提供的"\cmidrule{a-b}"命令可以通过设置可选参数来让跨列水平表线的左右两端删去指定长度，让这种情况下的两条表线的不会接在一起，具体的设置方式是："\cmidrule(l){a-b}"命令表示表线左端删去一定的长度，"\cmidrule(r){a-b}"命令表示表线右端删去一定的长度，"\cmidrule(lr){a-b}"命令表示表线的左右两端各删去一定的长度，删去的长度由"\cmidrulekern"命令控制，其默认值为0.5em，如果想要设定指定的删去长度，可以放置在"l"、"r"后面的大括号内，比如"l{.25em}"、"l{.25em}r{.25em}"，当然，也可以重定义"\cmidrulekern"命令的默认值，"\cmidrule{a-b}"命令还有一个放置在中括号中的可选参数，用来设置水平表线的厚度，比如上文当中的"\cmidrule[.25ex](lr){3-4}"将水平表线的厚度设置为0.25ex
+            %rfr 以上命令的参数设置细节以及更多的命令介绍，可以参考booktabs宏包的官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/booktabs/booktabs.pdf，关于这一命令的一个应用的例子，可以参考这篇帖子当中绘制的表格：https://tex.stackexchange.com/questions/156219/proper-centering-with-cmidrule-and-multi-row-and-column
+
+        \subsubsection{彩色表格}
+            %rfr 关于彩色表格的详细讨论，参见文件"Colortbl.tex"
+
+        \subsubsection{子图表}
+            %rfr 关于插入子图的详细讨论，参见文件"Picture.tex"
+        % 下面展示使用subcaption宏包提供的subtable环境插入子表格
+            \begin{table}
+                \renewcommand{\thesubtable}{(\alph{subtable})}
+                %* 重定义subtable计数器的调用形式（可以通过"\thesubtable"命令获得），默认形式不带小括号，使用"\ref{}"命令和"\autoref{label}"命令得到的索引编号形式也会调用计数器，现在在原来的形式两边加上小括号
+                \captionsetup[sub]{labelformat=simple}
+                %* caption宏包提供的命令，用于设置subtable环境中标题的编号样式，可选参数设置了[sub]，表示修改的是"subfigure"、"subtable"一类环境中标题的编号样式，其默认值是带小括号的，而上一条命令会导致subtable环境当中的编号（会调用计数器）多套上一对小括号，因此需要通过这一步设置将编号样式默认设置中的一对小括号去掉（因此留下的那对小括号实际上属于重定义后的计数器），参数可以选择original或者simple
+                %rfr 根据caption宏包的官方手册，original是labelformat的默认值，效果类似"simple"，但这是指"figure"、"table"这类一般情况，此处由于加上了可选参数[sub]，因此labelformat的默认值在这种情况下是"parens"，表示带小括号，可以参考：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/caption/caption.pdf
+                \renewcommand{\subtablename}{子表}
+                %* 重定义subtable环境中标题中的计数器名称（默认值没有设置任何名称）
+                \renewcommand{\subtableautorefname}{子表}
+                %! 经检验，无法直接重定义subtable环境中"\autoref{label}"命令中计数器名称，即"\subtableautorefname"，编译不会报错，但是没有效果
+                % 重定义计数器的调用形式，
+                \caption{Parents}
+                \begin{subtable}[b]{.5\linewidth}
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        A&B\\
+                    \end{tabular}
+                    \caption{First}\label{subtbl1}
+                \end{subtable} 
+                %! 注意，此处不能空行，否则会导致两张表格纵向排列
+                \begin{subtable}[b]{.5\linewidth}
+                    \centering
+                    \begin{tabular}{|c|c|}
+                        A&B\\
+                        C&D\\
+                    \end{tabular}
+                    \caption{Second}\label{subtbl2}
+                \end{subtable}
+            \end{table}
+
+            \thesubtable\par
+            \ref{subtbl1}\par
+            \autoref{subtbl1}
+            
+        \subsubsection{GIF动态图}
+    \subsection{自定义编号列表}
+        %rfr 关于enumitem宏包的相关介绍，参见文件"Enumitem.tex"
+            
+    \subsection{\hologo{BibTeX}参考文献}
+        %rfr 关于natbib宏包的相关介绍，可以参看文件"Natbib.tex"
+
+    \subsection{索引}
+        %rfr 关于makeidx、showidx、imakeidx宏包的相关介绍，可以参看文件"Index.tex"
+
+    \subsection{公式与图表编号样式}
+    \subsection{附录}
+    \subsection{自定义浮动体*}
+    \subsection{编程代码与行号}
+        %rfr 关于lineno宏包的介绍，可以参看文件"Lineno.tex" 
