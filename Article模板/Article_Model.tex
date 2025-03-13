@@ -1,6 +1,6 @@
 % \listfiles
 
-\documentclass[twoside]{ctexart}
+\documentclass[oneside]{ctexart}
 
 % 封面
 \title{\LaTeX{}标题\thanks{标题脚注}}
@@ -24,18 +24,20 @@
 % 字体
 \usepackage{lettrine}
 \usepackage{fontspec}
+% \setmainfont{Charis SIL}
 % \usepackage{ctex}
 \usepackage[slantfont,boldfont]{xeCJK}
 \setCJKmainfont{SimSun}
 % [boldfont = SimHei]
+\newcommand{\ipa}[1]{{\fontspec{Charis SIL}#1}}
 
 % 颜色
-\usepackage{xcolor}
-\usepackage{colortbl}
+\usepackage{xcolor} %# 当gb4e在前面时，和gb4e冲突
+\usepackage{colortbl} %# 当gb4e在前面时，和gb4e冲突
 
 % 浮动体
 \usepackage[section]{placeins}
-\usepackage{graphicx}
+\usepackage{graphicx} %# 当gb4e在前面时，和gb4e冲突
 \usepackage{caption}
 \usepackage{subcaption}
 % \usepackage{subfig}
@@ -43,7 +45,7 @@
 \usepackage{array}
 \usepackage{tabularray}
 \usepackage{makecell}
-\usepackage{diagbox}
+\usepackage{diagbox} %# 当gb4e在前面时，和gb4e冲突
 \usepackage{tabularx}
 \usepackage{dcolumn}
 \usepackage{multirow}
@@ -75,7 +77,7 @@
 
 % 页眉、页脚、页码
 % \usepackage{fancyhdr}
-\usepackage{lastpage}
+\usepackage{lastpage} %# 当gb4e在前面时，和gb4e冲突
 
 % 附录
 \usepackage[titletoc]{appendix}
@@ -103,7 +105,7 @@
 
 % 图标
 \usepackage{hologo}
-\usepackage{pifont} 
+\usepackage{pifont}
 
 % 其他
 \usepackage{boxedminipage}
@@ -111,7 +113,7 @@
 % --------------------------------------------------------------------------------------------------------------------------------------
 
 % 参考文献
-\usepackage[backend=biber, style=langsci-unified]{biblatex}
+\usepackage[backend=biber, style=langsci-unified]{biblatex} %# 当gb4e在前面时，和gb4e冲突
 % \addbibresource{AllDoc.bib}
 % \usepackage[numbers,sort&compress,super,square]{natbib}
 
@@ -121,6 +123,8 @@
 \usepackage{csquotes}
 \usepackage{hyperref}
 \hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
+
+\usepackage{gb4e} %# 将gb4e放在最后，否则有极大可能导致编译报错
 
 % --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -145,9 +149,40 @@
         \subsubsection{第一小节}
 
 \section{尝试第一份文稿}
-		    Hello, world ! 
+Hello, world ! 
 
-		    你好，世界！
+你好，世界！
+
+\ipa{mãʒɐ}
+
+\newpage
+
+\begin{exe}
+    \ex
+    \glll 甲：\\
+    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
+    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
+    \glt abcdefg abcdefg abcdefg
+    \smallskip
+    \ex
+    \glll 乙：\\
+    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
+    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
+    \glt abcdefg abcdefg abcdefg abcdefg
+    \medskip
+    \ex
+    \glll 丙：\\
+    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
+    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
+    \glt abcdefg abcdefg abcdefg abcdefg
+    \bigskip
+    \ex
+    \glll 丁：\\
+    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
+    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
+    \glt abcdefg abcdefg abcdefg abcdefg
+\end{exe}
+
 
 \theendnotes
 

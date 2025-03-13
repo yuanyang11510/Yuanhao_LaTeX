@@ -1,71 +1,103 @@
 \documentclass{article}
 \usepackage{gb4e}
-\usepackage{ctex}
+\usepackage{ctex}[scheme=plain]
+\usepackage{fontspec}
+\newcommand{\ipa}[1]{{\fontspec{Charis SIL}#1}}
+
+%rfr 以下内容改编自：https://zhuanlan.zhihu.com/p/400881951?utm_medium=social&utm_oi=734349454764699648 
+%rfr 也可以参考gb4e宏包的官方文档：https://mirrors.ircam.fr/pub/CTAN/macros/latex/contrib/gb4e/gb4e-doc.pdf
 
 \begin{document}
 
-%只呈现例句
+%# 一、行间标注
 \begin{exe}
-    \ex This is an example sentence.
-    \ex C'est un autre exemple.
-    \ex これは三番目の例文である。
-  \end{exe}
-%Tip: 要想改变序号格式，则可以通过 \renewcommand{\thexnumi}{\数字格式指令{xnumi}} 可以改变序号格式，默认是 \arabic (1) (2) (3)。在这里把 \数字格式指令 替换为 \roman 则为 (i) (ii) (iii) 等，\Roman 则为 (I) (II) (III)，\alph 为 (a) (b) (c), \Alph 为 (A) (B) (C) 等。
+  \ex{langue} % 大括号中标示语种（但如果遇上汉字内容，比如文言文，可以直接写在这一行，方便下面一行用来注音，如此可以避免使用"glll"增加一行）
+  \gll X Y Z\\ % 文字行，注意最后的行结束标记"\\"不能省
+  x y z\\ % 标注行，标注行中的大写标注通常用"textsc{}"缩小以确保美观
+  \glt traduction % 翻译行，注意翻译行不需要行结束标记，"\glt"也可以替换为"\trans"
+\end{exe}
+%// 不知为何，将上述带注释内容复制后编译会出现问题，下面是不带注释的内容
+% ↑↑↑原因是"\\"后面紧接着"%"，结果会报错，因此注释尽量在正文后面空一格输入
+
+\begin{exe}
+  \let\eachwordone=\bf
+  \let\eachwordtwo=\ipa
+  \let\eachwordthree=\textit
+  \ex{Middle Chinese}
+  \glll 明 月 出 天 山\\
+  mjaeŋ ŋjwot tɕʰwit tʰen ʂɛn\\
+  bright moon go.out sky mountain\\
+  \glt \textit{``From Heaven's Peak the moon rises bright'' (from 许渊冲)}
+\end{exe}
+% "\let\eachwordone=..."这一命令可以将注释部分的第一/二/三行（分别对应\eachwordone、\eachwordtwo、\eachwordthree）文字设定为指定的字体，"="后的命令可以不带论元，如"\bf"，也可以带一个论元，如"\textit"，也可以是自定义的带一个论元的命令，如此处的"\ipa"，这一命令如果放在导言区，则效果应用于全局，如果放在正文环境中，则效果应用于局部
+
+% Tip: 使用 \glll 可以变成三行，好加更多信息。使用 \glt 可以提供翻译（可选）。
+\begin{exe}
+  \ex{langue}
+  \glll X Y Z\\ % 文字行
+  a b c\\ % 音标行
+  x y z\\ % 标注行
+  \glt traduction % 翻译行
+\end{exe}
+
+% 使用"\sn"或者"\exi{}"（后者的大括号不可省略）替换原来的"\ex"，可以使当前所在例句停止编号
+\begin{exe}
+  \ex
+  \glll 甲：\\
+  A B C\\
+  a b c\\
+  \glt ``translation'' % 继续编号
+
+  \sn
+  \glll 乙：\\
+  A B C\\
+  a b c\\
+  \glt ``translation'' % 停止编号
+
+  \exi{}
+  \glll 丙：\\
+  A B C\\
+  a b c\\
+  \glt ``translation'' % 停止编号
+
+  \ex
+  \glll 丁：\\
+  A B C\\
+  a b c\\
+  \glt ``translation'' % 继续编号
+\end{exe}
+
+\newpage
+%# 二、列举例句
+\begin{exe}
+  \ex This is an example sentence.
+  \ex C'est un autre exemple.
+  \ex これは三番目の例文である。
+\end{exe}
+% Tip: 要想改变序号格式，则可以通过 \renewcommand{\thexnumi}{\数字格式指令{xnumi}} 可以改变序号格式，默认是 \arabic (1) (2) (3)。在这里把 \数字格式指令 替换为 \roman 则为 (i) (ii) (iii) 等，\Roman 则为 (I) (II) (III)，\alph 为 (a) (b) (c), \Alph 为 (A) (B) (C) 等。
 
 %嵌套例句、索引、加星号/问号
- \begin{exe}
-    \ex\label{first} This is an example sentence.%"\label{}"加在"\ex"后面
-    \ex[*]{This an example sentence not is.}%星号加在中括号里
-    \ex C'est trois autres exemples.
-      \begin{xlist}%"xlist"第一次嵌套
-        \ex これは入れ子例文である。
-        \ex[?]{これは入れ子。}%问号加在中括号里
-        \ex[??]{這是更多嵌套例文。}
-          \begin{xlist}%"xlist"第二次嵌套
-            \ex 你好。
-              \begin{xlistI}%"xlist"不再能够嵌套，使用"xlistI"继续嵌套
-                \ex 還能嗎？
-              \end{xlistI}
-            \ex 你不好。
-              \begin{xlistA}%"xlist"不再能够嵌套，使用"xlistA"继续嵌套
-                \ex 可以。
-              \end{xlistA}
-          \end{xlist}  
-      \end{xlist}
-  \end{exe}
-  這個例文(\ref{first})%引用相应例句（组）
-%Tip: xlist 环境的默认最多嵌套到第三层（exe-xlist-xlist)。第四层往下（没人用得到吧……）必须通过改用 xlistn (arabic)、xlistA (Alph)、xlista (alph)、xlistI (Roman)、xlisti (roman)手动指定序号类型。当然普通层级也可以直接用上面的指定。
-
-%行间标注
-%\ex{langue}%大括号中标示语种（但如果遇上汉字内容，比如文言文，可以直接写在这一行，方便下面一行用来注音，如此可以避免使用"glll"增加一行）
-%\gll X Y Z\\%文字行，注意最后的行结束标记"\\"不能省
-%x y z\\%标注行，标注行中的大写标注通常用"textsc{}"缩小以确保美观
-%\glt traduction%翻译行，注意翻译行不需要行结束标记
-%\end{exe}
-
-%\begin{exe}
-%\ex{langue}
-%\glll X Y Z\\%文字行
-%a b c\\%音标行
-%x y z\\%标注行
-%\glt traduction%翻译行
-%\end{exe}
-%%Tip: 使用 \glll 可以变成三行，好加更多信息。使用 \glt 可以提供翻译（可选）。
-
-%不知为何，将上述带注释内容复制后编译会出现问题，下面是不带注释的内容
 \begin{exe}
-\ex{langue}
-\gll X Y Z\\
-x y z\\
-\glt traduction
+  \ex\label{first} This is an example sentence. % "\label{}"加在"\ex"后面
+  \ex[*]{This an example sentence not is.} % 星号加在中括号里
+  \ex C'est trois autres exemples.
+    \begin{xlist} % "xlist"第一次嵌套
+      \ex これは入れ子例文である。
+      \ex[?]{これは入れ子。} % 问号加在中括号里
+      \ex[??]{這是更多嵌套例文。}
+        \begin{xlist} % "xlist"第二次嵌套
+          \ex 你好。
+            \begin{xlistI} % "xlist"不再能够嵌套，使用"xlistI"继续嵌套
+              \ex 還能嗎？
+            \end{xlistI}
+          \ex 你不好。
+            \begin{xlistA} % "xlist"不再能够嵌套，使用"xlistA"继续嵌套
+              \ex 可以。
+            \end{xlistA}
+        \end{xlist}  
+    \end{xlist}
 \end{exe}
-
-\begin{exe}
-\ex{langue}
-\glll X Y Z\\
-a b c\\
-x y z\\
-\glt traduction
-\end{exe}
+這個例文(\ref{first}) % 引用相应例句（组）
+% Tip: xlist 环境的默认最多嵌套到第三层（exe-xlist-xlist)。第四层往下（没人用得到吧……）必须通过改用 xlistn (arabic)、xlistA (Alph)、xlista (alph)、xlistI (Roman)、xlisti (roman)手动指定序号类型。当然普通层级也可以直接用上面的指定。
 
 \end{document}
