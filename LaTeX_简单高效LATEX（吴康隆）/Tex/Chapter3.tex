@@ -533,12 +533,22 @@
                 表格环境脚注示例1\footnotemark\\
                 表格环境脚注示例2\footnotemark
             \end{tabular}
-            \footnotetext{你不需要更多。}
-            \footnotetext{你还需要更多。}
+            \footnotetext[4]{你不需要更多（1）。}
+            \footnotetext[5]{你还需要更多（1）。}
+
+            \begin{tabular}{l}
+                表格环境脚注示例1\footnotemark\\
+                表格环境脚注示例2\footnotemark
+            \end{tabular}
+            \addtocounter{footnote}{-2}
+            \stepcounter{footnote}\footnotetext{你不需要更多（2）。}
+            \stepcounter{footnote}\footnotetext{你还需要更多（2）。}
             % 表格环境内的脚注可以使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置，但不能直接使用"\footnote{}"命令设置
-            %* 如果要在表格环境内使用类似"\footnote{}"的命令设置脚注，可以加载tablefootnote宏包
+            %* 如果要在表格环境内使用类似"\footnote{}"的命令设置脚注，可以加载tablefootnote宏包（此时命令变为\tablefootnote{}）
             
-            %* 通过以上两种环境的例子，可以发现，使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置的脚注，会视同正文内设置的脚注，出现在正文的底部，并且参与正文脚注的数字编号；而在minipage环境中直接使用"\footnote{}"命令设置的脚注，则只会出现在minipage的底部，并且采用英文字母编号
+            % 旧注：通过以上两种环境的例子，可以发现，使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置的脚注，会视同正文内设置的脚注，出现在正文的底部，并且参与正文脚注的数字编号；而在minipage环境中直接使用"\footnote{}"命令设置的脚注，则只会出现在minipage的底部，并且采用英文字母编号
+            %* 关于使用"\footnotemark"命令搭配"\footnotetext{text}"命令的方法设置的脚注，实际上存在一个问题：每使用一次\footnotemark命令，脚注的计数器就会加一（可以通过\thefootnote命令来查看），但是在\footnotetext{text}命令处，脚注的计数器不会加一，因此在同一个表格中使用了两个及两个以上的\footnotemark命令时，最终打印出来的效果是表格中的脚注上标正常编号，而脚注部分中的对应编号一直维持在最后一个脚注的上标，解决的办法有两种：第一种解决办法是在每一个\footnotetext{text}命令中加入可选参数，手动填入此处的脚注编号；第二种解决办法是在\footnotetext{text}命令前使用\addtocounter{footnote}{-n}命令，将脚注计数器的编号减少至使用\footnotemark命令之前的状态，n的大小等于所有\footnotemark命令的总数，相应地，在每一个\footnotetext{text}命令处，添加\stepcounter{footnote}命令，手动为脚注计数器编号加一
+            %rfr 关于上述第二种解决办法，可以参考：https://tex.stackexchange.com/questions/43692/footnotetext-numbering-for-many-footnotemark-automatic-solution
 
         % 在大纲中使用脚注
             %rfr 需要在"\footnote{}"命令前加上"\protect"，见这一小节标题
@@ -702,8 +712,9 @@
             \end{itemize}
 
         % 通过"\the+计数器名称"命令来调用计数器
-            当前所在章节为\thesection、第\thesubsection 节、第\thesubsubsection 次节
-            %! 如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此需要改写为“当前所在章节为\thesection”，这也说明尽量不要在重定义计数器的调用形式时增加文本内容，因为计数器的调用形式最初的目的只是为了呈现其数值形式以及几个数值的组合形式，如果想要修改章节的标签形式，可以通过titlesec宏包提供的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令进行修改
+            当前所在章节为第\thesection 章、第\thesubsection 节、第\thesubsubsection 次节
+            % 旧注：如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此需要改写为“当前所在章节为\thesection”，这也说明尽量不要在重定义计数器的调用形式时增加文本内容，因为计数器的调用形式最初的目的只是为了呈现其数值形式以及几个数值的组合形式，如果想要修改章节的标签形式，可以通过titlesec宏包提供的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令进行修改
+        %* ↑↑↑实际已经将"section"的的表述形式还原为默认形式，因此"\thesection"也被改回了"第\thesection 章"
 
         % 指定计数器数值格式
             第\arabic{section}节 % 阿拉伯数字

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.12)  19 DEC 2024 12:38
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.12)  15 MAR 2025 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -197,9 +197,7 @@ Package fontspec Info:
 
 )) (c:/texlive/2024/texmf-dist/tex/latex/ctex/config/ctex.cfg
 File: ctex.cfg 2022/07/14 v2.5.10 Configuration file (CTEX)
-) (c:/texlive/2024/texmf-dist/tex/latex/import/import.sty
-Package: import 2020/04/01  v 6.2
-) (../LaTeX_简单高效LATEX（吴康隆）/Package/Package.tex (c:/texlive/2024/texmf-dist/tex/latex/lipsum/lipsum.sty (c:/texlive/2024/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+) (../LaTeX_简单高效LATEX（吴康隆）/Tex/Package.tex (c:/texlive/2024/texmf-dist/tex/latex/lipsum/lipsum.sty (c:/texlive/2024/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
 Package: l3keys2e 2024-08-16 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
@@ -757,6 +755,8 @@ Package: multicol 2024/09/14 v1.9i multicolumn formatting (FMi)
 \mult@nat@firstbox=\box138
 \colbreak@box=\box139
 \mc@col@check@num=\count393
+) (c:/texlive/2024/texmf-dist/tex/latex/import/import.sty
+Package: import 2020/04/01  v 6.2
 ) (c:/texlive/2024/texmf-dist/tex/latex/boxedminipage/boxedminipage.sty
 Package: boxedminipage 2020/04/19 v1.1 Boxed LaTeX2e minipages
 \bmp@box=\box140
@@ -1139,14 +1139,14 @@ LaTeX Font Info:    Font shape `TU/SimSun(0)/m/sl' in size <10.53937> not availa
 \tf@lot=\write7
 \openout7 = `LaTeX_Wu_Kanglong.lot'.
 
- (../LaTeX_简单高效LATEX（吴康隆）/Chapter1/Chapter1.tex) (../LaTeX_简单高效LATEX（吴康隆）/Chapter2/Chapter2.tex
+ (../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter1.tex) (../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter2.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [5]
 
-[6]) (../LaTeX_简单高效LATEX（吴康隆）/Chapter3/Chapter3.tex
+[6]) (../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter3.tex
 
 [7]
 
@@ -1460,14 +1460,14 @@ Overfull \hbox (21.07874pt too wide) in paragraph at lines 523--530
 [19]
 
 [20]
-Overfull \hbox (2.70752pt too wide) in paragraph at lines 858--860
+Overfull \hbox (2.70752pt too wide) in paragraph at lines 869--871
 \TU/lmr/m/n/10.53937 luctus a, egestas a, turpis. Mauris lacinia lorem
  []
 
 
 
 
-Overfull \hbox (2.70752pt too wide) in paragraph at lines 865--866
+Overfull \hbox (2.70752pt too wide) in paragraph at lines 876--877
 \TU/lmr/m/n/10.53937 luctus a, egestas a, turpis. Mauris lacinia lorem
  []
 
@@ -1480,12 +1480,12 @@ Overfull \hbox (2.70752pt too wide) in paragraph at lines 865--866
 ]
 
 [23]
-Overfull \hbox (2.73158pt too wide) in paragraph at lines 921--924
+Overfull \hbox (2.73158pt too wide) in paragraph at lines 932--935
 []\TU/lmr/m/n/10.53937 JKLMN JKLMN JKLMN // JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN JKLMN
  []
 
 
-Overfull \hbox (30.73454pt too wide) in paragraph at lines 931--932
+Overfull \hbox (30.73454pt too wide) in paragraph at lines 942--943
 [][] \TU/lmr/m/n/10.53937 / [] / [] / [] / [] / [] 
  []
 
@@ -1493,7 +1493,7 @@ Overfull \hbox (30.73454pt too wide) in paragraph at lines 931--932
 
 [24
 
-]) (../LaTeX_简单高效LATEX（吴康隆）/Chapter4/Chapter4.tex) (../LaTeX_简单高效LATEX（吴康隆）/Chapter5/Chapter5.tex
+]) (../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter4.tex) (../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter5.tex
 
 [25]
 Underfull \hbox (badness 10000) detected at line 70
@@ -1527,7 +1527,7 @@ Overfull \hbox (2.33974pt too wide) in paragraph at lines 408--424
 
 
 
-[30]) (./LaTeX_Wu_Kanglong.ent) (../LaTeX_简单高效LATEX（吴康隆）/Appendix/Appendix.tex)
+[30]) (./LaTeX_Wu_Kanglong.ent) (../LaTeX_简单高效LATEX（吴康隆）/Tex/Appendix.tex)
 Underfull \vbox (badness 3396) has occurred while \output is active []
 
 
@@ -1546,25 +1546,16 @@ L3 programming layer <2022/07/14>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `LaTeX_Wu_Kanglong.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `LaTeX_Wu_Kanglong.out':
-(rerunfilecheck)             Before: 65BB7B716BC82547BDC4F9FA5145EC64;12867
-(rerunfilecheck)             After:  5E3265012BE9D4ED7D0C1BE18C928DC3;12867.
+Package rerunfilecheck Info: File `LaTeX_Wu_Kanglong.out' has not changed.
+(rerunfilecheck)             Checksum: 5E3265012BE9D4ED7D0C1BE18C928DC3;12867.
  ) 
 Here is how much of TeX's memory you used:
- 25721 strings out of 473965
- 556702 string characters out of 5736631
- 1078215 words of memory out of 5000000
- 48094 multiletter control sequences out of 15000+600000
+ 25752 strings out of 473965
+ 558572 string characters out of 5736631
+ 1078203 words of memory out of 5000000
+ 48131 multiletter control sequences out of 15000+600000
  571122 words of font info for 163 fonts, out of 8000000 for 9000
  1351 hyphenation exceptions out of 8191
- 93i,12n,111p,940b,899s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,12n,111p,945b,899s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on LaTeX_Wu_Kanglong.pdf (32 pages).

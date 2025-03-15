@@ -125,6 +125,7 @@
 \hypersetup{colorlinks = true,linkcolor=blue,anchorcolor=blue,citecolor=blue,urlcolor=red}
 
 \usepackage{gb4e} %# 将gb4e放在最后，否则有极大可能导致编译报错
+\usepackage{tablefootnote}
 
 % --------------------------------------------------------------------------------------------------------------------------------------
 
@@ -155,33 +156,12 @@ Hello, world !
 
 \ipa{mãʒɐ}
 
-\newpage
+\begin{table}
+    \begin{tabular}{lll}
+        A&B&C\tablefootnote{abc}\\
+    \end{tabular}
+\end{table}
 
-\begin{exe}
-    \ex
-    \glll 甲：\\
-    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
-    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
-    \glt abcdefg abcdefg abcdefg
-    \smallskip
-    \ex
-    \glll 乙：\\
-    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
-    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
-    \glt abcdefg abcdefg abcdefg abcdefg
-    \medskip
-    \ex
-    \glll 丙：\\
-    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
-    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
-    \glt abcdefg abcdefg abcdefg abcdefg
-    \bigskip
-    \ex
-    \glll 丁：\\
-    ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC ABC\\
-    abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc abc\\
-    \glt abcdefg abcdefg abcdefg abcdefg
-\end{exe}
 
 
 \theendnotes

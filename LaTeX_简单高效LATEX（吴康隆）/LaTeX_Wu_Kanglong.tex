@@ -2,15 +2,15 @@
 %rfr 在tex文件顶部使用"\listfiles"命令，编译后生成的log文件将包含使用的宏包列表（及其版本号），可以参考：https://mp.weixin.qq.com/s/Xkfaxo_EPTGxam5DL_veOQ
 
 \documentclass[twoside]{ctexart}
-\usepackage{import}
-\input{../LaTeX_简单高效LATEX（吴康隆）/Package/Package.tex}
+
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Package.tex}
 
 % 封面
 \title{简单高效\LaTeX{}（吴康隆）学习笔记\thanks{This is a footnote in the title.}}
 \author{殷元昊\thanks{This is a footnote in the author.}}
 \date{}
-            % "\title{title}和"\author{}"是必须定义的，"\date{text}"如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以输入"\date{}"
-            % 标题页的脚注用"\thanks{text}"命令完成
+% "\title{title}和"\author{}"是必须定义的，"\date{text}"如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以输入"\date{}"
+% 标题页的脚注用"\thanks{text}"命令完成
 
 \begin{document}
 
@@ -32,16 +32,16 @@
 % 表格目录
 \listoftables
 
-\input{../LaTeX_简单高效LATEX（吴康隆）/Chapter1/Chapter1.tex} % 写给读者
-\input{../LaTeX_简单高效LATEX（吴康隆）/Chapter2/Chapter2.tex} % LaTeX环境配置
-\input{../LaTeX_简单高效LATEX（吴康隆）/Chapter3/Chapter3.tex} % LaTeX基础
-\input{../LaTeX_简单高效LATEX（吴康隆）/Chapter4/Chapter4.tex} % 数学排版
-\input{../LaTeX_简单高效LATEX（吴康隆）/Chapter5/Chapter5.tex} % LaTeX进阶
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter1.tex} % 写给读者
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter2.tex} % LaTeX环境配置
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter3.tex} % LaTeX基础
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter4.tex} % 数学排版
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Chapter5.tex} % LaTeX进阶
 
 % 显示所有尾注
 \theendnotes
 
-\input{../LaTeX_简单高效LATEX（吴康隆）/Appendix/Appendix.tex}
+\input{../LaTeX_简单高效LATEX（吴康隆）/Tex/Appendix.tex}
 
 \end{document}
 

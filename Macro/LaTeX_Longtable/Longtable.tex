@@ -2,6 +2,7 @@
 % \usepackage{colortbl}
 \usepackage{longtable} % longtable宏包用来排版长表格
 %rfr 下面尝试着对着longtable宏包官方手册中给出的第一个长表格的例子制作一个相同的表格，可以参考：https://sg.mirrors.cicku.me/ctan/macros/latex/required/tools/longtable.pdf
+\usepackage[bottom]{footmisc} % footnotemis宏包搭配bottom可选参数防止页面的下边线因为提前分页而升高
 
     % longtable环境默认居中对齐，即左右两侧到文本左右边线的距离默认为\fill，可以通过以下命令来使其左对齐
     % \setlength{\LTleft}{0pt}
@@ -11,7 +12,7 @@
 \begin{longtable}{@{*}r||p{1in}@{*}}
     KILLED&LINE!\kill 
     % "\kill"表示该行不显示，但用于计算宽度
-    %rfr 何为“计算宽度”？可以参照"5.3.4 制表位*"一节当中的用法，此处可以将"KILLED"、"LINE!"这两格内容替换成距离命令"\hspace{l}"，这可以替代longtable环境必选参数当中的"p{}"参数，用来设定表格宽度。
+    %rfr 何为“计算宽度”？可以参照"5.3.4 制表位*"一节当中的用法，此处可以将"KILLED"、"LINE!"这两格内容替换成距离命令"\hspace{l}"，这可以替代longtable环境必选参数当中的"p{}"参数，用来设定表格宽度。"p"是"parbox"的首字母，可以参考：https://tex.stackexchange.com/questions/35293/p-m-and-b-columns-in-tables
     %* 注意，如果在单元格的末尾使用距离命令，需要加上"*"符号，否则无法添加指定距离的空格
     \caption[An optional table caption (used in the list of tables)]{A long table}\\
     %! longtable环境当中的"\caption{}"命令最后需要添加"\\"命令，否则编译会报错
@@ -25,7 +26,7 @@
     % 定义首页表头（如果首页表头与其它页不同的话）
 
     \caption[]{(continued)}\\
-    %* longtable环境重定义了"\caption[]{}"命令，原命令中的可选参数表示在表格目录中显示的标题，如果留空，则表格目录中的对应标题会留白，但是该目录项不会消失，新定义后的命令如果将可选参数留空，可以不将该表格项加入表格目录，这一用法经常用来设置首页之后的各页表头
+    %* longtable环境重定义了"\caption[]{}"命令，原命令中的可选参数表示在表格目录中显示的标题，如果留空，则表格目录中的对应标题会留白，但是该目录项不会消失，新定义后的命令如果将可选参数留空，可以不将该表格项加入表格目录，这一用法通常应用于首页之后的各页表格标题（因为只有首页的表格标题才需要加入目录）
     %* longtable环境还新定义了"\caption*{text}"命令，打印出的标题只会显示参数内容，而不会在这之前显示"Table X: "的字样，即不会进行编号，并且该标题也不会被加入表格目录
     \hline\hline
     \multicolumn{2}{@{*}c@{*}}{This part appears at the top of every other page}\\
@@ -113,7 +114,10 @@
     Lots of lines\footnote{This is a footnote.}&like this.\\
     Lots of lines&like this\footnotemark\footnotetext{\textsf{longtable} takes special precautions, so that footnotes may also be used in `p' columns.}.\\
     % \hline
-    %* 在longtable环境使用脚注的两种方式和在普通的table环境中不同：（1）在longtable环境的表体中可以直接使用"\footnote{}"命令，而在table环境中虽然可以使用，但是不会打印出脚注；（2）在longtable环境的表体中可以搭配使用"\footnotemark"命令和"\footnotetext{text}"命令，由于后者决定了脚注打印的位置，因此需要放置在和脚注位置打印在同一页面的表体的任何位置（一般紧跟在"\footnotemark"命令之后），如果放在表头或者表尾中，脚注不会打印出来，而在table环境中虽然也可以搭配使用这两条命令，但是"\footnotetext{text}"命令必须放在环境结束之后，否则不会打印出脚注（由于table环境打印出的表格不会跨页，因此不存在longtable环境当中【选择"\footnotetext{text}"命令的插入位置】的问题）。这里还涉及"\footnotetext{text}"命令的编号问题：在longtbale环境中，"\footnotetext{text}"命令的编号会根据排列的先后次序自动编号，也可以通过可选参数指定，而在table环境中，由于所有的"\footnotetext{text}"命令都必须放置在环境结束后，因此当存在多个该命令时，就必须通过可选参数为这些命令指定编号，否则这些脚注的编号都会等于最后一条"\footnotemark"命令对应的编号；（3）在longtable环境的表头、表尾和"\caption{}"命令中，不能直接使用"\footnote{}"命令，否则不会打印出脚注，搭配使用"\footnotemark"命令和"\footnotetext{text}"命令时，需要将其放置在和脚注位置打印在同一页面的表体的任何位置，可以发现，在longtable环境中，在"\caption{}"命令中使用"\footnotemark"命令不再需要在前面加上"\protect"命令，而在table环境中，这是必须的，否则编译会报错
+    %* 在longtable环境使用脚注的两种方式和在普通的table环境中不同：
+        %* （1）在longtable环境的表体中可以直接使用"\footnote{}"命令，而在table环境中虽然可以使用，但是不会打印出脚注；
+        %* （2）在longtable环境的表体中可以搭配使用"\footnotemark"命令和"\footnotetext{text}"命令，由于后者决定了脚注打印的位置，因此需要放置在和脚注位置打印在同一页面的表体的任何位置（一般紧跟在"\footnotemark"命令之后），如果放在表头或者表尾中，脚注不会打印出来，而在table环境中虽然也可以搭配使用这两条命令，但是"\footnotetext{text}"命令必须放在环境结束之后，否则不会打印出脚注（由于table环境打印出的表格不会跨页，因此不存在longtable环境当中【选择"\footnotetext{text}"命令的插入位置】的问题）。这里还涉及"\footnotetext{text}"命令的编号问题：在longtbale环境中，"\footnotetext{text}"命令的编号会根据排列的先后次序自动编号，也可以通过可选参数指定，而在table环境中，由于所有的"\footnotetext{text}"命令都必须放置在环境结束后，因此当存在多个该命令时，就必须通过可选参数为这些命令指定编号，或者通过\addtocounter{}{}命令和\stepcounter{}命令为\footnotetext{text}命令重新调整编号，否则这些脚注的编号都会等于最后一条"\footnotemark"命令对应的编号；
+        %* （3）在longtable环境的表头、表尾和"\caption{}"命令中，不能直接使用"\footnote{}"命令，否则不会打印出脚注，搭配使用"\footnotemark"命令和"\footnotetext{text}"命令时，需要将其放置在和脚注位置打印在同一页面的表体的任何位置，可以发现，在longtable环境中，在"\caption{}"命令中使用"\footnotemark"命令不再需要在前面加上"\protect"命令，而在table环境中，这是必须的，否则编译会报错
     \hline
     Lots of lines&like this.\\
     Lots of lines&like this.\\
@@ -123,8 +127,8 @@
     % \newpage
     %* 最后还涉及到LaTeX提前分页的问题，通过打印效果可以发现，最后一页上的脚注紧贴着longtable的底部，这其实反映出LaTeX自动在longtable环境结束后添加了一条"\pagebreak"命令，使得该页提前结束了，因此脚注会跟着跑到分页的位置，造成了当前页面底部出现大片空白（underfull）的情况，经检验，这一情况在另外的tex文件中单独打印该长表格时没有出现，因此这一情况应该是LaTeX自身在同一文件中存在其他内容时，自动排版导致的
     %! 以上所述“提前分页”是原来在文件"LaTeX_Wu_Kanglong.tex"中编译时出现的问题
-    %rfr 关于提前分页的问题，可以参考这一帖子：https://tex.stackexchange.com/questions/4902/why-is-my-footnote-glued-to-the-text，其中涉及几个要点：（1）LaTeX中很重要的一个概念"penalty"，简单来说，如果penalty的值小于等于-10000，则强制换页，如果大于等于10000，则禁止换页，如果处于-10000和10000之间，则体现为换页或者不换页的倾向；（2）排版当中换页的两种情况：第一种情况最常见，那就是一个段落在当前页面无法全部填充，则只能换页继续填充，这会导致一个段落被分割成两个甚至多个部分，分布在多个页面上；第二种情况比较特殊，那就是前一个段落的最后一行刚好位于当前页面的底部，下一个段落只能换页填充，这就导致前一个段落的最后一行在前一个页面的底部，后一个段落的第一行在后一个页面的顶部。LaTeX中的penalty值影响到的是前一种情况：以这篇帖子为例，将相邻两行之间的penalty值设为了10000，这似乎说明永远都不允许换页，因为前后两行总是连在一起的，但实际情况却是：当前后两段能够放置在同一页面中时，不换页，一旦两段无法同时放置在同一页面中时，这两段会被分别放置在不同的页面中，此时如果增加任何一段的长度，这一段的内容都会不断往下延伸，最终超出页面范围而不会换页，这说明LaTeX此时仅仅是禁止同意段落内禁止换页，当同一页面无法容纳多个段落时，则允许段落之间进行换页；（3）寡行（widow）和孤行（orphan），这是排版当中的两个重要术语，寡行就是一个段落的最后一行出现在了后一页上，和前一页上的各行分开，孤行就是一个段落的第一行出现在了前一页上，和后一页上的各行分开，LaTeX的提前分页有时就是为了避免寡行或者孤行
+    %rfr 关于提前分页的问题，可以参考这一帖子：https://tex.stackexchange.com/questions/4902/why-is-my-footnote-glued-to-the-text，其中涉及几个要点：（1）LaTeX中很重要的一个概念"penalty"，简单来说，如果penalty的值小于等于-10000，则强制换页，如果大于等于10000，则禁止换页，如果处于-10000和10000之间，则体现为换页或者不换页的倾向；（2）排版当中换页的两种情况：第一种情况最常见，那就是一个段落在当前页面无法全部填充，则只能换页继续填充，这会导致一个段落被分割成两个甚至多个部分，分布在多个页面上；第二种情况比较特殊，那就是前一个段落的最后一行刚好位于当前页面的底部，下一个段落只能换页填充，这就导致前一个段落的最后一行在前一个页面的底部，后一个段落的第一行在后一个页面的顶部。LaTeX中的penalty值影响到的是前一种情况：以这篇帖子为例，将相邻两行之间的penalty值设为了10000，这似乎说明永远都不允许换页，因为前后两行总是连在一起的，但实际情况却是：当前后两段能够放置在同一页面中时，不换页，一旦两段无法同时放置在同一页面中时，这两段会被分别放置在不同的页面中，此时如果增加任何一段的长度，这一段的内容都会不断往下延伸，最终超出页面范围而不会换页，这说明LaTeX此时仅仅是禁止同一段落内禁止换页，当同一页面无法容纳多个段落时，则允许段落之间进行换页；（3）寡行（widow）和孤行（orphan），这是排版当中的两个重要术语，寡行就是一个段落的最后一行出现在了后一页上，和前一页上的各行分开，孤行就是一个段落的第一行出现在了前一页上，和后一页上的各行分开，LaTeX的提前分页有时就是为了避免寡行或者孤行
     %rfr 也可以参考这一篇帖子当中提供的例子：https://www.zhihu.com/question/462017394，第一个例子提供了提前分页的另一种情况：后一段由于处于环境之中，因此无法在内部进行分页，导致LaTeX只好提前换页，后一个例子则是直接使用"\pagebreak"强行制造换页，这也体现出"\pagebreak"和"\newpage"、"\clearpage"等命令的不同之处，前者直接换页，这会导致实际的页面高度小于默认值，而脚注的位置永远是由页面底部位置决定的，因此此时脚注就会往上移动，看起来好像是紧贴着正文一样，后者则会在换页之前插入一个"\vfil"命令，以维持实际的页面高度等于默认值，因此脚注将始终位于页面底部，其实这两种情况下，脚注都位于页面底部，只不过前一种情况中实际的页面底部发生了上移，我们可以将四边发生移动后的区域称为“实际页面区域”，而将表面上未曾移动的区域称为“默认页面区域”
-    %* 我们没有必要去完全弄明白提前分页产生的原因（回看本文档前面的内容会发现还存在其他的提前分页的情况），如果想要让页脚始终处于默认页面区域的底部，只需要加载footnotemis宏包并且设置bottom的可选参数即可，但这不会使得导致提前分页的"\pagebreak"消失，另一种临时的解决办法是插入"\newpage"命令，但是这样设置就无法让后续内容在当前页面继续打印，而必须要另起一页打印
+    %* 我们没有必要去完全弄明白提前分页产生的原因（回看本文档前面的内容会发现还存在其他的提前分页的情况），如果想要让页脚始终处于默认页面区域的底部，只需要加载footmisc宏包并且设置bottom的可选参数即可，但这不会使得导致提前分页的"\pagebreak"消失，另一种临时的解决办法是插入"\newpage"命令，但是这样设置就无法让后续内容在当前页面继续打印，而必须要另起一页打印
 
     \end{document}
