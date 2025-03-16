@@ -65,11 +65,15 @@
     % \dottedcontents{section}[8em]{}{4em}{15pt}
         % 设置目录的整体字体样式以及一些距离参数，各参数为\dottedcontents{⟨section⟩}[⟨left⟩]{⟨above-code⟩}{⟨label width⟩}{⟨leader width⟩}
         %* 这些参数包括：
-            %* 目录中相应章节大纲【标签的右侧】/【标题文字的左侧】到文本左边线的距离；
-            %* 章节整体的字体样式；
-            %* 标签宽度（从【标签的右侧】/【标题文字的左侧】向左延伸的距离）；
-            %* 圆点填充部分的等距填充的盒子宽度（对应"\titlerule*[width]{text}"命令中的[width]参数），{above-code}参数如果留空，会清空相应章节大纲的整体字体样式，使其还原为正文格式
+            %* [⟨left⟩]：目录中相应章节大纲【标签的右侧】/【标题文字的左侧】到文本左边线的距离；
+            %* {⟨above-code⟩}：章节整体的字体样式
+            %* {⟨label width⟩}：标签宽度（从【标签的右侧】/【标题文字的左侧】向左延伸的距离）；
+            %* {⟨leader width⟩}：圆点填充部分的等距填充的盒子宽度（对应"\titlerule*[width]{text}"命令中的[width]参数）
         %! 注意，{section}参数中不能加入"\"符号，可以和"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令中的{command}参数进行比较，\dottedcontents命令设置目录当中的大纲格式，\titleformat命令设置正文中的大纲格式，后者才和相应的大纲命令有关
+        %rfr 根据titlesec宏包的官方文档，book文档类型当中这一命令的几个默认值大致等于
+            %rfr \contentsmargin{2.55em}（见下文介绍）
+            %rfr \dottedcontents{section}[3.8em]{}{2.3em}{1pc}
+            %rfr \dottedcontents{subsection}[6.1em]{}{3.2em}{1pc}
         
     \titlecontents{section}[4em]{}{\itshape\bfseries\contentslabel[\sffamily\bfseries\thecontentslabel]{4em}}{\itshape\bfseries}{\bfseries\titlerule*[15pt]{+}\contentspage}[\vspace{2ex}]
         % 更加详细地设置目录的各项参数，各参数为\titlecontents{⟨section⟩}[⟨left⟩]{⟨above-code⟩}{⟨numbered-entry-format⟩}{⟨numberless-entry-format⟩}{⟨filler-page-format⟩}[⟨below-code⟩]
