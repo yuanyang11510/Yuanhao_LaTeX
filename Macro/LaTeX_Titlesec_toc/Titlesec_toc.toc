@@ -1,17 +1,6 @@
-\contentsline {section}{\numberline {第1章}Heading on level\xspace 1 (section)}{1}{}%
-\contentsline {subsection}{\numberline {1.1}Heading on level\xspace 2 (subsection)}{2}{}%
-\contentsline {subsubsection}{\numberline {1.1.1}Heading on level\xspace 3 (subsubsection)}{2}{}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{2}{}%
-\contentsline {section}{\numberline {第2章}Lists}{3}{}%
-\contentsline {subsection}{\numberline {2.1}Example for list\xspace (itemize)}{3}{}%
-\contentsline {subsubsection}{\numberline {2.1.1}Example for list\xspace (4*itemize)}{3}{}%
-\contentsline {subsection}{\numberline {2.2}Example for list\xspace (enumerate)}{3}{}%
-\contentsline {subsubsection}{\numberline {2.2.1}Example for list\xspace (4*enumerate)}{4}{}%
-\contentsline {subsection}{\numberline {2.3}Example for list\xspace (description)}{4}{}%
-\contentsline {subsubsection}{\numberline {2.3.1}Example for list\xspace (4*description)}{5}{}%
-\contentsline {section}{\numberline {第3章}这是目录中显示的标题}{5}{}%
-\contentsline {subsection}{\numberline {3.1}这是一个次节}{5}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}这是一个小节}{5}{}%
-\contentsline {subsubsubsection}{\numberline {3.1.1.a}这是一个新定义的小小节}{5}{}%
-\contentsline {section}{不编号的一章}{6}{}%
+\contentsline {section}{不编号的一章}{2}{}%
+\contentsline {section}{\numberline {第1章}编号的一章：这是目录中显示的标题}{2}{}%
+\contentsline {subsection}{\numberline {1.1}这是一个次节}{3}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}这是一个小节}{3}{}%
+\contentsline {subsubsubsection}{\numberline {1.1.1.a}这是一个新定义的小小节}{3}{}%
 \contentsfinish 

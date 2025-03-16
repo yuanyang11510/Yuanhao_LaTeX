@@ -715,6 +715,7 @@
             当前所在章节为第\thesection 章、第\thesubsection 节、第\thesubsubsection 次节
             % 旧注：如果没有在导言区重定义"section"、"subsection"、"subsubsection"等章节的表述形式，此处关于"\thesection"命令的文本内容本来应该写为“当前所在章节为第\thesection 章”，但是由于"section"的表述形式被重定义为了“第+阿拉伯数字+章”，因此需要改写为“当前所在章节为\thesection”，这也说明尽量不要在重定义计数器的调用形式时增加文本内容，因为计数器的调用形式最初的目的只是为了呈现其数值形式以及几个数值的组合形式，如果想要修改章节的标签形式，可以通过titlesec宏包提供的"\titleformat{command}[shape]{format}{label}{sep}{before-code}[after-code]"命令进行修改
         %* ↑↑↑实际已经将"section"的的表述形式还原为默认形式，因此"\thesection"也被改回了"第\thesection 章"
+        %rfr 关于这一问题的详细讨论，可以参考"Titlesec_toc.tex"文件
 
         % 指定计数器数值格式
             第\arabic{section}节 % 阿拉伯数字
