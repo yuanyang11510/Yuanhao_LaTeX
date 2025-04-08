@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.12)  13 MAR 2025 16:58
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.12.12)  18 MAR 2025 15:35
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1339,13 +1339,12 @@ Package biblatex Info: Automatic encoding selection.
 \openout4 = `Article_Model.bcf'.
 
 Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'Article_Model.bbl' not found.
-
-No file Article_Model.bbl.
+Package biblatex Info: ... file 'Article_Model.bbl' found.
+ (./Article_Model.bbl)
 Package biblatex Info: Reference section=0 on input line 132.
 Package biblatex Info: Reference segment=0 on input line 132.
 Package hyperref Info: Link coloring ON on input line 132.
-(./Article_Model.out) (./Article_Model.out)
+ (./Article_Model.out) (./Article_Model.out)
 \@outlinefile=\write5
 \openout5 = `Article_Model.out'.
 
@@ -1408,12 +1407,12 @@ Package fontspec Info:
 
 
 Package endnotes Warning: No endnotes found (file Article_Model.ent does not exist)
-(endnotes)                 on input line 167.
+(endnotes)                 on input line 168.
 
 
 
 LaTeX Font Info:    Font shape `TU/SimSun(1)/m/sl' in size <10.53937> not available
-(Font)              Font shape `TU/SimSun(1)/m/it' tried instead on input line 176.
+(Font)              Font shape `TU/SimSun(1)/m/it' tried instead on input line 179.
 [2] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (./Article_Model.aux)
@@ -1426,9 +1425,6 @@ L3 programming layer <2022/07/14>
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.78749pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `Article_Model.out' has not changed.
 (rerunfilecheck)             Checksum: F75EE99AD817AD7299B1FA0D537AC696;711.
 Package logreq Info: Writing requests to 'Article_Model.run.xml'.
@@ -1436,12 +1432,12 @@ Package logreq Info: Writing requests to 'Article_Model.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31600 strings out of 473965
- 658454 string characters out of 5736631
- 1637516 words of memory out of 5000000
- 54021 multiletter control sequences out of 15000+600000
- 569633 words of font info for 115 fonts, out of 8000000 for 9000
+ 31843 strings out of 473965
+ 664124 string characters out of 5736631
+ 1637976 words of memory out of 5000000
+ 54260 multiletter control sequences out of 15000+600000
+ 569641 words of font info for 116 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 93i,15n,111p,1202b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 93i,15n,111p,1202b,4767s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on Article_Model.pdf (2 pages).

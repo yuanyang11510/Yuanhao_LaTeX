@@ -81,5 +81,8 @@
     <requires type="dynamic">
       <file>Article_Model.bcf</file>
     </requires>
+    <requires type="editable">
+      <file>AllDoc.bib</file>
+    </requires>
   </external>
 </requests>
