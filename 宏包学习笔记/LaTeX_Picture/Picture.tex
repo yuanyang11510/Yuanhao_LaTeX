@@ -6,7 +6,7 @@
 %! 注意，subcaption宏包和subfig宏包只能加载其中一个，否则编译会报错
 \usepackage{wrapfig} % 使用wrapfig宏包进行图文混排
 \usepackage[section]{placeins} % 重新定义了"\section{}"命令，在此之前加上了"\Float-Barrrier"命令，阻止浮动体跨过该位置
-\usepackage[colorlinks = true,linkcolor=blue]{hyperref}
+\usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
 %* 以下插入的图片外面都套有一层"\fbox{text}"命令，以清楚显示图片的边框界限
 
@@ -51,7 +51,7 @@
     \fbox{\includegraphics[height=.1\textheight]{doraemon1.jpg}}
 
 \subsection{angle表示图片逆时针旋转角度，origin表示图片旋转中心，默认值为l（左），可以设置为r（右）、c（中）、t（顶）、b（底）、B（基线）}
-%* 顺时针旋转可以通过在旋转角度前面添加符号来完成
+%* 顺时针旋转可以通过在旋转角度前面添加负号来完成
 \subsubsection{绕左侧中心逆时针旋转90度}
     \fbox{\includegraphics[angle=90]{doraemon1.jpg}}%counterclockwise
     \fbox{\includegraphics{doraemon1.jpg}}
