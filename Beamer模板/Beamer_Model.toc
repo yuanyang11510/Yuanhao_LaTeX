@@ -1,3 +1,0 @@
-\selectlanguage *[]{french}
-\beamer@sectionintoc {1}{\textbf {I}}{2}{0}{1}
-\beamer@sectionintoc {2}{\textbf {II}}{3}{0}{2}
