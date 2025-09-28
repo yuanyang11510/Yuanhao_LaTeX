@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{l+s}{\PYGZdl{}}\PYG{n+nb}{sim}\PYG{l+s}{\PYGZdl{}} \PYG{esc}{\% 实际是一个数学符号“约等于”（similar）}
+\end{MintedVerbatim}

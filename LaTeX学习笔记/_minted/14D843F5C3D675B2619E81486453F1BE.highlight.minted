@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{\PYGZbs{}newpage}\PYG{k}{\PYGZbs{}mbox}\PYG{n+nb}{\PYGZob{}}\PYG{n+nb}{\PYGZcb{}}\PYG{k}{\PYGZbs{}newpage}\PYG{esc}{~\% 可以达到空出一整页的效果}
+\end{MintedVerbatim}

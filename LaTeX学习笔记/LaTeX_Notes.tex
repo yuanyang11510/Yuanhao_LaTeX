@@ -5,17 +5,24 @@
 \usepackage{indentfirst}
 \usepackage{mdframed}
 \usepackage{minted} % 打印源代码
+\setminted{escapeinside = ||} % 设置转义定界符，||之间的内容转到LaTeX编译
 \newcommand{\mnt}[1]{\mintinline{latex}{#1}} % 简化打印源代码命令
 %* 上述命令存在限制，见文末注释
+% 以下列举文档里碰到的LaTeX原生命令，随时补充，文档中用红色标出
+\newcommand{\mntpar}{\textcolor{red}{\textbackslash{}par}}
+\usepackage{ulem}
+\usepackage{lettrine}
+\usepackage[colorlinks = true]{hyperref}
 
 % 命令介绍架构
-\newcommand{\notes}[5]{
+\newcommand{\notes}[6]{
     \begin{mdframed}
-        \paragraph{命令}#1
-        \paragraph{宏包}#2
-        \paragraph{位置}#3
-        \paragraph{参数}#4
-        \paragraph{注释}#5
+        {\begin{center}\large\textcolor{red}{#1}\end{center}}
+        \paragraph{命令}~\vspace{10pt}\\#2
+        \paragraph{宏包}#3
+        \paragraph{位置}#4
+        \paragraph{参数}#5
+        \paragraph{注释}#6
     \end{mdframed}
 }
 
@@ -36,13 +43,14 @@
 笔者曾经在学习制作表格和插入图片的相关宏包时制作过两份\LaTeX{}文档，但是回看的时候仍然觉得可读性不强，这是因为在编写文档的时候，尽管笔者使用了详细的文字描写相关命令，但由于缺少命令的参数结构，因而在回看时仍不免陷入“迷失在文字的海洋里”的尴尬境地，因此，该笔记将严格按照“宏包-位置-参数-注释”的架构搭建。
 
 \section{正文}
-\subsection{封面}
+
 \notes
+{封面}%
 {
     \mnt{\title{}、\author{}、\date{}、\thanks{}}
 }%
 {基础命令}%
-{导言区}%
+{略}%
 {略}%
 {
     \begin{enumerate}
@@ -52,8 +60,8 @@
     \end{enumerate}
 }%
 
-\subsection{标题}
 \notes
+{标题}%
 {
     \mnt{\maketitle}
 }%
@@ -62,9 +70,8 @@
 {略}%
 {略}%
 
-\subsection{目录}
-
 \notes
+{目录}%
 {
     \mnt{\tableofcontents、\listoffigures、\listoftables}
 }%
@@ -74,6 +81,7 @@
 {略}%
 
 \notes
+{目录标题}%
 {
     \mnt{\contentsname、\listfigurename、\listtablename}
 }%
@@ -84,81 +92,86 @@
     这三条命令用于\mnt{\renewcommand{}{}}结构中，通过重定义来修改目录的标题、图片目录的标题、表格目录的标题。
 }%
 
-\subsection{保留字符}
-
 \notes
+{保留字符}%
 {
-    \mnt{\#、\$、\%、\&、\_、\{、\}、\^{}}
+    \mnt{(1) \# |\%| 输出|\#|}\\
+    \mnt{(2) \$ |\%| 输出|\$|}\\
+    \mnt{(3) \% |\%| 输出|\%|}\\
+    \mnt{(4) \& |\%| 输出|\&|}\\
+    \mnt{(5) \_ |\%| 输出|\_|}\\
+    \mnt{(6) \{ |\%| 输出|\{|}\\
+    \mnt{(7) \} |\%| 输出|\}|}\\
+    \mnt{(8) \^{} |\%| 输出|\^{}|}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    关于\%符号，吴书中提到：“如果在行末添加\%这个命令，可以防止LaTeX在行末插入一些奇怪的空白符”，其实这个说法语焉不详，我们知道，如果在LaTeX的代码中换一行，打印时就会在换行处插入一个空格，而此时如果在每一行的末尾插入一个\%符号，就能移除这个空格。
-
-    关于\^{}符号，该命令后面如果不加一对大括号，单独打印时会报错，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），输出的就是一个扬抑符（circumflex），比如\mnt{\^{a}}输出\^{a}。
+    \begin{enumerate}
+        \item 关于\%符号，吴书中提到：“如果在行末添加\%这个命令，可以防止LaTeX在行末插入一些奇怪的空白符”，其实这个说法语焉不详，我们知道，如果在LaTeX的代码中换一行，打印时就会在换行处插入一个空格，而此时如果在每一行的末尾插入一个\%符号，就能移除这个空格。
+        \item 关于\^{}符号，该命令后面如果不加一对大括号，单独打印时会报错，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），输出的就是一个扬抑符（circumflex），比如\mnt{\^{a}}输出\^{a}。
+    \end{enumerate}
 }%
 
 \notes
+{保留字符：反斜杠}%
 {
-    (1) \mnt{\textbackslash}、\\
-    (2) \mnt{\textrm{\char92}、{\rmfamily\char92}}、\\
-    (3) \mnt{$backslash$}
+    (1) \mnt{\textbackslash}\\
+    (2) \mnt{\textrm{\char92}、{\rmfamily\char92} |\% 使用ASCII码进行输出|}\\
+    (3) \mnt{$backslash$ |\% 使用数学环境|}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    以上是输出反斜杠的三种方法，第二种方法使用ASCII码进行输出，第三种方法使用数学环境，\mnt{\textrm{}}也可以替换为其他字体命令。
+    \begin{enumerate}
+        \item 方法二中的\mnt{\textrm{}}也可以替换为其他字体命令。
+        \item 方法二、方法三输出的反斜杠和方法一输出的反斜杠不完全相同：如果将这几种方法输出的反斜杠排列在一行上，会发现方法一输出的反斜杠和后面反斜杠符号的间距更小，但是有意思的是，如果将反斜杠后面的符号替换成其他符号，这些反斜杠后的这一间距又会恢复相同，因此在实际情况中，只需要在需要连续使用两个反斜杠符号时，注意选择命令即可，比如，如果要输出“\textbackslash\textbackslash”符号，应该选用两个连续的\mnt{\textbackslash}命令。
+        \item 顺便在此可以讨论\mnt{\texttt{}}和\mnt{{\ttfamily}}这两类不同的命令，这两类命令的大括号的位置和功能是不同的：前一种命令的大括号置于命令之后，是强制性的，用来放置相应的参数，只有大括号内的内容才会受到该命令的影响，其特点有点类似于环境。有些教程会将这种命令称为“argument style”（参数型）。
+        
+        而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要限制该命令影响的范围，则可以在该命令和需要统辖的范围两边加上大括号。有些教程会将这种命令称为“declarative style”（声明型）。
 
-    第二种方法、第三种方法输出的反斜杠和第一种方法输出的反斜杠不完全相同：如果将这几种方法输出的反斜杠排列在一行上，会发现第一种方式输出的反斜杠和后面反斜杠符号的间距更小，但是有意思的是，如果将反斜杠后面的符号替换成其他符号，这些反斜杠后的这一间距又会恢复相同，因此在实际情况中，只需要在需要连续使用两个反斜杠符号时，注意选择命令即可，比如，如果要输出“\textbackslash\textbackslash”符号，应该选用两个连续的\mnt{\textbackslash}命令。
-
-    顺便在此可以讨论\mnt{\texttt{}}和\mnt{{\ttfamily}}这两类不同的命令，这两类命令的大括号的位置和功能是不同的：前一种命令的大括号置于命令之后，是强制性的，用来放置相应的参数，只有大括号内的内容才会受到该命令的影响，其特点有点类似于环境。
-
-    而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要限制该命令影响的范围，则可以在该命令和需要统辖的范围两边加上大括号。
-
-    下文中会反复出现这两类命令，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论。
+        下文中会反复出现这两类命令，比如自定义距离命令、两类对齐方式命令等，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论。
+    \end{enumerate}
 }%
 
 \notes
+{保留字符：波浪线}%
 {
-    (1) \mnt{\textasciitilde}、\\
-    (2) \mnt{\~{}}、\\
-    (3) \mnt{$sim$}
+    (1) \mnt{\textasciitilde} \\
+    (2) \mnt{\~{}}\\
+    (3) \mnt{$sim$ |\% 实际是一个数学符号“约等于”（similar）|} 
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    以上是输出波浪线的几种方法。
-    
-    方法一在不同的编辑器中输出效果不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线。
-
-    方法二和上文中的\^{}符号一样，该命令如果后面跟上一个字母，实际输出的就是一个波浪号/腭化符（tilde），如果要单独输出这一符号，必须在后面添加一对大括号，在TeXstudio中输出的是一个单独的腭化符，但是在VS Code中输出的就是一个正常的波浪线，比如\mnt{\~{a}}输出\~{a}。
-
-    方法三实际是一个数学符号“约等于”（similar）。
+    \begin{enumerate}
+        \item 方法一在不同的编辑器中输出效果不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线。
+        \item 方法二和上文中的\^{}符号一样，该命令如果后面跟上一个字母，实际输出的就是一个波浪号/腭化符（tilde），如果要单独输出这一符号，必须在后面添加一对大括号，在TeXstudio中输出的是一个单独的腭化符，但是在VS Code中输出的就是一个正常的波浪线，比如\mnt{\~{a}}输出\~{a}。
+    \end{enumerate}
 }%
 
-\subsection{大于号和小于号}
 \notes
+{大于号和小于号}%
 {
-    (1) \mnt{\textgreater、\textless}、\\
-    (2) \mnt{>、<}、\\
+    (1) \mnt{\textgreater、\textless}\\
+    (2) \mnt{>、<}\\
     (3) \mnt{$>$、$<$}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    以上是输出大于号和小于号的几种方法。
-
-    文本中的大于号和小于号需要使用\mnt{\textgreater}和\mnt{\textless}命令。
-
-    方法二和方法三输出的都是数学符号中的大于号和小于号。TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境。
+    \begin{enumerate}
+        \item 文本中的大于号和小于号需要使用方法一中的\mnt{\textgreater}和\\\mnt{\textless}命令。
+        \item 方法二和方法三输出的都是数学符号中的大于号和小于号。TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境。
+    \end{enumerate}
 }%
 
-\subsection{引号}
 \notes
+{引号}%
 {
     \mnt{“你好，‘世界’！”} v.s. \mnt{``\thinspace`Max' is here.'' }
 }%
@@ -166,32 +179,32 @@
 {略}%
 {略}%
 {
-    中文下的单引号和双引号可以用中文输入法直接输入。英文的左单引号是重音符“\mnt{`}”，右单引号是常用的引号符“\mnt{'}”。
-
-    吴书中提到上述“英文下的引号嵌套需要借助\mnt{\thinspace}命令分隔”，但实际上这和语言无关，\mnt{\thinspace}的效果是在命令处略微扩大外部引号和内部引号之间的距离，只是一个细节问题。
+    \begin{enumerate}
+        \item 中文下的单引号和双引号可以用中文输入法直接输入。英文的左单引号是重音符“\mnt{`}”，右单引号是常用的引号符“\mnt{'}”。
+        \item 吴书中提到上述“英文下的引号嵌套需要借助\mnt{\thinspace}命令分隔”，但实际上这和语言无关，\mnt{\thinspace}的效果是在命令处略微扩大外部引号和内部引号之间的距离，只是一个细节问题。
+    \end{enumerate}
 }%
 
-\subsection{连字符、破折号和省略号}
 \notes
+{连字符、破折号和省略号}%
 {
-    (1) \mnt{daughter-in-law}、\\
-    (2) \mnt{1--2}、\\
-    (3) \mnt{Listen---I'm serious.}、\\
-    (4) \mnt{——}、\\
-    (5) \mnt{……}、\\
-    (6) \mnt{\ldots} 
-    % ldots = lower dots, v.s. \cdots = center dots
+    (1) \mnt{- |\% 连字符：daughter-in-law|}\\
+    (2) \mnt{-- |\% 数字起止符：1--2|}\\
+    (3) \mnt{--- |\% 英文破折号：Listen---I'm serious.|}\\
+    (4) \mnt{—— |\% 中文破折号|}\\
+    (5) \mnt{…… |\% 中文省略号|}\\
+    (6) \mnt{\ldots |~\% 英文省略号|} 
     %todo 该命令效果也等同于\dots，但是\ldots在任何模式下都适用，关于dots的相关命令有待探索
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    以上命令输出的分别是（1）连字符、（2）数字起止符、（3）英文破折号、（4）中文破折号、（5）中文省略号、（6）英文省略号。注意连打三个句点\mnt{...}输出的不是真正的英文省略号。
+    \mnt{\ldots} = lower dots, v.s. \mnt{\cdots} = center dots。注意连打三个句点“\mnt{...}”输出的不是真正的英文省略号：\mnt{\ldots}输出\ldots，“\mnt{...}”输出...。
 }%
 
-\subsection{强调}
 \notes
+{强调}%
 {
     \mnt{\emph{强调} v.s. \emph{empasis}}
 }%
@@ -202,8 +215,8 @@
     中文的效果等同于\mnt{\textsl{}}，西文的效果等同于\mnt{\textit{}}。
 }%
 
-\subsection{下划线和删除线}
 \notes
+{下划线和删除线}%
 {
     \mnt{\underline{}}
 }%
@@ -213,62 +226,45 @@
 {略}%
 
 \notes
+{下划线和删除线}%
 {
-    (1) \mnt{\uline{}}、\\
-    (2) \mnt{\uuline{}}、\\
-    (3) \mnt{\dashuline{}}、\\
-    (4) \mnt{\dotuline{}}、\\
-    (5) \mnt{\uwave{}}、\\
-    (6) \mnt{\sout{}}、\\
-    % “sout”来自“strike out”的缩写
-    (7) \mnt{\xout{}}
-    % “xout”来自“cross out”的缩写
+    (1) \mnt{\uline{} |\% \uline{下划线}|}\\
+    (2) \mnt{\uuline{} |\% \uuline{双下划线}|}\\
+    (3) \mnt{\dashuline{} |\% \dashuline{虚下划线}|}\\
+    (4) \mnt{\dotuline{} |\% \dotuline{点下划线}|}\\
+    (5) \mnt{\uwave{} |\% \uwave{波浪线}|}\\
+    (6) \mnt{\sout{} |\% \sout{删除线}|}、\\
+    (7) \mnt{\xout{} |\% \xout{斜删除线}|}
 }%
 {ulem}%
 {略}%
 {略}%
 {
-    以上命令分别输出（1）下划线、（2）双下划线、（3）虚下划线、（4）点下划线、（5）波浪线、（6）删除线、（7）斜删除线。
+    “ulem”来自“ul (underline)”和“em (emphasis)”的合写。“sout”来自“strike out”的缩写。“xout”来自“cross out”的缩写。
 }%
 
-\subsection{长度单位}
 \notes
+{长度单位}%
 {
-    \mnt{pt、pc、in、bp、cm、mm、sp、em、ex、\textwidth、\linewidth}
+    \mnt{(1) pt |\% point，磅|}\\
+    \mnt{(2) pc |\% pica，1 pc = 12 pt，四号字|}\\
+    \mnt{(3) in |\% inch，英寸，1 in = 72.27 pt|}\\
+    \mnt{(4) bp |\% bigpoint，1 bp = 1/72 in|}\\
+    \mnt{(5) cm |\% centimeter，厘米，1 cm = 1/2.54 in|}\\
+    \mnt{(6) mm |\% millimeter，毫米，1 mm = 1/10 cm|}\\
+    \mnt{(7) sp |\% scaled point，\TeX{}的基本长度单位，1 sp = 1/65536 pt|}\\
+    \mnt{(8) em |\% 当前字号下，大写字母M的宽度|}\\
+    \mnt{(9) ex |\% 当前字号下，小写字母x的高度|}\\
+    \mnt{(10) \textwidth |~\% 页面上文字的总宽度，即页宽减去两侧边距|}\\
+    \mnt{(11) \linewidth |~\% 当前行允许的行宽|}
 }%
 {基础命令}%
 {略}%
 {略}%
-{
-    \LaTeX{}的长度单位：
+{略}%
 
-    \textbf{pt}：point，磅
-
-    \textbf{pc}：pica，1 pc = 12 pt，四号字
-
-    \textbf{in}：inch，英寸，1 in = 72.27 pt
-
-    \textbf{bp}：bigpoint，1 bp = 1/72 in
-
-    \textbf{cm}：centimeter，厘米，1 cm = 1/2.54 in
-
-    \textbf{mm}：millimeter，毫米，1 mm = 1/10 cm
-
-    \textbf{sp}：scaled point，\TeX{}的基本长度单位，1 sp = 1/65536 pt
-
-    \textbf{em}：当前字号下，大写字母M的宽度
-
-    \textbf{ex}：当前字号下，小写字母x的高度
-
-    两个常用的长度宏：
-
-    \textbf{\mnt{\textwidth}}：页面上文字的总宽度，即页宽减去两侧边距
-
-    \textbf{\mnt{\linewidth}}：当前行允许的行宽
-}%
-
-\subsection{空格}
 \notes
+{空格}%
 {
     \mnt{~}
 }%
@@ -279,21 +275,169 @@
     \mnt{~}输出效果等同于一个空格，并且在此空格之后不会换行，这样可以使空格前后内容始终在同一行上。
 }%
 
-\subsection{换行和分段}
 \notes
+{换行和分段}%
 {
-    \textcolor{red}{\textbackslash{}par}、\mnt{\\、\newline、\mbox{}}
+    \mntpar{}、\mnt{\\、\newline、\mbox{}}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    分段有两种方式：（1）在两段之间空一行、（2）在两段之间使用\textcolor{red}{\textbackslash{}par}命令，新的段落开头空两格打印。
-
-    强制换行有两种方式：（1）在换行处使用\mnt{\\}命令、（2）在换行处使用\mnt{\newline}命令，下一行顶格打印。
-
-    打印一个空白段落的方式：在空白段落处输入\mnt{\mbox{}}命令。注意空白段落和前后段落之间也要有空行或者\textcolor{red}{\textbackslash{}par}命令。该命令还有一个功能是输入参数，防止放入其中的词在换行时断开。
+    \begin{enumerate}
+        \item 分段有两种方式：（1）在两段之间空一行、（2）在两段之间使用\mntpar{}命令，新的段落开头空两格打印。
+        \item 强制换行有两种方式：（1）在换行处使用\mnt{\\}命令、（2）在换行处使用\mnt{\newline}命令，下一行顶格打印。
+        \item 打印一个空白段落的方式：在空白段落处输入\mnt{\mbox{}}命令。注意空白段落和前后段落之间也要有空行或者\mntpar{}命令。该命令还有一个功能是输入参数，防止放入其中的词在换行时断开。
+    \end{enumerate}    
 }%
+
+\notes
+{段落间距}%
+{
+    \mnt{\parskip |\% 默认值：\the\parskip|}\\
+    \mnt{\setlength{\parskip}{30pt} |\% 自定义段落距离|}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \begin{enumerate}
+        \item 默认值可以通过\mnt{\the\parskip}得到。“0.0 pt plus 1.0 pt”是弹性距离，意即普通情况下是0pt，在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus）
+        \item “段落间距”其实是一个差值，是【前一段的最后一行的箱子和后一段的第一行的箱子的基线间距】减去【同一段内的基线间距】之后的差值，具体可以参见下文关于“基线间距”（baselineskip）的讨论。
+        \item \mnt{\setlength{\parskip}{30pt}}如果放到导言区，会导致全文所有的段落间距变为30pt，直到设置新的段落间距为止。\\\mnt{{\setlength{\parskip}{30pt}}}如果放在正文当中，控制的对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上\mntpar{}命令，其和统辖范围之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围之后的第一段来控制的，下文中段首缩进长度、行距的设置的也具有类似的特点。
+    \end{enumerate}
+}%
+
+\notes
+{首字下沉}%
+{
+    \mnt{\lettrine |~\% 输出效果：~~\lettrine{T}{this} is an example.|}
+}%
+{lettrine}%
+{略}%
+{略}%
+{略}%
+
+\notes
+{分页}%
+{
+    \mnt{\newpage}\\
+    \mnt{\newpage\mbox{}\newpage |~\% 可以达到空出一整页的效果|}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \mnt{\newpage}命令的功能是从当前行开始到当前页的最后不再打印内容，而直接从下一页开始打印后续内容。
+}%
+
+\notes
+{段首缩进}%
+{
+    \mnt{\parindent |~\% 默认值：\the\parindent|}\\
+    \mnt{\setlength{\parindent}{10em} |\% 自定义段首缩进距离|}\\
+    \mnt{\noindent |~\% 强制取消缩进|}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \begin{enumerate}
+        \item 默认值可以通过\mnt{\the\parindent}得到。
+        \item \mnt{\noindent}只会影响到其后的一个段落，而不会导致其后所有的段落都取消缩进，也不需要大括号来限制其统辖范围。
+    \end{enumerate}
+}%
+
+\notes
+{对齐方式}%
+{
+    \mnt{(1.1) \begin{flushleft}...\end{flushleft} |\% 左对齐|}\\
+    \mnt{(1.2) \begin{flushright}...\end{flushright} |\% 右对齐|}\\
+    \mnt{(1.3) \begin{center}...\end{center} |\% 居中对齐|}\\
+    \mnt{(2.1) {\raggedright} |\% 左对齐|}\\
+    \mnt{(2.2) {\raggedleft} |\% 右对齐|}\\
+    \mnt{(2.3) {\centering} |\% 居中对齐|}\\
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \begin{enumerate}
+        % \item 左对齐的同时也就取消了段首缩进，事实上，右对齐和居中对齐同样也取消了段首缩进，只不过不在页面左侧，看不出来。
+        \item “ragged”是“凹凸不平”的意思，以\mnt{\raggedleft}为例，其意思是文本的左侧是凹凸不平的，意即“右对齐”。
+        \item (1)中都是参数型命令，(2)中都是声明型命令。吴书中提到，\mnt{\centering}（包括\mnt{\raggedleft}、\mnt{\raggedright}）命令“常常用在环境内部（或者一对花括号内部）”，但这些都是“老旧的命令”，还是建议优先使用参数型命令。
+        \item \mnt{\centering、\raggedleft、\raggedright}统辖范围内的最后一段后面需要空行或者加上\mntpar{}才能产生效果，否则最后一段的对齐方式将无法生效。或许正是这一容易出错的特点，使得这三个命令成为了不被推荐的命令。
+        
+    \end{enumerate}
+}%
+
+\notes
+{字体：字族（family）}%
+{
+    \mnt{\familydefault |~\% 默认字族：\familydefault，“lmr”意即“Latin Modern Roman”|}\\
+    \mnt{\textrm{}、{\rmfamily} |\% 罗马字族：\textrm{Roman}|}\\
+    \mnt{\textsf{}、{\sffamily} |\% 无衬线字族：\textsf{Sans Serif}|}\\
+    \mnt{\texttt{}、{\ttfamily} |\% 等宽字族：\texttt{Typewriter}|}\\
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \begin{enumerate}
+        \item \mnt{\familydefault}控制的是当前文档中的默认字族，一般就是\\\mnt{\rmdefault}，而\mnt{\rmdefault}的默认值就是“lmr”，同理，也有\\\mnt{\sfdefault}和\mnt{\ttdefault}，其默认值分别为“lmss”和“lmtt”。而\\\mnt{\textrm{}/{\tmfamily}}则是字体命令，会调用\mnt{\rmdefault}进行打印，其余两类字体命令同理。
+        \item \mnt{\mintinline{}{}}中的字族会变为tt字族（如上文所示），在正文中，默认使用rm字族。
+    \end{enumerate}
+}%
+
+\notes
+{字体：字系（series）}%
+{
+    \mnt{\seriesdefault |~\% 默认字系：\seriesdefault|，“m”代表“Medium weight and width”}\\
+    \mnt{\textbf{}、{\bfseries} |\% 粗体字系：\textbf{BoldSeries}|}\\
+    \mnt{\textmd{}、{\mdseries} |\% 中粗体字系：\textmd{MiddleSeries}|}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \mnt{\mintinline{}{}}中的字系默认使用md字系，和正文中相同，但由于字族变为了tt字族，因此不容易看出bf字系和md字系的区别，此处分别给出rm字族和sf字族下搭配bf字系和md字系的区别：\\
+    rm字族：\textrm{MiddleSeries v.s. \textbf{BoldSeries}}\\
+    sf字族：\textsf{MiddleSeries v.s. \textbf{BoldSeries}}
+}%
+
+\notes
+{字体：字形（shape）}%
+{
+    \mnt{\shapedefault |~\% 默认字形：\shapedefault|，“n”代表“Normal”}\\
+    \mnt{\textup{}、{\upshape} |\% 竖直字形：\textup{Upright}|}\\
+    \mnt{\textsl{}、{\slshape} |\% 斜体字形：\textsl{Slant}|}\\
+    \mnt{\textit{}、{\itshape} |\% 强调体字形：\textit{Italic}|}\\
+    \mnt{\textsc{}、{\scshape} |\% 小号大写体字形：\textsc{smallcapital}|}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \mnt{\mintinline{}{}}中的字形默认使用up字形，和正文中相同，此处分别给出rm字族和sf字族下搭配各个字形的区别：\\
+    rm字族：\textup{Upright}、\textsl{Slant}、\textit{Italic}、\textsc{smallcapital}\\
+    sf字族：\textsf{\textup{Upright}、\textsl{Slant}、\textit{Italic}、\textsc{smallcapital}}
+}%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -322,6 +466,6 @@
 %rfr xparse宏包官方文档的原文提到：A command with a verbatim argument will produce an error when it appears within an argument of another function.
 %* xparse宏包解决的问题是，现在定义\mnt{}命令可以接受\par这种原生命令作为参数了，但是不管是哪种定义方式，最后都要在另一个带参数的宏命令当中使用，此时不管是前一种方式的\mintinline{latex}{\latex}，还是有一种方式的\mnt{\par}，在\notes{}{}{}{}{}中使用都会报错。如果直接用\NewDocumentCommand{}{}{}来定义\notes{}{}{}{}{}，将\mnt{}包含于其中，则其中的命令都将只能被直接打印出来，无法被执行，但我们仍然希望可以自由选择某些命令被执行与否，以便观察其效果。结论就是：xparse在此处虽然部分地解决了问题，但是最终无法完全解决问题，一开始通过\newcommand{}[]{}定义的\mnt{}仍然是最直接的做法。至于涉及在\notes{}{}{}{}{}当中打印“\par”的源代码时，只能选择用直接表示的办法。
 
-% 以下列举文档里碰到的LaTeX原生命令，随时补充，文档中用红色标出
-% \par
+%* 另外需要注意，minted宏包提供了minted环境和mintinline命令，其中前者是不能放在其他带普通参数的命令中的因此本文档中，如果在\notes{}{}{}{}{}当中使用minted环境，会报错（但其他普通环境，比如enumerate环境，不会有这个问题）
+
 

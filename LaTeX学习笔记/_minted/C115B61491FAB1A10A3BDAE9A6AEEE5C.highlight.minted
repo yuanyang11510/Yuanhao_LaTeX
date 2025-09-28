@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(8) em \PYG{esc}{\% 当前字号下，大写字母M的宽度}
+\end{MintedVerbatim}

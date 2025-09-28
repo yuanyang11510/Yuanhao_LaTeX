@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(8) \PYG{k}{\PYGZbs{}\PYGZca{}}\PYG{n+nb}{\PYGZob{}}\PYG{n+nb}{\PYGZcb{}} \PYG{esc}{\%} 输出\PYG{esc}{\^{}}
+\end{MintedVerbatim}

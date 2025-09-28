@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(5) cm \PYG{esc}{\% centimeter，厘米，1 cm = 1/2.54 in}
+\end{MintedVerbatim}

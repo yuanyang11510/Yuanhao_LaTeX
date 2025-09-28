@@ -173,7 +173,7 @@
             %rfr "0pt plus 1pt"是弹性距离，意即普通情况下是0pt，在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus），参考：https://github.com/shifujun/UESTCthesis/issues/2
             %rfr “段落间距”其实是一个差值，是【前一段的最后一行的箱子和后一段的第一行的箱子的基线间距】减去【同一段内的基线间距】之后的差值，具体可以参见下文关于“基线间距”（baselineskip）的讨论
 
-            set the parskip (default)
+            set the parskip (default : \the\parskip)
 
             set the parskip (default)
 
@@ -181,7 +181,7 @@
 
         % 自定义段落间距
             {\setlength{\parskip}{30pt}
-            %* 这一命令如果放到导言区，会导致全文所有的段落间距变为10pt，直到设置新的段落间距为止
+            %* 这一命令如果放到导言区，会导致全文所有的段落间距变为30pt，直到设置新的段落间距为止
             
             set the parskip (30pt)
 
@@ -189,8 +189,8 @@
 
             set the parskip (30pt)
             }
-            %* 该命令的控制对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围外之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围外之后的第一段来控制的，下文中行距的设置的也具有类似的特点
-            %! "{\setlength{cmd}{length}}"命令作用于统辖范围内的所有段落，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和之前一段之间的距离都是该命令设置的长度，即"\setlength{cmd}{length}"命令的效果不依靠每一段最后的空行或者"\par"命令来触发，下文利用该命令来设置段首缩进长度的情况也具有类似的特点
+            %* 该命令的控制对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和统辖范围之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围之后的第一段来控制的，下文中段首缩进长度、行距的设置的也具有类似的特点
+            %!// "{\setlength{cmd}{length}}"命令作用于统辖范围内的所有段落，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和之前一段之间的距离都是该命令设置的长度，即"\setlength{cmd}{length}"命令的效果不依靠每一段最后的空行或者"\par"命令来触发，下文利用该命令来设置段首缩进长度的情况也具有类似的特点
 
         % 宏包lettrine能够生成首字下沉的效果
             \lettrine{T}{this} is an example. Hope you like this package, and enjoy your \LaTeX\ trip !
@@ -204,7 +204,7 @@
         \subsubsection{缩进、对齐与行距}
         % 设置段首缩进长度
         % 默认段首缩进长度
-            set the parindent (default)
+            set the parindent (default : \the\parindent)
         
         % 自定义段首缩进长度
             {\setlength{\parindent}{10em} set the parindent (10em)
@@ -259,7 +259,7 @@
             \par 依然居中对齐
             
             }
-            %* 以上三条命令会导致其后内容的对齐方式都发生改变，直到设置新的对齐方式或者段首缩进长度，因此不推荐使用，书中也提到，"{\centering}"（包括"{\raggedleft}"、"{\raggedright}"）命令常常用在环境内部（或者一对花括号内部）
+            %* 以上三条命令会导致其后内容的对齐方式都发生改变，直到设置新的对齐方式或者段首缩进长度，因此不推荐使用，书中也提到，"{\centering}"（包括"{\raggedleft}"、"{\raggedright}"）命令常常用在环境内部（或者一对花括号内部），这些是“老旧的命令”
             %! 和上文中的"{\setlength{cmd}{length}}"命令不同，"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的对齐方式将无法生效
             %rfr 参考：https://tex.stackexchange.com/questions/354669/par-before-vs-after，而如果使用方法一，最后一段的末尾不需要空行或者添加"\par"命令
 
@@ -293,7 +293,7 @@
             \end{itemize}
         
         % 设置字系
-            默认字系：\seriesdefault % "m"代表"Medium weight and width"的缩写
+            默认字系：\seriesdefault % "m"代表"Medium weight and width"
             \begin{itemize}
                 \item BoldSeries v.s. \textbf{BoldSeries} % 粗体字系（BoldSeries）
                 \item MiddleSeries v.s. \textmd{MiddleSeries} % 中粗体字系（MiddleSeries）
@@ -302,14 +302,14 @@
 
         % 设置字形
             默认字形：\shapedefault 
-            %* "n"代表"Normal"，即"upright"或者"roman"
+            %* "n"代表"Normal"，即"Upright"
             \begin{itemize}
                 \item Upright v.s. \textup{Upright} % 竖直字形
-                %* 区别不明显
+                %* 默认值
                 \item Slant v.s. \textsl{Slant} % 斜体字形
                 \item Italic v.s. \textit{Italic} % 强调体字形
-                %! 书中在"3.4.2 中西文‘斜体’"一节中提到“加斜是指某种字族的Italy字系”（根据命令"\itshape"，实际应当是字形），而“斜体是指Slant字族”，可是根据命令"\slshape"，Slant也应当是字形的一种。不过不管怎么说，西文中表示强调，都是对字体应用Italic字形。
-                \item scap v.s. \textsc{scap} % 小号大写体字形
+                %! 书中在"3.4.2 中西文‘斜体’"一节中提到“加斜是指某种字族的Italy字系”（根据命令"\itshape"，实际应当是字形），而“斜体是指Slant字族”（根据命令"\slshape"，也应当是字形）。不过不管怎么说，西文中表示强调，都是对字体应用Italic字形。
+                \item smallcapital v.s. \textsc{smallcapital} % 小号大写体字形
                 %* 适用于小写字母
                 %* "sc"来自"small cap(ital)s"
             \end{itemize}
@@ -396,7 +396,7 @@
 
         % 利用本地安装的字体定义新的字族命令
             %* 书中将以下命令放在了fontspec宏包的部分，但是经检验，即使不加载fontspec，以下命令依然可以生效
-            \newfontfamily{\lucida}{Lucida Calligraphy} % 第一个参数定义命令名称，第二个参数输入本地的字体名称
+            \newfontfamily{\lucida}{LucidaUnicodeCalligraphy.ttf} % 第一个参数定义命令名称，第二个参数输入本地的字体名称
             {\lucida This is Lucida Calligraphy.}
             %! 注意，书中将大括号放在了命令后统辖范围的两边，实际应该放在命令和统辖范围的两边，否则后续内容的西文字体都会变成Lucida Calligraphy
 

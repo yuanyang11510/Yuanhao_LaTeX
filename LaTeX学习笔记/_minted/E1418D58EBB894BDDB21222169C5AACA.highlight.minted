@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{\PYGZbs{}lettrine}\PYG{esc}{~\% 输出效果：~~\lettrine{T}{this} is an example.}
+\end{MintedVerbatim}

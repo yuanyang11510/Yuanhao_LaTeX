@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(10) \PYG{k}{\PYGZbs{}textwidth}\PYG{esc}{~\% 页面上文字的总宽度，即页宽减去两侧边距}
+\end{MintedVerbatim}

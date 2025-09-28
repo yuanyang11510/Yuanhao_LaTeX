@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{\PYGZbs{}textmd}\PYG{n+nb}{\PYGZob{}}\PYG{n+nb}{\PYGZcb{}}、\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}mdseries}\PYG{n+nb}{\PYGZcb{}} \PYG{esc}{\% 中粗体字系：\textmd{MiddleSeries}}
+\end{MintedVerbatim}

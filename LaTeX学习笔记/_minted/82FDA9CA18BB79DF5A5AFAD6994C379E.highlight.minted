@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(9) ex \PYG{esc}{\% 当前字号下，小写字母x的高度}
+\end{MintedVerbatim}

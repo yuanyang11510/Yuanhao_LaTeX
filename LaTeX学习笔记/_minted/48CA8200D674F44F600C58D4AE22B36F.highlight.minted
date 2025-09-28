@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{\PYGZbs{}setlength}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}parindent}\PYG{n+nb}{\PYGZcb{}}\PYG{n+nb}{\PYGZob{}}10em\PYG{n+nb}{\PYGZcb{}} \PYG{esc}{\% 自定义段首缩进距离}
+\end{MintedVerbatim}
