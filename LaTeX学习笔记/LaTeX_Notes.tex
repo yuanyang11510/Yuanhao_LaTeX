@@ -1,0 +1,327 @@
+\documentclass{article}
+% \usepackage[scheme = chinese]{ctex}
+\usepackage[scheme = plain]{ctex}
+
+\usepackage{indentfirst}
+\usepackage{mdframed}
+\usepackage{minted} % 打印源代码
+\newcommand{\mnt}[1]{\mintinline{latex}{#1}} % 简化打印源代码命令
+%* 上述命令存在限制，见文末注释
+
+% 命令介绍架构
+\newcommand{\notes}[5]{
+    \begin{mdframed}
+        \paragraph{命令}#1
+        \paragraph{宏包}#2
+        \paragraph{位置}#3
+        \paragraph{参数}#4
+        \paragraph{注释}#5
+    \end{mdframed}
+}
+
+\title{\LaTeX{}学习笔记}
+\author{殷元昊}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+这份笔记的前身来自笔者学习吴康隆的《简单高效LATEX》的笔记。笔者按照本书的结构学习了大部分代码，在学习的同时进行了大量的随文注释。但是在回看的时候，这些代码和随文注释混杂在一起，极大地影响了可读性。因此笔者深感有必要将这些随文注释整理出来，形成单独的\LaTeX{}文档。
+
+在吴书之外，笔者还另外单独学习了一些有用的\LaTeX{}宏包，并也做了大量的随文注释，这些注释也需要整理出来。
+
+值得一提的是，由于AI工具的兴起，代码学习的效率被大大提高，笔者在编辑本文档时，也仍然在使用AI学习新的知识，并立刻将其应用到本文档中
+
+笔者曾经在学习制作表格和插入图片的相关宏包时制作过两份\LaTeX{}文档，但是回看的时候仍然觉得可读性不强，这是因为在编写文档的时候，尽管笔者使用了详细的文字描写相关命令，但由于缺少命令的参数结构，因而在回看时仍不免陷入“迷失在文字的海洋里”的尴尬境地，因此，该笔记将严格按照“宏包-位置-参数-注释”的架构搭建。
+
+\section{正文}
+\subsection{封面}
+\notes
+{
+    \mnt{\title{}、\author{}、\date{}、\thanks{}}
+}%
+{基础命令}%
+{导言区}%
+{略}%
+{
+    \begin{enumerate}
+        \item \mnt{\date{}}如果省略，仍然会自动打印出编译当天的日期，如果不想显示日期，可以保留\mnt{\date{}}，但不输入参数。
+        %todo 但是还需要补充一个知识：如何通过该命令控制输出日期的格式
+        \item 标题页的脚注用\mnt{\thamks{}}完成。
+    \end{enumerate}
+}%
+
+\subsection{标题}
+\notes
+{
+    \mnt{\maketitle}
+}%
+{基础命令}%
+{略}%
+{略}%
+{略}%
+
+\subsection{目录}
+
+\notes
+{
+    \mnt{\tableofcontents、\listoffigures、\listoftables}
+}%
+{基础命令}%
+{略}%
+{略}%
+{略}%
+
+\notes
+{
+    \mnt{\contentsname、\listfigurename、\listtablename}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    这三条命令用于\mnt{\renewcommand{}{}}结构中，通过重定义来修改目录的标题、图片目录的标题、表格目录的标题。
+}%
+
+\subsection{保留字符}
+
+\notes
+{
+    \mnt{\#、\$、\%、\&、\_、\{、\}、\^{}}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    关于\%符号，吴书中提到：“如果在行末添加\%这个命令，可以防止LaTeX在行末插入一些奇怪的空白符”，其实这个说法语焉不详，我们知道，如果在LaTeX的代码中换一行，打印时就会在换行处插入一个空格，而此时如果在每一行的末尾插入一个\%符号，就能移除这个空格。
+
+    关于\^{}符号，该命令后面如果不加一对大括号，单独打印时会报错，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），输出的就是一个扬抑符（circumflex），比如\mnt{\^{a}}输出\^{a}。
+}%
+
+\notes
+{
+    (1) \mnt{\textbackslash}、\\
+    (2) \mnt{\textrm{\char92}、{\rmfamily\char92}}、\\
+    (3) \mnt{$backslash$}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    以上是输出反斜杠的三种方法，第二种方法使用ASCII码进行输出，第三种方法使用数学环境，\mnt{\textrm{}}也可以替换为其他字体命令。
+
+    第二种方法、第三种方法输出的反斜杠和第一种方法输出的反斜杠不完全相同：如果将这几种方法输出的反斜杠排列在一行上，会发现第一种方式输出的反斜杠和后面反斜杠符号的间距更小，但是有意思的是，如果将反斜杠后面的符号替换成其他符号，这些反斜杠后的这一间距又会恢复相同，因此在实际情况中，只需要在需要连续使用两个反斜杠符号时，注意选择命令即可，比如，如果要输出“\textbackslash\textbackslash”符号，应该选用两个连续的\mnt{\textbackslash}命令。
+
+    顺便在此可以讨论\mnt{\texttt{}}和\mnt{{\ttfamily}}这两类不同的命令，这两类命令的大括号的位置和功能是不同的：前一种命令的大括号置于命令之后，是强制性的，用来放置相应的参数，只有大括号内的内容才会受到该命令的影响，其特点有点类似于环境。
+
+    而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要限制该命令影响的范围，则可以在该命令和需要统辖的范围两边加上大括号。
+
+    下文中会反复出现这两类命令，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论。
+}%
+
+\notes
+{
+    (1) \mnt{\textasciitilde}、\\
+    (2) \mnt{\~{}}、\\
+    (3) \mnt{$sim$}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    以上是输出波浪线的几种方法。
+    
+    方法一在不同的编辑器中输出效果不同，在TeXstudio中输出的是一个腭化符，而在VS Code中输出的却是一个正常的波浪线。
+
+    方法二和上文中的\^{}符号一样，该命令如果后面跟上一个字母，实际输出的就是一个波浪号/腭化符（tilde），如果要单独输出这一符号，必须在后面添加一对大括号，在TeXstudio中输出的是一个单独的腭化符，但是在VS Code中输出的就是一个正常的波浪线，比如\mnt{\~{a}}输出\~{a}。
+
+    方法三实际是一个数学符号“约等于”（similar）。
+}%
+
+\subsection{大于号和小于号}
+\notes
+{
+    (1) \mnt{\textgreater、\textless}、\\
+    (2) \mnt{>、<}、\\
+    (3) \mnt{$>$、$<$}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    以上是输出大于号和小于号的几种方法。
+
+    文本中的大于号和小于号需要使用\mnt{\textgreater}和\mnt{\textless}命令。
+
+    方法二和方法三输出的都是数学符号中的大于号和小于号。TeXstudio中直接输入大于号和小于号不会正确打印相应的符号，但是VS Code中正常，效果等同于两边加上数学环境。
+}%
+
+\subsection{引号}
+\notes
+{
+    \mnt{“你好，‘世界’！”} v.s. \mnt{``\thinspace`Max' is here.'' }
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    中文下的单引号和双引号可以用中文输入法直接输入。英文的左单引号是重音符“\mnt{`}”，右单引号是常用的引号符“\mnt{'}”。
+
+    吴书中提到上述“英文下的引号嵌套需要借助\mnt{\thinspace}命令分隔”，但实际上这和语言无关，\mnt{\thinspace}的效果是在命令处略微扩大外部引号和内部引号之间的距离，只是一个细节问题。
+}%
+
+\subsection{连字符、破折号和省略号}
+\notes
+{
+    (1) \mnt{daughter-in-law}、\\
+    (2) \mnt{1--2}、\\
+    (3) \mnt{Listen---I'm serious.}、\\
+    (4) \mnt{——}、\\
+    (5) \mnt{……}、\\
+    (6) \mnt{\ldots} 
+    % ldots = lower dots, v.s. \cdots = center dots
+    %todo 该命令效果也等同于\dots，但是\ldots在任何模式下都适用，关于dots的相关命令有待探索
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    以上命令输出的分别是（1）连字符、（2）数字起止符、（3）英文破折号、（4）中文破折号、（5）中文省略号、（6）英文省略号。注意连打三个句点\mnt{...}输出的不是真正的英文省略号。
+}%
+
+\subsection{强调}
+\notes
+{
+    \mnt{\emph{强调} v.s. \emph{empasis}}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    中文的效果等同于\mnt{\textsl{}}，西文的效果等同于\mnt{\textit{}}。
+}%
+
+\subsection{下划线和删除线}
+\notes
+{
+    \mnt{\underline{}}
+}%
+{基础命令}%
+{略}%
+{略}%
+{略}%
+
+\notes
+{
+    (1) \mnt{\uline{}}、\\
+    (2) \mnt{\uuline{}}、\\
+    (3) \mnt{\dashuline{}}、\\
+    (4) \mnt{\dotuline{}}、\\
+    (5) \mnt{\uwave{}}、\\
+    (6) \mnt{\sout{}}、\\
+    % “sout”来自“strike out”的缩写
+    (7) \mnt{\xout{}}
+    % “xout”来自“cross out”的缩写
+}%
+{ulem}%
+{略}%
+{略}%
+{
+    以上命令分别输出（1）下划线、（2）双下划线、（3）虚下划线、（4）点下划线、（5）波浪线、（6）删除线、（7）斜删除线。
+}%
+
+\subsection{长度单位}
+\notes
+{
+    \mnt{pt、pc、in、bp、cm、mm、sp、em、ex、\textwidth、\linewidth}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \LaTeX{}的长度单位：
+
+    \textbf{pt}：point，磅
+
+    \textbf{pc}：pica，1 pc = 12 pt，四号字
+
+    \textbf{in}：inch，英寸，1 in = 72.27 pt
+
+    \textbf{bp}：bigpoint，1 bp = 1/72 in
+
+    \textbf{cm}：centimeter，厘米，1 cm = 1/2.54 in
+
+    \textbf{mm}：millimeter，毫米，1 mm = 1/10 cm
+
+    \textbf{sp}：scaled point，\TeX{}的基本长度单位，1 sp = 1/65536 pt
+
+    \textbf{em}：当前字号下，大写字母M的宽度
+
+    \textbf{ex}：当前字号下，小写字母x的高度
+
+    两个常用的长度宏：
+
+    \textbf{\mnt{\textwidth}}：页面上文字的总宽度，即页宽减去两侧边距
+
+    \textbf{\mnt{\linewidth}}：当前行允许的行宽
+}%
+
+\subsection{空格}
+\notes
+{
+    \mnt{~}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \mnt{~}输出效果等同于一个空格，并且在此空格之后不会换行，这样可以使空格前后内容始终在同一行上。
+}%
+
+\subsection{换行和分段}
+\notes
+{
+    \textcolor{red}{\textbackslash{}par}、\mnt{\\、\newline、\mbox{}}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    分段有两种方式：（1）在两段之间空一行、（2）在两段之间使用\textcolor{red}{\textbackslash{}par}命令，新的段落开头空两格打印。
+
+    强制换行有两种方式：（1）在换行处使用\mnt{\\}命令、（2）在换行处使用\mnt{\newline}命令，下一行顶格打印。
+
+    打印一个空白段落的方式：在空白段落处输入\mnt{\mbox{}}命令。注意空白段落和前后段落之间也要有空行或者\textcolor{red}{\textbackslash{}par}命令。该命令还有一个功能是输入参数，防止放入其中的词在换行时断开。
+}%
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+% 代码知识
+% 命令：
+% \usepackage{minted}
+% \newcommand{\mnt}[1]{\mintinline{latex}{#1}}
+%* 注释：
+%* 这一命令如果遇到\par这种LaTeX原生命令（primitive）作为参数，就会报错，这是因为通过\newcommand{}[]{}定义的宏命令当中的参数只接受普通宏命令，原生命令\par在被作为参数输入之前就会被LaTeX执行，从而导致报错；如果直接使用\mintinline{latex}{\par}，结果反而不会报错。针对这一局部性的问题有一个解决办法，就是使用xparse宏包提供的\NewDocumentCommand{}{}{}来定义。
+% 命令：
+% \usepackage{xparse}
+% \NewDocumentCommand{\mnt}{v}{\mintinline{latex}{#1}}
+%* 注释：
+%* xparse宏包提供比LaTeX原生\newcommand更强大、更灵活的宏定义机制。v = verbatim，不仅接受普通宏命令作为参数，而且也接受\par这种LaTeX原生命令作为参数。但是这一命令也存在限制：其无法嵌套在其他带参数的宏命令当中，本文档定义了\notes{}{}{}{}{}的宏命令，在其中使用通过上述方式定义的\mnt{}命令会报错。
+%rfr xparse宏包官方文档的原文提到：A command with a verbatim argument will produce an error when it appears within an argument of another function.
+%* xparse宏包解决的问题是，现在定义\mnt{}命令可以接受\par这种原生命令作为参数了，但是不管是哪种定义方式，最后都要在另一个带参数的宏命令当中使用，此时不管是前一种方式的\mintinline{latex}{\latex}，还是有一种方式的\mnt{\par}，在\notes{}{}{}{}{}中使用都会报错。如果直接用\NewDocumentCommand{}{}{}来定义\notes{}{}{}{}{}，将\mnt{}包含于其中，则其中的命令都将只能被直接打印出来，无法被执行，但我们仍然希望可以自由选择某些命令被执行与否，以便观察其效果。结论就是：xparse在此处虽然部分地解决了问题，但是最终无法完全解决问题，一开始通过\newcommand{}[]{}定义的\mnt{}仍然是最直接的做法。至于涉及在\notes{}{}{}{}{}当中打印“\par”的源代码时，只能选择用直接表示的办法。
+
+% 以下列举文档里碰到的LaTeX原生命令，随时补充，文档中用红色标出
+% \par
+

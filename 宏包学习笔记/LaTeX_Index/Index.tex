@@ -40,6 +40,13 @@
     %rfr 为了能够使索引条目能够逐栏填充，可以设置"original"的宏包参数，可以参考：https://tex.stackexchange.com/questions/268018/imakeidx-columns-splitting
     %# 但是如果加载了ctex宏包，就不会存在这一问题
 
+    % noautomatic参数用来将索引打印到正文部分之前（正常情况下只有在正文全部结束后才能打印索引），打印流程如下：
+    % (1) 设置noautomatic参数后编译一次.tex文件，生成.idx文件
+    % (2) 在当前文件夹中打开终端，使用makeindex命令生成.ind文件
+    % (3) 再编译一次.tex文件，在正文部分之前的"\printindex"命令处会打印出索引
+    %* 但是以上这种做法会导致许多索引的页码产生误差，因此不推荐使用
+
+
 % 以下"\makeindex"命令的可选参数都来自imakeidx宏包---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 \makeindex[columns=3,columnsep=50pt,columnseprule]
 \makeindex[title={Group 1},name=g1]

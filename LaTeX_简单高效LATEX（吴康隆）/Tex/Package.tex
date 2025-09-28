@@ -3,11 +3,13 @@
 % \usepackage{ctex}
 
 \usepackage{lipsum}
-            %rfr lipsum宏包提供"\lipsum"命令，用于生成一段无意义的测试文本，默认输出150段中的前7段，可以通过可选参数来指定输出的段落序数，比如："\lipsum[4-57]"（第4段到第57段）、"\lipsum[23]"（第23段），还可以通过第二个可选参数指定输出段落中的句子序数，比如："\lipsum[3-9][4-8]"（第3段到第9段当中，每一段的第4句到第8句），可以参看其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/lipsum/lipsum.pdf
+            % lipsum宏包提供"\lipsum"命令，用于生成一段无意义的测试文本，默认输出150段中的前7段，可以通过可选参数来指定输出的段落序数，比如："\lipsum[4-57]"（第4段到第57段）、"\lipsum[23]"（第23段），还可以通过第二个可选参数指定输出段落中的句子序数，比如："\lipsum[3-9][4-8]"（第3段到第9段当中，每一段的第4句到第8句）
+            %rfr 可以参看其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/lipsum/lipsum.pdf
             %* 经检验，无法在一个指定参数中指定不连续的段落或者句子，比如"\lipsum[2,4]"、"\lipsum[2-4][1,3]"都无法输出正确的结果
 
 \usepackage{blindtext}
-            %rfr blindtext宏包提供"\blindtext"命令，生成一段无意义的测试文本，可以通过可选参数来指定重复次数（重复后的多段文本在一个段落内首尾相接）；"\Blindtext"命令用于生成五段相同的上述文本，可以通过可选参数来控制重复的段落数，默认值为5，可以通过第二个可选参数来控制每个段落内文本的重复次数（相当于"\blindtext"命令的可选参数）；"\blinddocument"命令用于生成一篇带有章节名（section、subsection……）、列表（itemize、enumerate、description）等内容的文档；"\Blinddocument"命令用于生成一篇更长的类似文档，可以参考其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/blindtext/blindtext.pdf
+            % blindtext宏包提供"\blindtext"命令，生成一段无意义的测试文本，可以通过可选参数来指定重复次数（重复后的多段文本在一个段落内首尾相接）；"\Blindtext"命令用于生成五段相同的上述文本，可以通过可选参数来控制重复的段落数，默认值为5，可以通过第二个可选参数来控制每个段落内文本的重复次数（相当于"\blindtext"命令的可选参数）；"\blinddocument"命令用于生成一篇带有章节名（section、subsection……）、列表（itemize、enumerate、description）等内容的文档；"\Blinddocument"命令用于生成一篇更长的类似文档
+            % rfr 可以参考其官方手册：https://jp.mirrors.cicku.me/ctan/macros/latex/contrib/blindtext/blindtext.pdf
 
 % \usepackage{lua-visual-debug}
             % 使用LuaLaTeX编译，可以将所有盒子和基线可视化

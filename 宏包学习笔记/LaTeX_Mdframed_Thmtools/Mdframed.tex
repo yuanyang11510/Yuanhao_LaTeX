@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage[scheme = plain]{ctex}
+% \usepackage{parskip} % 取消首行缩进
+\usepackage[showframe]{geometry}
+\usepackage[english]{babel}
+\usepackage{lipsum}
+\usepackage{blindtext}
+\usepackage{amsthm}
+\usepackage[framemethod = tikz]{mdframed}
+\usetikzlibrary{shadows}
+
+% mdframed宏包自带框环境参数设置
+\mdfsetup{
+    frametitle = {Frame-Title\\ABC},
+    frametitlefont = \bfseries\itshape,
+    frametitlerule = true,
+    frametitlebackgroundcolor = orange!30,
+    % v
+    backgroundcolor = yellow!30,
+    fontcolor = violet,
+    % 
+    topline = false,bottomline = false,rightline = false,
+    innerlinewidth = 2pt,innerlinecolor = red,
+    middlelinewidth = 2pt,middlelinecolor = blue,
+    outerlinewidth = 2pt,outerlinecolor = green,
+    % 
+    roundcorner = 2pt,
+    shadow = true
+}
+
+\begin{document}
+
+mdframed宏包自带框环境
+\begin{mdframed}
+    foo foo foo
+\end{mdframed}
+
+副标题
+\begin{mdframed}
+    \mdfsubtitle[
+        subtitlefont = \itshape,
+        subtitlebackgroundcolor = red!30,
+        subtitleaboveskip = 0pt,
+        subtitlebelowskip = .5\baselineskip
+    ]{Frame-Subtitle}
+    foo foo foo
+\end{mdframed}
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+自定义框环境风格
+\mdfdefinestyle{mystyle}{leftmargin = 1cm,linecolor=blue}
+\begin{mdframed}[style = mystyle]
+    foo foo foo
+\end{mdframed}
+
+环境可选参数设置default，忽略mdfsetup命令中设置的所有参数
+\begin{mdframed}[default,style = mystyle]
+    foo foo foo
+\end{mdframed}
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+第一种自定义框环境，如果不设置框标题，默认为环境名称
+\newmdenv[linecolor = red,frametitle = XYZ]{infobox}
+\begin{infobox}[backgroundcolor = yellow]
+    foo foo foo
+\end{infobox}
+
+环境可选参数设置default，效果同上
+\begin{infobox}[default,backgroundcolor = yellow]
+    foo foo foo
+\end{infobox}
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+第二种自定义定理环境，框标题默认为环境名称，即使另外设置也无法改变，框名称自带计数器
+\mdtheorem[linecolor = red]{xyz}{XYZ}
+\begin{xyz}
+    foo foo foo
+\end{xyz}
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mdframed宏包自定义定理环境，默认适用框环境
+\theoremstyle{remark}
+\newmdtheoremenv[linecolor = blue]{remark}{Remarque}[section]
+\begin{remark}[Some title]
+    foo foo foo
+\end{remark}
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+\LaTeX{}自带定义定理环境，不适用框环境
+\newtheorem{opq}{OPQ}
+\begin{opq}
+    foo foo foo
+\end{opq}
+
+通过mdframed宏包提供的surroundwithmdframed命令适用框环境
+\surroundwithmdframed{opq}
+\begin{opq}
+    foo foo foo
+\end{opq}
+
+% ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+\end{document}
