@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(2.2) \PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}raggedleft}...\PYG{k}{\PYGZbs{}}\PYG{esc}{\mbox{}}\PYG{k}{par}\PYG{n+nb}{\PYGZcb{}} \PYG{esc}{\% 右对齐}
+\end{MintedVerbatim}

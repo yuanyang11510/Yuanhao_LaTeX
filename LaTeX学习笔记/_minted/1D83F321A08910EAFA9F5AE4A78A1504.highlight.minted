@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}normalsieze}...\PYG{n+nb}{\PYGZcb{}} v.s. \PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}normalfont}...\PYG{n+nb}{\PYGZcb{}}、\PYG{k}{\PYGZbs{}textnormal}\PYG{n+nb}{\PYGZob{}}\PYG{n+nb}{\PYGZcb{}}
+\end{MintedVerbatim}

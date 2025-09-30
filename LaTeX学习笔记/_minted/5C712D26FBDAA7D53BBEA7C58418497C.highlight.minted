@@ -1,3 +1,0 @@
-\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
-\PYG{k}{\PYGZbs{}textbf}\PYG{n+nb}{\PYGZob{}}\PYG{n+nb}{\PYGZcb{}}、\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}bfseries}\PYG{n+nb}{\PYGZcb{}} \PYG{esc}{\% 粗体字系：\textbf{BoldSeries}}
-\end{MintedVerbatim}

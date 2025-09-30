@@ -189,8 +189,8 @@
 
             set the parskip (30pt)
             }
-            %* 该命令的控制对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和统辖范围之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围之后的第一段来控制的，下文中段首缩进长度、行距的设置的也具有类似的特点
-            %!// "{\setlength{cmd}{length}}"命令作用于统辖范围内的所有段落，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和之前一段之间的距离都是该命令设置的长度，即"\setlength{cmd}{length}"命令的效果不依靠每一段最后的空行或者"\par"命令来触发，下文利用该命令来设置段首缩进长度的情况也具有类似的特点
+            %* 该命令的控制对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和统辖范围之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围之后的第一段来控制的，下文中行距的设置的也具有类似的特点
+            % ! "{\setlength{cmd}{length}}"命令作用于统辖范围内的所有段落，不管统辖范围内的最后一段的末尾是否空行或者加上"\par"命令，其和之前一段之间的距离都是该命令设置的长度，即"\setlength{cmd}{length}"命令的效果不依靠每一段最后的空行或者"\par"命令来触发，下文利用该命令来设置段首缩进长度的情况也具有类似的特点
 
         % 宏包lettrine能够生成首字下沉的效果
             \lettrine{T}{this} is an example. Hope you like this package, and enjoy your \LaTeX\ trip !
@@ -340,8 +340,8 @@
                 \item {\scriptsize scriptsize}
                 \item {\footnotesize footnotesize}
                 \item {\small small}
-                \item {\normalsize normalsize} 
-                % 字号默认值取决于documentclass，比如article的默认值是10pt
+                \item {\normalsize normalsize}：\showfontsize
+                % 字号默认值取决于documentclass，比如article的默认值是10 pt
                 \item {\large large}
                 \item {\LARGE LARGE}
                 \item {\huge huge}
@@ -367,23 +367,29 @@
             set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (default)
 
             % 字号15pt，行距为默认值（1.2倍字体大小）
-            {\fontsize{15pt}{\baselineskip}{\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize
+            \fontsize{15pt}{\baselineskip}
+            {
+                \selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize
         
-            \selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-baselineskip)
-            
-            }}
+                set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-baselineskip)
+
+            }
 
             % 字号15pt，行距30pt
-            {\fontsize{15}{30}\selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-30pt)\par}
+            \fontsize{15}{30}
+            {
+                \selectfont set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (15pt-30pt)\par
+
+            }
             %* 字号和行距的单位"pt"可以省略
 
             set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize set the fontsize (default)
-            %! "\selectfont"是"\fontsize{size}{skip}{\selectfont}"命令中预先设定好的一个命令名称，用来引出后面需要修改字号和行距的内容，不要错误地将其理解为需要替换为一个具体的字体名称
-            %* 类比前文提到的段落间距的设置，该命令的控制对象是统辖范围内的每一行和其前面一行之间的距离（包括统辖范围内第一行和统辖范围外之前的最后一行之间的距离），因此，不管统辖范围内的最后一行的末尾是否空行或者加上"\par"命令，其和统辖范围外之后的第一行之间的距离都会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的
+            %! "\selectfont"是"\fontsize{size}{skip}{\selectfont}"用来引出后面需要修改字号和行距的内容，为了限制其统辖范围，可以在该命令和统辖范围的两边加上大括号
+            %* 类比前文提到的段落间距的设置，该命令的控制对象是统辖范围内的每一行和其前面一行之间的距离（包括统辖范围内第一行和统辖范围外之前的最后一行之间的距离），因此，不管统辖范围内的最后一行的末尾是否空行或者加上"\par"命令，其和统辖范围之后的第一行之间的距离都会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的
             %! 和上文中的"{\setlength{cmd}{length}}"命令不同，而与上文中的"{\centering}"、"{\raggedleft}"、"{\raggedright}"命令类似，"\fontsize{size}{skip}{\selectfont}"命令的效果需要依靠在统辖范围内的每一段的末尾空行或者加上"\par"命令来触发，因此，如果最后一段的末尾没有空行或者加上"\par"命令，为这一段设置的行距将无法生效，而只有设置的字号生效
-            %* 因此可以发现，如果要用这一命令设置行距，统辖范围内的第一行和统辖范围外之前的最后一行可以在同一段落内（通过"\\"命令或者"\newline"命令强制换行），但是统辖范围内的最后一行和统辖范围外之后的第一行一定不在同一段落内，因为统辖范围内的最后一行的末尾必须要空行或者加上"\par"命令，否则这一行和之前一行之间设置的行距将无法生效
+            %*// 因此可以发现，如果要用这一命令设置行距，统辖范围内的第一行和统辖范围之前的最后一行可以在同一段落内（通过"\\"命令或者"\newline"命令强制换行），但是统辖范围内的最后一行和统辖范围外之后的第一行一定不在同一段落内，因为统辖范围内的最后一行的末尾必须要空行或者加上"\par"命令，否则这一行和之前一行之间设置的行距将无法生效
             %rfr 参考：https://tex.stackexchange.com/questions/148508/how-does-fontsize-work、https://tex.stackexchange.com/questions/48741/temporarily-increase-line-spacing/48743#48743，从后面这篇帖子还可以发现，即使不需要主动地调整行距，当出现类似的用大括号将命令和统辖范围括起来的情况，最好也在每一段的末尾空行或者加上"\par"命令，否则行距可能会被动地发生变化
-            %! 书中给出的命令结构是在"\selectfont"命令"和统辖范围的两边加上大括号，经检验，这对大括号可以省去，但是原文没有提到，还需要在整个"\fontsize{size}{skip}{\selectfont}"命令和统辖范围的两边加上大括号，否则该命令会影响其后所有的内容
+            %!// 书中给出的命令结构是在"\selectfont"命令"和统辖范围的两边加上大括号，经检验，这对大括号可以省去，但是原文没有提到，还需要在整个"\fontsize{size}{skip}{\selectfont}"命令和统辖范围的两边加上大括号，否则该命令会影响其后所有的内容
             %* 总的来说，如果出现用大括号将命令和统辖范围括起来的情况，在每一段（尤其是最后一行）的末尾空行或者加上"\par"命令是最保险的做法，可以避免很多不必要的问题
             %rfr 更多关于行距的讨论，参看"5.3.3 行距"一节 
 

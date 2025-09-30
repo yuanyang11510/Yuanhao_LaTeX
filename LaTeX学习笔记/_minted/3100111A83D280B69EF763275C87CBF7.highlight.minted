@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+(9) \PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}Huge}...\PYG{n+nb}{\PYGZcb{}} \PYG{esc}{\% {\Huge Huge}，注意}\PYG{k}{\PYGZbs{}Huge}\PYG{esc}{只有“H”大写}
+\end{MintedVerbatim}

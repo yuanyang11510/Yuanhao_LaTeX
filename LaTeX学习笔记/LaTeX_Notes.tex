@@ -1,15 +1,15 @@
 \documentclass{article}
+
+% 宏包
 % \usepackage[scheme = chinese]{ctex}
 \usepackage[scheme = plain]{ctex}
-
 \usepackage{indentfirst}
 \usepackage{mdframed}
-\usepackage{minted} % 打印源代码
+% 抄录代码---------------------------------------------------------------
+\usepackage{minted} 
 \setminted{escapeinside = ||} % 设置转义定界符，||之间的内容转到LaTeX编译
-\newcommand{\mnt}[1]{\mintinline{latex}{#1}} % 简化打印源代码命令
-%* 上述命令存在限制，见文末注释
-% 以下列举文档里碰到的LaTeX原生命令，随时补充，文档中用红色标出
-\newcommand{\mntpar}{\textcolor{red}{\textbackslash{}par}}
+\newcommand{\mnt}[1]{\mintinline{latex}{#1}} % 简化抄录代码命令
+%* 上述命令存在限制以及相应的解决方案，见文末注释---------------------------------------------------------------
 \usepackage{ulem}
 \usepackage{lettrine}
 \usepackage[colorlinks = true]{hyperref}
@@ -25,6 +25,11 @@
         \paragraph{注释}#6
     \end{mdframed}
 }
+
+% 定义显示当前字体命令
+\makeatletter
+\newcommand{\showfontsize}{\f@size{} pt}
+\makeatother
 
 \title{\LaTeX{}学习笔记}
 \author{殷元昊}
@@ -109,8 +114,8 @@
 {略}%
 {
     \begin{enumerate}
-        \item 关于\%符号，吴书中提到：“如果在行末添加\%这个命令，可以防止LaTeX在行末插入一些奇怪的空白符”，其实这个说法语焉不详，我们知道，如果在LaTeX的代码中换一行，打印时就会在换行处插入一个空格，而此时如果在每一行的末尾插入一个\%符号，就能移除这个空格。
-        \item 关于\^{}符号，该命令后面如果不加一对大括号，单独打印时会报错，而如果在大括号中填入一个字母（实际可以只填入一个字母而不需要大括号），输出的就是一个扬抑符（circumflex），比如\mnt{\^{a}}输出\^{a}。
+        \item 关于\%符号，如果在LaTeX的代码中换一行，打印时会在换行处插入一个空格，而此时如果在该行末尾插入一个\%符号，就能移除这个空格。
+        \item 关于\^{}符号，该命令后面如果不加一对大括号，单独打印时会报错，而如果在大括号中填入一个字母（此时也可以不需要大括号），输出的就是一个扬抑符（circumflex），比如\mnt{\^{a}}输出\^{a}。
     \end{enumerate}
 }%
 
@@ -130,9 +135,9 @@
         \item 方法二、方法三输出的反斜杠和方法一输出的反斜杠不完全相同：如果将这几种方法输出的反斜杠排列在一行上，会发现方法一输出的反斜杠和后面反斜杠符号的间距更小，但是有意思的是，如果将反斜杠后面的符号替换成其他符号，这些反斜杠后的这一间距又会恢复相同，因此在实际情况中，只需要在需要连续使用两个反斜杠符号时，注意选择命令即可，比如，如果要输出“\textbackslash\textbackslash”符号，应该选用两个连续的\mnt{\textbackslash}命令。
         \item 顺便在此可以讨论\mnt{\texttt{}}和\mnt{{\ttfamily}}这两类不同的命令，这两类命令的大括号的位置和功能是不同的：前一种命令的大括号置于命令之后，是强制性的，用来放置相应的参数，只有大括号内的内容才会受到该命令的影响，其特点有点类似于环境。有些教程会将这种命令称为“argument style”（参数型）。
         
-        而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要限制该命令影响的范围，则可以在该命令和需要统辖的范围两边加上大括号。有些教程会将这种命令称为“declarative style”（声明型）。
+        而后一种命令的大括号不是强制性的，如果没有这一对大括号，则该命令之后的所有内容都会受到该命令的影响，如果需要控制该命令的统辖范围，则可以在该命令和需要统辖的范围两边加上大括号。有些教程会将这种命令称为“declarative style”（声明型）。
 
-        下文中会反复出现这两类命令，比如自定义距离命令、两类对齐方式命令等，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论。
+        本文档中会反复出现这两类命令，比如自定义距离命令、两类对齐方式命令等，以下只通过大括号的位置来体现这两类命令的类型，如果没有必要，不再就这一点展开具体讨论。
     \end{enumerate}
 }%
 
@@ -206,7 +211,8 @@
 \notes
 {强调}%
 {
-    \mnt{\emph{强调} v.s. \emph{empasis}}
+    \mnt{(1) \emph{强调} |\% 输出：\emph{强调}|}\\
+    \mnt{(2) \emph{empasis} |\% 输出：\emph{empasis}|}
 }%
 {基础命令}%
 {略}%
@@ -218,7 +224,7 @@
 \notes
 {下划线和删除线}%
 {
-    \mnt{\underline{}}
+    \mnt{\underline{} |\% 输出：\underline{下划线}|}
 }%
 {基础命令}%
 {略}%
@@ -278,23 +284,23 @@
 \notes
 {换行和分段}%
 {
-    \mntpar{}、\mnt{\\、\newline、\mbox{}}
+    \mnt{\|\mbox{}|par、\\、\newline、\mbox{}}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
     \begin{enumerate}
-        \item 分段有两种方式：（1）在两段之间空一行、（2）在两段之间使用\mntpar{}命令，新的段落开头空两格打印。
-        \item 强制换行有两种方式：（1）在换行处使用\mnt{\\}命令、（2）在换行处使用\mnt{\newline}命令，下一行顶格打印。
-        \item 打印一个空白段落的方式：在空白段落处输入\mnt{\mbox{}}命令。注意空白段落和前后段落之间也要有空行或者\mntpar{}命令。该命令还有一个功能是输入参数，防止放入其中的词在换行时断开。
+        \item 分段有两种方式：（1）在两段之间空一行；（2）在两段之间使用\mnt{\|\mbox{}|par}命令，新的段落开头空两格打印。
+        \item 强制换行有两种方式：（1）在换行处使用\mnt{\\}命令；（2）在换行处使用\mnt{\newline}命令，下一行顶格打印。
+        \item 打印一个空白段落的方式：在空白段落处输入\mnt{\mbox{}}命令。注意空白段落和前后段落之间也要有空行或者\mnt{\|\mbox{}|par}命令。该命令还有一个功能是输入参数，防止放入其中的词在换行时断开。
     \end{enumerate}    
 }%
 
 \notes
 {段落间距}%
 {
-    \mnt{\parskip |\% 默认值：\the\parskip|}\\
+    \mnt{\parskip |~\% 当前默认值：\the\parskip|}\\
     \mnt{\setlength{\parskip}{30pt} |\% 自定义段落距离|}
 }%
 {基础命令}%
@@ -302,9 +308,10 @@
 {略}%
 {
     \begin{enumerate}
-        \item 默认值可以通过\mnt{\the\parskip}得到。“0.0 pt plus 1.0 pt”是弹性距离，意即普通情况下是0pt，在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus）
-        \item “段落间距”其实是一个差值，是【前一段的最后一行的箱子和后一段的第一行的箱子的基线间距】减去【同一段内的基线间距】之后的差值，具体可以参见下文关于“基线间距”（baselineskip）的讨论。
-        \item \mnt{\setlength{\parskip}{30pt}}如果放到导言区，会导致全文所有的段落间距变为30pt，直到设置新的段落间距为止。\\\mnt{{\setlength{\parskip}{30pt}}}如果放在正文当中，控制的对象是统辖范围内的每一段和其前面一段之间的距离（包括统辖范围内的第一段和统辖范围之前的最后一段之间的距离），因此，不管统辖范围内的最后一段的末尾是否空行或者加上\mntpar{}命令，其和统辖范围之后的第一段之间的距离都会恢复为原来的长度，因为这个段落间距是由统辖范围之后的第一段来控制的，下文中段首缩进长度、行距的设置的也具有类似的特点。
+        \item 当前默认值可以通过\mnt{\the\parskip}得到。“0.0 pt plus 1.0 pt”是弹性距离，意即普通情况下是0pt，在有需要的时候可以拉伸到1pt，相应的也可以设置收缩距离（minus）
+        \item “段落间距”其实是一个差值，是【前一段的最后一行的箱子和后一段的第一行的箱子的基线间距】减去【同一段内的基线间距】之后的差值，具体可以参见本文档中关于“基线间距”（baselineskip）的讨论。
+        \item 顺便可以讨论一下\mnt{\setlength{}{}}这一类命令的统辖范围，\\\mnt{\setlength{}{}}如果放到导言区，统辖范围是正文，直到在正文中设置新的相应长度为止。\mnt{{\setlength{}{}...}}如果放在正文当中，则为声明型命令，可以通过在命令和统辖范围两边加大括号来控制统辖范围。本文档中还会出现其他的\mnt{\setlength{}{}}命令，不再另外讨论。
+        \item \mnt{\parskip}控制的对象是：（1）统辖范围内的每一段和其前面一段之间的距离；（2）统辖范围内的第一段和统辖范围之前的最后一段之间的距离，但不包括其和统辖范围之后的第一段之间的距离，这段距离会恢复为原来的长度，因为这个段落间距是由统辖范围之后的第一段来控制的，关于行距的设置的也具有类似的特点。
     \end{enumerate}
 }%
 
@@ -334,7 +341,7 @@
 \notes
 {段首缩进}%
 {
-    \mnt{\parindent |~\% 默认值：\the\parindent|}\\
+    \mnt{\parindent |~\% 当前默认值：\the\parindent|}\\
     \mnt{\setlength{\parindent}{10em} |\% 自定义段首缩进距离|}\\
     \mnt{\noindent |~\% 强制取消缩进|}
 }%
@@ -343,8 +350,8 @@
 {略}%
 {
     \begin{enumerate}
-        \item 默认值可以通过\mnt{\the\parindent}得到。
-        \item \mnt{\noindent}只会影响到其后的一个段落，而不会导致其后所有的段落都取消缩进，也不需要大括号来限制其统辖范围。
+        \item 当前默认值可以通过\mnt{\the\parindent}得到。
+        \item \mnt{\noindent}只会影响到其后的一个段落，而不会导致其后所有的段落都取消缩进，也不需要大括号来控制其统辖范围。
     \end{enumerate}
 }%
 
@@ -354,9 +361,9 @@
     \mnt{(1.1) \begin{flushleft}...\end{flushleft} |\% 左对齐|}\\
     \mnt{(1.2) \begin{flushright}...\end{flushright} |\% 右对齐|}\\
     \mnt{(1.3) \begin{center}...\end{center} |\% 居中对齐|}\\
-    \mnt{(2.1) {\raggedright} |\% 左对齐|}\\
-    \mnt{(2.2) {\raggedleft} |\% 右对齐|}\\
-    \mnt{(2.3) {\centering} |\% 居中对齐|}\\
+    \mnt{(2.1) {\raggedright...\|\mbox{}|par} |\% 左对齐|}\\
+    \mnt{(2.2) {\raggedleft...\|\mbox{}|par} |\% 右对齐|}\\
+    \mnt{(2.3) {\centering...\|\mbox{}|par} |\% 居中对齐|}\\
 }%
 {基础命令}%
 {略}%
@@ -366,8 +373,7 @@
         % \item 左对齐的同时也就取消了段首缩进，事实上，右对齐和居中对齐同样也取消了段首缩进，只不过不在页面左侧，看不出来。
         \item “ragged”是“凹凸不平”的意思，以\mnt{\raggedleft}为例，其意思是文本的左侧是凹凸不平的，意即“右对齐”。
         \item (1)中都是参数型命令，(2)中都是声明型命令。吴书中提到，\mnt{\centering}（包括\mnt{\raggedleft}、\mnt{\raggedright}）命令“常常用在环境内部（或者一对花括号内部）”，但这些都是“老旧的命令”，还是建议优先使用参数型命令。
-        \item \mnt{\centering、\raggedleft、\raggedright}统辖范围内的最后一段后面需要空行或者加上\mntpar{}才能产生效果，否则最后一段的对齐方式将无法生效。或许正是这一容易出错的特点，使得这三个命令成为了不被推荐的命令。
-        
+        \item \mnt{\centering、\raggedleft、\raggedright}如果用大括号控制了统辖范围，则统辖范围内的最后一段后面需要空行或者加上\mnt{\|\mbox{}|par}才能产生效果，否则最后一段的对齐方式将无法生效，如果没有用大括号控制统辖范围，则其后的所有内容的对齐方式都生效。另一条\mnt{\selectfont...}命令也有类似特点。
     \end{enumerate}
 }%
 
@@ -375,16 +381,16 @@
 {字体：字族（family）}%
 {
     \mnt{\familydefault |~\% 默认字族：\familydefault，“lmr”意即“Latin Modern Roman”|}\\
-    \mnt{\textrm{}、{\rmfamily} |\% 罗马字族：\textrm{Roman}|}\\
-    \mnt{\textsf{}、{\sffamily} |\% 无衬线字族：\textsf{Sans Serif}|}\\
-    \mnt{\texttt{}、{\ttfamily} |\% 等宽字族：\texttt{Typewriter}|}\\
+    \mnt{\textrm{}、{\rmfamily...} |\% 罗马字族：\textrm{Roman}|}\\
+    \mnt{\textsf{}、{\sffamily...} |\% 无衬线字族：\textsf{Sans Serif}|}\\
+    \mnt{\texttt{}、{\ttfamily...} |\% 等宽字族：\texttt{Typewriter}|}\\
 }%
 {基础命令}%
 {略}%
 {略}%
 {
     \begin{enumerate}
-        \item \mnt{\familydefault}控制的是当前文档中的默认字族，一般就是\\\mnt{\rmdefault}，而\mnt{\rmdefault}的默认值就是“lmr”，同理，也有\\\mnt{\sfdefault}和\mnt{\ttdefault}，其默认值分别为“lmss”和“lmtt”。而\\\mnt{\textrm{}/{\tmfamily}}则是字体命令，会调用\mnt{\rmdefault}进行打印，其余两类字体命令同理。
+        \item \mnt{\familydefault}控制的是当前文档中的默认字族，一般就是\\\mnt{\rmdefault}，而\mnt{\rmdefault}的默认值就是“lmr”，同理，也有\\\mnt{\sfdefault}和\mnt{\ttdefault}，其默认值分别为“lmss”和“lmtt”。而\\\mnt{\textrm{}/{\tmfamily}}则是字体命令，会调用\mnt{\rmdefault}进行打印，其余两类字体命令同理。可以通过\mnt{\renewcommand{}{}}来重定义\\\mnt{\familydefaut}或者\mnt{\rmdefault}等命令的值。
         \item \mnt{\mintinline{}{}}中的字族会变为tt字族（如上文所示），在正文中，默认使用rm字族。
     \end{enumerate}
 }%
@@ -393,15 +399,17 @@
 {字体：字系（series）}%
 {
     \mnt{\seriesdefault |~\% 默认字系：\seriesdefault|，“m”代表“Medium weight and width”}\\
-    \mnt{\textbf{}、{\bfseries} |\% 粗体字系：\textbf{BoldSeries}|}\\
-    \mnt{\textmd{}、{\mdseries} |\% 中粗体字系：\textmd{MiddleSeries}|}
+    \mnt{\textbf{}、{\bfseries...} |\% 粗体字系：\textbf{BoldSeries}|}\\
+    \mnt{\textmd{}、{\mdseries...} |\% 中粗体字系：\textmd{MiddleSeries}|}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    \mnt{\mintinline{}{}}中的字系默认使用md字系，和正文中相同，但由于字族变为了tt字族，因此不容易看出bf字系和md字系的区别，此处分别给出rm字族和sf字族下搭配bf字系和md字系的区别：\\
-    rm字族：\textrm{MiddleSeries v.s. \textbf{BoldSeries}}\\
+    \mnt{\mintinline{}{}}中的字系默认使用md字系，和正文中相同，但由于字族变为了tt字族，因此不容易看出bf字系和md字系的区别，此处分别给出rm字族和sf字族下搭配bf字系和md字系的区别：
+    
+    rm字族：\textrm{MiddleSeries v.s. \textbf{BoldSeries}}
+
     sf字族：\textsf{MiddleSeries v.s. \textbf{BoldSeries}}
 }%
 
@@ -409,29 +417,110 @@
 {字体：字形（shape）}%
 {
     \mnt{\shapedefault |~\% 默认字形：\shapedefault|，“n”代表“Normal”}\\
-    \mnt{\textup{}、{\upshape} |\% 竖直字形：\textup{Upright}|}\\
-    \mnt{\textsl{}、{\slshape} |\% 斜体字形：\textsl{Slant}|}\\
-    \mnt{\textit{}、{\itshape} |\% 强调体字形：\textit{Italic}|}\\
-    \mnt{\textsc{}、{\scshape} |\% 小号大写体字形：\textsc{smallcapital}|}
+    \mnt{\textup{}、{\upshape...} |\% 竖直字形：\textup{Upright}|}\\
+    \mnt{\textsl{}、{\slshape...} |\% 斜体字形：\textsl{Slant}|}\\
+    \mnt{\textit{}、{\itshape...} |\% 强调体字形：\textit{Italic}|}\\
+    \mnt{\textsc{}、{\scshape...} |\% 小号大写体字形：\textsc{smallcapital}|}
 }%
 {基础命令}%
 {略}%
 {略}%
 {
-    \mnt{\mintinline{}{}}中的字形默认使用up字形，和正文中相同，此处分别给出rm字族和sf字族下搭配各个字形的区别：\\
-    rm字族：\textup{Upright}、\textsl{Slant}、\textit{Italic}、\textsc{smallcapital}\\
-    sf字族：\textsf{\textup{Upright}、\textsl{Slant}、\textit{Italic}、\textsc{smallcapital}}
+    \mnt{\mintinline{}{}}中的字形默认使用up字形，和正文中相同，此处分别给出rm字族和sf字族下搭配各个字形的区别：
+    
+    rm字族：\textup{Upright}、\textsl{Slant}、\textit{Italic}、\textsc{smallcapital}
+
+    sf字族：\textsf{\textup{Upright}、\textsl{Slant}、\textit{Italic}、\textsc{smallcapital}}\\
+    可以发现，sf字族下的sc字形和rm字族下没有区别，这是因为sf字族下的sc字形没有相应的设计。
 }%
 
+\notes
+{相对字号}%
+{
+    \mnt{(1) {\tiny...} |\% {\tiny tiny}|}\\
+    \mnt{(2) {\scriptsize...} |\% {\scriptsize scriptsize}|}\\
+    \mnt{(3) {\footnotesize...} |\% {\footnotesize footnotesize}|}\\
+    \mnt{(4) {\small...} |\% {\small small}|}\\
+    \mnt{(5) {\normalsize...} |\% {\normalsize normalsize}|}\\
+    \mnt{(6) {\large...} |\% {\large large}|}\\
+    \mnt{(7) {\LARGE...} |\% {\LARGE LARGE}，注意|\LARGE|全大写|}\\
+    \mnt{(8) {\huge...} |\% {\huge huge}|}\\
+    \mnt{(9) {\Huge...} |\% {\Huge Huge}，注意|\Huge|只有“H”大写|}\\
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    正文当中默认使用\mnt{{\normalize}}字号。这些字号命令的默认值取决于\mnt{\documentclass{}}，比如article中\mnt{{\normalsize}}的默认值是10 pt。可以通过定义一个显示当前字体的命令\mnt{\showfontsize}来获得：
+    
+    \mnt{\makeatletter}\par
+    \mnt{\newcommand{\showfontsize}{\f@size{} pt}}\par
+    \mnt{\makeatother}\\
+    当前字体为：\showfontsize
+}%
 
+\notes
+{默认字体}%
+{
+    \mnt{{\normalsieze...} v.s. {\normalfont...}、\textnormal{}}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \mnt{{\normalsize...}}用来将字体还原回默认字号，但不能修改其他的字族、字形、字系等特征，\mnt{{\normalfont...}}或者\mnt{\textnormal{}}用来将字体还原回除了字号以外的默认字体特征，因此这两条命令是互补的，如果搭配使用，则将字体全方面还原回默认值，可以比较下面的字体：
 
+    \mnt{{\large\bfseries\itshape ABC}}：{\large\bfseries\itshape ABC}
 
+    \mnt{{\large\bfseries\itshape\normalsize ABC}}：{\large\bfseries\itshape\normalsize ABC}
 
+    \mnt{{\large\bfseries\itshape\normalfont ABC}}：{\large\bfseries\itshape\normalfont ABC}
 
+    \mnt{{\large\bfseries\itshape\normalsize\normalfont ABC}}：{\large\bfseries\itshape\normalsize\normalfont ABC}
+}%
 
+\notes
+{设置字号和行距}%
+{
+    \mnt{\fontsize{fontsize}{baselineskip}{\selectfont...\|\mbox{}|par}}
+}%
+{基础命令}%
+{略}%
+{
+    \begin{enumerate}
+        \item fontsize = 字号
+        \item baselineskip = 行距（基线间距）
+    \end{enumerate}
+}%
+{
+    \begin{enumerate}
+        \item \mnt{\fontsize{}{}}只能放在正文当中，放在导言区不会生效。
+        \item \mnt{\selectfont}类似一个声明型命令，只有其后面的所有内容才会受到\mnt{\fontsize{}{}}的影响，为了控制其统辖范围，可以在该命令和统辖范围的两边加上大括号。与同为声明型命令的\mnt{{\raggedleft...\|\mbox{}|par}}、\mnt{{\setlength{}{}...}}相比，\mnt{{\selectfont...\|\mbox{}|par}}更像前者，这两个命令都要求用大括号控制的统辖范围内的最后一段在最后空行或者加上\mnt{\|\mbox{}|par}，否则最后一段不会被包括进统辖范围。总的来说，如果出现用大括号控制声明型命令统辖范围的情况，在最后一段的末尾空行或者加上\mnt{\|\mbox{}|par}是最保险的做法，可以避免很多不必要的麻烦。
+        \item 类似关于段落间距\mnt{\parskip}的设置，\mnt{\fontsize{}{}}的控制对象是：（1）统辖范围内的每一行和其前面一行之间的距离；（2）统辖范围内第一行和统辖范围外之前的最后一行之间的距离，但不包括统辖范围内的最后一行的末尾和统辖范围之后的第一行之间的距离都会恢复为原来的长度，这段距离会恢复为原来的长度，因为这个行距是由统辖范围外之后的第一行来控制的。
+    \end{enumerate}
+}%
 
+\notes
+{行距（基线间距）}%
+{
+    \mnt{\baselineskip |~\% 当前默认值：\the\baselineskip|}\\
+    \mnt{\renewcommand{\baselinestretch}{1.5} |\% 间接控制|\baselineskip}\\
+    \mnt{\linespread{1.5} |~\% 间接控制|\baselineskip}
+}%
+{基础命令}%
+{略}%
+{略}%
+{
+    \begin{enumerate}
+        \item 当前默认值可以通过\mnt{\the\baselineskip}得到，其默认值是默认字号的1.2倍，article中默认字号为10 pt，相应的基线间距的默认值为12 pt。
+        \item 除了可以通过\mnt{\fontsize{}{}}的第二个参数直接控制基线间距，还可以通过重定义\mnt{\baselinestretch}或者\mnt{\linespread{}}修改默认字号的倍数，间接控制基线间距，要注意这两条命令控制的数字需要乘到原来默认的1.2倍的基础上，最后得到的数字才是默认字号的倍数，比如如果设置\mnt{\renewcommand{\baselinestretch}{1.5}}或者\\\mnt{\linespread{1.5}}，基线间距就会变成字体大小的1.2 * 1.5 = 1.8倍。修改行距的命令如果放在导言区，统辖范围就是正文，如果放在正文当中，需要使用\mnt{{\selectfont...\|\mbox{}|par}}来控制统辖范围。
+        \item 所谓的“行距”在\LaTeX{}中称为“基线间距”（baselineskip），这一称呼建立在\LaTeX{}的另一个重要概念“箱子”（box）的基础之上，每一行的内容都可以看成处于一个大箱子内，有一条固定的基线（由这一行上处于默认状态的箱子的基线确定）穿过这个箱子，箱子顶部到基线的距离称为“高度”（height），箱子底部到基线的距离称为“深度”（depth），“行距”这一称呼常常会被误认为是【上一行箱子的下边线和下一行箱子的上边线之间的距离】（以下称为“相邻两行箱子的上下边距”，这其实是另外一个概念，下文会提到），因此，即使要称呼“行距”，也要意识到其指的是相邻两条基线之间的距离（注意，这只是默认情况，特殊情况见下文讨论），而相邻两行箱子的基线间距实际也等于这两行箱子的上边线间距或者下边线间距。另外，要注意“基线间距”的概念是在同一个段落内进行定义的，当开始一个新的段落时，一般不要求上一段的最后一行的箱子和下一段的第一行的箱子的“基线间距”额外增加新的距离，这也是\LaTeX{}定义的“段落间距”（parskip）的默认值为“0 pt + 1 pt”中“0 pt”这一部分的由来（“1 pt”的部分见下文讨论），因此，“段落间距\mnt{\parskip}”其实是一个差值，是在“基线间距”的基础上增加的长度，它也像“行距”一样容易被误认为是【上一段的最后一行的箱子的下边线和下一段的第一行的箱子的上边线之间的距离】，如果要在页面上为其找到一个对应的距离的话，可以将其理解为设置了新的段落间距后的段落从原来的位置向下移动的长度。
+        
+        现在来讨论一下前文提到的“相邻两行箱子的上下边距”，这段距离会随着基线间距的变化而变化，变化的方式有一些复杂，需要考察基线间距和箱子上下边距（转换成【上一行箱子的深度加下一行箱子的高度】会更便于理解）的大小关系：如果前者大于后者，即上一行箱子的深度加下一行箱子的高度小于基线间距，则\LaTeX{}会在两个箱子之间自动插入一段距离（称为“glue”），即“相邻两行箱子的上下边距”，以满足规定的基线间距；如果前者等于后者，即上一行箱子的深度加下一行箱子的高度等于基线间距，则相邻两行箱子的上下边距为0 pt，这两行箱子上下无缝堆叠在一起；如果前者小于后者，即上一行箱子的深度加下一行箱子的高度大于基线间距，此时如果还要满足规定的基线间距，理论上必然要求上一行箱子和下一行箱子出现重叠部分（想象一下最极端的情况，基线间距越来越小直到0，则理论上每一行的箱子都会重叠在一起），第一种情况（两行箱子没有重叠部分）对应的是相邻两行箱子的上下边距大于0 pt，第二种情况（上一行箱子的下边线和下一行箱子的上边线重合）对应的是相邻两行箱子的上下边距等于0 pt，第三种情况（两行箱子预计会出现重叠部分）对应的是相邻两行箱子的上下边距预计会小于0 pt（可以理解为距离方向为负），这个“0 pt”可以看作一个界限，由\mnt{\lineskiplimit}控制，其默认值为0 pt，为了避免第三种情况的发生，\LaTeX{}的处理方式是在上一行箱子的下边线和下一行箱子的上边线之间加上一段固定的距离，而不再要求基线间距达到规定的长度，这段距离由\mnt{\lineskip}控制，其默认值为1 pt，也就是说，此时实际的基线间距并不是那个设置的小于箱子上下边距的值，而是【箱子上下边距加上1 pt】。从设置基线间距的角度总结一下，如果设置的基线间距大于等于箱子的上下边距，实际的基线间距就是这个设置的值；如果设置的基线间距小于箱子的上下边距，实际的基线间距是箱子的上下边距加上1 pt。
 
-
+        有的教程中会提到，“基线间距”其实也像“段落间距”一样，是弹性距离，通过以上讨论，可以更好地理解这一论断，弹性距离的性质就体现在第三种情况当中：一旦由于某种原因，上下两行箱子的上下边距预计会小于0 pt，则这两行箱子会被\LaTeX{}分开，并在上一行箱子的下边线和下一行箱子的上边线之间插入1 pt的距离，这很让我们很自然地联想到了段落间距的默认值0 pt + 1 pt，这也是一个弹性距离，很显然，这两者之间是有象似性的，段落间距默认值当中的“1 pt”其实就相当于此处基线间距当中的\mnt{\lineskip}的默认值，这个“1 pt”的适用条件其实就相当于此处基线间距当中的\mnt{\lineskiplimit}，只不过这段距离从同一段落的相邻两行之间转移到了上一段的最后一行和下一段的第一行之间。
+    \end{enumerate}
+}%
 
 
 
@@ -464,7 +553,9 @@
 %* 注释：
 %* xparse宏包提供比LaTeX原生\newcommand更强大、更灵活的宏定义机制。v = verbatim，不仅接受普通宏命令作为参数，而且也接受\par这种LaTeX原生命令作为参数。但是这一命令也存在限制：其无法嵌套在其他带参数的宏命令当中，本文档定义了\notes{}{}{}{}{}的宏命令，在其中使用通过上述方式定义的\mnt{}命令会报错。
 %rfr xparse宏包官方文档的原文提到：A command with a verbatim argument will produce an error when it appears within an argument of another function.
-%* xparse宏包解决的问题是，现在定义\mnt{}命令可以接受\par这种原生命令作为参数了，但是不管是哪种定义方式，最后都要在另一个带参数的宏命令当中使用，此时不管是前一种方式的\mintinline{latex}{\latex}，还是有一种方式的\mnt{\par}，在\notes{}{}{}{}{}中使用都会报错。如果直接用\NewDocumentCommand{}{}{}来定义\notes{}{}{}{}{}，将\mnt{}包含于其中，则其中的命令都将只能被直接打印出来，无法被执行，但我们仍然希望可以自由选择某些命令被执行与否，以便观察其效果。结论就是：xparse在此处虽然部分地解决了问题，但是最终无法完全解决问题，一开始通过\newcommand{}[]{}定义的\mnt{}仍然是最直接的做法。至于涉及在\notes{}{}{}{}{}当中打印“\par”的源代码时，只能选择用直接表示的办法。
+%* xparse宏包解决的问题是，现在定义\mnt{}命令可以接受\par这种原生命令作为参数了，但是不管是哪种定义方式，最后都要在另一个带参数的宏命令当中使用，此时不管是前一种方式的\mintinline{latex}{\latex}，还是有一种方式的\mnt{\par}，在\notes{}{}{}{}{}中使用都会报错。如果直接用\NewDocumentCommand{}{}{}来定义\notes{}{}{}{}{}，将\mnt{}包含于其中，则其中的命令都将只能被直接打印出来，无法被执行，但我们仍然希望可以自由选择某些命令被执行与否，以便观察其效果。结论就是：xparse在此处虽然部分地解决了问题，但是最终无法完全解决问题，一开始通过\newcommand{}[]{}定义的\mnt{}仍然是最直接的做法。至于涉及在\notes{}{}{}{}{}当中打印“\par”时，只能选择用直接表示的办法。
+%# 解决方案
+%# 在后续实践中，发现了一条暂时的解决方案：\mnt{\|\mbox{}|par}，思路就是避免“\”和“par”连在一起，而在中间用带有转义定界符的“|\mbox{}|”隔开，实际编译出的效果同样将“\par”整体高亮出来，这样至少保证了可以通过\mnt{}打印出“\par”，虽然是通过间接的方式。
 
 %* 另外需要注意，minted宏包提供了minted环境和mintinline命令，其中前者是不能放在其他带普通参数的命令中的因此本文档中，如果在\notes{}{}{}{}{}当中使用minted环境，会报错（但其他普通环境，比如enumerate环境，不会有这个问题）
 
