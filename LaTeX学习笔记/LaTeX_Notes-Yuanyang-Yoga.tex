@@ -1,0 +1,48 @@
+\documentclass{article}
+% \usepackage[scheme = chinese]{ctex}
+\usepackage[scheme = plain]{ctex}
+
+\usepackage{indentfirst}
+
+\newcommand{\notes}[4]{
+    \paragraph{参数结构}#1
+    \paragraph{注释}#2
+    \paragraph{注意事项}#3
+    \paragraph{参考链接}#4
+}
+\newcommand{\tbsl}{\textbackslash}
+
+
+\title{\LaTeX{}学习笔记}
+\author{殷元昊}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{前言}
+这份笔记的前身来自笔者学习吴康隆的《简单高效LATEX》的笔记。笔者按照本书的结构学习了大部分代码，在学习的同时进行了大量的随文注释。但是在回看的时候，这些代码和随文注释混杂在一起，极大地影响了可读性。因此笔者深感有必要将这些随文注释整理出来，形成单独的\LaTeX{}文档。
+
+在吴书之外，笔者还另外单独学习了一些有用的\LaTeX{}宏包，并也做了大量的随文注释，这些注释也需要整理出来。
+
+笔者曾经在学习制作表格和插入图片的相关宏包时制作过两份\LaTeX{}文档，但是回看的时候仍然觉得可读性不强，这是因为在编写文档的时候，尽管笔者使用了详细的文字描写相关命令，但由于缺少命令的参数结构，因而在回看时仍不免陷入“迷失在文字的海洋里”的尴尬境地，因此，该笔记将严格按照“参数结构-注释-注意事项-参考链接”的架构搭建，如果某些部分简单，则仍然写出对应的部分名称，后跟“略”。
+
+\section{基础命令}
+\subsection{封面}
+\subsubsection{\tbsl{}title\{\}、\tbsl{}author\{\}、\tbsl{}date\{\}、\tbsl{}thanks\{\}}
+\notes{略}%
+{
+    \begin{enumerate}
+        \item \tbsl{}date\{\}如果省略，会自动以编译当天的日期为准，如果不想显示日期，可以保留\tbsl{}date\{\}，但不输入参数
+        %todo 但是还需要补充一个知识：如何通过该命令控制输出日期的格式
+        \item 标题页的脚注用\tbsl{}thanks\{\}完成
+    \end{enumerate}
+}%
+{略}%
+{略}%
+
+
+
+
+
+\end{document}

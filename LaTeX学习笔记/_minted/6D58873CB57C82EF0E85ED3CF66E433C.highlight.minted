@@ -1,3 +1,0 @@
-\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
-\PYG{k}{\PYGZbs{}fontsize}\PYG{n+nb}{\PYGZob{}}fontsize\PYG{n+nb}{\PYGZcb{}}\PYG{n+nb}{\PYGZob{}}baselineskip\PYG{n+nb}{\PYGZcb{}}\PYG{n+nb}{\PYGZob{}}\PYG{k}{\PYGZbs{}selectfont}...\PYG{k}{\PYGZbs{}}\PYG{esc}{\mbox{}}\PYG{k}{par}\PYG{n+nb}{\PYGZcb{}}
-\end{MintedVerbatim}

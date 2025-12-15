@@ -569,7 +569,7 @@
                     \hline
                 \end{tabular}
             \end{table}
-            \footnotetext{{This is a footnote in the caption.}}
+            \footnotetext{This is a footnote in the caption.}
             %* "\caption{}"命令必须放在浮动体环境中才能够生效，比如table环境或者figure环境
             %rfr 但是经检验，如果在浮动体环境中的"\caption{}"命令中使用"\protect\footnote{}"命令，最后编译虽然不会报错，但是无法在底部显示脚注，需要将"\footnote{}"命令替换为"\footnotemark"命令搭配"\footnotetext{text}"命令，并且"\footnotetext{text}"命令需要放在浮动体环境结束之后，可以参考：https://blog.csdn.net/iteye_17686/article/details/82336269、https://blog.csdn.net/yq_forever/article/details/127415107
 
@@ -583,7 +583,7 @@
             
         % 调整脚注到正文的间距
             % \setlength{\skip\footins}{0.5cm}
-            %todo 暂时还不知道"footins"中的"ins"是什么含义
+            %// 暂时还不知道"footins"中的"ins"是什么含义
 
         % 2. 边注
             这一行有边注\marginpar[左侧]{右侧}
