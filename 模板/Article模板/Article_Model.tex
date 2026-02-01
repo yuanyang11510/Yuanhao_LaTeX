@@ -2,11 +2,6 @@
 
 \documentclass[oneside]{ctexart}
 
-% 封面
-\title{\LaTeX{}标题\thanks{标题脚注}}
-\author{作者\thanks{作者脚注}}
-\date{}
-
 % 宏包-----------------------------------------------------------------------------------------------------------------------------------
 
 % 文档拆分
@@ -38,6 +33,8 @@
 % 浮动体
 \usepackage[section]{placeins}
 \usepackage{graphicx} %# 当gb4e在前面时，和gb4e冲突
+%# gb4e使得\includegraphics{}中的下划线、中文等无法被识别，需要在图片名称外面套用一层\detokenize{}
+% \graphicspath{{}}
 \usepackage{caption}
 \usepackage{subcaption}
 % \usepackage{subfig}
@@ -130,6 +127,11 @@
 % --------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{document}
+
+% 封面
+\title{\LaTeX{}标题\thanks{标题脚注}}
+\author{作者\thanks{作者脚注}}
+\date{}
 
 % 打印标题
 \maketitle
